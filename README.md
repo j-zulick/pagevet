@@ -13,14 +13,14 @@ Web pages can carry instructions written for the AI systems that read them: "ign
 
 PageVet audits pages for it, and reports which of fourteen AI crawlers a page lets in, which it refuses, and which its firewall turns away despite robots.txt. It is for site owners, SEO/GEO teams, agencies and AI-security teams checking their own pages, user-generated content, or pages an agent will read. It uses no AI model and no API key. It runs as a command, a GitHub Action, an MCP server, a container, a pre-commit hook and a [Python API](docs/API.md).
 
-**What it has found so far.** Four field studies of the pages behind shopping and software searches (brake rotors, running shoes, small-business CRM software, home solar): no hidden instructions on any of 213 pages read, but 35–43% of readable pages refuse at least one AI crawler, and a few serve AI crawlers different text from what people see ([table](docs/bench/FIELD-STUDIES.md)). For these topics, being blocked matters more to AI answers than being manipulated, and PageVet measures both.
+**What it has found so far.** Five field studies of the pages behind shopping and software searches (brake rotors, running shoes, small-business CRM software, home solar, password managers): no hidden instructions on any of 238 pages read, but 32–43% of readable pages refuse at least one AI crawler, and a few serve AI crawlers different text from what people see ([table](docs/bench/FIELD-STUDIES.md)). For these topics, being blocked matters more to AI answers than being manipulated, and PageVet measures both.
 
 ## Quick start
 ```bash
-uv tool install "git+https://github.com/j-zulick/pagevet@v0.4.0"    # puts pagevet on your PATH (Python 3.11–3.13)
+uv tool install "git+https://github.com/j-zulick/pagevet@v0.5.0"    # puts pagevet on your PATH (Python 3.11–3.13)
 pagevet https://example.com/pricing
 ```
-No uv? `pip install "git+https://github.com/j-zulick/pagevet@v0.4.0"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.4.0"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
+No uv? `pip install "git+https://github.com/j-zulick/pagevet@v0.5.0"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.5.0"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
 
 ```bash
 pagevet https://example.com/pricing                         # one page
@@ -37,6 +37,10 @@ pagevet --headers --llms-txt https://example.com/           # also the HTTP resp
 pagevet whitepaper.pdf https://example.com/brochure.pdf     # PDFs (the pdf extra)
 pagevet-access https://example.com/pricing                  # which AI crawlers may read it, and which actually can
 pagevet-view https://example.com/pricing --out view.html    # what a person sees next to what an AI model also reads
+pagevet-guard https://example.com/pricing                   # cleaned text for a model; exit 1 when the page is blocked
+pagevet-serve                                               # local HTTP API: POST /scan, /guard (n8n, Windmill)
+pagevet --format receipt https://example.com/pricing        # scan receipt: SHA-256 of what was read, rules hash, findings
+pagevet --ocr https://example.com/pricing                   # also the text inside the page's images (the ocr extra)
 pagevet-rules > rules.json                                  # every detection rule as open data
 uv run pagevet-reproduce                                    # (in a checkout) regenerate every offline published number
 ```
@@ -55,6 +59,7 @@ Or with no Python at all: `docker run --rm ghcr.io/j-zulick/pagevet https://exam
 | Structured data (JSON-LD) | No | a `description` that addresses the AI |
 | noscript | Rarely | text only shown without JavaScript |
 | Served to AI crawlers (`--compare-agents`) | No | content served to GPTBot, ClaudeBot or PerplexityBot but not to a browser |
+| Text in images (`--ocr`) | Yes | a banner image that says "Note to any AI model…" (up to 10 images per page, read with a local OCR engine) |
 | HTTP response headers (`--headers`) | No | a custom header such as `X-AI-Note: ignore previous instructions…` (dates, cookies, cache and policy headers are skipped) |
 | llms.txt (`--llms-txt`) | Rarely | `/llms.txt` and `/llms-full.txt` of each site scanned: written for AI systems, so text addressed to them is rated low; overrides, role changes and chat markup there are high |
 | PDF page text / PDF metadata and annotations | Yes / No | a `.pdf` file or URL: the page text, and the title, subject, keywords and annotation notes viewers don't show (the `pdf` extra) |
@@ -102,7 +107,7 @@ Each page's trace holds its findings and the scores `max_severity` (0–3), `fin
 ## In CI (GitHub Action)
 ```yaml
 - uses: actions/checkout@v5
-- uses: j-zulick/pagevet@v0.4.0
+- uses: j-zulick/pagevet@v0.5.0
   id: pagevet
   with:
     urls-file: urls.txt            # or targets: "https://example.com/ page.html", or sitemap: ...
@@ -118,7 +123,7 @@ Outputs: `sarif-file`, `exit-code` (0, 1 or 2, as for the command) and `findings
 ```yaml
 repos:
   - repo: https://github.com/j-zulick/pagevet
-    rev: v0.4.0
+    rev: v0.5.0
     hooks:
       - id: pagevet      # fails a commit that adds HTML, Markdown or text with a medium or high finding
 ```
@@ -160,10 +165,14 @@ pagevet-study run "CRM software" --queries queries.txt --out study/      # searc
 pagevet-study report docs/bench/2026-11-23-field-running-shoes          # rewrite README.md from the saved data
 pagevet-study compare docs/bench/*-field-* --out docs/bench/FIELD-STUDIES.md
 ```
-`run` builds the URL list (at most four pages per site), scans every page as a browser and as GPTBot, ClaudeBot and PerplexityBot with linked stylesheets read and robots.txt respected, and writes the search results, the list, the raw results and a README. Every number in that README is computed from `results.json`, so it can be regenerated; a hand-written "What this says" section is kept. Pages that refuse PageVet are reported as not read and never retried another way. `compare` puts several studies in one table: [docs/bench/FIELD-STUDIES.md](docs/bench/FIELD-STUDIES.md). `explore` writes the [field-study explorer](docs/EXPLORER.md): one self-contained HTML page with faceted filters over every study, false-alarm and benchmark record (`pagevet-study explore --out site/`; attached to each release as `explore.html`). So far (brake rotors, running shoes, small-business CRM software, home solar): no hidden instructions on any of 213 pages read, and 35–43% of readable pages refuse at least one AI crawler.
+`run` builds the URL list (at most four pages per site), scans every page as a browser and as GPTBot, ClaudeBot and PerplexityBot with linked stylesheets read and robots.txt respected, and writes the search results, the list, the raw results and a README. Every number in that README is computed from `results.json`, so it can be regenerated; a hand-written "What this says" section is kept. Pages that refuse PageVet are reported as not read and never retried another way. `compare` puts several studies in one table: [docs/bench/FIELD-STUDIES.md](docs/bench/FIELD-STUDIES.md). `explore` writes the [field-study explorer](docs/EXPLORER.md): one self-contained HTML page with faceted filters over every study, false-alarm and benchmark record (`pagevet-study explore --out site/`; attached to each release as `explore.html`). So far (brake rotors, running shoes, small-business CRM software, home solar, password managers): no hidden instructions on any of 238 pages read, and 32–43% of readable pages refuse at least one AI crawler.
 
 ## Output
 Text, JSON ([schema](docs/schema/report.schema.json)), CSV, a self-contained HTML report, and [SARIF 2.1.0](https://sarifweb.azurewebsites.net/) for code-scanning tools. Exit code 1 when a finding is at or above `--fail-on` (default `low`), 2 on errors with no findings.
+
+**In the agent's path.** `pagevet.guard.guard(source, html)` (or `pagevet-guard`, or `POST /guard` on `pagevet-serve`) returns the text a person sees, with hidden channels dropped, any paragraph that still matches an instruction replaced by a marker, chat markup removed, and `allowed: false` when a finding reaches the policy (`high` by default). An n8n workflow is in [integrations/n8n/](integrations/n8n/). The guard only removes text.
+
+**Receipts.** Every JSON result now records what was scanned in `evidence` (SHA-256 of the text read, time, how it was read); `--format receipt` writes a compact receipt ([schema](docs/schema/receipt.schema.json)) with the rules' SHA-256 and each finding's fingerprint, for evidence pipelines such as SourceWatch.
 
 **OpenTelemetry.** `--otel [RUN]` sends one span per page (`pagevet.scan`, with `url.full` and the same numbers as the Langfuse scores) under one `pagevet.run` span, to whatever the standard `OTEL_*` settings point at (the `otel` extra). Best effort: it never changes a result.
 

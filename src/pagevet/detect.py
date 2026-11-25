@@ -310,7 +310,9 @@ def spaced_letters(text: str) -> int:
     return sum((len(m.group()) + 1) // 2 for m in _SPACED.finditer(text))
 
 
-_SENTENCE_END = re.compile(r"(?<=[^\s.!?])[.!?:;]+\s+(?=\S)")
+# A run of sentence punctuation can only start after a character that is not punctuation, and is at most
+# eight long: linear time on any input (CodeQL py/polynomial-redos; pagevet-serve takes text from the network).
+_SENTENCE_END = re.compile(r"(?<=[^\s.!?:;])[.!?:;]{1,8}\s+(?=\S)")
 
 
 # Words a real sentence almost never ends on (articles, conjunctions, prepositions, possessives).

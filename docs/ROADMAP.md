@@ -10,9 +10,11 @@ Public versions start at 0.1.0 and count up to 1.0.
 
 **0.4.0 (released):** `pagevet-reproduce`, deepset benchmark, ProtectAI open classifier detector, OpenTelemetry spans, field studies repeated, standing index workflow.
 
+**0.5.0 (released):** guard, `pagevet-serve` and an n8n workflow, receipts, OCR of text in images, head-to-head with an open classifier, a fifth field study.
+
 Next, toward 1.0:
-- **Head-to-head** with an open-weights classifier (ProtectAI DeBERTa) on BIPIA, deepset, the evasion sets and the saved real pages: in 0.5.0. A monthly schedule for the index (GitHub Actions or Windmill) is the maintainer's choice.
-- **0.5.0: in the agent's path:** a guard between fetch and model, an n8n node, scan and access receipts for SourceWatch.
+- **0.6.0:** sandbox replay of injections PageVet actually found, against a local model only (never new injections); an Ollama local second opinion; anonymized disclosure case studies from real findings; the classifier's false alarms on real pages.
+- A monthly schedule for the index (GitHub Actions or Windmill) is the maintainer's choice.
 - **Live runs** whenever keys are available: Prompt Guard 2 and Jev on BIPIA and the clean pages; a live check of the Firecrawl and crawlee-server sources, which are PageVet's rendering path (Playwright on those services; no browser is bundled); Windmill re-scans; new field studies.
 - **1.0.0** when the command line, JSON schema and Python API in [docs/API.md](API.md) are stable, every published number regenerates with one command, and the patterns-versus-model comparison is published.
 - **Packaging:** releases are on GitHub with the wheel, `explore.html` and a container image. PyPI (set `PYPI_PUBLISH=true` once a PyPI project exists) and a Marketplace listing for the Action are optional.

@@ -550,7 +550,7 @@ def scan_channels(source: str, channels: dict[str, str], include_repetition: boo
 # --- Severity ------------------------------------------------------------------------------------
 
 SEVERITIES = ("low", "medium", "high")
-READER_CHANNELS = {"visible text", "user-submitted content", "text", "PDF text"}
+READER_CHANNELS = {"visible text", "user-submitted content", "text", "PDF text", "text in images"}
 ENCODED = ("unicode_tags", "base64", "obfuscated", "rot13", "reversed")
 # Words that suggest a page is writing about injection rather than attempting it.
 DISCUSSION = re.compile(
@@ -746,6 +746,66 @@ def header_text(headers: dict[str, str]) -> str:
     """The scannable part of a response's headers, one ``Name: value`` line each."""
     lines = [f"{k}: {v}" for k, v in headers.items() if k.lower() not in HEADER_SKIP]
     return "\n".join(lines)[:MAX_HEADER_TEXT]
+
+
+# --- Text in images (0.5.0, --ocr) ----------------------------------------------------------------
+MAX_OCR_IMAGES = 10
+MAX_IMAGE_BYTES = 5_000_000
+_IMG = re.compile(r"<img\b[^>]*>", re.I)
+_DATA_IMAGE = re.compile(r"data:image/(?:png|jpe?g|gif|webp|bmp);base64,([A-Za-z0-9+/=\s]+)", re.I)
+# OCR reads a capital I as a small l or a 1 in "AI" often enough to matter for the patterns.
+_OCR_AI = re.compile(r"\bA[l1|]\b")
+
+
+def image_sources(page_html: str, base_url: str, limit: int = MAX_OCR_IMAGES) -> list[str]:
+    """The page's ``<img>`` sources (``src``, else the first ``srcset`` entry), absolute, at most ``limit``."""
+    from urllib.parse import urljoin
+
+    out: list[str] = []
+    for tag in _IMG.findall(page_html):
+        attrs = {m.group(1).lower(): next(g for g in m.groups()[1:] if g is not None) for m in _ATTR.finditer(tag)}
+        src = attrs.get("src") or (attrs.get("srcset", "").split(",")[0].split() or [""])[0]
+        if not src:
+            continue
+        url = src if src.startswith("data:") else urljoin(base_url, src)
+        if (url.startswith("data:image/") or re.match(r"https?://", url, re.I)) and url not in out:
+            out.append(url)
+        if len(out) >= limit:
+            break
+    return out
+
+
+def default_ocr(data: bytes) -> str:  # pragma: no cover - needs the optional extra and a model download
+    try:
+        from rapidocr_onnxruntime import RapidOCR
+    except ImportError as exc:
+        from pagevet import install_hint
+
+        raise RuntimeError(f"--ocr needs the optional extra: {install_hint('ocr')}") from exc
+    global _OCR_ENGINE
+    if "_OCR_ENGINE" not in globals():
+        _OCR_ENGINE = RapidOCR()
+    result, _ = _OCR_ENGINE(data)
+    return " ".join(r[1] for r in (result or []))
+
+
+def ocr_text(sources: list[str], image_fetcher: Callable[[str], bytes], ocr: Callable[[bytes], str]) -> tuple[str, list[str]]:
+    """OCR each image; return the text (one line per image) and notes for images that could not be read."""
+    import base64
+
+    lines, notes = [], []
+    for src in sources:
+        try:
+            m = _DATA_IMAGE.match(src)
+            data = base64.b64decode(m.group(1)) if m else image_fetcher(src)
+            if len(data) > MAX_IMAGE_BYTES:
+                raise ValueError("image larger than 5 MB")
+            text = _OCR_AI.sub("AI", ocr(data)).strip()
+            if text:
+                lines.append(text)
+        except Exception as exc:  # one image failing must not lose the others
+            notes.append(f"{src[:80]}: not read ({type(exc).__name__})")
+    return "\n".join(lines), notes
 
 
 LLMS_FILES = ("llms.txt", "llms-full.txt")
@@ -1033,6 +1093,40 @@ def render_json(results: list[PageResult]) -> str:
     return json.dumps([asdict(r) for r in results], indent=2, ensure_ascii=False)
 
 
+def read_evidence(source: str, body: str, via: str = "http") -> dict:
+    """What was scanned (0.5.0): SHA-256 of the text read, when, and how. Goes in ``PageResult.evidence``."""
+    import hashlib
+    from datetime import datetime
+
+    how = ("firecrawl" if via == "firecrawl" else "http") if _is_url(source) else ("stdin" if source == "-" else "file")
+    return {"sha256": hashlib.sha256(body.encode("utf-8", "replace")).hexdigest(),
+            "fetched_at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"), "fetched_via": how}
+
+
+def render_receipt(results: list[PageResult]) -> str:
+    """A scan receipt (0.5.0, schema docs/schema/receipt.schema.json): what was read, with which rules, and what was
+    found, for evidence pipelines such as SourceWatch. Excerpts are left out; findings carry their fingerprints."""
+    import hashlib
+    from datetime import datetime
+
+    from pagevet.rules import render as render_rules
+
+    pages = []
+    for r in results:
+        ev = r.evidence or {}
+        pages.append({
+            "source": r.source, "read": not r.error, "error": r.error,
+            "sha256": ev.get("sha256", ""), "fetched_at": ev.get("fetched_at", ""), "fetched_via": ev.get("fetched_via", ""),
+            **({"capture_id": ev["capture_id"]} if ev.get("capture_id") else {}),
+            "findings": [{"channel": f.channel, "kinds": f.kinds, "severity": f.severity, "intent": f.intent,
+                          "taxonomy": f.taxonomy, "fingerprint": finding_fingerprint(r.source, f)} for f in r.findings],
+        })
+    doc = {"schema": "pagevet-receipt-1", "pagevet": __version__,
+           "rules_sha256": hashlib.sha256(render_rules().encode()).hexdigest(),
+           "generated_at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"), "pages": pages}
+    return json.dumps(doc, indent=2, ensure_ascii=False) + "\n"
+
+
 def _csv_cell(value: str) -> str:
     # A spreadsheet runs a cell that starts with = + - @ as a formula; page text is untrusted.
     risky = value[:1] in ("=", "+", "-", "@", "\t", "\r") and value != "-"  # "-" is stdin, not a formula
@@ -1243,6 +1337,7 @@ def apply_baseline(results: list[PageResult], known: dict[str, str]) -> Baseline
 RENDERERS: dict[str, Callable[[list[PageResult]], str]] = {
     "text": lambda rs: render(rs) + "\n",
     "json": lambda rs: render_json(rs) + "\n",
+    "receipt": render_receipt,
     "csv": render_csv,
     "html": render_html,
     "sarif": render_sarif,
@@ -1265,6 +1360,8 @@ def main(
     pdf_fetcher: Callable[[str], bytes] | None = None,
     header_fetcher: Callable[[str], dict] | None = None,
     otel_tracer: object | None = None,
+    image_fetcher: Callable[[str], bytes] | None = None,
+    ocr: Callable[[bytes], str] | None = None,
 ) -> int:
     """Run the command line; return the exit code.
 
@@ -1310,6 +1407,8 @@ def main(
                         help="fetch pages even where robots.txt disallows them (for your own site)")
     parser.add_argument("--otel", metavar="RUN", nargs="?", const="", default=None,
                         help='also send one OpenTelemetry span per page (OTEL_* settings, pip install "pagevet[otel]")')
+    parser.add_argument("--ocr", action="store_true",
+                        help='also read text inside each page\'s images (up to 10 per page; pip install "pagevet[ocr]")')
     parser.add_argument("--headers", action="store_true",
                         help="also scan each URL's HTTP response headers (one extra request per page)")
     parser.add_argument("--llms-txt", action="store_true",
@@ -1411,8 +1510,15 @@ def main(
                 continue
             body = read_source(src, fetcher)
             page = scan_text(src, body, args.include_repetition, page_css(src, body) if _is_url(src) else "")
+            page.evidence = read_evidence(src, body, args.via)
             if args.compare_agents and _is_url(src):
                 page.findings.extend(compare_agents(src, agent_fetch or (lambda u, ua: fetch(u, user_agent=ua))))
+            if args.ocr and _is_url(src) and looks_like_html(body):
+                text, notes = ocr_text(image_sources(body, src), image_fetcher or (lambda u: fetch_bytes(u, timeout=15.0, max_bytes=MAX_IMAGE_BYTES)),
+                                       ocr or default_ocr)
+                for note in notes:
+                    sys.stderr.write(f"pagevet: {src}: image {note}\n")
+                page.findings.extend(scan_channels(src, {"text in images": text}, args.include_repetition).findings)
             if args.headers and _is_url(src):
                 try:
                     text = header_text((header_fetcher or fetch_headers)(src))

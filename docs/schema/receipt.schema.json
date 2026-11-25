@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pagevet-receipt-1",
+  "title": "PageVet scan receipt (pagevet --format receipt)",
+  "type": "object",
+  "required": ["schema", "pagevet", "rules_sha256", "generated_at", "pages"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "pagevet-receipt-1" },
+    "pagevet": { "type": "string", "description": "PageVet version" },
+    "rules_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$", "description": "SHA-256 of `pagevet-rules` output for this version" },
+    "generated_at": { "type": "string", "description": "UTC, ISO 8601" },
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source", "read", "error", "sha256", "fetched_at", "fetched_via", "findings"],
+        "additionalProperties": false,
+        "properties": {
+          "source": { "type": "string" },
+          "read": { "type": "boolean" },
+          "error": { "type": "string" },
+          "sha256": { "type": "string", "description": "SHA-256 of the text read (UTF-8); empty when not read" },
+          "fetched_at": { "type": "string" },
+          "fetched_via": { "type": "string" },
+          "capture_id": { "type": "string" },
+          "findings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["channel", "kinds", "severity", "intent", "taxonomy", "fingerprint"],
+              "additionalProperties": false,
+              "properties": {
+                "channel": { "type": "string" },
+                "kinds": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+                "severity": { "enum": ["low", "medium", "high"] },
+                "intent": { "enum": ["", "commercial"] },
+                "taxonomy": { "type": "object" },
+                "fingerprint": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
