@@ -1,0 +1,7 @@
+{
+ "topic": "password manager buying pages",
+ "date": "2026-11-25",
+ "version": "0.5.0",
+ "max_per_host": 4,
+ "delay": 0.3
+}

@@ -100,10 +100,13 @@ def test_displayed_counts_equal_python(browser, built, ds, filters, q):
 
 
 def test_no_filter_shows_published_figures(browser, built):
+    # The published figures are tied to the README and FIELD-STUDIES.md in test_explore.py; here the page must show
+    # the same headline, computed from the committed data, so adding a study never needs a new literal.
+    h = explore.headline(built[1]["records"], "field", {}, "")
     page = open_page(browser, built[0])
-    assert page.get_attribute("#h-read", "data-value") == "213"
-    assert page.get_attribute("#h-flagged", "data-value") == "0"
-    assert page.get_attribute("#h-refusing", "data-value") == "83"
+    assert int(page.get_attribute("#h-read", "data-value")) == h["read"]
+    assert int(page.get_attribute("#h-flagged", "data-value")) == h["flagged"] == 0
+    assert int(page.get_attribute("#h-refusing", "data-value")) == h["refusing"]
     page.close()
 
 

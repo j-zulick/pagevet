@@ -4,6 +4,14 @@ Public releases start at 0.1.0 and count up to 1.0. Everything before the first 
 private repository as internal versions 0.1.0–0.25.0; they are listed under "Development history" and referred to as
 "internal" throughout the docs, so they don't clash with public version numbers.
 
+## [0.5.0] - 2026-11-25
+- **Guard between fetch and model:** `pagevet.guard.guard()`, `pagevet-guard` (stdin, file or URL; exit 1 when blocked) and `POST /guard` return the text a person sees, with hidden channels dropped, paragraphs that still match an instruction replaced by a marker, chat markup removed, and `allowed: false` when a finding reaches the policy (`high`, `medium` or `never`). It only removes text.
+- **Local HTTP API:** `pagevet-serve` (standard library, loopback by default): `POST /scan`, `POST /guard`, `GET /health`; private addresses refused on every redirect. An importable n8n workflow is in `integrations/n8n/`.
+- **Receipts:** every JSON result records what was scanned in `evidence` (SHA-256 of the text read, UTC time, how it was read); `--format receipt` writes a compact receipt (`docs/schema/receipt.schema.json`) with the rules' SHA-256 and each finding's fingerprint, for SourceWatch and other evidence pipelines.
+- **Text in images:** `--ocr` reads up to ten images per page (including data URIs) with a local OCR engine (the `ocr` extra, RapidOCR) as a new channel, rated like visible text. OCR's habit of reading "AI" as "Al" is undone before matching.
+- **Head-to-head** with ProtectAI's open DeBERTa classifier (`docs/bench/2026-11-25-head-to-head/`): on BIPIA the classifier catches more (2,226 against 1,450 of 3,750) but flags 31 of 50 clean emails against 0; it generalizes far better to new phrasings (172 against 69 of 216 on the second held-out set) and misses more disguised text (162 against 237 of 252). The classifier's false alarms on real pages follow in the next release.
+- **New field study:** password manager buying pages (`docs/bench/2026-11-25-field-password-managers/`): 25 of 38 read, no hidden instructions, 8 refuse at least one AI crawler. Across five studies: no hidden instructions on 238 pages read; 32–43% refuse at least one AI crawler.
+
 ## [0.4.0] - 2026-11-25
 - **One-command reproduction:** `uv run pagevet-reproduce` (in a checkout) regenerates the evasion report, the hiding-method report and the rules file, and with `--bipia DIR` the BIPIA counts, and fails if any number differs from the committed results. All match for 0.4.0.
 - **Newer benchmark:** deepset/prompt-injections, test split (`docs/bench/2026-11-25-deepset/`): patterns catch 2 of 60 chat-prompt injections with 0 of 56 false alarms. A second independent measure of the reworded-instruction gap; built at run time, not copied here.

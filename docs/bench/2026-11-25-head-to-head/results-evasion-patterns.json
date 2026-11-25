@@ -1,0 +1,629 @@
+{
+  "tool": "pagevet",
+  "version": "0.5.0",
+  "detector": "patterns",
+  "catch_rate": {
+    "hits": 810,
+    "n": 1134,
+    "rate": 0.7143,
+    "ci95": [
+      0.6873,
+      0.7398
+    ]
+  },
+  "false_alarm_rate": {
+    "hits": 0,
+    "n": 0,
+    "rate": null,
+    "ci95": [
+      0.0,
+      0.0
+    ]
+  },
+  "by_group": {
+    "disguise: HTML character entities": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "disguise: ROT13": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "disguise: alternating case": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "disguise: base64": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "disguise: invisible Unicode tag characters": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "disguise: letter spacing": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "disguise: letter spacing, every word (double-space gaps)": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "disguise: look-alike letters (Cyrillic)": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "disguise: one word per element": {
+      "hits": 3,
+      "n": 18,
+      "rate": 0.1667,
+      "ci95": [
+        0.0584,
+        0.3922
+      ]
+    },
+    "disguise: original (control)": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "disguise: reversed text": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "disguise: split into three sentences": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "disguise: split into two capitalized sentences": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "disguise: zero-width characters inside words": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "held-out-2: held-out 2 (de)": {
+      "hits": 6,
+      "n": 18,
+      "rate": 0.3333,
+      "ci95": [
+        0.1628,
+        0.5625
+      ]
+    },
+    "held-out-2: held-out 2 (en)": {
+      "hits": 6,
+      "n": 18,
+      "rate": 0.3333,
+      "ci95": [
+        0.1628,
+        0.5625
+      ]
+    },
+    "held-out-2: held-out 2 (es)": {
+      "hits": 6,
+      "n": 18,
+      "rate": 0.3333,
+      "ci95": [
+        0.1628,
+        0.5625
+      ]
+    },
+    "held-out-2: held-out 2 (fr)": {
+      "hits": 6,
+      "n": 18,
+      "rate": 0.3333,
+      "ci95": [
+        0.1628,
+        0.5625
+      ]
+    },
+    "held-out-2: held-out 2 (it)": {
+      "hits": 3,
+      "n": 18,
+      "rate": 0.1667,
+      "ci95": [
+        0.0584,
+        0.3922
+      ]
+    },
+    "held-out-2: held-out 2 (ja)": {
+      "hits": 6,
+      "n": 18,
+      "rate": 0.3333,
+      "ci95": [
+        0.1628,
+        0.5625
+      ]
+    },
+    "held-out-2: held-out 2 (nl)": {
+      "hits": 3,
+      "n": 18,
+      "rate": 0.1667,
+      "ci95": [
+        0.0584,
+        0.3922
+      ]
+    },
+    "held-out-2: held-out 2 (pl)": {
+      "hits": 6,
+      "n": 18,
+      "rate": 0.3333,
+      "ci95": [
+        0.1628,
+        0.5625
+      ]
+    },
+    "held-out-2: held-out 2 (pt)": {
+      "hits": 6,
+      "n": 18,
+      "rate": 0.3333,
+      "ci95": [
+        0.1628,
+        0.5625
+      ]
+    },
+    "held-out-2: held-out 2 (ru)": {
+      "hits": 9,
+      "n": 18,
+      "rate": 0.5,
+      "ci95": [
+        0.2903,
+        0.7097
+      ]
+    },
+    "held-out-2: held-out 2 (sv)": {
+      "hits": 6,
+      "n": 18,
+      "rate": 0.3333,
+      "ci95": [
+        0.1628,
+        0.5625
+      ]
+    },
+    "held-out-2: held-out 2 (zh)": {
+      "hits": 6,
+      "n": 18,
+      "rate": 0.3333,
+      "ci95": [
+        0.1628,
+        0.5625
+      ]
+    },
+    "held-out: held-out: HTML character entities": {
+      "hits": 15,
+      "n": 18,
+      "rate": 0.8333,
+      "ci95": [
+        0.6078,
+        0.9416
+      ]
+    },
+    "held-out: held-out: ROT13": {
+      "hits": 15,
+      "n": 18,
+      "rate": 0.8333,
+      "ci95": [
+        0.6078,
+        0.9416
+      ]
+    },
+    "held-out: held-out: alternating case": {
+      "hits": 15,
+      "n": 18,
+      "rate": 0.8333,
+      "ci95": [
+        0.6078,
+        0.9416
+      ]
+    },
+    "held-out: held-out: base64": {
+      "hits": 15,
+      "n": 18,
+      "rate": 0.8333,
+      "ci95": [
+        0.6078,
+        0.9416
+      ]
+    },
+    "held-out: held-out: invisible Unicode tag characters": {
+      "hits": 15,
+      "n": 18,
+      "rate": 0.8333,
+      "ci95": [
+        0.6078,
+        0.9416
+      ]
+    },
+    "held-out: held-out: letter spacing": {
+      "hits": 15,
+      "n": 18,
+      "rate": 0.8333,
+      "ci95": [
+        0.6078,
+        0.9416
+      ]
+    },
+    "held-out: held-out: letter spacing, every word (double-space gaps)": {
+      "hits": 15,
+      "n": 18,
+      "rate": 0.8333,
+      "ci95": [
+        0.6078,
+        0.9416
+      ]
+    },
+    "held-out: held-out: look-alike letters (Cyrillic)": {
+      "hits": 15,
+      "n": 18,
+      "rate": 0.8333,
+      "ci95": [
+        0.6078,
+        0.9416
+      ]
+    },
+    "held-out: held-out: one word per element": {
+      "hits": 3,
+      "n": 18,
+      "rate": 0.1667,
+      "ci95": [
+        0.0584,
+        0.3922
+      ]
+    },
+    "held-out: held-out: original (control)": {
+      "hits": 15,
+      "n": 18,
+      "rate": 0.8333,
+      "ci95": [
+        0.6078,
+        0.9416
+      ]
+    },
+    "held-out: held-out: reversed text": {
+      "hits": 15,
+      "n": 18,
+      "rate": 0.8333,
+      "ci95": [
+        0.6078,
+        0.9416
+      ]
+    },
+    "held-out: held-out: split into three sentences": {
+      "hits": 15,
+      "n": 18,
+      "rate": 0.8333,
+      "ci95": [
+        0.6078,
+        0.9416
+      ]
+    },
+    "held-out: held-out: split into two capitalized sentences": {
+      "hits": 12,
+      "n": 18,
+      "rate": 0.6667,
+      "ci95": [
+        0.4375,
+        0.8372
+      ]
+    },
+    "held-out: held-out: zero-width characters inside words": {
+      "hits": 15,
+      "n": 18,
+      "rate": 0.8333,
+      "ci95": [
+        0.6078,
+        0.9416
+      ]
+    },
+    "rewording: reworded without trigger phrases": {
+      "hits": 0,
+      "n": 18,
+      "rate": 0.0,
+      "ci95": [
+        0.0,
+        0.1759
+      ]
+    },
+    "translation-held-out: held-out: translated (de)": {
+      "hits": 12,
+      "n": 18,
+      "rate": 0.6667,
+      "ci95": [
+        0.4375,
+        0.8372
+      ]
+    },
+    "translation-held-out: held-out: translated (es)": {
+      "hits": 6,
+      "n": 18,
+      "rate": 0.3333,
+      "ci95": [
+        0.1628,
+        0.5625
+      ]
+    },
+    "translation-held-out: held-out: translated (fr)": {
+      "hits": 12,
+      "n": 18,
+      "rate": 0.6667,
+      "ci95": [
+        0.4375,
+        0.8372
+      ]
+    },
+    "translation-held-out: held-out: translated (it)": {
+      "hits": 9,
+      "n": 18,
+      "rate": 0.5,
+      "ci95": [
+        0.2903,
+        0.7097
+      ]
+    },
+    "translation-held-out: held-out: translated (ja)": {
+      "hits": 12,
+      "n": 18,
+      "rate": 0.6667,
+      "ci95": [
+        0.4375,
+        0.8372
+      ]
+    },
+    "translation-held-out: held-out: translated (nl)": {
+      "hits": 9,
+      "n": 18,
+      "rate": 0.5,
+      "ci95": [
+        0.2903,
+        0.7097
+      ]
+    },
+    "translation-held-out: held-out: translated (pl)": {
+      "hits": 12,
+      "n": 18,
+      "rate": 0.6667,
+      "ci95": [
+        0.4375,
+        0.8372
+      ]
+    },
+    "translation-held-out: held-out: translated (pt)": {
+      "hits": 9,
+      "n": 18,
+      "rate": 0.5,
+      "ci95": [
+        0.2903,
+        0.7097
+      ]
+    },
+    "translation-held-out: held-out: translated (ru)": {
+      "hits": 9,
+      "n": 18,
+      "rate": 0.5,
+      "ci95": [
+        0.2903,
+        0.7097
+      ]
+    },
+    "translation-held-out: held-out: translated (sv)": {
+      "hits": 12,
+      "n": 18,
+      "rate": 0.6667,
+      "ci95": [
+        0.4375,
+        0.8372
+      ]
+    },
+    "translation-held-out: held-out: translated (zh)": {
+      "hits": 9,
+      "n": 18,
+      "rate": 0.5,
+      "ci95": [
+        0.2903,
+        0.7097
+      ]
+    },
+    "translation: translated (de)": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "translation: translated (es)": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "translation: translated (fr)": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "translation: translated (it)": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "translation: translated (ja)": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "translation: translated (nl)": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "translation: translated (pl)": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "translation: translated (pt)": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "translation: translated (ru)": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "translation: translated (sv)": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    },
+    "translation: translated (zh)": {
+      "hits": 18,
+      "n": 18,
+      "rate": 1.0,
+      "ci95": [
+        0.8241,
+        1.0
+      ]
+    }
+  },
+  "kinds_on_caught": {
+    "addressed_to_ai": 177,
+    "obfuscated": 126,
+    "override": 123,
+    "output_steering": 105,
+    "role_change": 93,
+    "response_directive": 42,
+    "reversed": 33,
+    "rot13": 33,
+    "base64": 33,
+    "unicode_tags": 33,
+    "split": 27
+  },
+  "sample_missed_ids": [
+    "ev-237",
+    "ev-238",
+    "ev-239",
+    "ev-240",
+    "ev-241",
+    "ev-242",
+    "ev-243",
+    "ev-244",
+    "ev-245",
+    "ev-246",
+    "ev-247",
+    "ev-248",
+    "ev-249",
+    "ev-250",
+    "ev-251",
+    "ev-255",
+    "ev-256",
+    "ev-257",
+    "ev-273",
+    "ev-274"
+  ],
+  "sample_false_alarm_ids": [],
+  "cases_sha256": "23fa28a00c825bb4766aad19810f49531ebd99d04c4c71f7920a088dd0ab331c"
+}

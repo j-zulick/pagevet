@@ -11,7 +11,7 @@ Three datasets, one engine:
 
 | Tab | Records | Source (committed) |
 |---|---|---|
-| Field studies | 289 pages (213 read) from four studies | `docs/bench/*-field-*/results.json` and `study.json` |
+| Field studies | 327 pages (238 read) from five studies | `docs/bench/*-field-*/results.json` and `study.json` |
 | False-alarm pages | 1,217 records (990 read): five plain-HTTP sets in twelve languages (1,121, 974 read) and the 96 pages plain HTTP could not read, retried through crawlee-server 2.2.0 (16 read) | `docs/bench/2026-11-19-{clean,fresh,intl,it-nl}-pages/`, `docs/bench/2026-11-24-pages-12-languages/` |
 | Benchmark cases | 1,134 evasion cases (development, held-out 1, held-out 2) | `docs/bench/2026-11-19-evasion/results-<newest>.json`; BIPIA as its committed totals (its data is not redistributed) |
 

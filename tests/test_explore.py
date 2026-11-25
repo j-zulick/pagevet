@@ -62,7 +62,7 @@ def test_private_sample_never_appears(tmp_path):
 def test_headline_equals_published_field_figures(data):
     h = explore.headline(data["records"], "field")
     per = [summarize(json.loads((Path(f) / "results.json").read_text())) for f in FIELD]
-    assert h["read"] == sum(s["read"] for s in per) == 213
+    assert h["read"] == sum(s["read"] for s in per) == 238
     assert h["flagged"] == sum(sum(s["pages_with_findings"].values()) for s in per) == 0
     assert h["refusing"] == sum(s["refused_any"] for s in per)
     assert h["pages"] == sum(s["scanned"] for s in per) and h["not_read"] == h["pages"] - h["read"]
