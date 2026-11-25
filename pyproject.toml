@@ -1,6 +1,6 @@
 [project]
 name = "pagevet"
-version = "0.6.0"
+version = "1.0.0"
 description = "Find text in web pages aimed at AI models (indirect prompt injection), and check which AI crawlers may read them. Severity, advice and SARIF output."
 readme = "README.md"
 license = "MIT"
@@ -8,7 +8,7 @@ requires-python = ">=3.11"
 authors = [{ name = "Joseph Zulick" }]
 keywords = ["prompt-injection", "ai-security", "llm", "seo", "geo", "sarif", "robots-txt", "ai-crawlers"]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",

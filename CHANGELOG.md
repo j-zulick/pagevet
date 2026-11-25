@@ -4,6 +4,12 @@ Public releases start at 0.1.0 and count up to 1.0. Everything before the first 
 private repository as internal versions 0.1.0–0.25.0; they are listed under "Development history" and referred to as
 "internal" throughout the docs, so they don't clash with public version numbers.
 
+## [1.0.0] - 2026-11-25
+- **Stable interface:** from 1.0.0 PageVet follows semantic versioning. The commands and their options, the exit codes, the JSON report, receipt and rules formats, the SARIF properties, the HTTP API and the Python names listed in [docs/API.md](docs/API.md#stability-10) change incompatibly only in 2.0.0, after a deprecation of at least one minor release. Pattern coverage, advice text and benchmark numbers are not part of that promise; every change to them is measured and listed here. A contract test (`tests/test_contract.py`) holds the documented set.
+- **Numbers from one command:** `pagevet-reproduce` regenerates every offline published number (evasion, hiding, rules, BIPIA with `--bipia`); the network measurements (real pages, field studies) name their scripts and saved inputs in each result folder.
+- **Patterns against a model, published:** the head-to-head with ProtectAI's open classifier is summarized in the README: the model catches more and generalizes better, the patterns raise almost no false alarms and catch more disguises, so the model stays a second opinion.
+- Development status: Production/Stable.
+
 ## [0.6.0] - 2026-11-25
 - **Sandbox replay:** `pagevet-replay` asks a local model (Ollama) the same neutral question about a page twice, with everything a model reads and with the guarded text, and reports whether words from a finding appear only in the first answer. It replays only text PageVet found on that page, never writes or varies an injection, and calls no hosted model.
 - **Ollama second opinion:** `--second-opinion ollama` and `pagevet-bench --detector ollama` use the quote-checked `llm` prompt against a local model (`OLLAMA_HOST`, `PAGEVET_OLLAMA_MODEL`); nothing leaves the machine.
