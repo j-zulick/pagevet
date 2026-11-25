@@ -17,3 +17,6 @@ Every committed real-page list was fetched once more on 2026-11-25 (plain HTTP, 
 The one medium finding is new since the sets were first published, and the 0.1.0 rules flag it too: a Hacker News comment that quotes a prompt ("hey Claude do all the deep research…") matched the existing `addressed_to_ai` rule. It is a false alarm, left as it is: the rule is not changed from a page it is measured on.
 
 Scan time on the same saved pages: 207 s with 0.1.0, 264 s with 0.2.0 (about 1.27×), single process.
+
+## 0.3.0 on the same saved pages
+Scanned again with 0.3.0 (`results-0.3.0.jsonl`): the same 1 page at medium and 2 at low, with no new finding. All three were already in comments or replies, and 0.3.0 now reports them in the new **user-submitted content** channel instead of visible text. 199 of the 1,051 readable HTML pages had at least one comment, review or reply container. The commercial-manipulation label only marks existing findings, so it cannot add false alarms; none of the three is commercial. Scan time 261 s.

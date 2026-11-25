@@ -217,6 +217,29 @@ INSTRUCTION_PATTERNS: dict[str, re.Pattern[str]] = {
     ),
 }
 
+# Commercial manipulation (0.3.0): an instruction that steers what an AI recommends, ranks, cites or leaves out,
+# toward a product, brand or source. Judged on the text around an instruction match, so it only labels findings
+# that are already there; it never creates one.
+COMMERCIAL = re.compile(
+    r"\b(?:recommend\w*|best\s+(?:choice|option|product|service|provider|brand|tool|deal)|top\s+(?:pick|choice|rated)"
+    r"|market\s+leader|number\s+one|#1|clear\s+winner|rank\w*|cite\w*|citation|(?:primary|official|only)\s+source"
+    r"|link\s+to|promot\w+|endorse\w*|buy|purchase|discount|coupon|sales\s+(?:assistant|rep\w*|agent)"
+    r"|competitor\w*|instead\s+of|mention\s+only|only\s+(?:name|mention)|praise|in\s+favou?r\s+of)\b"
+    r"|\b(?:recomiend\w*|recomend\w*|recommand\w*|empfehl\w*|empfiehl\w*|aanbevel\w*|raccomand\w*|pole[ćc]\w*"
+    r"|rekommend\w*|рекоменд\w*|cita\w*|citez|citer|zitier\w*|citeer\w*|cytuj\w*|competidor\w*|concurrent\w*"
+    r"|konkurren\w*|concorrent\w*|konkurrent\w*|конкурент\w*)"
+    r"|おすすめ|推奨|推荐|推薦|競合|竞争对手|竞品",
+    re.I,
+)
+COMMERCIAL_WINDOW = 240
+
+
+def commercial(text: str, start: int) -> bool:
+    """Whether the text around an instruction match at ``start`` steers AI answers toward a product or source."""
+    lo = max(0, start - 60)
+    return bool(COMMERCIAL.search(text[lo : start + COMMERCIAL_WINDOW]))
+
+
 # Text hidden from human readers. Only seen when a page's raw HTML is kept.
 HIDDEN_PATTERNS: dict[str, re.Pattern[str]] = {
     "hidden_css": re.compile(

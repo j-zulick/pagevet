@@ -6,8 +6,9 @@ Public versions start at 0.1.0 and count up to 1.0.
 
 **0.2.0 (released):** overrides that don't say "previous" and text addressed to the AI reading this page (second held-out set 6 → 69 of 216), `--llms-txt`, `--headers`, OWASP and MITRE ATLAS IDs in JSON and SARIF, the explorer published from the release workflow.
 
+**0.3.0 (released):** commercial-manipulation finding class, user-submitted content as a third-party planting zone, rules as open data (`pagevet-rules`), human-vs-model view (`pagevet-view`, also through Firecrawl).
+
 Next, toward 1.0:
-- **0.3.0: findings that matter to site owners and agent builders:** a commercial-manipulation finding class, rules as open data, third-party planting zones, a human-vs-model view through Firecrawl.
 - **0.4.0: measurement at scale:** one-command reproduction, a standing monthly index (crawlee-server and Windmill), newer benchmarks, a head-to-head with similar open-source scanners.
 - **0.5.0: in the agent's path:** a guard between fetch and model, an n8n node, scan and access receipts for SourceWatch.
 - **Live runs** whenever keys are available: Prompt Guard 2 and Jev on BIPIA and the clean pages; a live check of the Firecrawl and crawlee-server sources, which are PageVet's rendering path (Playwright on those services; no browser is bundled); Windmill re-scans; new field studies.

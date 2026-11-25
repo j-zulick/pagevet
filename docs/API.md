@@ -5,7 +5,7 @@ PageVet's command-line tools are thin wrappers over a few functions you can call
 Install from GitHub (PageVet is not on PyPI):
 
 ```bash
-uv add "pagevet @ git+https://github.com/j-zulick/pagevet@v0.2.0"
+uv add "pagevet @ git+https://github.com/j-zulick/pagevet@v0.3.0"
 ```
 
 ## Scan a page you already have
@@ -21,7 +21,7 @@ for f in at_least(result.findings, "medium"):
 
 `scan_text(source, text, include_repetition=False, css="")` splits HTML into channels (visible text, hidden elements, hidden by stylesheet rules, HTML comments, attributes and meta tags, JSON-LD, noscript), runs the patterns on each and rates every finding. Plain text is scanned as one channel. `css` is extra stylesheet text whose hiding rules apply to the whole page (see `fetch_stylesheets`).
 
-Each `Finding` has `channel`, `kinds` (pattern names such as `override`, `addressed_to_ai`, `obfuscated:override`, `split:response_directive`), `excerpt`, `severity` (`low`, `medium`, `high`), `advice`, and (0.2.0+) `taxonomy`: `{"owasp": [...], "atlas": [...]}` with OWASP Top 10 for LLM Applications 2025 and MITRE ATLAS technique IDs (`pagevet.scan.taxonomy(channel, kinds)` computes them).
+Each `Finding` has `channel`, `kinds` (pattern names such as `override`, `addressed_to_ai`, `obfuscated:override`, `split:response_directive`), `excerpt`, `severity` (`low`, `medium`, `high`), `advice`, and (0.2.0+) `taxonomy`: `{"owasp": [...], "atlas": [...]}` with OWASP Top 10 for LLM Applications 2025 and MITRE ATLAS technique IDs (`pagevet.scan.taxonomy(channel, kinds)` computes them). Since 0.3.0 also `intent`: `"commercial"` when the instruction steers recommendations, rankings or citations, else `""`. `pagevet.view.render_view(source, html)` returns the human-vs-model view and `pagevet.rules.rules_data()` the rules as a dict.
 
 ## Scan text from your own pipeline
 
