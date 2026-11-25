@@ -4,6 +4,11 @@ Public releases start at 0.1.0 and count up to 1.0. Everything before the first 
 private repository as internal versions 0.1.0–0.25.0; they are listed under "Development history" and referred to as
 "internal" throughout the docs, so they don't clash with public version numbers.
 
+## [1.0.1] - 2026-11-25
+- **Firecrawl source checked live:** `--via firecrawl` read 5 of 5 public pages through a real self-hosted Firecrawl after their scripts ran, and `pagevet-view --via firecrawl` produced its side-by-side view (`docs/bench/2026-11-25-live/`). Until now both were tested only against a stand-in. Cost: US$0.
+- The other live checks are recorded with why they haven't run yet: crawlee-server (the instance accepts requests only from its own host), Jev and the `llm` second opinion through OpenRouter, and Langfuse (both need the maintainer's keys). Their results go in a later 1.0.x release.
+- No change to the code, formats or detection results.
+
 ## [1.0.0] - 2026-11-25
 - **Stable interface:** from 1.0.0 PageVet follows semantic versioning. The commands and their options, the exit codes, the JSON report, receipt and rules formats, the SARIF properties, the HTTP API and the Python names listed in [docs/API.md](docs/API.md#stability-10) change incompatibly only in 2.0.0, after a deprecation of at least one minor release. Pattern coverage, advice text and benchmark numbers are not part of that promise; every change to them is measured and listed here. A contract test (`tests/test_contract.py`) holds the documented set.
 - **Numbers from one command:** `pagevet-reproduce` regenerates every offline published number (evasion, hiding, rules, BIPIA with `--bipia`); the network measurements (real pages, field studies) name their scripts and saved inputs in each result folder.

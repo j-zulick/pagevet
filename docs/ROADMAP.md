@@ -17,7 +17,7 @@ Public versions start at 0.1.0 and count up to 1.0.
 **1.0.0 (released):** stable command line, formats and Python API with semantic versioning and a contract test; offline numbers from one command; the patterns-versus-model comparison published.
 
 After 1.0:
-- **Live runs** (approved; run from the maintainer's machine): Jev and the quote-checked `llm` second opinion on BIPIA and clean pages with costs recorded, Langfuse records, and a live check of the Firecrawl and crawlee-server sources and `pagevet-view --via firecrawl`. Results go in a 1.0.x release.
+- **Live runs** (approved; run from the maintainer's machine; [`docs/bench/2026-11-25-live/`](bench/2026-11-25-live/)): the Firecrawl source and `pagevet-view --via firecrawl` passed in 1.0.1. Still to run: Jev and the quote-checked `llm` second opinion on BIPIA and clean pages with costs recorded, Langfuse records, and the crawlee-server source. Results go in a 1.0.x release.
 - **Packaging:** releases are on GitHub with the wheel, `explore.html` and a container image. PyPI (set `PYPI_PUBLISH=true` once a PyPI project exists) and a Marketplace listing for the Action are optional.
 
 Not planned: generating injections, or any feature aimed at defeating other detectors.
