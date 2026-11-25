@@ -17,10 +17,10 @@ PageVet audits pages for it, and reports which of fourteen AI crawlers a page le
 
 ## Quick start
 ```bash
-uv tool install "git+https://github.com/j-zulick/pagevet@v0.5.0"    # puts pagevet on your PATH (Python 3.11–3.13)
+uv tool install "git+https://github.com/j-zulick/pagevet@v0.6.0"    # puts pagevet on your PATH (Python 3.11–3.13)
 pagevet https://example.com/pricing
 ```
-No uv? `pip install "git+https://github.com/j-zulick/pagevet@v0.5.0"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.5.0"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
+No uv? `pip install "git+https://github.com/j-zulick/pagevet@v0.6.0"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.6.0"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
 
 ```bash
 pagevet https://example.com/pricing                         # one page
@@ -41,6 +41,7 @@ pagevet-guard https://example.com/pricing                   # cleaned text for a
 pagevet-serve                                               # local HTTP API: POST /scan, /guard (n8n, Windmill)
 pagevet --format receipt https://example.com/pricing        # scan receipt: SHA-256 of what was read, rules hash, findings
 pagevet --ocr https://example.com/pricing                   # also the text inside the page's images (the ocr extra)
+pagevet-replay https://example.com/pricing                  # does found text change a local model's answer? (Ollama)
 pagevet-rules > rules.json                                  # every detection rule as open data
 uv run pagevet-reproduce                                    # (in a checkout) regenerate every offline published number
 ```
@@ -88,6 +89,7 @@ For fourteen AI crawlers in three groups (training: GPTBot, ClaudeBot, Google-Ex
 # the classifier extra: Llama Prompt Guard 2, runs locally; gated model, Llama 4 Community License
 pagevet --second-opinion promptguard https://example.com/
 pagevet --second-opinion protectai https://example.com/    # ProtectAI's open DeBERTa classifier, local (classifier extra; not gated)
+pagevet --second-opinion ollama https://example.com/       # a local model through Ollama (quote-checked, like llm)
 pagevet --second-opinion jev https://example.com/     # Jev; with OPENROUTER_API_KEY set, through OpenRouter (no extra install)
 PAGEVET_LLM_MODEL=anthropic/claude-... pagevet --second-opinion llm https://example.com/   # any OpenRouter model
 ```
@@ -107,7 +109,7 @@ Each page's trace holds its findings and the scores `max_severity` (0–3), `fin
 ## In CI (GitHub Action)
 ```yaml
 - uses: actions/checkout@v5
-- uses: j-zulick/pagevet@v0.5.0
+- uses: j-zulick/pagevet@v0.6.0
   id: pagevet
   with:
     urls-file: urls.txt            # or targets: "https://example.com/ page.html", or sitemap: ...
@@ -123,7 +125,7 @@ Outputs: `sarif-file`, `exit-code` (0, 1 or 2, as for the command) and `findings
 ```yaml
 repos:
   - repo: https://github.com/j-zulick/pagevet
-    rev: v0.5.0
+    rev: v0.6.0
     hooks:
       - id: pagevet      # fails a commit that adds HTML, Markdown or text with a medium or high finding
 ```
@@ -146,6 +148,7 @@ Plain scanning needs no settings. The optional sources and second opinions read 
 | `PAGEVET_FIRECRAWL_URL`, `PAGEVET_FIRECRAWL_KEY` | `--via firecrawl` |
 | `PAGEVET_CRAWL_URL`, `PAGEVET_CRAWL_TOKEN` | `--crawl` (crawlee-server) |
 | `HF_TOKEN`, `PAGEVET_PROMPTGUARD_MODEL` | `--second-opinion promptguard` (gated model: accept its license on Hugging Face first) |
+| `OLLAMA_HOST`, `PAGEVET_OLLAMA_MODEL` | `--second-opinion ollama` and `pagevet-replay` (a local Ollama server; default `http://127.0.0.1:11434` and `llama3.2:3b`) |
 | `PAGEVET_PROTECTAI_MODEL` | `--second-opinion protectai` (default `protectai/deberta-v3-base-prompt-injection-v2`, Apache-2.0, not gated) |
 | `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_SERVICE_NAME` and other standard `OTEL_*` settings | `--otel` (the `otel` extra) |
 | `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY`, `LANGFUSE_BASE_URL` | `--langfuse` on `pagevet` and `pagevet-bench` (the `langfuse` extra) |
@@ -169,6 +172,8 @@ pagevet-study compare docs/bench/*-field-* --out docs/bench/FIELD-STUDIES.md
 
 ## Output
 Text, JSON ([schema](docs/schema/report.schema.json)), CSV, a self-contained HTML report, and [SARIF 2.1.0](https://sarifweb.azurewebsites.net/) for code-scanning tools. Exit code 1 when a finding is at or above `--fail-on` (default `low`), 2 on errors with no findings.
+
+**Sandbox replay.** `pagevet-replay` asks a local model (Ollama) the same neutral question about a page twice, once with everything a model reads and once with the guarded text, and reports whether words from a finding show up only in the first answer. It replays only text PageVet found on that page and never writes or varies an injection. [Case studies](docs/CASE-STUDIES.md) write up real findings, anonymized, with data and scripts.
 
 **In the agent's path.** `pagevet.guard.guard(source, html)` (or `pagevet-guard`, or `POST /guard` on `pagevet-serve`) returns the text a person sees, with hidden channels dropped, any paragraph that still matches an instruction replaced by a marker, chat markup removed, and `allowed: false` when a finding reaches the policy (`high` by default). An n8n workflow is in [integrations/n8n/](integrations/n8n/). The guard only removes text.
 
@@ -198,7 +203,7 @@ Detection only. PageVet does not generate injections. Fetching follows redirects
 ```bash
 uv sync --all-extras && uv run pytest -q && uv run ruff check .
 ```
-Tests run offline, with no keys. How to contribute and report a missed injection or a false alarm: [CONTRIBUTING.md](CONTRIBUTING.md). Security issues: [SECURITY.md](SECURITY.md). Changes by version: [CHANGELOG.md](CHANGELOG.md).
+Tests run offline, with no keys. How to contribute and report a missed injection or a false alarm: [CONTRIBUTING.md](CONTRIBUTING.md). Security issues: [SECURITY.md](SECURITY.md). Conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md). Changes by version: [CHANGELOG.md](CHANGELOG.md).
 
 ## Author and AI assistance
 Designed and built by [Joseph Zulick](https://github.com/j-zulick). I set the scope of each version and reviewed every change. Most of the code, tests and documentation were written with Claude (Anthropic) through Claude Code under my direction, and the commits carry a `Co-Authored-By: Claude` trailer. PageVet was built from November 19 to 25, 2026 in a private repository, one tested version at a time; this repository starts at the first public release, 0.1.0. Public versions count up from 0.1.0 to 1.0; version numbers marked "internal" in the docs are those private development builds ([CHANGELOG](CHANGELOG.md)).
