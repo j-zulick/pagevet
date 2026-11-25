@@ -122,8 +122,9 @@ jobs:
             ${{ steps.image.outputs.name }}:latest
 
   explorer:
-    # The field-study explorer: attached to every release as explore.html; published to GitHub Pages only when the
-    # repository variable PAGES_PUBLISH is "true" (Settings > Pages > Source: GitHub Actions, then set the variable).
+    # The field-study explorer: attached to every release as explore.html. When the repository variable PAGES_PUBLISH
+    # is "true", it also replaces the contents of the gh-pages branch, which GitHub Pages serves
+    # (Settings > Pages > Source: Deploy from a branch, gh-pages, /).
     needs: prepare
     if: needs.prepare.outputs.publish == 'true'
     runs-on: ubuntu-latest
@@ -148,24 +149,27 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ needs.prepare.outputs.version }}
         run: gh release upload "v$VERSION" explore.html --clobber
-      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9  # v5.0.0
+      - name: Publish the explorer on the gh-pages branch
         if: vars.PAGES_PUBLISH == 'true'
-        with:
-          path: site
-
-  pages:
-    needs: explorer
-    if: vars.PAGES_PUBLISH == 'true'
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
-      - id: deploy
-        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346  # v5.0.1
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.prepare.outputs.version }}
+        run: |
+          remote="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git ls-remote --exit-code --heads "$remote" gh-pages >/dev/null; then
+            git clone -q --depth 1 --branch gh-pages "$remote" pages
+          else
+            git init -q -b gh-pages pages
+          fi
+          find pages -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -R site/. pages/
+          touch pages/.nojekyll
+          cd pages
+          git add -A
+          if git diff --cached --quiet; then echo "gh-pages already has this explorer"; exit 0; fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -qm "Explorer for PageVet $VERSION"
+          git push -q "$remote" HEAD:gh-pages
 
   publish:
     needs: build

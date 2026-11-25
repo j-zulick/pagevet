@@ -2,7 +2,7 @@
 
 One self-contained HTML page over PageVet's committed results: every number in it can be filtered down to the pages behind it.
 
-- **Online:** https://j-zulick.github.io/pagevet/ (GitHub Pages, published on release once Pages is enabled).
+- **Online:** https://j-zulick.github.io/pagevet/ (GitHub Pages, served from the `gh-pages` branch; since 0.2.0 each release replaces it when the repository variable `PAGES_PUBLISH` is `true`).
 - **Offline:** each release carries `explore.html`; or build it: `pagevet-study explore docs/bench/*-field-* --out site/` and open `site/index.html`.
 
 ## What it shows

@@ -138,18 +138,55 @@ _OMIT_V24 = (
     r"|(?:要約|回答|返答|レポート)(?:で|に|の中で)\S{0,30}(?:言及しないで|触れないで|含めないで|明かさないで)"
     r"|不要在你的(?:摘要|回答|回复|报告|总结)中(?:提及|提到|透露|包含)"
 )
+# Public 0.2.0: the two gaps the second held-out set showed (docs/EVASION.md). Overrides that don't say
+# "previous" ("forget everything you were told before") and text addressed to "the AI summarizing this
+# page". Written from new hand-written development cases (tests/test_detect.py, "0.2.0 development"),
+# measured once on the frozen second held-out set.
+_VERBING = r"(?:summari[sz]ing|reading|processing|crawling|parsing|indexing|quoting|analy[sz]ing|reviewing|scraping|scanning|visiting)"
+_DOC = r"(?:page|article|site|website|post|document|text|content|listing|thread)"
+_ADDRESSED_P020 = (
+    rf"|\b(?:to|for|attention,?)\s+(?:the|any|every|all|each)\s+{_AI}s?,?\s+(?:that\s+(?:is|are)\s+|who\s+(?:is|are)\s+)?{_VERBING}\s+(?:this|the)\s+{_DOC}\b"
+    rf"|\b(?:para|a|al)\s+(?:la|el|cualquier|toda|todo)?\s*{_AI_ES}\s+que\s+(?:est[áa]\s+)?(?:resume|resumiendo|lee|leyendo|procesa|procesando|analiza|analizando|cita|citando|rastrea|rastreando)\s+(?:esta|este|esa|ese)\s+(?:p[áa]gina|art[íi]culo|sitio|documento|texto)\b"
+    rf"|(?:\b[àa]|\bpour)\s+(?:l['’]\s?|la\s+|le\s+|toute\s+|tout\s+)?{_AI_FR}\s+qui\s+(?:r[ée]sume|lit|analyse|traite|parcourt|cite|explore)\s+(?:cette|cet|ce)\s+(?:page|article|site|document|texte)\b"
+    rf"|\b(?:an|f[üu]r)\s+(?:die|den|das|jede[ns]?|alle)\s+{_AI_DE},?\s+(?:die|der|das|welche[rs]?)\s+(?:diese[nsr]?|die|den|das)\s+(?:seite|artikel|text|dokument|website|beitrag)\s+(?:\w+\s+)?(?:zusammenfasst|liest|verarbeitet|analysiert|zitiert|durchsucht|auswertet)\b"
+    rf"|\b(?:para|[àa]|ao|a)\s+(?:a|o|qualquer|toda|todo)?\s*{_AI_PT}\s+que\s+(?:est[áa]\s+)?(?:resume|resumindo|l[êe]|lendo|processa|processando|analisa|analisando|cita|citando)\s+(?:esta|este|essa|esse)\s+(?:p[áa]gina|artigo|site|documento|texto)\b"
+    rf"|(?:\ball['’]\s?|\balla\s+|\bal\s+|\ba\s+|\bper\s+(?:l['’]\s?|la\s+|il\s+|qualsiasi\s+|ogni\s+)?){_AI_IT}\s+che\s+(?:sta\s+)?(?:riassume|riassumendo|legge|leggendo|elabora|elaborando|analizza|analizzando|cita|citando)\s+(?:quest[ao]\s+|quest['’]\s?)(?:pagina|articolo|sito|documento|testo)\b"
+    rf"|\b(?:aan|voor)\s+(?:de|het|elke|iedere?|alle)\s+{_AI_NL}\s+die\s+(?:deze|dit|de|het)\s+(?:pagina|artikel|site|document|tekst)\s+(?:\w+\s+)?(?:samenvat|leest|verwerkt|analyseert|citeert)\b"
+    rf"|\bdo\s+(?:ka[żz]dego|ka[żz]dej|tego|tej|wszystkich)?\s*{_AI_PL},?\s+(?:kt[óo]ry|kt[óo]ra|kt[óo]re)\s+(?:\w+\s+)?(?:streszcza|czyta|przetwarza|analizuje|cytuje)\s+(?:t[eę]|ten|to)\s+(?:stron[eęa]|artyku[łl]|tekst|dokument|witryn[eę])"
+    rf"|\btill\s+(?:den|varje|alla|en)?\s*{_AI_SV}\s+som\s+(?:\w+\s+)?(?:sammanfattar|l[äa]ser|bearbetar|analyserar|citerar)\s+(?:den\s+h[äa]r|denna|detta|det\s+h[äa]r)\s+(?:sida|sidan|artikel|artikeln|text|texten|dokument|dokumentet)\b"
+    rf"|(?:для|к)\s+(?:любого|любой|каждого|каждой|того|той)?\s*{_AI_RU},?\s+(?:который|которая|которое|что)\s+(?:\w+\s+)?(?:излагает|пересказывает|резюмирует|читает|обрабатывает|анализирует|цитирует)\s+(?:эту|этот|это)\s+(?:страниц\w*|стать\w*|сайт|текст|документ)"
+    rf"|(?:この|本)(?:ページ|記事|サイト|文書|テキスト)を(?:要約|読ん|読み|処理|分析|引用)\S{{0,6}}{_AI_JA}(?:へ|に|の皆様)"
+    rf"|(?:致|给|对)\S{{0,2}}(?:正在)?(?:总结|概括|阅读|处理|分析|引用)(?:本|这个|此|这篇|该)\S{{0,2}}(?:页面|网页|文章|网站|文档|页)的?{_AI_ZH}"
+)
+_TOLD = r"(?:told|instructed|given|asked|taught)"
+_OVERRIDE_P020 = (
+    rf"|\b(?:forget|disregard|ignore|discard|drop|set\s+aside)\s+(?:everything|anything|all|whatever)\s+(?:that\s+)?you(?:'ve|\s+have|\s+were|\s+had)?\s+(?:been\s+)?{_TOLD}\b[^.\n]{{0,30}}?\b(?:before|earlier|previously|so\s+far|until\s+now|up\s+(?:un)?til\s+now|up\s+to\s+now|beforehand)\b(?!\s+about)"
+    r"|\b(?:olvida|olvide|ignora|ignore|descarta|descarte)\s+todo\s+lo\s+que\s+(?:te|le|les)\s+(?:\w+\s+){0,2}(?:antes|hasta\s+ahora|anteriormente|previamente)\b"
+    r"|\b(?:oublie[zs]?|ignore[zs]?)\s+tout\s+ce\s+qu['’]\s?(?:on\s+)?(?:t['’]\s?|vous\s+)(?:a\s+|avait\s+)?(?:\w+\s+){0,2}?(?:avant|auparavant|jusqu['’]\s?ici|jusqu['’]\s?[àa]\s+pr[ée]sent|pr[ée]c[ée]demment)\b"
+    r"|\b(?:vergiss|vergesst|vergessen\s+sie|ignoriere|ignorier|ignorieren\s+sie)\s+alles,?\s+was\s+(?:man\s+)?(?:dir|ihnen|euch)\s+(?:\w+\s+){0,2}(?:vorher|zuvor|bisher|bis\s+jetzt|fr[üu]her)\b"
+    r"|\b(?:esque[çc]a|esquece|ignore|ignora|desconsidere)\s+tudo\s+(?:o\s+)?que\s+(?:te|lhe|voc[êe])\s+(?:\w+\s+){0,2}(?:antes|at[ée]\s+agora|anteriormente)\b"
+    r"|\b(?:dimentica|dimenticate|ignora|ignorate)\s+tutto\s+(?:ci[òo]\s+|quello\s+)?che\s+ti\s+(?:\w+\s+){0,2}(?:prima|finora|in\s+precedenza)\b"
+    r"|\b(?:vergeet|negeer)\s+alles\s+wat\s+(?:je|jou|u)\s+(?:\w+\s+){0,3}(?:eerder|tot\s+nu\s+toe|hiervoor|daarvoor)\b"
+    r"|\b(?:zapomnij|zignoruj|ignoruj)\s+(?:o\s+)?wszystk\w+,?\s+co\s+(?:ci|wam)\s+(?:\w+\s+){0,2}(?:wcze[śs]niej|dotychczas|do\s+tej\s+pory|przedtem)"
+    r"|\b(?:gl[öo]m|strunta\s+i|ignorera)\s+allt\s+(?:som\s+)?(?:du|ni)\s+(?:\w+\s+){0,3}(?:tidigare|hittills|innan|f[öo]rut)\b"
+    r"|(?:забудь|забудьте|игнорируй|проигнорируй)\s+вс[ёе],?\s+что\s+(?:тебе|вам)\s+(?:\w+\s+){0,2}(?:раньше|ранее|до\s+этого|прежде|до\s+сих\s+пор)"
+    r"|(?:これまで|今まで|以前|前に)に?(?:言われた|指示された|伝えられた|教えられた)(?:こと|内容)(?:は|を)?(?:すべて|全て|全部)?(?:忘れ|無視)"
+    r"|(?:忘掉|忘记|忽略|无视)[^。\n]{0,4}(?:你|您)[^。\n]{0,10}(?:之前|以前|此前|先前|到目前为止)[^。\n]{0,10}(?:一切|所有|全部)"
+    r"|(?:忘掉|忘记|忽略|无视)[^。\n]{0,4}(?:之前|以前|此前|先前|到目前为止)[^。\n]{0,8}(?:你|您)[^。\n]{0,8}(?:一切|所有|全部)"
+)
+
 INSTRUCTION_PATTERNS: dict[str, re.Pattern[str]] = {
     "override": re.compile(
         r"\b(?:ignore|disregard|forget|override)\b[^.\n]{0,40}\b(?:previous|prior|above|earlier|all|your|any|system)\b"
         r"[^.\n]{0,20}\b(?:instructions?|prompts?|rules|guidelines|directions)\b"
-        + _OVERRIDE_INTL + _OVERRIDE_V24,
+        + _OVERRIDE_INTL + _OVERRIDE_V24 + _OVERRIDE_P020,
         re.I,
     ),
     "addressed_to_ai": re.compile(
         rf"\b(?:note|message|instructions?|attention)\s+(?:to|for)\s+(?:any|all|the)?\s*{_AI}s?\b"
         rf"|\bif you are an?\s+{_AI}\b|\bas an?\s+{_AI}\s+(?:reading|summari[sz]ing|processing)\b"
         rf"|\b(?:dear|hey|hello)\s+{_AI}\b"
-        + _ADDRESSED_INTL + _ADDRESSED_V24,
+        + _ADDRESSED_INTL + _ADDRESSED_V24 + _ADDRESSED_P020,
         re.I,
     ),
     "role_change": re.compile(

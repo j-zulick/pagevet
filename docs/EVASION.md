@@ -84,10 +84,17 @@ The held-out control is 15, not 18: one held-out seed ("Attention all AI assista
 - **Caveat:** the same person wrote the cases and the rules, after seeing the frozen sets, so treat held-out figures as optimistic.
 - **False alarms:** 0 of 368 real pages in twelve languages (`docs/bench/2026-11-24-pages-12-languages/`); BIPIA unchanged; hiding report unchanged.
 
+## What changed in public 0.2.0: overrides without "previous", text addressed to the AI reading this page
+- **Developed on new hand-written cases** (`tests/test_patterns_p020.py`: 14 overrides and 14 addressed texts across the twelve languages, plus ordinary prose that must stay clean), then measured once on the frozen second held-out set (`results-public-0.2.0.json`).
+- **Second held-out set: 6 → 69 of 216.** Overrides 33 of 36 and addressed text 33 of 36 (Italian misses the addressed row, Dutch the override row); the other four intents unchanged (3, all Russian "omit").
+- **Every other row unchanged**, including the first held-out set and the development sets.
+- **Caveat:** the cases and patterns were written by someone who had seen the English, Spanish, French and German rows of the frozen set, so treat the figure as optimistic.
+- **False alarms:** no change on 1,052 real pages (`docs/bench/2026-11-25-false-alarms-0.2.0/`); BIPIA and the hiding report unchanged.
+
 ## What still gets through
 - **Rewording:** any instruction with no trigger phrase, 0 of 18. Patterns can't solve this; it is the case for a trained classifier.
 - **Splitting** into long sentences, each a full clause, is mostly missed: fragments of four words or fewer, and sentences ending on a dangling word, are joined.
-- **Translation:** on held-out phrasings, about half are still missed in the eleven translated languages (111 of 198 caught on the first held-out set), and new phrasings mostly get through (6 of 216 on the second held-out set). Other languages are not covered.
+- **Translation:** on held-out phrasings, about half are still missed in the eleven translated languages (111 of 198 caught on the first held-out set), and new phrasings of the cite, role, reply and omit intents mostly get through (3 of 144 on the second held-out set; the override and addressed rows are 66 of 72 since 0.2.0). Other languages are not covered.
 - **Anything this test does not try:** images, PDFs, CSS-generated content, text inserted by scripts (unless fetched through Firecrawl), mixed-language text, and new tricks.
 
 ## False alarms after the changes
