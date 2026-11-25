@@ -17,10 +17,10 @@ PageVet audits pages for it, and reports which of fourteen AI crawlers a page le
 
 ## Quick start
 ```bash
-uv tool install "git+https://github.com/j-zulick/pagevet@v0.1.0"    # puts pagevet on your PATH (Python 3.11–3.13)
+uv tool install "git+https://github.com/j-zulick/pagevet@v0.2.0"    # puts pagevet on your PATH (Python 3.11–3.13)
 pagevet https://example.com/pricing
 ```
-No uv? `pip install "git+https://github.com/j-zulick/pagevet@v0.1.0"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.1.0"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
+No uv? `pip install "git+https://github.com/j-zulick/pagevet@v0.2.0"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.2.0"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
 
 ```bash
 pagevet https://example.com/pricing                         # one page
@@ -33,6 +33,7 @@ pagevet --urls urls.txt --baseline last.json --format json --out now.json   # on
 pagevet --fetch-css https://example.com/                    # also apply the page's own linked stylesheets
 pagevet --fetch-css --css-any-host https://example.com/     # including stylesheets on CDNs
 pagevet --ignore-robots https://your-site.example/staging/  # your own pages that robots.txt keeps crawlers out of
+pagevet --headers --llms-txt https://example.com/           # also the HTTP response headers and the site's llms.txt
 pagevet whitepaper.pdf https://example.com/brochure.pdf     # PDFs (the pdf extra)
 pagevet-access https://example.com/pricing                  # which AI crawlers may read it, and which actually can
 ```
@@ -50,6 +51,8 @@ Or with no Python at all: `docker run --rm ghcr.io/j-zulick/pagevet https://exam
 | Structured data (JSON-LD) | No | a `description` that addresses the AI |
 | noscript | Rarely | text only shown without JavaScript |
 | Served to AI crawlers (`--compare-agents`) | No | content served to GPTBot, ClaudeBot or PerplexityBot but not to a browser |
+| HTTP response headers (`--headers`) | No | a custom header such as `X-AI-Note: ignore previous instructions…` (dates, cookies, cache and policy headers are skipped) |
+| llms.txt (`--llms-txt`) | Rarely | `/llms.txt` and `/llms-full.txt` of each site scanned: written for AI systems, so text addressed to them is rated low; overrides, role changes and chat markup there are high |
 | PDF page text / PDF metadata and annotations | Yes / No | a `.pdf` file or URL: the page text, and the title, subject, keywords and annotation notes viewers don't show (the `pdf` extra) |
 
 In each channel it looks for commands about the reader's own reply ("add … to your response"), instructions to override or ignore, text addressed to an AI, role changes, instructions to recommend, cite or omit, chat markup, the same in Spanish, French, German, Portuguese, Italian, Dutch, Polish, Swedish, Russian, Japanese and Chinese, instructions encoded in invisible Unicode tag characters or base64, and, with `--include-repetition`, pages that are mostly one repeated claim (off by default because it fires on ordinary menus and templates).
@@ -94,7 +97,7 @@ Each page's trace holds its findings and the scores `max_severity` (0–3), `fin
 ## In CI (GitHub Action)
 ```yaml
 - uses: actions/checkout@v5
-- uses: j-zulick/pagevet@v0.1.0
+- uses: j-zulick/pagevet@v0.2.0
   id: pagevet
   with:
     urls-file: urls.txt            # or targets: "https://example.com/ page.html", or sitemap: ...
@@ -110,7 +113,7 @@ Outputs: `sarif-file`, `exit-code` (0, 1 or 2, as for the command) and `findings
 ```yaml
 repos:
   - repo: https://github.com/j-zulick/pagevet
-    rev: v0.1.0
+    rev: v0.2.0
     hooks:
       - id: pagevet      # fails a commit that adds HTML, Markdown or text with a medium or high finding
 ```
@@ -155,13 +158,15 @@ pagevet-study compare docs/bench/*-field-* --out docs/bench/FIELD-STUDIES.md
 ## Output
 Text, JSON ([schema](docs/schema/report.schema.json)), CSV, a self-contained HTML report, and [SARIF 2.1.0](https://sarifweb.azurewebsites.net/) for code-scanning tools. Exit code 1 when a finding is at or above `--fail-on` (default `low`), 2 on errors with no findings.
 
+**Framework IDs.** Every JSON finding has a `taxonomy` object and every SARIF result `owasp` and `atlas` properties: [OWASP LLM01:2025](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) (prompt injection) and [MITRE ATLAS](https://atlas.mitre.org/) AML.T0051.001 (indirect prompt injection), plus AML.T0054 (jailbreak) for role and mode changes and AML.T0068 (prompt obfuscation) for hidden or disguised text. Findings that only say a page differs by reader carry no ID.
+
 **Re-scans.** `--baseline FILE` takes an earlier `--format json` report and keeps only findings that are not in it, so the report and the exit code cover what changed. A summary line on stderr counts new, unchanged and no-longer-found findings (only pages scanned again count as no longer found). Findings are matched on page, channel, kinds and excerpt; an edit next to the matched text makes it count as new. SARIF results carry a `partialFingerprints` id, and with `--baseline` a `baselineState` of `new`.
 
 ## Limits (read these)
 - **Pattern matching.** It finds known forms. Reworded instructions are missed, and so are most instructions split across full sentences (short fragments, and sentences that end on a word like "and" or "your", are joined and caught); see [docs/THREAT-MODEL.md](docs/THREAT-MODEL.md). A clean result is not proof a page is safe.
 - **JavaScript rendering only through your Firecrawl or crawlee-server** (`--via firecrawl` or `--crawl`). Plain HTTP does not see text a script adds, and visibility is judged from inline styles, the page's own `<style>` rules and, with `--fetch-css`, its linked stylesheets; not from computed styles.
 - **Cloaking by IP address** looks identical to PageVet; `--compare-agents` detects cloaking by user agent only.
-- **Measured so far:** on Microsoft's BIPIA text attacks, the patterns catch 29 of 75 distinct attacks (38.7%) with 0 false alarms on 50 clean emails; ordinary-looking requests planted out of context are not caught at all ([details](docs/bench/2026-11-19-bipia/)). On 193 ordinary homepages and 133 article and forum pages, nothing is flagged at medium or high severity ([homepages](docs/bench/2026-11-19-clean-pages/); the article sample was supplied privately and its URLs are not published); the homepage figure was reached after turning off a rule that flagged 21 of them. A blind check afterwards, on 181 article, forum, Q&A and issue pages taken from public feeds, also flagged none at medium or high (95% interval 0–2.1%) and one at low ([details](docs/bench/2026-11-19-fresh-pages/)). In internal 0.24.0, 368 random Wikipedia and news pages in all twelve languages were flagged at no severity ([details](docs/bench/2026-11-24-pages-12-languages/)). Pages that blocked a plain fetch were retried through crawlee-server ([details](docs/bench/2026-11-19-crawlee/)). A [hiding-method report](docs/bench/2026-11-19-hiding/) covers 21 ways of hiding text from people (not a blind test). An [evasion report](docs/EVASION.md) shows which disguises get through: look-alike letters, invisible characters, letter spacing, ROT13, reversed text, inline splits and instructions split into short fragments are caught; reworded instructions, about half of held-out translated ones, and most new phrasings (6 of 216 caught on a second held-out set) are not. Treat findings as leads to review.
+- **Measured so far:** on Microsoft's BIPIA text attacks, the patterns catch 29 of 75 distinct attacks (38.7%) with 0 false alarms on 50 clean emails; ordinary-looking requests planted out of context are not caught at all ([details](docs/bench/2026-11-19-bipia/)). On 193 ordinary homepages and 133 article and forum pages, nothing is flagged at medium or high severity ([homepages](docs/bench/2026-11-19-clean-pages/); the article sample was supplied privately and its URLs are not published); the homepage figure was reached after turning off a rule that flagged 21 of them. A blind check afterwards, on 181 article, forum, Q&A and issue pages taken from public feeds, also flagged none at medium or high (95% interval 0–2.1%) and one at low ([details](docs/bench/2026-11-19-fresh-pages/)). In internal 0.24.0, 368 random Wikipedia and news pages in all twelve languages were flagged at no severity ([details](docs/bench/2026-11-24-pages-12-languages/)). Pages that blocked a plain fetch were retried through crawlee-server ([details](docs/bench/2026-11-19-crawlee/)). A [hiding-method report](docs/bench/2026-11-19-hiding/) covers 21 ways of hiding text from people (not a blind test). An [evasion report](docs/EVASION.md) shows which disguises get through: look-alike letters, invisible characters, letter spacing, ROT13, reversed text, inline splits and instructions split into short fragments are caught; reworded instructions, about half of held-out translated ones, and most new phrasings of cite, role, reply and omit instructions on a second held-out set (3 of 144 caught) are not; on that set's overrides and addressed text, 0.2.0 catches 66 of 72. In 0.2.0, the new patterns changed no result on 1,052 real pages re-fetched from every list above ([details](docs/bench/2026-11-25-false-alarms-0.2.0/)). Treat findings as leads to review.
 - It complements runtime AI guardrails; it does not replace them.
 
 ## Safety

@@ -414,6 +414,31 @@ def looks_like_html(text: str) -> bool:
     return bool(re.search(r"<(?:html|body|div|p|span|head|!--|meta|a\s)[\s>]", text[:5000], re.I))
 
 
+# Framework IDs for each finding (public 0.2.0). OWASP Top 10 for LLM Applications 2025: LLM01 is prompt
+# injection, direct and indirect. MITRE ATLAS: AML.T0051.001 is indirect LLM prompt injection (text planted
+# in content a model reads), AML.T0054 LLM jailbreak (role and mode changes), AML.T0068 LLM prompt
+# obfuscation (text hidden or disguised from people or filters). Kinds that only say the page differs by
+# reader (``content_differs``, ``fetch_differs``) carry no ID: they are a sign to look, not an injection.
+OWASP_LLM01 = "LLM01:2025"
+ATLAS_INDIRECT, ATLAS_JAILBREAK, ATLAS_OBFUSCATION = "AML.T0051.001", "AML.T0054", "AML.T0068"
+_NO_TAXONOMY = {"content_differs", "fetch_differs", "repetition"}
+_DISGUISES = ("unicode_tags", "base64", "obfuscated", "rot13", "reversed")
+
+
+def taxonomy(channel: str, kinds: list[str]) -> dict:
+    """Return ``{"owasp": [...], "atlas": [...]}`` for a finding's channel and pattern kinds."""
+    plain = {k.split(":")[-1] for k in kinds}
+    if plain <= _NO_TAXONOMY:
+        return {"owasp": [], "atlas": []}
+    atlas = [ATLAS_INDIRECT]
+    if "role_change" in plain:
+        atlas.append(ATLAS_JAILBREAK)
+    hidden = channel not in READER_CHANNELS and channel not in ("llms.txt",)
+    if hidden or any(k.startswith(_DISGUISES) for k in kinds):
+        atlas.append(ATLAS_OBFUSCATION)
+    return {"owasp": [OWASP_LLM01], "atlas": atlas}
+
+
 @dataclass
 class Finding:
     """One channel of one page where the check matched."""
@@ -424,6 +449,11 @@ class Finding:
     severity: str = "low"
     advice: str = ""
     opinions: dict = field(default_factory=dict)
+    taxonomy: dict = field(default_factory=dict)
+
+    def __post_init__(self) -> None:
+        if not self.taxonomy:
+            self.taxonomy = taxonomy(self.channel, self.kinds)
 
 
 @dataclass
@@ -516,6 +546,15 @@ def rate(channel: str, kinds: list[str], body: str) -> tuple[str, str]:
     only_repetition = set(kinds) <= {"repetition"}
     if encoded:
         return "high", "Remove the disguised, encoded or invisible text; readers cannot see or read it, and AI systems can."
+    if channel == "llms.txt":
+        # llms.txt is written for AI systems, so text addressed to them is expected there. Overrides, role
+        # changes and chat markup are not; telling assistants what to say or leave out is worth a look.
+        if set(kinds) & {"override", "role_change", "chat_markup"}:
+            return "high", "llms.txt tries to override an AI system's instructions or role. Remove that text; llms.txt should describe the site."
+        if only_repetition:
+            return "low", "Review the repeated text in llms.txt."
+        return "low", ("llms.txt addresses AI systems, as it is meant to. Check that it describes the site and its "
+                       "content rather than telling assistants what to recommend, cite or leave out.")
     if channel not in READER_CHANNELS:
         if only_repetition:
             return "low", f"Review the repeated text in {channel}."
@@ -642,6 +681,49 @@ def fetch(url: str, timeout: float = 20.0, allow_private: bool = True, max_bytes
                     raise TimeoutError(f"{url}: still downloading after {3 * timeout:.0f} s")
             body = bytes(data if max_bytes is None else data[:max_bytes])
             return body.decode(resp.encoding or "utf-8", errors="replace")
+
+
+# Response headers that carry machine values (dates, sizes, cache and routing tokens, cookies, policies). The
+# rest, including custom X- headers, are scanned with --headers.
+HEADER_SKIP = frozenset({
+    "accept-ranges", "age", "alt-svc", "cache-control", "cf-cache-status", "cf-ray", "connection", "content-encoding",
+    "content-length", "content-type", "date", "etag", "expires", "last-modified", "nel", "pragma", "report-to",
+    "server-timing", "set-cookie", "strict-transport-security", "transfer-encoding", "vary", "via", "x-cache",
+    "x-cache-hits", "x-request-id", "x-served-by", "x-timer", "x-amz-cf-id", "x-amz-cf-pop", "x-amz-request-id",
+    "x-amz-id-2", "content-security-policy", "content-security-policy-report-only", "permissions-policy",
+})
+MAX_HEADER_TEXT = 20_000
+
+
+def fetch_headers(url: str, timeout: float = 10.0, user_agent: str | None = None) -> dict[str, str]:
+    """Return the final response's headers for a GET of ``url`` (the body is not read)."""
+    import httpx
+
+    if not re.match(r"https?://", url, re.I):
+        raise ValueError("only http(s) URLs are fetched")
+    headers = {"User-Agent": user_agent or "pagevet (page audit for text aimed at AI models)"}
+    with httpx.Client(follow_redirects=True, timeout=timeout, headers=headers) as client:
+        with client.stream("GET", url) as resp:
+            resp.raise_for_status()
+            return dict(resp.headers.items())
+
+
+def header_text(headers: dict[str, str]) -> str:
+    """The scannable part of a response's headers, one ``Name: value`` line each."""
+    lines = [f"{k}: {v}" for k, v in headers.items() if k.lower() not in HEADER_SKIP]
+    return "\n".join(lines)[:MAX_HEADER_TEXT]
+
+
+LLMS_FILES = ("llms.txt", "llms-full.txt")
+MAX_LLMS_BYTES = 2_000_000
+
+
+def site_root(url: str) -> str:
+    """``https://host`` for a page URL."""
+    from urllib.parse import urlsplit
+
+    parts = urlsplit(url)
+    return f"{parts.scheme}://{parts.netloc}"
 
 
 MAX_PDF_BYTES = 20_000_000
@@ -1031,7 +1113,7 @@ def render_sarif(results: list[PageResult], baseline: bool = False) -> str:
                 "id": rule_id,
                 "shortDescription": {"text": f"Text aimed at AI models ({f.kinds[0].split(':')[0]})"},
                 "helpUri": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
-                "properties": {"tags": ["security", "prompt-injection", OWASP]},
+                "properties": {"tags": ["security", "prompt-injection", OWASP, *f.taxonomy.get("atlas", [])]},
             })
             sarif_results.append({
                 "ruleId": rule_id,
@@ -1039,7 +1121,8 @@ def render_sarif(results: list[PageResult], baseline: bool = False) -> str:
                 "message": {"text": f"{f.channel}: {', '.join(f.kinds)}. {f.advice} Excerpt: {f.excerpt}"},
                 "locations": [{"physicalLocation": {"artifactLocation": {"uri": r.source}}}],
                 "partialFingerprints": {"pagevet/v1": finding_fingerprint(r.source, f)},
-                "properties": {"severity": f.severity, "channel": f.channel, "kinds": f.kinds},
+                "properties": {"severity": f.severity, "channel": f.channel, "kinds": f.kinds,
+                               "owasp": f.taxonomy.get("owasp", []), "atlas": f.taxonomy.get("atlas", [])},
                 **({"baselineState": "new"} if baseline else {}),
             })
     doc = {
@@ -1144,12 +1227,14 @@ def main(
     css_fetcher: Fetcher | None = None,
     robots_fetcher: Fetcher | None = None,
     pdf_fetcher: Callable[[str], bytes] | None = None,
+    header_fetcher: Callable[[str], dict] | None = None,
 ) -> int:
     """Run the command line; return the exit code.
 
     ``fetcher`` (url -> body text) replaces :func:`fetch` for pages and sitemaps, ``css_fetcher``
-    for stylesheets (``--fetch-css``), ``robots_fetcher`` for robots.txt, ``pdf_fetcher`` (url -> bytes) for PDF URLs, and ``sleep`` replaces :func:`time.sleep`, so tests run
-    offline and without waiting.
+    for stylesheets (``--fetch-css``), ``robots_fetcher`` for robots.txt, ``pdf_fetcher`` (url -> bytes) for PDF URLs,
+    ``header_fetcher`` (url -> headers) for ``--headers``, and ``sleep`` replaces :func:`time.sleep`, so tests
+    run offline and without waiting.
     """
     parser = argparse.ArgumentParser(prog="pagevet", description="Check pages for text aimed at AI models (prompt injection).")
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
@@ -1186,6 +1271,10 @@ def main(
                         help="with --fetch-css, also read stylesheets on other hosts (CDNs)")
     parser.add_argument("--ignore-robots", action="store_true",
                         help="fetch pages even where robots.txt disallows them (for your own site)")
+    parser.add_argument("--headers", action="store_true",
+                        help="also scan each URL's HTTP response headers (one extra request per page)")
+    parser.add_argument("--llms-txt", action="store_true",
+                        help="also scan /llms.txt and /llms-full.txt of each site scanned over http(s)")
     parser.add_argument("--baseline", metavar="FILE",
                         help="an earlier --format json report; keep only findings that are not in it")
     argv = sys.argv[1:] if argv is None else list(argv)
@@ -1285,9 +1374,32 @@ def main(
             page = scan_text(src, body, args.include_repetition, page_css(src, body) if _is_url(src) else "")
             if args.compare_agents and _is_url(src):
                 page.findings.extend(compare_agents(src, agent_fetch or (lambda u, ua: fetch(u, user_agent=ua))))
+            if args.headers and _is_url(src):
+                try:
+                    text = header_text((header_fetcher or fetch_headers)(src))
+                    page.findings.extend(scan_channels(src, {"HTTP response headers": text}, args.include_repetition).findings)
+                except Exception as exc:  # the page result stands without its headers
+                    sys.stderr.write(f"pagevet: {src}: headers not read: {_err(exc)}\n")
             results.append(page)
         except Exception as exc:  # report and keep going
             results.append(PageResult(src, [], _err(exc)))
+    if args.llms_txt:
+        roots = list(dict.fromkeys(site_root(r.source) for r in results if _is_url(r.source) and not r.error))
+        for root in roots:
+            for name in LLMS_FILES:
+                url = f"{root}/{name}"
+                if robots and not args.ignore_robots and not robots.allowed(url):
+                    sys.stderr.write(f"pagevet: {url}: robots.txt disallows it; not scanned\n")
+                    continue
+                try:
+                    body = fetcher(url) if fetcher else fetch(url, timeout=10.0, max_bytes=MAX_LLMS_BYTES)
+                except Exception as exc:  # most sites have none; not an error in the report
+                    sys.stderr.write(f"pagevet: {url}: not read ({_err(exc)})\n")
+                    continue
+                if not body.strip() or looks_like_html(body):
+                    sys.stderr.write(f"pagevet: {url}: no llms.txt (empty or an HTML page)\n")
+                    continue
+                results.append(scan_channels(url, {"llms.txt": body}, args.include_repetition))
     if skipped:
         sys.stderr.write(f"pagevet: --max-pages {args.max_pages} reached; {skipped} URL(s) not scanned\n")
 
