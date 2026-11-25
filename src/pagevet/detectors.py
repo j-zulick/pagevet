@@ -317,6 +317,29 @@ class LLMDetector:
         return out
 
 
+class OllamaDetector(LLMDetector):
+    """A local model served by Ollama, asked for the exact instruction it sees (the quote-checked ``llm`` prompt).
+
+    ``OLLAMA_HOST`` (default ``http://127.0.0.1:11434``) and ``PAGEVET_OLLAMA_MODEL`` (default ``llama3.2:3b``) choose
+    the server and model; Ollama's OpenAI-compatible endpoint is used. Nothing leaves the machine and nothing is billed.
+    """
+
+    name = "ollama"
+
+    def __init__(self, model: str = "", post: Callable[[dict], dict] | None = None):
+        super().__init__(model or os.environ.get("PAGEVET_OLLAMA_MODEL", "llama3.2:3b"), post)
+
+    def _call(self, body: dict) -> dict:  # pragma: no cover - needs a running Ollama
+        import httpx
+
+        host = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434").rstrip("/")
+        if not host.startswith("http"):
+            host = "http://" + host
+        resp = httpx.post(f"{host}/v1/chat/completions", json=body, timeout=300.0)
+        resp.raise_for_status()
+        return resp.json()
+
+
 class AnyOf:
     """Flags a text when any of its detectors does (e.g. patterns OR classifier)."""
 
@@ -335,7 +358,7 @@ class AnyOf:
 
 
 REGISTRY: dict[str, Callable[[], Detector]] = {"patterns": PatternDetector, "promptguard": PromptGuardDetector, "jev": JevDetector,
-                                               "llm": LLMDetector, "protectai": ProtectAIDetector}
+                                               "llm": LLMDetector, "protectai": ProtectAIDetector, "ollama": OllamaDetector}
 
 
 def build(spec: str) -> Detector:

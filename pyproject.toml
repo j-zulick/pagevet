@@ -1,6 +1,6 @@
 [project]
 name = "pagevet"
-version = "0.5.0"
+version = "0.6.0"
 description = "Find text in web pages aimed at AI models (indirect prompt injection), and check which AI crawlers may read them. Severity, advice and SARIF output."
 readme = "README.md"
 license = "MIT"
@@ -47,6 +47,7 @@ pagevet-view = "pagevet.view:main"
 pagevet-reproduce = "pagevet.reproduce:main"
 pagevet-guard = "pagevet.guard:main"
 pagevet-serve = "pagevet.serve:main"
+pagevet-replay = "pagevet.replay:main"
 
 [dependency-groups]
 dev = ["pytest>=8", "hypothesis>=6", "ruff>=0.8", "jsonschema>=4", "pypdf>=5"]

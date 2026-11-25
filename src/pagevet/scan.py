@@ -1390,7 +1390,7 @@ def main(
                         help="crawlee-server mode for --crawl: crawl (follow links, default), page (start URL only), sitemap, map")
     parser.add_argument("--compare-agents", action="store_true",
                         help="also fetch each URL as GPTBot, ClaudeBot and PerplexityBot and report content served only to them")
-    parser.add_argument("--second-opinion", metavar="NAME", action="append", default=[], choices=("promptguard", "protectai", "jev", "llm"),
+    parser.add_argument("--second-opinion", metavar="NAME", action="append", default=[], choices=("promptguard", "protectai", "jev", "llm", "ollama"),
                         help="attach an optional detector's score to low and medium findings: promptguard (local model), jev or llm (billed); repeatable")
     parser.add_argument("--langfuse", metavar="RUN", nargs="?", const="", default=None,
                         help='record each page in Langfuse as a trace, with RUN as the session (default: a dated name); '

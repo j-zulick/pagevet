@@ -4,6 +4,15 @@ Public releases start at 0.1.0 and count up to 1.0. Everything before the first 
 private repository as internal versions 0.1.0–0.25.0; they are listed under "Development history" and referred to as
 "internal" throughout the docs, so they don't clash with public version numbers.
 
+## [0.6.0] - 2026-11-25
+- **Sandbox replay:** `pagevet-replay` asks a local model (Ollama) the same neutral question about a page twice, with everything a model reads and with the guarded text, and reports whether words from a finding appear only in the first answer. It replays only text PageVet found on that page, never writes or varies an injection, and calls no hosted model.
+- **Ollama second opinion:** `--second-opinion ollama` and `pagevet-bench --detector ollama` use the quote-checked `llm` prompt against a local model (`OLLAMA_HOST`, `PAGEVET_OLLAMA_MODEL`); nothing leaves the machine.
+- **Case studies** (`docs/CASE-STUDIES.md`): anonymized write-ups of what PageVet found on real pages, each with data, command and date. No deliberate hidden instruction aimed at AI has been found on a real page yet; the three cases are pages serving AI crawlers different text, a customer review that matched a rule, and prompts quoted in comment threads. Messages to site owners are drafted for the maintainer, never sent.
+- **Classifier false alarms on real pages:** ProtectAI's classifier flagged 147 of 1,052 ordinary pages (14%; up to 30% on non-English lists) where the patterns flagged 3 (`docs/bench/2026-11-25-head-to-head/`).
+- **Standing index on a schedule:** the field-study index workflow now runs monthly (the 3rd, 06:17 UTC) as well as by hand.
+- **Project files:** code of conduct, pull request template, `CITATION.cff` (kept equal to the version by a test).
+- **Maintenance:** workflow actions updated to `setup-uv` v10.4.0, `setup-python` v7.1.0, `upload-artifact` v7.0.2 and `download-artifact` v8.0.2, pinned to commits (the open Dependabot updates, applied here).
+
 ## [0.5.0] - 2026-11-25
 - **Guard between fetch and model:** `pagevet.guard.guard()`, `pagevet-guard` (stdin, file or URL; exit 1 when blocked) and `POST /guard` return the text a person sees, with hidden channels dropped, paragraphs that still match an instruction replaced by a marker, chat markup removed, and `allowed: false` when a finding reaches the policy (`high`, `medium` or `never`). It only removes text.
 - **Local HTTP API:** `pagevet-serve` (standard library, loopback by default): `POST /scan`, `POST /guard`, `GET /health`; private addresses refused on every redirect. An importable n8n workflow is in `integrations/n8n/`.

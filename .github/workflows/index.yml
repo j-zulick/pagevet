@@ -2,11 +2,12 @@ name: index
 
 # The standing field-study index (0.4.0): re-runs the four field studies on their committed search results, as a
 # browser and as three AI crawlers, with robots.txt respected, and keeps the study folders as a run artifact.
-# Started by hand only (Actions > index > Run workflow). A monthly schedule is the maintainer's choice: add
-#   schedule: [{cron: "17 6 3 * *"}]
-# under "on:" to turn it on. Nothing is committed by this workflow.
+# Runs monthly (the 3rd, 06:17 UTC; turned on by the maintainer on 2026-11-25) and by hand (Actions > index > Run
+# workflow). Nothing is committed by this workflow.
 
 on:
+  schedule:
+    - cron: "17 6 3 * *"
   workflow_dispatch:
 
 permissions:
@@ -24,7 +25,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
         with:
           persist-credentials: false
-      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e  # v6
+      - uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d  # v10.4.0
         with:
           enable-cache: false
       - run: uv sync --frozen
@@ -38,7 +39,7 @@ jobs:
           run 2026-11-23-field-home-solar "home solar panel pages"
           run 2026-11-23-field-running-shoes "running shoe shopping pages"
           uv run pagevet-study compare index/*/ --out "index/$day-compare.md"
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9  # v7.0.2
         with:
           name: field-study-index
           path: index/
