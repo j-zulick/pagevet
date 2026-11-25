@@ -8,3 +8,4 @@ Each row is one study; details and limits are in its folder.
 | [small-business CRM software pages](2026-11-23-field-crm/) | 2026-11-23 | 48 | 42 | 0 / 0 / 0 | 18 of 42 (43%) | 16 | 3 |
 | [home solar panel pages](2026-11-23-field-home-solar/) | 2026-11-23 | 43 | 32 | 0 / 0 / 0 | 13 of 32 (41%) | 8 | 3 |
 | [running shoe shopping pages](2026-11-23-field-running-shoes/) | 2026-11-23 | 96 | 72 | 0 / 0 / 0 | 25 of 72 (35%) | 22 | 3 |
+| [password manager buying pages](2026-11-25-field-password-managers/) | 2026-11-25 | 38 | 25 | 0 / 0 / 0 | 8 of 25 (32%) | 3 | 0 |

@@ -1,0 +1,608 @@
+[
+  {
+    "source": "https://cybernews.com/password-managers/password-managers-for-families/",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://cybernews.com/password-managers/password-managers-for-families/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web",
+    "evidence": {}
+  },
+  {
+    "source": "https://security.org/best-password-managers",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '404 Not Found' for url 'https://www.security.org/best-password-managers/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.techradar.com/pro/security/best-password-manager-for-families-of-2025",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "d396700a4e40dd54d8880d40cc167a45b8e351d618d138242ad0c34c935b9c2b",
+      "fetched_at": "2026-11-25T07:51:20Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://www.pandasecurity.com/en/mediacenter/family-password-manager/",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "e0c2c844afa032856c54d89de5f0f74953a6707037303912b755eec0ce113078",
+      "fetched_at": "2026-11-25T07:51:36Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://us.norton.com/blog/family-safety/best-family-password-manager",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "0b03b3c727204dd142cfd33675a3e2a0a740968f30fe823aa515047ba48038dd",
+      "fetched_at": "2026-11-25T07:51:54Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://allaboutcookies.org/best-password-managers-for-families",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://allaboutcookies.org/best-password-managers-for-families'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.makeuseof.com/what-is-the-best-password-manager-for-family-users/",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "492f77685468ddbf75ec2bc8b44f86bec6fae2a1fd2f7d54598976b2944ad109",
+      "fetched_at": "2026-11-25T07:52:08Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://www.cloudwards.net/best-password-manager-for-families/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.cloudwards.net/best-password-manager-for-families/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Sta",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.cloudwards.net/best-password-manager-for-families/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Sta",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.cloudwards.net/best-password-manager-for-families/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Sta",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {
+      "sha256": "cb48664ccf4cd15e1a0ba9d0e4d62b0295f85963ac4b7d8bdfa32023ded9c176",
+      "fetched_at": "2026-11-25T07:52:18Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://dev.to/alexdevson/best-password-managers-for-families-2026-secure-every-device-under-your-roof-1fko",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "3116c2b8f94457c15262597f3ec39119f6e2d33342f6ca958b7210d2183b61f3",
+      "fetched_at": "2026-11-25T07:52:22Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://blog.lastpass.com/posts/password-manager-features-families",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://blog.lastpass.com/posts/password-manager-features-families'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.security.org/password-manager/best/families/",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "a9d4fd8cb354e2fbb30b0f6c0b91f600f34774df1be25fc6239993ba76f03b02",
+      "fetched_at": "2026-11-25T07:52:31Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://cyberinsider.com/password-manager/best-password-manager/family/",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "d4d482e3db714082a9232cd2706fe7bc00fb20059cf25636db204e98d34014d3",
+      "fetched_at": "2026-11-25T07:52:49Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://www.lastpass.com/products/family-password-manager",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.lastpass.com/products/family-password-manager'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/4",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.lastpass.com/products/family-password-manager'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/4",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {
+      "sha256": "f0b69549ba901072e6dd6ba4d3d65337c3c5466e867b017914993e0e1fde9375",
+      "fetched_at": "2026-11-25T07:53:06Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://www.choice.com.au/consumers-and-data/protecting-your-data/data-privacy-and-safety/review-and-compare/password-managers",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "3617ebdb2cf6df2a950d56603fedc9d802857f165b908d38750c37f13479db9a",
+      "fetched_at": "2026-11-25T07:53:19Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://cybernews.com/password-managers/bitwarden-vs-1password/",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://cybernews.com/password-managers/bitwarden-vs-1password/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.engadget.com/best-password-manager-134639599.html",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "e221f6209da046e7d15095695041924005d6662423053dadd30ce1910e008a69",
+      "fetched_at": "2026-11-25T07:53:29Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://www.pcworld.com/article/3207185/best-password-managers-reviews-and-buying-advice.html",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "c43869c801dfc077af93c762458a4944dd5e34a02bd3dfc10fba8e5c5abfd848",
+      "fetched_at": "2026-11-25T07:53:45Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://techradar.com/best/password-manager",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "2506dbdec9a38057484ae45cf3b1498fab026760b67369f7e691e6e6bb74cae7",
+      "fetched_at": "2026-11-25T07:54:03Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://cyberinsider.com/password-manager/comparison/",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "43cdb01507d94c0e4e7566665212367f39683a88800b74d3b7f77b731af71b6e",
+      "fetched_at": "2026-11-25T07:54:12Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://blog.lastpass.com/posts/best-password-manager",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://blog.lastpass.com/posts/best-password-manager'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "evidence": {}
+  },
+  {
+    "source": "https://learn.g2.com/free-password-manager",
+    "findings": [
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://learn.g2.com/free-password-manager'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {
+      "sha256": "7b6eaa89729a6ae98e32456df3174f6a634e83a0319ea0a587665a985c12e8d8",
+      "fetched_at": "2026-11-25T07:54:21Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://www.dashlane.com/blog/choosing-best-small-business-password-manager",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "d21f05a38b2f55c6c583f4ba6562894754e375a276d7b67e0c6c8b69dd5b6c29",
+      "fetched_at": "2026-11-25T07:54:35Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://blog.lastpass.com/en/posts/best-business-password-manager",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://blog.lastpass.com/en/posts/best-business-password-manager'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/",
+    "evidence": {}
+  },
+  {
+    "source": "https://blog.lastpass.com/posts/best-password-managers-for-it-managers-at-small-businesses",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://blog.lastpass.com/posts/best-password-managers-for-it-managers-at-small-businesses'\nFor more information check: https://developer.mozilla",
+    "evidence": {}
+  },
+  {
+    "source": "https://clutch.co/resources/best-password-managers-small-businesses",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://clutch.co/resources/best-password-managers-small-businesses'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTT",
+    "evidence": {}
+  },
+  {
+    "source": "https://bitwarden.com/small-business-password-management/",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "82187d54457723e90c882c4c2ef52137faeac6dda93b84a95e241f1a78c7a903",
+      "fetched_at": "2026-11-25T07:54:48Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://www.g2.com/discussions/what-s-the-best-password-manager-for-small-businesses",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.g2.com/discussions/what-s-the-best-password-manager-for-small-businesses'\nFor more information check: https://developer.mozilla.org/e",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.lastpass.com/solutions/small-business-password-management",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.lastpass.com/solutions/small-business-password-management'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/H",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.lastpass.com/solutions/small-business-password-management'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/H",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {
+      "sha256": "de62b9a9424da00bdf69f4c1026f9e4479c3a2776b35d617329e2781edf27de7",
+      "fetched_at": "2026-11-25T07:54:59Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://www.cloudwards.net/best-password-manager-for-small-business",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.cloudwards.net/best-password-manager-for-small-business'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTT",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.cloudwards.net/best-password-manager-for-small-business'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTT",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.cloudwards.net/best-password-manager-for-small-business'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTT",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {
+      "sha256": "1f853ffb721fba370b0f13dd39b910f67d117b644156294d8a876f894aed8e6f",
+      "fetched_at": "2026-11-25T07:55:08Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://www.techradar.com/versus/lastpass-free-vs-premium",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "8a689ee06fa45e2da33af167dd34512ffa59526db371c98a20d545516343addf",
+      "fetched_at": "2026-11-25T07:55:12Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://devolutions.net/blog/password-manager-free-vs-paid/",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "c427cbd7ba0eeb8a4e4c7a91ddd3f96f70757083091bc369e7d84a55c65a6611",
+      "fetched_at": "2026-11-25T07:55:19Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://dev.to/theawesomeblog/best-free-password-managers-2026-7-tools-that-actually-protect-your-data-3aic",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '404 Not Found' for url 'https://dev.to/theawesomeblog/best-free-password-managers-2026-7-tools-that-actually-protect-your-data-3aic'\nFor more information check: https://",
+    "evidence": {}
+  },
+  {
+    "source": "https://cybernews.com/password-managers/keeper-vs-keepass/",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://cybernews.com/password-managers/keeper-vs-keepass/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.techrepublic.com/article/best-free-password-managers/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.techrepublic.com/article/best-free-password-managers/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.techrepublic.com/article/best-free-password-managers/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.techrepublic.com/article/best-free-password-managers/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {
+      "sha256": "91d00730fbc4a7b640c4867ff2a54e6a190484a1149a4950b96fc99e01b46a47",
+      "fetched_at": "2026-11-25T07:55:29Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://www.digitaltrends.com/computing/nordpass-vs-proton-pass/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.digitaltrends.com/computing/nordpass-vs-proton-pass/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/S",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.digitaltrends.com/computing/nordpass-vs-proton-pass/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/S",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {
+      "sha256": "07894c585c5f77fac2fb403b670d8440e0675191bfa08ed6dac605aa6bde14d6",
+      "fetched_at": "2026-11-25T07:55:34Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://pcworld.com/article/3607714/best-free-password-managers.html",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "4115d9654d9a4690eb3e1bfc9365afca8962da6f47c9c7ac1489bd3c231b2a6c",
+      "fetched_at": "2026-11-25T07:55:39Z",
+      "fetched_via": "http"
+    }
+  },
+  {
+    "source": "https://allaboutcookies.org/lastpass-free-vs-premium",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://allaboutcookies.org/lastpass-free-vs-premium'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.digitaltrends.com/computing/the-best-free-password-managers/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.digitaltrends.com/computing/the-best-free-password-managers/'\nFor more information check: https://developer.mozilla.org/en-US/docs/We",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.digitaltrends.com/computing/the-best-free-password-managers/'\nFor more information check: https://developer.mozilla.org/en-US/docs/We",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {
+      "sha256": "9514ead6e03e37c65828ff2a6b1ecb46faa350b7e0d564c8c8aeeaf18d800e73",
+      "fetched_at": "2026-11-25T07:55:56Z",
+      "fetched_via": "http"
+    }
+  }
+]
