@@ -40,7 +40,7 @@ from pathlib import Path
 from defusedxml.ElementTree import fromstring as safe_fromstring
 
 from pagevet import __version__, install_hint
-from pagevet.detect import HIDDEN_PATTERNS, scan
+from pagevet.detect import HIDDEN_PATTERNS, INSTRUCTION_PATTERNS, commercial, scan
 from pagevet.detectors import build as build_detector
 
 Fetcher = Callable[[str], str]
@@ -93,6 +93,27 @@ class Channels:
     attributes: list[str] = field(default_factory=list)
     structured: list[str] = field(default_factory=list)
     noscript: list[str] = field(default_factory=list)
+    user_content: list[str] = field(default_factory=list)  # visible text inside comments, reviews, forum replies
+
+
+# Containers for text that visitors, not the site, wrote (comments, reviews, replies, forum posts): a
+# third-party planting zone (0.3.0). Matched on class and id tokens, and on schema.org microdata.
+UGC_TOKEN = re.compile(
+    r"(?:^|[-_])(?:comments?|commtext|reply|replies|reviews?|testimonials?|ugc|usercontent|user-content|guestbook"
+    r"|forum-post|post-reply|answers?|answer-body|discussion|disqus)(?:$|[-_])",
+    re.I,
+)
+UGC_ITEMTYPE = re.compile(r"schema\.org/(?:Review|Comment|Answer|UserComments)\b", re.I)
+
+
+def is_user_content(attrs: dict[str, str]) -> bool:
+    """Whether an element's attributes mark it as a container for visitor-written text."""
+    tokens = attrs.get("class", "").split() + attrs.get("id", "").split()
+    if any(UGC_TOKEN.search(t) for t in tokens):
+        return True
+    if attrs.get("itemprop", "").lower() in ("review", "comment", "suggestedanswer", "acceptedanswer"):
+        return True
+    return bool(UGC_ITEMTYPE.search(attrs.get("itemtype", "")))
 
 
 _SIMPLE_SELECTOR = re.compile(r"^([a-z][a-z0-9-]*)?((?:[.#][A-Za-z_][\w-]*)+)$|^([a-z][a-z0-9-]*)$", re.I)
@@ -299,6 +320,7 @@ class _Splitter(HTMLParser):
         self.ld_json = False
         self.joinable: list[str] | None = None  # the list whose last chunk the next inline text continues
         self.hiding: list[tuple[str, set[str], set[str]]] = []  # from <style> blocks seen so far
+        self.ugc: list[bool] = []  # parallel to stack: the element opens a user-content zone
 
     def _hidden(self) -> int:
         return max((h for _, h in self.stack), default=0)
@@ -327,6 +349,7 @@ class _Splitter(HTMLParser):
         if tag not in VOID:
             self.stack.append((tag, hidden))
             self.chain.append(el)
+            self.ugc.append(is_user_content(a))
 
     def _hidden_by_stylesheet(self, el: Element) -> bool:
         if not self.hiding:
@@ -341,6 +364,7 @@ class _Splitter(HTMLParser):
             if self.stack[i][0] == tag:
                 del self.stack[i:]
                 del self.chain[i:]
+                del self.ugc[i:]
                 break
 
     def handle_data(self, data: str) -> None:
@@ -363,7 +387,8 @@ class _Splitter(HTMLParser):
             return
         else:
             level = self._hidden()
-            target = self.ch.hidden if level == 2 else self.ch.hidden_by_css if level == 1 else self.ch.visible
+            target = (self.ch.hidden if level == 2 else self.ch.hidden_by_css if level == 1
+                      else self.ch.user_content if any(self.ugc) else self.ch.visible)
         if self.joinable is target and target:
             target[-1] += " " + text  # text split across inline elements reads as one run, as a model sees it
         else:
@@ -450,6 +475,7 @@ class Finding:
     advice: str = ""
     opinions: dict = field(default_factory=dict)
     taxonomy: dict = field(default_factory=dict)
+    intent: str = ""  # "commercial" when the instruction steers recommendations, rankings or citations (0.3.0)
 
     def __post_init__(self) -> None:
         if not self.taxonomy:
@@ -485,6 +511,7 @@ def scan_text(source: str, text: str, include_repetition: bool = False, css: str
         ch = split_html(text, css)
         channels = {
             "visible text": "\n".join(ch.visible),
+            "user-submitted content": "\n".join(ch.user_content),
             "hidden elements": "\n".join(ch.hidden),
             "hidden by stylesheet rules": "\n".join(ch.hidden_by_css),
             "HTML comments": "\n".join(ch.comments),
@@ -512,14 +539,18 @@ def scan_channels(source: str, channels: dict[str, str], include_repetition: boo
                 continue
             excerpt = _excerpt(body, first.start)
             severity, advice = rate(name, kinds, body)
-            findings.append(Finding(name, kinds, excerpt, severity, advice))
+            instruction = [h for h in hits if h.kind.split(":")[-1] in INSTRUCTION_PATTERNS]
+            intent = "commercial" if any(commercial(body, h.start) for h in instruction) else ""
+            if intent:
+                advice += " It steers what AI answers recommend, rank or cite (commercial manipulation)."
+            findings.append(Finding(name, kinds, excerpt, severity, advice, intent=intent))
     return PageResult(source, findings)
 
 
 # --- Severity ------------------------------------------------------------------------------------
 
 SEVERITIES = ("low", "medium", "high")
-READER_CHANNELS = {"visible text", "text", "PDF text"}
+READER_CHANNELS = {"visible text", "user-submitted content", "text", "PDF text"}
 ENCODED = ("unicode_tags", "base64", "obfuscated", "rot13", "reversed")
 # Words that suggest a page is writing about injection rather than attempting it.
 DISCUSSION = re.compile(
@@ -570,6 +601,9 @@ def rate(channel: str, kinds: list[str], body: str) -> tuple[str, str]:
         return "low", "Text tells the reader how to word a reply. Often ordinary (forms, support pages, quizzes); check it is meant for people."
     if DISCUSSION.search(body):
         return "low", "Reads as discussion or a quoted example of prompt injection. No action if that is the page's purpose."
+    if channel == "user-submitted content":
+        return "medium", ("Text in a comment, review or forum reply addresses AI systems or tells them what to do. A visitor may "
+                          "have planted it: moderate or remove it, and check other user-submitted text on the site.")
     return "medium", "Visible text addresses AI systems or tells them what to do. Reword it as content for readers, or remove it."
 
 
@@ -1113,7 +1147,8 @@ def render_sarif(results: list[PageResult], baseline: bool = False) -> str:
                 "id": rule_id,
                 "shortDescription": {"text": f"Text aimed at AI models ({f.kinds[0].split(':')[0]})"},
                 "helpUri": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
-                "properties": {"tags": ["security", "prompt-injection", OWASP, *f.taxonomy.get("atlas", [])]},
+                "properties": {"tags": ["security", "prompt-injection", OWASP, *f.taxonomy.get("atlas", []),
+                                        *(["commercial-manipulation"] if f.intent == "commercial" else [])]},
             })
             sarif_results.append({
                 "ruleId": rule_id,
@@ -1122,7 +1157,8 @@ def render_sarif(results: list[PageResult], baseline: bool = False) -> str:
                 "locations": [{"physicalLocation": {"artifactLocation": {"uri": r.source}}}],
                 "partialFingerprints": {"pagevet/v1": finding_fingerprint(r.source, f)},
                 "properties": {"severity": f.severity, "channel": f.channel, "kinds": f.kinds,
-                               "owasp": f.taxonomy.get("owasp", []), "atlas": f.taxonomy.get("atlas", [])},
+                               "owasp": f.taxonomy.get("owasp", []), "atlas": f.taxonomy.get("atlas", []),
+                               "intent": f.intent},
                 **({"baselineState": "new"} if baseline else {}),
             })
     doc = {

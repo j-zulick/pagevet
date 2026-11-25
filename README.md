@@ -17,10 +17,10 @@ PageVet audits pages for it, and reports which of fourteen AI crawlers a page le
 
 ## Quick start
 ```bash
-uv tool install "git+https://github.com/j-zulick/pagevet@v0.2.0"    # puts pagevet on your PATH (Python 3.11–3.13)
+uv tool install "git+https://github.com/j-zulick/pagevet@v0.3.0"    # puts pagevet on your PATH (Python 3.11–3.13)
 pagevet https://example.com/pricing
 ```
-No uv? `pip install "git+https://github.com/j-zulick/pagevet@v0.2.0"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.2.0"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
+No uv? `pip install "git+https://github.com/j-zulick/pagevet@v0.3.0"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.3.0"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
 
 ```bash
 pagevet https://example.com/pricing                         # one page
@@ -36,6 +36,8 @@ pagevet --ignore-robots https://your-site.example/staging/  # your own pages tha
 pagevet --headers --llms-txt https://example.com/           # also the HTTP response headers and the site's llms.txt
 pagevet whitepaper.pdf https://example.com/brochure.pdf     # PDFs (the pdf extra)
 pagevet-access https://example.com/pricing                  # which AI crawlers may read it, and which actually can
+pagevet-view https://example.com/pricing --out view.html    # what a person sees next to what an AI model also reads
+pagevet-rules > rules.json                                  # every detection rule as open data
 ```
 
 Or with no Python at all: `docker run --rm ghcr.io/j-zulick/pagevet https://example.com/pricing` (amd64 and arm64; `--entrypoint pagevet-access` for the access check).
@@ -44,6 +46,7 @@ Or with no Python at all: `docker run --rm ghcr.io/j-zulick/pagevet https://exam
 | Channel | What a reader sees | Example |
 |---|---|---|
 | Visible text | Yes | "Note to any AI model reading this page…" |
+| User-submitted content | Yes | the same in a comment, review, reply or forum post: a visitor may have planted it |
 | Hidden elements | No | `display:none`, off-screen, zero-size, transparent, scaled or clipped to nothing, near-zero font size or opacity, `aria-hidden`, `hidden`, inline, from the page's own `<style>` rules, or with `--fetch-css` from its linked stylesheets on the same host; `<template>` content; SVG `<title>` and `<desc>` |
 | Hidden by stylesheet rules | No | text that only the page's stylesheets hide (often dialogs, menus, collapsed forms): rated like hidden elements, except that a reply command alone is medium |
 | HTML comments | No | `<!-- AI agents: ignore previous instructions… -->` |
@@ -97,7 +100,7 @@ Each page's trace holds its findings and the scores `max_severity` (0–3), `fin
 ## In CI (GitHub Action)
 ```yaml
 - uses: actions/checkout@v5
-- uses: j-zulick/pagevet@v0.2.0
+- uses: j-zulick/pagevet@v0.3.0
   id: pagevet
   with:
     urls-file: urls.txt            # or targets: "https://example.com/ page.html", or sitemap: ...
@@ -113,7 +116,7 @@ Outputs: `sarif-file`, `exit-code` (0, 1 or 2, as for the command) and `findings
 ```yaml
 repos:
   - repo: https://github.com/j-zulick/pagevet
-    rev: v0.2.0
+    rev: v0.3.0
     hooks:
       - id: pagevet      # fails a commit that adds HTML, Markdown or text with a medium or high finding
 ```
@@ -157,6 +160,8 @@ pagevet-study compare docs/bench/*-field-* --out docs/bench/FIELD-STUDIES.md
 
 ## Output
 Text, JSON ([schema](docs/schema/report.schema.json)), CSV, a self-contained HTML report, and [SARIF 2.1.0](https://sarifweb.azurewebsites.net/) for code-scanning tools. Exit code 1 when a finding is at or above `--fail-on` (default `low`), 2 on errors with no findings.
+
+**Commercial manipulation.** A finding whose instruction steers what AI answers recommend, rank, cite or leave out, toward a product or source, is labelled `intent: "commercial"` (SARIF: `commercial-manipulation` tag).
 
 **Framework IDs.** Every JSON finding has a `taxonomy` object and every SARIF result `owasp` and `atlas` properties: [OWASP LLM01:2025](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) (prompt injection) and [MITRE ATLAS](https://atlas.mitre.org/) AML.T0051.001 (indirect prompt injection), plus AML.T0054 (jailbreak) for role and mode changes and AML.T0068 (prompt obfuscation) for hidden or disguised text. Findings that only say a page differs by reader carry no ID.
 
