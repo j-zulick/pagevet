@@ -8,8 +8,10 @@ Public versions start at 0.1.0 and count up to 1.0.
 
 **0.3.0 (released):** commercial-manipulation finding class, user-submitted content as a third-party planting zone, rules as open data (`pagevet-rules`), human-vs-model view (`pagevet-view`, also through Firecrawl).
 
+**0.4.0 (released):** `pagevet-reproduce`, deepset benchmark, ProtectAI open classifier detector, OpenTelemetry spans, field studies repeated, standing index workflow.
+
 Next, toward 1.0:
-- **0.4.0: measurement at scale:** one-command reproduction, a standing monthly index (crawlee-server and Windmill), newer benchmarks, a head-to-head with similar open-source scanners.
+- **Head-to-head** with an open-weights classifier (ProtectAI DeBERTa) on BIPIA, deepset, the evasion sets and the saved real pages: in 0.5.0. A monthly schedule for the index (GitHub Actions or Windmill) is the maintainer's choice.
 - **0.5.0: in the agent's path:** a guard between fetch and model, an n8n node, scan and access receipts for SourceWatch.
 - **Live runs** whenever keys are available: Prompt Guard 2 and Jev on BIPIA and the clean pages; a live check of the Firecrawl and crawlee-server sources, which are PageVet's rendering path (Playwright on those services; no browser is bundled); Windmill re-scans; new field studies.
 - **1.0.0** when the command line, JSON schema and Python API in [docs/API.md](API.md) are stable, every published number regenerates with one command, and the patterns-versus-model comparison is published.

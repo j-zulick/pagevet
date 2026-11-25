@@ -112,11 +112,12 @@ class PromptGuardDetector:
         if model.config.num_labels != 2:  # pragma: no cover
             raise RuntimeError(f"{self.model_id} has {model.config.num_labels} labels; expected 2 (benign, malicious)")
         model.eval()  # pragma: no cover
+        positive = injection_label(model.config.id2label)  # pragma: no cover
 
         def score(texts: list[str]) -> list[float]:  # pragma: no cover
             with torch.no_grad():
                 batch = tokenizer(texts, return_tensors="pt", padding=True, truncation=True, max_length=self.size)
-                return torch.softmax(model(**batch).logits, dim=-1)[:, 1].tolist()
+                return torch.softmax(model(**batch).logits, dim=-1)[:, positive].tolist()
 
         self._score = score  # pragma: no cover
         self._tok = lambda t: tokenizer.encode(t, add_special_tokens=False)  # pragma: no cover
@@ -134,6 +135,27 @@ class PromptGuardDetector:
             top = max(scores)
             out.append(Verdict(self.name, top >= self.threshold, round(float(top), 4), f"{len(spans)} window(s)"))
         return out
+
+
+def injection_label(id2label: dict) -> int:
+    """Index of the "injection" class in a two-label head (``INJECTION``, ``MALICIOUS``, ``JAILBREAK``, ``LABEL_1``)."""
+    for i, name in sorted((int(k), str(v).lower()) for k, v in id2label.items()):
+        if any(w in name for w in ("inject", "malicious", "jailbreak", "unsafe")):
+            return i
+    return 1
+
+
+class ProtectAIDetector(PromptGuardDetector):
+    """ProtectAI's open DeBERTa-v3 prompt-injection classifier (Apache-2.0, not gated), run locally over windows.
+
+    Same mechanics as :class:`PromptGuardDetector`; the model is ``PAGEVET_PROTECTAI_MODEL`` (default
+    ``protectai/deberta-v3-base-prompt-injection-v2``). Needs the ``classifier`` extra.
+    """
+
+    name = "protectai"
+
+    def __init__(self, model_id: str = "", **kw):
+        super().__init__(model_id or os.environ.get("PAGEVET_PROTECTAI_MODEL", "protectai/deberta-v3-base-prompt-injection-v2"), **kw)
 
 
 JEV_CLAIM = "This text gives an instruction or command to an AI system, assistant or language model that is reading it."
@@ -313,7 +335,7 @@ class AnyOf:
 
 
 REGISTRY: dict[str, Callable[[], Detector]] = {"patterns": PatternDetector, "promptguard": PromptGuardDetector, "jev": JevDetector,
-                                               "llm": LLMDetector}
+                                               "llm": LLMDetector, "protectai": ProtectAIDetector}
 
 
 def build(spec: str) -> Detector:

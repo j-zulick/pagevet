@@ -1,0 +1,44 @@
+name: index
+
+# The standing field-study index (0.4.0): re-runs the four field studies on their committed search results, as a
+# browser and as three AI crawlers, with robots.txt respected, and keeps the study folders as a run artifact.
+# Started by hand only (Actions > index > Run workflow). A monthly schedule is the maintainer's choice: add
+#   schedule: [{cron: "17 6 3 * *"}]
+# under "on:" to turn it on. Nothing is committed by this workflow.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: index
+  cancel-in-progress: false
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e  # v6
+        with:
+          enable-cache: false
+      - run: uv sync --frozen
+      - name: Re-run the four field studies
+        run: |
+          set -u
+          day=$(date -u +%F)
+          run() { uv run pagevet-study run "$2" --from-json "docs/bench/$1/search-results.json" --out "index/$day-$1"; }
+          run 2026-11-19-field-brake-rotors "front brake rotor shopping pages"
+          run 2026-11-23-field-crm "small-business CRM software pages"
+          run 2026-11-23-field-home-solar "home solar panel pages"
+          run 2026-11-23-field-running-shoes "running shoe shopping pages"
+          uv run pagevet-study compare index/*/ --out "index/$day-compare.md"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4
+        with:
+          name: field-study-index
+          path: index/

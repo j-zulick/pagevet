@@ -1,0 +1,984 @@
+[
+  {
+    "source": "https://www.salesforce.com/crm/crm-for-small-business/best-crm/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.salesforce.com/crm/crm-for-small-business/best-crm/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.salesforce.com/crm/crm-for-small-business/best-crm/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.techradar.com/best/best-crm-for-small-business",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://gusto.com/blog/growth/best-crm-software/?utm=airanks.net",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://gusto.com/blog/growth/best-crm-software/?utm=airanks.net'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/S",
+    "evidence": {}
+  },
+  {
+    "source": "https://zapier.com/blog/best-crms-for-small-business?r=pmp-fhrs",
+    "findings": [],
+    "error": "robots.txt disallows this page for pagevet; --ignore-robots to scan it anyway",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.ringcentral.com/us/en/blog/best-crm-for-small-business/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://tech.co/crm-software/best-crm-software-small-business",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.capterra.com/resources/crm-software-for-small-business/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 83% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "GPTBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 83% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 83% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "PerplexityBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.brevo.com/blog/crm-software-for-small-business/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.salesforce.com/crm/crm-pricing-comparison/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.salesforce.com/crm/crm-pricing-comparison/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.salesforce.com/crm/crm-pricing-comparison/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.capterra.com/resources/CRM-software-pricing-report/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 75% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "GPTBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 75% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 75% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "PerplexityBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.capterra.com/resources/crm-pricing-models/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 78% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "GPTBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 78% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 78% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "PerplexityBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.engagebay.com/blog/crm-pricing/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.creatio.com/glossary/crm-pricing",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.creatio.com/glossary/crm-pricing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.selecthub.com/customer-relationship-management/crm-pricing/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 76% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "GPTBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 76% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 76% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "PerplexityBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://tech.co/crm-software/crm-pricing-guide",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://capsulecrm.com/blog/CRM-pricing/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.nutshell.com/de/crm/resources/how-much-does-crm-cost",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://zeeg.me/en/blog/post/crm-pricing",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.softwareadvice.com/resources/crm-software-pricing-models",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 87% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "GPTBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 87% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 87% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "PerplexityBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.salesforce.com/blog/small-business/best-free-crms-for-startups/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.salesforce.com/blog/small-business/best-free-crms-for-startups/'\nFor more information check: https://developer.mozilla.org/en-US/docs",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.salesforce.com/blog/small-business/best-free-crms-for-startups/'\nFor more information check: https://developer.mozilla.org/en-US/docs",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.salesforce.com/crm/free-crm/best-free-crms/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.salesforce.com/crm/free-crm/best-free-crms/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.salesforce.com/crm/free-crm/best-free-crms/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.hubspot.com/products/crm/startups",
+    "findings": [
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 7% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://monday.com/blog/project-management/crm-for-start-ups",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '404 Not Found' for url 'https://monday.com/blog/project-management/crm-for-start-ups'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Statu",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.bitrix24.com/tools/crm/use-cases/crm-for-startups.php",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.techrepublic.com/es/article/best-crm-startups/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.techrepublic.com/es/article/best-crm-startups/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.techrepublic.com/es/article/best-crm-startups/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.techrepublic.com/es/article/best-crm-startups/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.pipedrive.com/en/blog/hubspot-vs-salesforce-vs-pipedrive",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.hubspot.com/comparisons/pipedrive-vs-hubspot",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 85% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "GPTBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 85% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 85% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "PerplexityBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.trustradius.com/compare-products/hubspot-crm-vs-pipedrive-vs-salesforce",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.trustradius.com/compare-products/hubspot-crm-vs-pipedrive-vs-salesforce'\nFor more information check: https://developer.mozilla.org/en",
+    "evidence": {}
+  },
+  {
+    "source": "https://zapier.com/fr/blog/pipedrive-vs-hubspot/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://monday.com/blog/crm/pipedrive-vs-hubspot/",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '404 Not Found' for url 'https://monday.com/blog/crm/pipedrive-vs-hubspot/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.g2.com/compare/hubspot-crm-vs-pipedrive-vs-salesforce-salesforce",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.g2.com/compare/hubspot-crm-vs-pipedrive-vs-salesforce-salesforce'\nFor more information check: https://developer.mozilla.org/en-US/doc",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.capterra.com/resources/best-crm-software-reviews-analysis/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 83% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "GPTBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 83% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 83% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "PerplexityBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.producthunt.com/categories/crm",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.producthunt.com/categories/crm'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.softwareadvice.com/crm",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 70% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "GPTBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 70% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 70% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "PerplexityBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.g2.com/categories/crm",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.g2.com/categories/crm'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "evidence": {}
+  },
+  {
+    "source": "https://blog.hubspot.com/sales/crm-buying-guide",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://salesforce.com/uk/learning-centre/crm/best-crm",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.salesforce.com/uk/learning-centre/crm/best-crm'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.salesforce.com/uk/learning-centre/crm/best-crm'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://blog.hubspot.com/sales/crm-software-evaluation-guide",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://salesforce.com/crm/what-is-crm/tools",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.salesforce.com/crm/what-is-crm/tools'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.salesforce.com/crm/what-is-crm/tools'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.zendesk.com/au/blog/sales/crm-buying-guide/choose-best-crm-business-needs/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://monday.com/blog/crm-and-sales/crm-tools-for-sales/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://close.com/blog/crm-buyers-guide",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.brevo.com/blog/how-to-choose-crm",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://learn.g2.com/crm-for-b2b-sales",
+    "findings": [
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://learn.g2.com/crm-for-b2b-sales'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://builtin.com/articles/picking-right-crm-startup",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.techrepublic.com/pt/article/how-to-choose-crm/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.techrepublic.com/pt/article/how-to-choose-crm/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.techrepublic.com/pt/article/how-to-choose-crm/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.techrepublic.com/pt/article/how-to-choose-crm/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.insightly.com/blog/how-to-choose-crm/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.insightly.com/blog/how-to-choose-crm/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.aol.com/finance/choose-best-crm-software-040000842.html",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  }
+]

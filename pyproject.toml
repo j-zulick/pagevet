@@ -1,6 +1,6 @@
 [project]
 name = "pagevet"
-version = "0.3.0"
+version = "0.4.0"
 description = "Find text in web pages aimed at AI models (indirect prompt injection), and check which AI crawlers may read them. Severity, advice and SARIF output."
 readme = "README.md"
 license = "MIT"
@@ -32,6 +32,7 @@ jev = ["typesafe-sdk>=0.7.5,<0.8"]
 mcp = ["mcp>=2.3,<3"]
 pdf = ["pypdf>=5"]
 langfuse = ["langfuse>=3"]
+otel = ["opentelemetry-sdk>=1.25", "opentelemetry-exporter-otlp-proto-http>=1.25"]
 
 [project.scripts]
 pagevet = "pagevet.scan:main"
@@ -42,6 +43,7 @@ pagevet-study = "pagevet.study:main"
 pagevet-access = "pagevet.access:main"
 pagevet-rules = "pagevet.rules:main"
 pagevet-view = "pagevet.view:main"
+pagevet-reproduce = "pagevet.reproduce:main"
 
 [dependency-groups]
 dev = ["pytest>=8", "hypothesis>=6", "ruff>=0.8", "jsonschema>=4", "pypdf>=5"]

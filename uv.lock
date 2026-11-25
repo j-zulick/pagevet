@@ -1539,7 +1539,7 @@ wheels = [
 
 [[package]]
 name = "pagevet"
-version = "0.3.0"
+version = "0.4.0"
 source = { editable = "." }
 dependencies = [
     { name = "defusedxml" },
@@ -1559,6 +1559,10 @@ langfuse = [
 ]
 mcp = [
     { name = "mcp" },
+]
+otel = [
+    { name = "opentelemetry-exporter-otlp-proto-http" },
+    { name = "opentelemetry-sdk" },
 ]
 pdf = [
     { name = "pypdf" },
@@ -1582,12 +1586,14 @@ requires-dist = [
     { name = "httpx", specifier = ">=0.27" },
     { name = "langfuse", marker = "extra == 'langfuse'", specifier = ">=3" },
     { name = "mcp", marker = "extra == 'mcp'", specifier = ">=2.3,<3" },
+    { name = "opentelemetry-exporter-otlp-proto-http", marker = "extra == 'otel'", specifier = ">=1.25" },
+    { name = "opentelemetry-sdk", marker = "extra == 'otel'", specifier = ">=1.25" },
     { name = "pypdf", marker = "extra == 'pdf'", specifier = ">=5" },
     { name = "torch", marker = "extra == 'classifier'", specifier = ">=2.2" },
     { name = "transformers", marker = "extra == 'classifier'", specifier = ">=4.40" },
     { name = "typesafe-sdk", marker = "extra == 'jev'", specifier = ">=0.7.5,<0.8" },
 ]
-provides-extras = ["classifier", "jev", "mcp", "pdf", "langfuse"]
+provides-extras = ["classifier", "jev", "mcp", "pdf", "langfuse", "otel"]
 
 [package.metadata.requires-dev]
 browser = [{ name = "playwright", specifier = ">=1.48" }]

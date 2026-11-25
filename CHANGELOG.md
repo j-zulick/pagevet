@@ -4,6 +4,14 @@ Public releases start at 0.1.0 and count up to 1.0. Everything before the first 
 private repository as internal versions 0.1.0–0.25.0; they are listed under "Development history" and referred to as
 "internal" throughout the docs, so they don't clash with public version numbers.
 
+## [0.4.0] - 2026-11-25
+- **One-command reproduction:** `uv run pagevet-reproduce` (in a checkout) regenerates the evasion report, the hiding-method report and the rules file, and with `--bipia DIR` the BIPIA counts, and fails if any number differs from the committed results. All match for 0.4.0.
+- **Newer benchmark:** deepset/prompt-injections, test split (`docs/bench/2026-11-25-deepset/`): patterns catch 2 of 60 chat-prompt injections with 0 of 56 false alarms. A second independent measure of the reworded-instruction gap; built at run time, not copied here.
+- **Open-weights classifier:** `--second-opinion protectai` and `pagevet-bench --detector protectai` run ProtectAI's DeBERTa-v3 prompt-injection classifier (Apache-2.0, not gated) locally over 512-token windows; the positive class is read from the model's labels. The head-to-head with patterns follows in 0.5.0.
+- **OpenTelemetry:** `--otel [RUN]` sends one span per page under one run span (the `otel` extra, standard `OTEL_*` settings). Best effort.
+- **Field studies over time:** the four field studies repeated on their committed search results (`docs/bench/2026-11-25-repeat-*`, `docs/bench/FIELD-STUDIES-OVER-TIME.md`): still no hidden instructions on 206 pages read; 26–41% refuse at least one AI crawler. One high finding is a false alarm (a customer review in structured data matched the reply-command rule); refusal changes are partly a different network.
+- **Standing index:** `.github/workflows/index.yml` re-runs the four studies and keeps them as a run artifact; started by hand until a monthly schedule is turned on.
+
 ## [0.3.0] - 2026-11-25
 - **Commercial manipulation** as a finding class: an instruction that steers what AI answers recommend, rank, cite or leave out, toward a product, brand or source, gets `intent: "commercial"` (JSON), an `intent` property and a `commercial-manipulation` tag (SARIF), and a line in its advice. Judged on the text around an instruction match in twelve languages, so it only labels findings that are already there.
 - **Third-party planting zones:** visible text inside comment, review, reply, answer and forum-post containers (class and id tokens, schema.org Review/Comment/Answer microdata) is its own channel, **user-submitted content**, rated like visible text, with advice that a visitor may have planted it. Hidden text inside those containers stays in the hidden channels.

@@ -1,0 +1,1578 @@
+[
+  {
+    "source": "https://www.tomsguide.com/best-picks/best-running-shoes?utm=airanks.net",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.tomsguide.com/au/best-picks/best-running-shoes",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.runningwarehouse.com/learningcenter/gear_guides/footwear/best_running_shoes.html?from=youtube",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '406 ' for url 'https://www.runningwarehouse.com/learningcenter/gear_guides/footwear/best_running_shoes.html?from=youtube'\nFor more information check: https://developer.m",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.runningwarehouse.com/learningcenter/gear_guides/footwear/best_shoes.html",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '406 ' for url 'https://www.runningwarehouse.com/learningcenter/gear_guides/footwear/best_shoes.html'\nFor more information check: https://developer.mozilla.org/en-US/docs",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.active.com/running/articles/top-shoe-picks-for-every-type-of-runner",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.tomsguide.com/best-picks/best-mens-running-shoes",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.si.com/fannation/sneakers/news/10-best-running-shoes-spring-2026",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.scheels.com/e/post/best-running-shoes",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.scheels.com/e/post/best-running-shoes'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.stuff.tv/features/best-running-workout-shoes-trainers",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.stuff.tv/features/best-running-workout-shoes-trainers'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.johnlewis.com/content/wellbeing-leisure/best-running-shoes-men",
+    "findings": [],
+    "error": "ReadTimeout: The read operation timed out",
+    "evidence": {}
+  },
+  {
+    "source": "https://runrepeat.com/uk/guides/best-green-running-shoes",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.gearpatrol.com/?p=1022571",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.gearpatrol.com/?p=1022571'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.gearpatrol.com/?p=1022571'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.dickssportinggoods.com/a/running-shoes-sale-0bpz00a.html",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.dickssportinggoods.com/a/running-shoes-sale-0bpz00a.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HT",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.dickssportinggoods.com/a/running-shoes-sale-0bpz00a.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HT",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.brooksrunning.com/en_us/sale/?sz=96",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.brooksrunning.com/en_us/sale/?sz=96'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.sportsshoes.com/products/sale/running&f_size_shoe_en=8.5",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.footlocker.com/category/sport/running/sale/shoes",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 79% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "GPTBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 79% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 79% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "PerplexityBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.hibbett.com/shop/running-shoes-on-sale.html",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.hibbett.com/shop/running-shoes-on-sale.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.champssports.com/en/category/sport/running/sale.html",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://run.outsideonline.com/news/best-labor-day-deals-for-running-shoes?scope=anon",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.asics.com/us/en-us/clearance/c/aa60000000/running",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.asics.com/us/en-us/clearance/c/aa60000000/running'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Stat",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.6pm.com/on-sale/OgTrDp4LagEHigEBEuABAeICBQcHHA0R.zso",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.sigmasports.com/sale/run",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.tomsguide.com/wellness/running/huge-brooks-sale-takes-over-50-off-running-shoes-5-best-deals-right-now",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.themanual.com/?p=1204818",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.themanual.com/?p=1204818'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.themanual.com/?p=1204818'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://run4it.com/running-sale",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://shop.lululemon.com/c/we-made-too-much-running-shoes/n18mhdzcolrzynj2",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://shop.lululemon.com/c/we-made-too-much-running-shoes/n18mhdzcolrzynj2'\nFor more information check: https://developer.mozilla.org/en-US/doc",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.backcountry.com/rc/running-shoes-on-sale",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.backcountry.com/rc/running-shoes-on-sale'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.techradar.com/tech/amazon-is-slashing-prices-on-best-selling-running-shoes-for-spring-nike-hoka-and-new-balance-from-usd55",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://uk.style.yahoo.com/11-best-beginner-running-shoes-154000705.html",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://uk.style.yahoo.com/11-best-beginner-running-shoes-154000705.html'\nFor more information check: https://developer.mozilla.org/en-US",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://uk.style.yahoo.com/11-best-beginner-running-shoes-154000705.html'\nFor more information check: https://developer.mozilla.org/en-US",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://uk.style.yahoo.com/11-best-beginner-running-shoes-154000705.html'\nFor more information check: https://developer.mozilla.org/en-US",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.aol.com/running-check-great-running-shoes-210100956.html",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '404 Not Found' for url 'https://www.aol.com/running-check-great-running-shoes-210100956.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HT",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.cbsnews.com/essentials/the-world-of-running-shoes-a-beginners-guide-to-shopping-for-the-right-pair/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.today.com/shop/best-running-shoes-for-beginners-rcna332163",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.today.com/shop/best-running-shoes-for-beginners-rcna332163'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.today.com/shop/best-running-shoes-for-beginners-rcna332163'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.rtings.com/running-shoes/reviews/best/beginners",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.rei.com/learn/expert-advice/best-beginner-running-shoes.html",
+    "findings": [],
+    "error": "ReadTimeout: The read operation timed out",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.active.com/running/articles/best-running-shoes-for-beginners",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.bustle.com/fashion/the-4-best-running-shoes-for-beginners-22883213",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.fleetfeet.com/running-shoe-buyers-guide/best-beginners",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.fleetfeet.com/running-shoe-buyers-guide/best-beginners'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.fleetfeet.com/running-shoe-buyers-guide/best-beginners'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.fleetfeet.com/running-shoe-buyers-guide/best-beginners'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.garagegymreviews.com/best-running-shoes-for-beginners",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://runrepeat.com/guides/best-for-beginners-running-shoes",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://shopee.ph/blog/best-running-shoes-for-beginners/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.expertreviews.co.uk/sports-leisure/1413603/best-running-shoes-for-beginners",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.irunfar.com/best-beginner-running-shoes",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.irunfar.com/best-beginner-running-shoes'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.irunfar.com/best-beginner-running-shoes'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.irunfar.com/best-beginner-running-shoes'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.outsideonline.com/outdoor-gear/run/best-trail-running-shoes/?scope=anon",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.rei.com/learn/expert-advice/best-trail-running-shoes.html",
+    "findings": [],
+    "error": "ReadTimeout: The read operation timed out",
+    "evidence": {}
+  },
+  {
+    "source": "https://time.com/shopping/article/best-trail-running-shoes",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 24% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "GPTBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 24% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 24% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "PerplexityBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://amp.cnn.com/cnn/cnn-underscored/reviews/best-trail-running-shoes",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.cnn.com/cnn-underscored/reviews/best-trail-running-shoes'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HT",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.yahoo.com/lifestyle/best-trail-running-shoes-winter-185506549.html",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://www.yahoo.com/lifestyle/best-trail-running-shoes-winter-185506549.html'\nFor more information check: https://developer.mozilla.org",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://www.yahoo.com/lifestyle/best-trail-running-shoes-winter-185506549.html'\nFor more information check: https://developer.mozilla.org",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://www.yahoo.com/lifestyle/best-trail-running-shoes-winter-185506549.html'\nFor more information check: https://developer.mozilla.org",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://run.outsideonline.com/gear/trail-shoes/best-trail-running-shoes?scope=anon",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://news.yahoo.com/13-best-trail-running-shoes-153600942.html",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '404 Not Found' for url 'https://www.yahoo.com/news/13-best-trail-running-shoes-153600942.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/H",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.outdoorlife.com/gear/best-trail-running-shoes/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.irunfar.com/category/gear/shoes",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.irunfar.com/category/gear/shoes'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.irunfar.com/category/gear/shoes'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.irunfar.com/category/gear/shoes'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.outdoorgearlab.com/Trail-Running-Shoes-Reviews",
+    "findings": [
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.outdoorgearlab.com/Trail-Running-Shoes-Reviews'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://outdoorgearlab.com/topics/shoes-and-boots/best-trail-running-shoes",
+    "findings": [
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://outdoorgearlab.com/topics/shoes-and-boots/best-trail-running-shoes'\nFor more information check: https://developer.mozilla.org/en-US/docs/",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.livefortheoutdoors.com/trail-running/shoes/best-trail-running-shoes",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '402 Payment Required' for url 'https://www.livefortheoutdoors.com/trail-running/shoes/best-trail-running-shoes'\nFor more information check: https://developer.mozilla.org",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '402 Payment Required' for url 'https://www.livefortheoutdoors.com/trail-running/shoes/best-trail-running-shoes'\nFor more information check: https://developer.mozilla.org",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '402 Payment Required' for url 'https://www.livefortheoutdoors.com/trail-running/shoes/best-trail-running-shoes'\nFor more information check: https://developer.mozilla.org",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.rtings.com/running-shoes/reviews/best/flat-feet",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.cbsnews.com/essentials/top-running-shoes-for-flat-feet-find-your-perfect-fit",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://today.com/shop/best-running-shoes-flat-feet-rcna168965",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.today.com/shop/best-running-shoes-flat-feet-rcna168965'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.today.com/shop/best-running-shoes-flat-feet-rcna168965'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.asics.com/sg/en-sg/mk/blog/article/choosing-running-shoes-for-flat-feet",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.asics.com/sg/en-sg/mk/blog/article/choosing-running-shoes-for-flat-feet'\nFor more information check: https://developer.mozilla.org/en",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.nike.com/a/best-running-shoes-for-flat-feet",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.nike.com/a/best-running-shoes-for-flat-feet'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 8% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.nike.com/a/best-running-shoes-for-flat-feet'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.si.com/showcase/fitness/best-running-shoes-for-flat-feet",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '410 Gone' for url 'https://www.si.com/showcase/fitness/best-running-shoes-for-flat-feet'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St",
+    "evidence": {}
+  },
+  {
+    "source": "https://in.puma.com/in/en/running-guides/best-running-shoes-for-flat-feet-with-buying-tips",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.asics.com/us/en-us/blog/best-running-shoes-flat-feet",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.asics.com/us/en-us/blog/best-running-shoes-flat-feet'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/S",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.brooksrunning.com/en_ca/blog/gear-stories/best-running-shoes-for-flat-feet.html",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.brooksrunning.com/en_ca/blog/gear-stories/best-running-shoes-for-flat-feet.html'\nFor more information check: https://developer.mozill",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.yahoo.com/lifestyle/best-running-shoes-women-flat-110021660.html",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://www.yahoo.com/lifestyle/best-running-shoes-women-flat-110021660.html'\nFor more information check: https://developer.mozilla.org/e",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://www.yahoo.com/lifestyle/best-running-shoes-women-flat-110021660.html'\nFor more information check: https://developer.mozilla.org/e",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://www.yahoo.com/lifestyle/best-running-shoes-women-flat-110021660.html'\nFor more information check: https://developer.mozilla.org/e",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://runrepeat.com/uk/guides/best-flat-feet-running-shoes",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.outsideonline.com/outdoor-gear/run/best-marathon-racing-shoes/?scope=anon",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://run.outsideonline.com/gear/best-marathon-racing-shoes/?scope=anon",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://uk.style.yahoo.com/looking-bag-pb-best-carbon-165400693.html",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://uk.style.yahoo.com/looking-bag-pb-best-carbon-165400693.html'\nFor more information check: https://developer.mozilla.org/en-US/doc",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://uk.style.yahoo.com/looking-bag-pb-best-carbon-165400693.html'\nFor more information check: https://developer.mozilla.org/en-US/doc",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://uk.style.yahoo.com/looking-bag-pb-best-carbon-165400693.html'\nFor more information check: https://developer.mozilla.org/en-US/doc",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.marieclaire.co.uk/health-fitness/best-carbon-plate-trainers",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://athleticsweekly.com/performance/products/the-best-marathon-shoes-for-men-1039990258/",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://athleticsweekly.com/performance/products/the-best-marathon-shoes-for-men-1039990258/'\nFor more information check: https://developer.mozil",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.nbcnews.com/select/shopping/best-carbon-plate-running-shoes-rcna350696",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.nbcnews.com/select/shopping/best-carbon-plate-running-shoes-rcna350696'\nFor more information check: https://developer.mozilla.org/en-",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.nbcnews.com/select/shopping/best-carbon-plate-running-shoes-rcna350696'\nFor more information check: https://developer.mozilla.org/en-",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.sportsshoes.com/running-hub/kit-gear/the-best-marathon-shoes-for-training-and-racing",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://rtings.com/running-shoes/reviews/best/marathon",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.runningwarehouse.com/learningcenter/gear_guides/footwear/best-shoes-with-a-carbon-plate.html?from=RW",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '406 ' for url 'https://www.runningwarehouse.com/learningcenter/gear_guides/footwear/best-shoes-with-a-carbon-plate.html?from=RW'\nFor more information check: https://deve",
+    "evidence": {}
+  },
+  {
+    "source": "https://runrepeat.com/uk/guides/best-marathon-running-shoes",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://gulfnews.com/best-buys/why-marathon-super-shoes-hide-a-carbon-plate-1.500626372",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://marathonhandbook.com/best-carbon-plate-running-shoes-reviewed/",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://marathonhandbook.com/best-carbon-plate-running-shoes-reviewed/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://marathonhandbook.com/best-carbon-plate-running-shoes-reviewed/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://marathonhandbook.com/best-carbon-plate-running-shoes-reviewed/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.coachweb.com/running-shoes/7922/the-best-marathon-running-shoes",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://wellandgood.com/?p=1206737",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://run.outsideonline.com/gear/where-to-buy-running-shoes/?scope=anon",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://gazette.com/?p=1134281",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://gazette.com/?p=1134281'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://gazette.com/?p=1134281'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://gazette.com/?p=1134281'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://thekrazycouponlady.com/tips/money/best-cheap-running-shoes?amp=1",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.businessinsider.nl/best-cheap-running-shoes",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.zappos.com/running",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.irunfar.com/best-websites-running-gear",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.irunfar.com/best-websites-running-gear'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.irunfar.com/best-websites-running-gear'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.irunfar.com/best-websites-running-gear'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://runtothefinish.com/best-cheap-running-shoes/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.sneakers.com/a/running?page=40",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.sneakers.com/a/running?page=40'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.dmarge.com/?p=325256",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '404 Not Found' for url 'https://dmarge.com/?p=325256'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.nike.com/a/buy-right-running-shoes",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.nike.com/a/buy-right-running-shoes'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 11% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.nike.com/a/buy-right-running-shoes'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.nike.com/a/how-to-pick-the-right-running-shoes",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.nike.com/a/how-to-pick-the-right-running-shoes'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 7% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.nike.com/a/how-to-pick-the-right-running-shoes'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.rei.com/learn/expert-advice/running-shoes",
+    "findings": [],
+    "error": "ReadTimeout: The read operation timed out",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.dsw.com/content/running-shoe-guide",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 1% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "GPTBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 1% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 1% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "PerplexityBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {},
+        "taxonomy": {
+          "owasp": [],
+          "atlas": []
+        },
+        "intent": ""
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.yahoo.com/lifestyle/choose-running-shoes-140000329.html",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '404 Not Found' for url 'https://www.yahoo.com/lifestyle/choose-running-shoes-140000329.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTT",
+    "evidence": {}
+  },
+  {
+    "source": "https://amp.cnn.com/cnn/cnn-underscored/health-fitness/how-to-choose-the-best-running-shoes",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.cnn.com/cnn-underscored/health-fitness/how-to-choose-the-best-running-shoes'\nFor more information check: https://developer.mozilla.or",
+    "evidence": {}
+  },
+  {
+    "source": "https://health.clevelandclinic.org/how-to-pick-the-running-shoe-that-is-best-for-you",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.active.com/running/Articles/Running_Shoe_Guide_for_Dummies",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  }
+]
