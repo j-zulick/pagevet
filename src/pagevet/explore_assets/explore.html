@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="{{CSP}}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="pv-data-sha256" content="{{DATA_SHA256}}">
+<title>PageVet field-study explorer</title>
+<style>{{STYLE}}</style>
+</head>
+<body data-state="loading">
+<header>
+<h1>PageVet field-study explorer</h1>
+<p class="sub">What the pages behind real searches serve to AI models, and what PageVet's patterns catch and miss. Every number is computed in this page from the data embedded in it.</p>
+<nav id="tabs" aria-label="Views"></nav>
+</header>
+<section id="headline" aria-live="polite"></section>
+<div id="layout">
+<aside id="facets" aria-label="Filters"></aside>
+<main id="main">
+<div id="toolbar"><label for="q">Search URL, domain or title</label> <input id="q" type="search" autocomplete="off"> <button id="clear" type="button">Clear filters</button> <span id="count"></span></div>
+<div id="results"></div>
+<section id="reproduce"><h2>Reproduce this view</h2><pre id="reproduce-cmd"></pre></section>
+</main>
+</div>
+<section id="compare" hidden></section>
+<section id="about" hidden>
+<h2>About this data</h2>
+<ul>
+<li><strong>Field studies.</strong> For each topic, search results for ten or so shopping and software queries (saved results or a SearXNG instance) gave the URL list, at most four pages per site, not chosen by hand. Each page was fetched once over plain HTTP as a browser, with robots.txt respected, and compared with what GPTBot, ClaudeBot and PerplexityBot user agents were served. Pages that refused PageVet are counted as not read and were never retried another way.</li>
+<li><strong>Not read is not clean.</strong> A page PageVet could not read (blocked, robots.txt, error) is counted separately and never as "no findings".</li>
+<li><strong>Refusing AI crawlers is a site's choice.</strong> "Not served" records what a server answered a crawler's user agent; it is not a finding against the site. "Served different text" says only that the text differed; it does not say why.</li>
+<li><strong>Excerpts only.</strong> No page text is embedded beyond short excerpts of findings.</li>
+<li><strong>False-alarm pages</strong> are ordinary pages (homepages, articles, Wikipedia, news) scanned to check that PageVet does not flag them. <strong>Benchmark cases</strong> are PageVet's own evasion test: invented instructions, disguised; held-out sets were frozen before the patterns they test were written. BIPIA (Microsoft) is shown as its committed totals; its data is not redistributed.</li>
+<li>Field studies record three AI crawlers. The fourteen-crawler check, robots.txt rules, llms.txt and noai signals come from <code>pagevet-access</code> (0.24.0) and show "not tested" for these studies.</li>
+</ul>
+</section>
+<aside id="drawer" hidden aria-label="Page details"></aside>
+<footer id="footer"></footer>
+<script id="pv-data" type="application/json">{{DATA}}</script>
+<script>{{SCRIPT}}</script>
+</body>
+</html>

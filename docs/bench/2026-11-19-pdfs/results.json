@@ -1,0 +1,182 @@
+[
+  {
+    "source": "https://arxiv.org/pdf/2611.24937v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24884v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24803v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24770v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24734v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24620v1.pdf",
+    "findings": [],
+    "error": "ValueError: PDF larger than 20,000,000 bytes",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24047v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.19854v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.19257v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.19158v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24714v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.23354v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.22793v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.22517v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.22033v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24865v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24860v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24835v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24832v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24775v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24870v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24866v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24857v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24843v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24841v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24909v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24776v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24759v1.pdf",
+    "findings": [],
+    "error": "ValueError: PDF larger than 20,000,000 bytes",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24755v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://arxiv.org/pdf/2611.24754v1.pdf",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  }
+]

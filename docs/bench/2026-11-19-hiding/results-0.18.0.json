@@ -1,0 +1,257 @@
+{
+ "version": "0.18.0",
+ "methods": {
+  "display:none (control)": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "visibility:hidden (control)": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "off-screen left (control)": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "color:transparent": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "transform:scale(0)": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "clip-path:inset(100%)": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "clip-path:circle(0)": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "max-height:0 + overflow:hidden": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "width:0 + overflow:hidden": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "font-size:1px": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "font-size:0.1em": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "opacity:0.01": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "off-screen right": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "off-screen top (em)": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "stylesheet color:transparent": {
+   "dev": {
+    "found": 18,
+    "high": 15,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "stylesheet transform:scale(0)": {
+   "dev": {
+    "found": 18,
+    "high": 15,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "<template>": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "<input type=hidden value>": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "SVG <desc>": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "SVG <title>": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  },
+  "<textarea hidden>": {
+   "dev": {
+    "found": 18,
+    "high": 18,
+    "of": 18
+   },
+   "held_out": {
+    "found": 15,
+    "high": 15,
+    "of": 18
+   }
+  }
+ }
+}

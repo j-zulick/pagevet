@@ -1,0 +1,187 @@
+{
+  "tool": "pagevet",
+  "version": "0.24.0",
+  "detector": "patterns",
+  "catch_rate": {
+    "hits": 1450,
+    "n": 3750,
+    "rate": 0.3867,
+    "ci95": [
+      0.3712,
+      0.4024
+    ]
+  },
+  "false_alarm_rate": {
+    "hits": 0,
+    "n": 50,
+    "rate": 0.0,
+    "ci95": [
+      0.0,
+      0.0714
+    ]
+  },
+  "by_group": {
+    "Base Encoding": {
+      "hits": 100,
+      "n": 250,
+      "rate": 0.4,
+      "ci95": [
+        0.3412,
+        0.4618
+      ]
+    },
+    "Business Intelligence": {
+      "hits": 0,
+      "n": 250,
+      "rate": 0.0,
+      "ci95": [
+        0.0,
+        0.0151
+      ]
+    },
+    "Conversational Agent": {
+      "hits": 0,
+      "n": 250,
+      "rate": 0.0,
+      "ci95": [
+        0.0,
+        0.0151
+      ]
+    },
+    "Emoji Substitution": {
+      "hits": 100,
+      "n": 250,
+      "rate": 0.4,
+      "ci95": [
+        0.3412,
+        0.4618
+      ]
+    },
+    "Entertainment": {
+      "hits": 150,
+      "n": 250,
+      "rate": 0.6,
+      "ci95": [
+        0.5382,
+        0.6588
+      ]
+    },
+    "Information Dissemination": {
+      "hits": 150,
+      "n": 250,
+      "rate": 0.6,
+      "ci95": [
+        0.5382,
+        0.6588
+      ]
+    },
+    "Language Translation": {
+      "hits": 150,
+      "n": 250,
+      "rate": 0.6,
+      "ci95": [
+        0.5382,
+        0.6588
+      ]
+    },
+    "Marketing & Advertising": {
+      "hits": 200,
+      "n": 250,
+      "rate": 0.8,
+      "ci95": [
+        0.746,
+        0.8449
+      ]
+    },
+    "Misinformation & Propaganda": {
+      "hits": 200,
+      "n": 250,
+      "rate": 0.8,
+      "ci95": [
+        0.746,
+        0.8449
+      ]
+    },
+    "Research Assistance": {
+      "hits": 0,
+      "n": 250,
+      "rate": 0.0,
+      "ci95": [
+        0.0,
+        0.0151
+      ]
+    },
+    "Reverse Text": {
+      "hits": 150,
+      "n": 250,
+      "rate": 0.6,
+      "ci95": [
+        0.5382,
+        0.6588
+      ]
+    },
+    "Scams & Fraud": {
+      "hits": 150,
+      "n": 250,
+      "rate": 0.6,
+      "ci95": [
+        0.5382,
+        0.6588
+      ]
+    },
+    "Sentiment Analysis": {
+      "hits": 0,
+      "n": 250,
+      "rate": 0.0,
+      "ci95": [
+        0.0,
+        0.0151
+      ]
+    },
+    "Substitution Ciphers": {
+      "hits": 100,
+      "n": 250,
+      "rate": 0.4,
+      "ci95": [
+        0.3412,
+        0.4618
+      ]
+    },
+    "Task Automation": {
+      "hits": 0,
+      "n": 250,
+      "rate": 0.0,
+      "ci95": [
+        0.0,
+        0.0151
+      ]
+    }
+  },
+  "kinds_on_caught": {
+    "response_directive": 1450
+  },
+  "sample_missed_ids": [
+    "Task Automation-0-email0",
+    "Task Automation-0-email1",
+    "Task Automation-0-email2",
+    "Task Automation-0-email3",
+    "Task Automation-0-email4",
+    "Task Automation-0-email5",
+    "Task Automation-0-email6",
+    "Task Automation-0-email7",
+    "Task Automation-0-email8",
+    "Task Automation-0-email9",
+    "Task Automation-0-email10",
+    "Task Automation-0-email11",
+    "Task Automation-0-email12",
+    "Task Automation-0-email13",
+    "Task Automation-0-email14",
+    "Task Automation-0-email15",
+    "Task Automation-0-email16",
+    "Task Automation-0-email17",
+    "Task Automation-0-email18",
+    "Task Automation-0-email19"
+  ],
+  "sample_false_alarm_ids": [],
+  "cases_sha256": "65c40e2a09040ce9f0a5ee164190968490833c911c812d6dff0f8e1ff3148e57"
+}

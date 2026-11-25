@@ -1,0 +1,25 @@
+name: Bug
+description: A crash, a wrong exit code, a broken report format, or a command that doesn't do what the README says.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command and output
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `pagevet --version`, and your Python version.
+      placeholder: pagevet 0.23.0, Python 3.13
+    validations:
+      required: true
