@@ -20,3 +20,6 @@ Scan time on the same saved pages: 207 s with 0.1.0, 264 s with 0.2.0 (about 1.2
 
 ## 0.3.0 on the same saved pages
 Scanned again with 0.3.0 (`results-0.3.0.jsonl`): the same 1 page at medium and 2 at low, with no new finding. All three were already in comments or replies, and 0.3.0 now reports them in the new **user-submitted content** channel instead of visible text. 199 of the 1,051 readable HTML pages had at least one comment, review or reply container. The commercial-manipulation label only marks existing findings, so it cannot add false alarms; none of the three is commercial. Scan time 261 s.
+
+## 1.1.0 on the same saved pages
+Scanned again with 1.1.0 (`results-1.1.0.jsonl`, which also records each page's number of AI share links): the same 1 page at medium and 2 at low, with no new finding. The memory-planting rule matched nothing, and **none of the 1,052 pages has an AI share link** (a link that opens an AI assistant with a pre-filled prompt). Scan time 347 s, against 325 s and 332 s for 1.0.1 in two runs on the same machine the same evening (about 5–7% slower), single process.

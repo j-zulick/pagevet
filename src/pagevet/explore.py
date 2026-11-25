@@ -48,6 +48,7 @@ FACETS: dict[str, list[dict[str, str]]] = {
         {"key": "ClaudeBot", "label": "ClaudeBot (training)"},
         {"key": "PerplexityBot", "label": "PerplexityBot (search)"},
         {"key": "differs", "label": "Served different text to an AI crawler"},
+        {"key": "share", "label": "AI share links (\"Summarize with AI\" buttons)"},
         {"key": "robots_rule", "label": "Deciding robots.txt rule"},
         {"key": "llms", "label": "llms.txt"},
         {"key": "noai", "label": "noai signals"},
@@ -177,6 +178,14 @@ def load_field(folders: list[Path], private: set[str], skip_dir: str = "") -> tu
                         differs = "yes"
                     evidence.append({"what": f"{a}: " + ("not served" if "fetch_differs" in f["kinds"] else "served different text"),
                                      "where": f["channel"], "quote": _short(f["excerpt"], 140)})
+            if not read:
+                share = "not read"
+            elif "ai_share_links" not in r:
+                share = "not tested in this study"  # results from before 1.1.0
+            elif any(f["channel"] == "AI share links" for f in own):
+                share = "prompt with instructions"
+            else:
+                share = "summary prompts only" if r["ai_share_links"] else "none"
             refused = sum(v.startswith("not served") for v in agents.values())
             groups = sorted({AGENT_GROUP[a] for a, v in agents.items() if v.startswith("not served")}, key=GROUP_ORDER.index)
             sev = _top(own) if read else "not read"
@@ -184,20 +193,23 @@ def load_field(folders: list[Path], private: set[str], skip_dir: str = "") -> tu
                 "id": f"field/{base.name}/{i}", "ds": "field", "url": url, "domain": _domain(url), "title": "",
                 "f": {
                     "study": [meta["topic"]], "language": [meta.get("language", "not recorded in this study")], "date": [meta["date"]], "version": [version], "domain": [_domain(url)],
-                    "read": ["read" if read else _reason(r["error"])], "how": ["plain HTTP"],
+                    "read": ["read" if read else _reason(r["error"])], "how": [meta.get("how", "plain HTTP")],
                     "severity": [sev], "category": sorted({k for f in own for k in f["kinds"]}) or (["none"] if read else ["not read"]),
                     "refused": [("all 3" if refused == 3 else str(refused)) if read else "not tested"],
                     "group": [f"{g} not served" for g in groups] or (["all tested groups served"] if read else ["not tested"]),
                     **{a: [agents.get(a, "not tested (page not read)")] for a in AGENTS},
                     "differs": [differs],
+                    "share": [share],
                     "robots_rule": ["not recorded in this study"], "llms": ["not tested in this study"], "noai": ["not tested in this study"],
                 },
                 "d": {
                     "status": "read (HTTP 200)" if read else _short(r["error"], 160),
-                    "how": "plain HTTP, robots.txt respected, linked stylesheets read; compared with GPTBot, ClaudeBot and PerplexityBot user agents",
+                    "how": meta.get("how_detail", "plain HTTP, robots.txt respected, linked stylesheets read; compared with GPTBot, ClaudeBot and PerplexityBot user agents"),
                     "findings": [{"severity": f["severity"], "where": f["channel"], "kinds": f["kinds"], "quote": _short(f["excerpt"]),
                                   "reason": f.get("advice", "")} for f in own],
                     "crawlers": evidence,
+                    "share": [{"assistant": x.get("assistant", ""), "label": _short(x.get("label", ""), 80),
+                               "prompt": _short(x.get("prompt", ""))} for x in r.get("ai_share_links", [])[:10]],
                     "recheck": f"pagevet --compare-agents --fetch-css {_quote(url)}\npagevet-access {_quote(url)}",
                     "hashes": "",
                 },

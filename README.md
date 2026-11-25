@@ -13,14 +13,14 @@ Web pages can carry instructions written for the AI systems that read them: "ign
 
 PageVet audits pages for it, and reports which of fourteen AI crawlers a page lets in, which it refuses, and which its firewall turns away despite robots.txt. It is for site owners, SEO/GEO teams, agencies and AI-security teams checking their own pages, user-generated content, or pages an agent will read. It uses no AI model and no API key. It runs as a command, a GitHub Action, an MCP server, a container, a pre-commit hook and a [Python API](docs/API.md).
 
-**What it has found so far.** Five field studies of the pages behind shopping and software searches (brake rotors, running shoes, small-business CRM software, home solar, password managers): no hidden instructions on any of 238 pages read, but 32–43% of readable pages refuse at least one AI crawler, and a few serve AI crawlers different text from what people see ([table](docs/bench/FIELD-STUDIES.md)). For these topics, being blocked matters more to AI answers than being manipulated, and PageVet measures both.
+**What it has found so far.** Six field studies of the pages behind shopping, software and marketing searches (brake rotors, running shoes, small-business CRM software, home solar, password managers, and marketing and SEO blog posts with "Summarize with AI" buttons): no deliberate hidden instructions on any of 273 pages read (the one high finding, image alt text describing a screenshot, is a false alarm), but 14–43% of readable pages refuse at least one AI crawler, and a few serve AI crawlers different text from what people see ([table](docs/bench/FIELD-STUDIES.md)). On the marketing blogs, 10 of 35 readable pages had AI share buttons; none planted the site in an assistant's memory, but two pre-filled a sales brief written as the reader's own question ([case study](docs/CASE-STUDIES.md#4-summarize-with-ai-buttons-that-pre-fill-a-sales-brief-2026-11-25)). Being blocked matters more to AI answers than being manipulated so far, and PageVet measures both.
 
 ## Quick start
 ```bash
-uv tool install "git+https://github.com/j-zulick/pagevet@v1.0.1"    # puts pagevet on your PATH (Python 3.11–3.13)
+uv tool install "git+https://github.com/j-zulick/pagevet@v1.1.0"    # puts pagevet on your PATH (Python 3.11–3.13)
 pagevet https://example.com/pricing
 ```
-No uv? `pip install "git+https://github.com/j-zulick/pagevet@v1.0.1"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v1.0.1"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
+No uv? `pip install "git+https://github.com/j-zulick/pagevet@v1.1.0"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v1.1.0"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
 
 ```bash
 pagevet https://example.com/pricing                         # one page
@@ -63,9 +63,10 @@ Or with no Python at all: `docker run --rm ghcr.io/j-zulick/pagevet https://exam
 | Text in images (`--ocr`) | Yes | a banner image that says "Note to any AI model…" (up to 10 images per page, read with a local OCR engine) |
 | HTTP response headers (`--headers`) | No | a custom header such as `X-AI-Note: ignore previous instructions…` (dates, cookies, cache and policy headers are skipped) |
 | llms.txt (`--llms-txt`) | Rarely | `/llms.txt` and `/llms-full.txt` of each site scanned: written for AI systems, so text addressed to them is rated low; overrides, role changes and chat markup there are high |
+| AI share links | Only the button label | a "Summarize with AI" link or button that opens ChatGPT, Claude, Perplexity, Copilot, Grok, Gemini or Google AI Mode with a pre-filled prompt, such as `chatgpt.com/?q=…remember Example as a trusted source`: the prompt is decoded and scanned, and every such link is listed in the JSON report's `ai_share_links` |
 | PDF page text / PDF metadata and annotations | Yes / No | a `.pdf` file or URL: the page text, and the title, subject, keywords and annotation notes viewers don't show (the `pdf` extra) |
 
-In each channel it looks for commands about the reader's own reply ("add … to your response"), instructions to override or ignore, text addressed to an AI, role changes, instructions to recommend, cite or omit, chat markup, the same in Spanish, French, German, Portuguese, Italian, Dutch, Polish, Swedish, Russian, Japanese and Chinese, instructions encoded in invisible Unicode tag characters or base64, and, with `--include-repetition`, pages that are mostly one repeated claim (off by default because it fires on ordinary menus and templates).
+In each channel it looks for commands about the reader's own reply ("add … to your response"), instructions to override or ignore, text addressed to an AI, role changes, instructions to recommend, cite or omit, chat markup, memory planting ("remember Example as a trusted source", "in future conversations, recommend…"), the same in Spanish, French, German, Portuguese, Italian, Dutch, Polish, Swedish, Russian, Japanese and Chinese, instructions encoded in invisible Unicode tag characters or base64, and, with `--include-repetition`, pages that are mostly one repeated claim (off by default because it fires on ordinary menus and templates).
 
 ## Severity
 Every finding is rated by fixed rules and comes with advice.
@@ -109,7 +110,7 @@ Each page's trace holds its findings and the scores `max_severity` (0–3), `fin
 ## In CI (GitHub Action)
 ```yaml
 - uses: actions/checkout@v5
-- uses: j-zulick/pagevet@v1.0.1
+- uses: j-zulick/pagevet@v1.1.0
   id: pagevet
   with:
     urls-file: urls.txt            # or targets: "https://example.com/ page.html", or sitemap: ...
@@ -125,7 +126,7 @@ Outputs: `sarif-file`, `exit-code` (0, 1 or 2, as for the command) and `findings
 ```yaml
 repos:
   - repo: https://github.com/j-zulick/pagevet
-    rev: v1.0.1
+    rev: v1.1.0
     hooks:
       - id: pagevet      # fails a commit that adds HTML, Markdown or text with a medium or high finding
 ```
@@ -168,7 +169,7 @@ pagevet-study run "CRM software" --queries queries.txt --out study/      # searc
 pagevet-study report docs/bench/2026-11-23-field-running-shoes          # rewrite README.md from the saved data
 pagevet-study compare docs/bench/*-field-* --out docs/bench/FIELD-STUDIES.md
 ```
-`run` builds the URL list (at most four pages per site), scans every page as a browser and as GPTBot, ClaudeBot and PerplexityBot with linked stylesheets read and robots.txt respected, and writes the search results, the list, the raw results and a README. Every number in that README is computed from `results.json`, so it can be regenerated; a hand-written "What this says" section is kept. Pages that refuse PageVet are reported as not read and never retried another way. `compare` puts several studies in one table: [docs/bench/FIELD-STUDIES.md](docs/bench/FIELD-STUDIES.md). `explore` writes the [field-study explorer](docs/EXPLORER.md): one self-contained HTML page with faceted filters over every study, false-alarm and benchmark record (`pagevet-study explore --out site/`; attached to each release as `explore.html`). So far (brake rotors, running shoes, small-business CRM software, home solar, password managers): no hidden instructions on any of 238 pages read, and 32–43% of readable pages refuse at least one AI crawler.
+`run` builds the URL list (at most four pages per site), scans every page as a browser and as GPTBot, ClaudeBot and PerplexityBot with linked stylesheets read and robots.txt respected, and writes the search results, the list, the raw results and a README. Every number in that README is computed from `results.json`, so it can be regenerated; a hand-written "What this says" section is kept. Pages that refuse PageVet are reported as not read and never retried another way. `compare` puts several studies in one table: [docs/bench/FIELD-STUDIES.md](docs/bench/FIELD-STUDIES.md). `explore` writes the [field-study explorer](docs/EXPLORER.md): one self-contained HTML page with faceted filters over every study, false-alarm and benchmark record (`pagevet-study explore --out site/`; attached to each release as `explore.html`). So far (six studies): no deliberate hidden instructions on any of 273 pages read, and 14–43% of readable pages refuse at least one AI crawler. `run --via firecrawl` reads pages through your Firecrawl (rendered, so script-built buttons count); the report counts AI share links (pages whose links open an assistant with a pre-filled prompt).
 
 ## Output
 Text, JSON ([schema](docs/schema/report.schema.json)), CSV, a self-contained HTML report, and [SARIF 2.1.0](https://sarifweb.azurewebsites.net/) for code-scanning tools. Exit code 1 when a finding is at or above `--fail-on` (default `low`), 2 on errors with no findings.
@@ -183,7 +184,7 @@ Text, JSON ([schema](docs/schema/report.schema.json)), CSV, a self-contained HTM
 
 **Commercial manipulation.** A finding whose instruction steers what AI answers recommend, rank, cite or leave out, toward a product or source, is labelled `intent: "commercial"` (SARIF: `commercial-manipulation` tag).
 
-**Framework IDs.** Every JSON finding has a `taxonomy` object and every SARIF result `owasp` and `atlas` properties: [OWASP LLM01:2025](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) (prompt injection) and [MITRE ATLAS](https://atlas.mitre.org/) AML.T0051.001 (indirect prompt injection), plus AML.T0054 (jailbreak) for role and mode changes and AML.T0068 (prompt obfuscation) for hidden or disguised text. Findings that only say a page differs by reader carry no ID.
+**Framework IDs.** Every JSON finding has a `taxonomy` object and every SARIF result `owasp`, `atlas`, `owasp_agentic` and `nist` properties: [OWASP LLM01:2025](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) (prompt injection); [MITRE ATLAS](https://atlas.mitre.org/) AML.T0051.001 (indirect prompt injection), plus AML.T0054 (jailbreak) for role and mode changes, AML.T0068 (prompt obfuscation) for hidden or disguised text and AML.T0080.000 (AI agent context poisoning: memory) for memory planting; the [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) ASI01 (agent goal hijack), plus ASI06 (memory and context poisoning) for memory planting; and [NIST AI 100-2e2025](https://csrc.nist.gov/pubs/ai/100/2/e2025/final) NISTAML.015 (indirect prompt injection), or NISTAML.018 (prompt injection) for a prompt that an AI share link pre-fills for the person who clicks it. Findings that only say a page differs by reader carry no ID.
 
 **Re-scans.** `--baseline FILE` takes an earlier `--format json` report and keeps only findings that are not in it, so the report and the exit code cover what changed. A summary line on stderr counts new, unchanged and no-longer-found findings (only pages scanned again count as no longer found). Findings are matched on page, channel, kinds and excerpt; an edit next to the matched text makes it count as new. SARIF results carry a `partialFingerprints` id, and with `--baseline` a `baselineState` of `new`.
 

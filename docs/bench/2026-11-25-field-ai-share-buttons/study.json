@@ -1,0 +1,10 @@
+{
+ "topic": "AI share buttons on marketing and SEO blog posts",
+ "date": "2026-11-25",
+ "version": "1.1.0 development",
+ "max_per_host": 4,
+ "delay": 0.3,
+ "via": "firecrawl",
+ "how": "Firecrawl (rendered)",
+ "how_detail": "rendered by a self-hosted Firecrawl, robots.txt respected, linked stylesheets read; compared with GPTBot, ClaudeBot and PerplexityBot user agents over plain HTTP"
+}

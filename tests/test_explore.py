@@ -62,8 +62,9 @@ def test_private_sample_never_appears(tmp_path):
 def test_headline_equals_published_field_figures(data):
     h = explore.headline(data["records"], "field")
     per = [summarize(json.loads((Path(f) / "results.json").read_text())) for f in FIELD]
-    assert h["read"] == sum(s["read"] for s in per) == 238
-    assert h["flagged"] == sum(sum(s["pages_with_findings"].values()) for s in per) == 0
+    assert h["read"] == sum(s["read"] for s in per) == 273
+    # 1.1.0's AI share-button study: 1 high (an alt-text false alarm) and 3 low (articles quoting the technique, a footer link)
+    assert h["flagged"] == sum(sum(s["pages_with_findings"].values()) for s in per) == 4
     assert h["refusing"] == sum(s["refused_any"] for s in per)
     assert h["pages"] == sum(s["scanned"] for s in per) and h["not_read"] == h["pages"] - h["read"]
 
@@ -72,8 +73,9 @@ def test_prose_cannot_drift_from_the_data(data):
     assert Path("docs/bench/FIELD-STUDIES.md").read_text() == compare(FIELD)
     shares = [round(100 * s["refused_any"] / s["read"]) for s in data["studies"]]
     read = sum(s["read"] for s in data["studies"])
-    sentence = f"no hidden instructions on any of {read} pages read, but {min(shares)}–{max(shares)}% of readable pages refuse at least one AI crawler"
-    assert sentence in Path("README.md").read_text()
+    readme = Path("README.md").read_text()
+    assert f"no deliberate hidden instructions on any of {read} pages read" in readme
+    assert f"but {min(shares)}–{max(shares)}% of readable pages refuse at least one AI crawler" in readme
 
 
 def test_unread_pages_are_never_clean(data):

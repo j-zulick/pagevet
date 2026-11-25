@@ -16,7 +16,11 @@ Public versions start at 0.1.0 and count up to 1.0.
 
 **1.0.0 (released):** stable command line, formats and Python API with semantic versioning and a contract test; offline numbers from one command; the patterns-versus-model comparison published.
 
+**1.1.0 (released):** AI share links ("Summarize with AI" buttons) decoded and scanned, the memory-planting rule, OWASP Agentic and NIST IDs, a field study through Firecrawl.
+
 After 1.0:
+- **1.2.0 (next):** the guard measured as a defense on a public agent benchmark: attacks blocked, tasks still completed, false alarms and speed, with published attack sets and a local model.
+- **1.3.0 (planned):** detection-side integrations for promptfoo, garak and PyRIT; `.docx` input; MCP tool descriptions scanned with the same rules.
 - **Live runs** (approved; run from the maintainer's machine; [`docs/bench/2026-11-25-live/`](bench/2026-11-25-live/)): the Firecrawl source and `pagevet-view --via firecrawl` passed in 1.0.1. Still to run: Jev and the quote-checked `llm` second opinion on BIPIA and clean pages with costs recorded, Langfuse records, and the crawlee-server source. Results go in a 1.0.x release.
 - **Packaging:** releases are on GitHub with the wheel, `explore.html` and a container image. PyPI (set `PYPI_PUBLISH=true` once a PyPI project exists) and a Marketplace listing for the Action are optional.
 

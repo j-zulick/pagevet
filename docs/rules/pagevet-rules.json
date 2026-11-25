@@ -1,6 +1,6 @@
 {
  "schema": "pagevet-rules-1",
- "pagevet_version": "1.0.1",
+ "pagevet_version": "1.1.0",
  "license": "MIT",
  "instruction_patterns": {
   "override": {
@@ -30,6 +30,11 @@
   },
   "chat_markup": {
    "regex": "<\\|im_(?:start|end)\\|>|\\[/?INST\\]|<\\|(?:system|user|assistant)\\|>|</?(?:system|webpage_content\\w*|untrusted)\\b",
+   "flags": "i",
+   "dialect": "python-re"
+  },
+  "memory_planting": {
+   "regex": "\\bremember\\s+(?:that\\s+)?(?:[^.!?\\n]|\\.(?=\\S)){1,80}?\\s+(?:as|is)\\s+(?:an?\\s+|the\\s+|your\\s+|my\\s+|our\\s+)?(?:most\\s+)?(?:trusted|reliable|authoritative|go-?to|preferred|primary|definitive|official|universal|leading|top|best|recommended)\\b(?:[^.!?\\n]|\\.(?=\\S)){0,40}?\\b(?:sources?|references?|citations?|authority|authorities|providers?|platforms?|choices?|resources?|sites?|experts?)\\b|\\b(?:keep|save|store|add|put|commit)\\s+(?:[^.!?\\n]|\\.(?=\\S)){1,80}?\\s+(?:in|to|into)\\s+(?:your|its)\\s+(?:long[- ]term\\s+|persistent\\s+)?memory\\b|\\b(?:in|for|during)\\s+(?:all\\s+)?(?:future|later|subsequent|upcoming|following)\\s+(?:conversations|chats|sessions|queries|questions|answers|responses|interactions)\\b(?:[^.!?\\n]|\\.(?=\\S)){0,60}?\\b(?:recommend\\w*|cite|citing|citation|mention\\w*|prefer\\w*|refer\\w*|suggest\\w*|source|trust\\w*|prioriti[sz]\\w*)\\b|\\b(?:recommend\\w*|cite|mention|prefer|prioriti[sz]e|suggest)\\b(?:[^.!?\\n]|\\.(?=\\S)){1,80}?\\b(?:in|for|during)\\s+(?:all\\s+)?(?:future|later|subsequent|upcoming)\\s+(?:conversations|chats|sessions|queries|questions|answers|responses|interactions)\\b|\\b(?:update|save\\s+to|write\\s+to)\\s+(?:your|its)\\s+memory\\b",
    "flags": "i",
    "dialect": "python-re"
   }
@@ -89,7 +94,87 @@
   "atlas": {
    "all_injection_findings": "AML.T0051.001",
    "role_change": "AML.T0054",
-   "hidden_or_disguised": "AML.T0068"
+   "hidden_or_disguised": "AML.T0068",
+   "memory_planting": "AML.T0080.000"
+  },
+  "owasp_agentic": {
+   "all_injection_findings": "ASI01",
+   "memory_planting": "ASI06"
+  },
+  "nist": {
+   "all_injection_findings": "NISTAML.015",
+   "ai_share_links": "NISTAML.018"
   }
+ },
+ "ai_share_links": {
+  "assistants": [
+   {
+    "host": "chatgpt.com",
+    "path": "/",
+    "name": "ChatGPT"
+   },
+   {
+    "host": "chat.openai.com",
+    "path": "/",
+    "name": "ChatGPT"
+   },
+   {
+    "host": "claude.ai",
+    "path": "/",
+    "name": "Claude"
+   },
+   {
+    "host": "perplexity.ai",
+    "path": "/",
+    "name": "Perplexity"
+   },
+   {
+    "host": "copilot.microsoft.com",
+    "path": "/",
+    "name": "Copilot"
+   },
+   {
+    "host": "grok.com",
+    "path": "/",
+    "name": "Grok"
+   },
+   {
+    "host": "x.com",
+    "path": "/i/grok",
+    "name": "Grok"
+   },
+   {
+    "host": "gemini.google.com",
+    "path": "/",
+    "name": "Gemini"
+   },
+   {
+    "host": "google.com",
+    "path": "/search",
+    "name": "Google AI Mode"
+   },
+   {
+    "host": "you.com",
+    "path": "/",
+    "name": "You.com"
+   },
+   {
+    "host": "chat.mistral.ai",
+    "path": "/",
+    "name": "Mistral"
+   },
+   {
+    "host": "meta.ai",
+    "path": "/",
+    "name": "Meta AI"
+   }
+  ],
+  "prompt_parameters": [
+   "q",
+   "prompt",
+   "text",
+   "query",
+   "message"
+  ]
  }
 }

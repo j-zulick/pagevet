@@ -36,6 +36,7 @@ from dataclasses import asdict, dataclass, field
 from datetime import UTC, datetime
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import parse_qs, unquote, urlsplit
 
 from defusedxml.ElementTree import fromstring as safe_fromstring
 
@@ -94,6 +95,65 @@ class Channels:
     structured: list[str] = field(default_factory=list)
     noscript: list[str] = field(default_factory=list)
     user_content: list[str] = field(default_factory=list)  # visible text inside comments, reviews, forum replies
+    share_links: list[dict] = field(default_factory=list)  # links that open an AI assistant with a prompt (1.1.0)
+
+
+# AI share links (1.1.0): links and buttons that open an AI assistant with a pre-filled prompt ("Summarize with
+# AI", "Ask ChatGPT"). The person clicking sees the button label; the assistant reads the prompt in the URL.
+# Microsoft (Feb 2026) found such prompts planting brands in assistants' memory ("AI recommendation poisoning",
+# MITRE ATLAS AML.T0080). Hosts and parameters as the assistants accept them (q, prompt, text, query, message).
+AI_ASSISTANTS = (
+    ("chatgpt.com", "", "ChatGPT"), ("chat.openai.com", "", "ChatGPT"), ("claude.ai", "", "Claude"),
+    ("perplexity.ai", "", "Perplexity"), ("copilot.microsoft.com", "", "Copilot"), ("grok.com", "", "Grok"),
+    ("x.com", "/i/grok", "Grok"), ("gemini.google.com", "", "Gemini"), ("google.com", "/search", "Google AI Mode"),
+    ("you.com", "", "You.com"), ("chat.mistral.ai", "", "Mistral"), ("meta.ai", "", "Meta AI"),
+)
+PROMPT_PARAMS = ("q", "prompt", "text", "query", "message")
+_AI_URL = re.compile(
+    r"https?:(?://|\\/\\/)(?:[a-z0-9-]+\.)*(?:chatgpt\.com|chat\.openai\.com|claude\.ai|perplexity\.ai|copilot\.microsoft\.com"
+    r"|grok\.com|x\.com|gemini\.google\.com|google\.com|you\.com|chat\.mistral\.ai|meta\.ai)[^\s\"'<>`)]*",
+    re.I,
+)
+_AI_HOST_HINT = re.compile(r"chatgpt|openai|claude\.ai|perplexity|copilot|grok|gemini|google\.com|you\.com|mistral|meta\.ai", re.I)
+MAX_SHARE_LINKS = 50
+MAX_PROMPT_CHARS = 4000
+
+
+def ai_share_prompt(url: str) -> tuple[str, str] | None:
+    """Return ``(assistant, prompt)`` when ``url`` opens an AI assistant with a pre-filled prompt, else None."""
+    url = url.replace("\\/", "/").replace("\\u0026", "&").replace("&amp;", "&")
+    try:
+        parts = urlsplit(url.strip())
+    except ValueError:
+        return None
+    host = (parts.hostname or "").lower()
+    for domain, path, name in AI_ASSISTANTS:
+        if (host == domain or host.endswith("." + domain)) and parts.path.startswith(path):
+            query = parse_qs(parts.query, keep_blank_values=False)
+            if domain == "google.com" and query.get("udm") != ["50"]:
+                return None  # an ordinary Google search, not AI Mode
+            for key in PROMPT_PARAMS:
+                if query.get(key):
+                    prompt = unquote(query[key][0]).strip()[:MAX_PROMPT_CHARS]
+                    return (name, prompt) if prompt else None
+            return None
+    return None
+
+
+def share_links_in(text: str) -> list[tuple[str, str]]:
+    """Every AI share link in ``text`` (an attribute value or script), as ``(assistant, prompt)``."""
+    if not _AI_HOST_HINT.search(text):  # cheap test first: most links and scripts name no assistant
+        return []
+    value = text.strip()
+    if value.lower().startswith(("http://", "https://")) and not any(c in value for c in " \n\"'<>"):
+        found = ai_share_prompt(value)  # a whole attribute value is one URL; keep characters a script context would end on
+        return [found] if found else []
+    out = []
+    for m in _AI_URL.finditer(text):
+        found = ai_share_prompt(m.group(0))
+        if found:
+            out.append(found)
+    return out
 
 
 # Containers for text that visitors, not the site, wrote (comments, reviews, replies, forum posts): a
@@ -321,6 +381,15 @@ class _Splitter(HTMLParser):
         self.joinable: list[str] | None = None  # the list whose last chunk the next inline text continues
         self.hiding: list[tuple[str, set[str], set[str]]] = []  # from <style> blocks seen so far
         self.ugc: list[bool] = []  # parallel to stack: the element opens a user-content zone
+        self.share_label: tuple[str, int] | None = None  # open <a>/<button> whose text labels a share link
+        self._share_seen: set[tuple[str, str]] = set()
+
+    def _add_share(self, assistant: str, prompt: str, label: str = "") -> int | None:
+        if (assistant, prompt) in self._share_seen or len(self.ch.share_links) >= MAX_SHARE_LINKS:
+            return None
+        self._share_seen.add((assistant, prompt))
+        self.ch.share_links.append({"assistant": assistant, "prompt": prompt, "label": label})
+        return len(self.ch.share_links) - 1
 
     def _hidden(self) -> int:
         return max((h for _, h in self.stack), default=0)
@@ -339,6 +408,15 @@ class _Splitter(HTMLParser):
         for name in ATTRS:
             if a.get(name, "").strip() and not (name == "content" and tag != "meta"):
                 self.ch.attributes.append(f"{tag}[{name}]: {a[name].strip()}")
+        added = None
+        for value in a.values():
+            if "http" in value:
+                for assistant, prompt in share_links_in(value):
+                    label = (a.get("aria-label") or a.get("title") or "").strip()[:120]
+                    idx = self._add_share(assistant, prompt, label)
+                    added = idx if added is None else added
+        if added is not None and tag in ("a", "button") and not self.ch.share_links[added]["label"]:
+            self.share_label = (tag, added)
         if tag == "input" and a.get("type", "").lower() == "hidden" and a.get("value", "").strip():
             self.ch.attributes.append(f"input[type=hidden][value]: {a['value'].strip()}")
         in_svg = any(t == "svg" for t, _ in self.stack)
@@ -360,6 +438,8 @@ class _Splitter(HTMLParser):
     def handle_endtag(self, tag: str) -> None:
         if tag not in INLINE:
             self.joinable = None
+        if self.share_label and self.share_label[0] == tag:
+            self.share_label = None
         for i in range(len(self.stack) - 1, -1, -1):
             if self.stack[i][0] == tag:
                 del self.stack[i:]
@@ -372,6 +452,12 @@ class _Splitter(HTMLParser):
         if not text:
             return
         tags = [t for t, _ in self.stack]
+        if self.share_label and not any(t in SKIP for t in tags):  # not the CSS or script inside a button
+            link = self.ch.share_links[self.share_label[1]]
+            link["label"] = (link["label"] + " " + text).strip()[:120]
+        if tags and tags[-1] == "script" and "http" in text:
+            for assistant, prompt in share_links_in(text):  # share buttons built by scripts
+                self._add_share(assistant, prompt)
         if tags and tags[-1] == "style":
             self.hiding.extend(hiding_selectors(text))
             return
@@ -446,22 +532,39 @@ def looks_like_html(text: str) -> bool:
 # reader (``content_differs``, ``fetch_differs``) carry no ID: they are a sign to look, not an injection.
 OWASP_LLM01 = "LLM01:2025"
 ATLAS_INDIRECT, ATLAS_JAILBREAK, ATLAS_OBFUSCATION = "AML.T0051.001", "AML.T0054", "AML.T0068"
+ATLAS_MEMORY = "AML.T0080.000"  # AI Agent Context Poisoning: Memory (1.1.0)
+# OWASP Top 10 for Agentic Applications 2026 (1.1.0): ASI01 Agent Goal Hijack, ASI06 Memory and Context Poisoning.
+ASI_GOAL_HIJACK, ASI_MEMORY = "ASI01", "ASI06"
+# NIST AI 100-2e2025 (1.1.0): NISTAML.015 indirect prompt injection; NISTAML.018 prompt injection (a prompt the
+# user sends, here one pre-filled by a link).
+NIST_INDIRECT, NIST_PROMPT = "NISTAML.015", "NISTAML.018"
+SHARE_CHANNEL = "AI share links"
 _NO_TAXONOMY = {"content_differs", "fetch_differs", "repetition"}
 _DISGUISES = ("unicode_tags", "base64", "obfuscated", "rot13", "reversed")
 
 
 def taxonomy(channel: str, kinds: list[str]) -> dict:
-    """Return ``{"owasp": [...], "atlas": [...]}`` for a finding's channel and pattern kinds."""
+    """Return framework IDs for a finding's channel and pattern kinds.
+
+    ``owasp`` (Top 10 for LLM Applications 2025) and ``atlas`` (MITRE ATLAS) since 0.2.0; ``owasp_agentic``
+    (Top 10 for Agentic Applications 2026) and ``nist`` (NIST AI 100-2e2025) since 1.1.0. Every list is empty
+    for findings that are not an injection (content_differs, fetch_differs, repetition).
+    """
     plain = {k.split(":")[-1] for k in kinds}
     if plain <= _NO_TAXONOMY:
-        return {"owasp": [], "atlas": []}
+        return {"owasp": [], "atlas": [], "owasp_agentic": [], "nist": []}
     atlas = [ATLAS_INDIRECT]
     if "role_change" in plain:
         atlas.append(ATLAS_JAILBREAK)
     hidden = channel not in READER_CHANNELS and channel not in ("llms.txt",)
     if hidden or any(k.startswith(_DISGUISES) for k in kinds):
         atlas.append(ATLAS_OBFUSCATION)
-    return {"owasp": [OWASP_LLM01], "atlas": atlas}
+    agentic = [ASI_GOAL_HIJACK]
+    if "memory_planting" in plain:
+        atlas.append(ATLAS_MEMORY)
+        agentic.append(ASI_MEMORY)
+    nist = [NIST_PROMPT if channel == SHARE_CHANNEL else NIST_INDIRECT]
+    return {"owasp": [OWASP_LLM01], "atlas": atlas, "owasp_agentic": agentic, "nist": nist}
 
 
 @dataclass
@@ -490,6 +593,7 @@ class PageResult:
     findings: list[Finding]
     error: str = ""
     evidence: dict = field(default_factory=dict)
+    ai_share_links: list[dict] = field(default_factory=list)  # 1.1.0: {"assistant", "prompt", "label"} per link
 
 
 def _excerpt(text: str, start: int, width: int = 160) -> str:
@@ -518,10 +622,12 @@ def scan_text(source: str, text: str, include_repetition: bool = False, css: str
             "attributes and meta tags": "\n".join(ch.attributes),
             "structured data (JSON-LD)": "\n".join(ch.structured),
             "noscript": "\n".join(ch.noscript),
+            SHARE_CHANNEL: "\n".join(link["prompt"] for link in ch.share_links),
         }
-    else:
-        channels = {"text": text}
-    return scan_channels(source, channels, include_repetition)
+        result = scan_channels(source, channels, include_repetition)
+        result.ai_share_links = ch.share_links
+        return result
+    return scan_channels(source, {"text": text}, include_repetition)
 
 
 def scan_channels(source: str, channels: dict[str, str], include_repetition: bool = False) -> PageResult:
@@ -540,7 +646,8 @@ def scan_channels(source: str, channels: dict[str, str], include_repetition: boo
             excerpt = _excerpt(body, first.start)
             severity, advice = rate(name, kinds, body)
             instruction = [h for h in hits if h.kind.split(":")[-1] in INSTRUCTION_PATTERNS]
-            intent = "commercial" if any(commercial(body, h.start) for h in instruction) else ""
+            planting = any(h.kind.split(":")[-1] == "memory_planting" for h in hits)  # favouring a source later is commercial
+            intent = "commercial" if planting or any(commercial(body, h.start) for h in instruction) else ""
             if intent:
                 advice += " It steers what AI answers recommend, rank or cite (commercial manipulation)."
             findings.append(Finding(name, kinds, excerpt, severity, advice, intent=intent))
@@ -586,6 +693,14 @@ def rate(channel: str, kinds: list[str], body: str) -> tuple[str, str]:
             return "low", "Review the repeated text in llms.txt."
         return "low", ("llms.txt addresses AI systems, as it is meant to. Check that it describes the site and its "
                        "content rather than telling assistants what to recommend, cite or leave out.")
+    if channel == SHARE_CHANNEL:
+        if set(kinds) <= {"response_directive", "repetition"}:
+            return "low", ("A link or button opens an AI assistant with a pre-filled prompt that says how to word the answer. "
+                           "Check the prompt only asks for what the button says.")
+        what = "plants the site in the assistant's memory or asks it to favour the site later" if "memory_planting" in kinds \
+            else "gives the assistant instructions"
+        return "high", (f"A link or button opens an AI assistant with a pre-filled prompt that {what}. People clicking see only "
+                        "the button label (AI recommendation poisoning). Make the prompt ask only for what the button says.")
     if channel not in READER_CHANNELS:
         if only_repetition:
             return "low", f"Review the repeated text in {channel}."
@@ -1252,6 +1367,7 @@ def render_sarif(results: list[PageResult], baseline: bool = False) -> str:
                 "partialFingerprints": {"pagevet/v1": finding_fingerprint(r.source, f)},
                 "properties": {"severity": f.severity, "channel": f.channel, "kinds": f.kinds,
                                "owasp": f.taxonomy.get("owasp", []), "atlas": f.taxonomy.get("atlas", []),
+                               "owasp_agentic": f.taxonomy.get("owasp_agentic", []), "nist": f.taxonomy.get("nist", []),
                                "intent": f.intent},
                 **({"baselineState": "new"} if baseline else {}),
             })

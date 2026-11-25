@@ -105,7 +105,7 @@ def test_no_filter_shows_published_figures(browser, built):
     h = explore.headline(built[1]["records"], "field", {}, "")
     page = open_page(browser, built[0])
     assert int(page.get_attribute("#h-read", "data-value")) == h["read"]
-    assert int(page.get_attribute("#h-flagged", "data-value")) == h["flagged"] == 0
+    assert int(page.get_attribute("#h-flagged", "data-value")) == h["flagged"]  # 4 since 1.1.0 (test_explore.py ties it to the data)
     assert int(page.get_attribute("#h-refusing", "data-value")) == h["refusing"]
     page.close()
 
