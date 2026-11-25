@@ -16,11 +16,12 @@ def run(capsys, argv, **kw):
 
 
 def test_taxonomy_ids():
-    assert taxonomy("visible text", ["override"]) == {"owasp": ["LLM01:2025"], "atlas": ["AML.T0051.001"]}
+    t = taxonomy("visible text", ["override"])
+    assert (t["owasp"], t["atlas"]) == (["LLM01:2025"], ["AML.T0051.001"])
     assert taxonomy("hidden elements", ["role_change"])["atlas"] == ["AML.T0051.001", "AML.T0054", "AML.T0068"]
     assert "AML.T0068" in taxonomy("visible text", ["obfuscated:override", "obfuscated"])["atlas"]
-    assert taxonomy("served to GPTBot", ["content_differs"]) == {"owasp": [], "atlas": []}
-    assert taxonomy("visible text", ["repetition"]) == {"owasp": [], "atlas": []}
+    assert not any(taxonomy("served to GPTBot", ["content_differs"]).values())  # 1.1.0 added owasp_agentic and nist
+    assert not any(taxonomy("visible text", ["repetition"]).values())
     assert taxonomy("llms.txt", ["addressed_to_ai"])["atlas"] == ["AML.T0051.001"]
 
 

@@ -50,7 +50,13 @@ def rules_data() -> dict:
         "taxonomy": {
             "owasp": {"all_injection_findings": scan_mod.OWASP_LLM01},
             "atlas": {"all_injection_findings": scan_mod.ATLAS_INDIRECT, "role_change": scan_mod.ATLAS_JAILBREAK,
-                      "hidden_or_disguised": scan_mod.ATLAS_OBFUSCATION},
+                      "hidden_or_disguised": scan_mod.ATLAS_OBFUSCATION, "memory_planting": scan_mod.ATLAS_MEMORY},
+            "owasp_agentic": {"all_injection_findings": scan_mod.ASI_GOAL_HIJACK, "memory_planting": scan_mod.ASI_MEMORY},
+            "nist": {"all_injection_findings": scan_mod.NIST_INDIRECT, "ai_share_links": scan_mod.NIST_PROMPT},
+        },
+        "ai_share_links": {
+            "assistants": [{"host": h, "path": p or "/", "name": n} for h, p, n in scan_mod.AI_ASSISTANTS],
+            "prompt_parameters": list(scan_mod.PROMPT_PARAMS),
         },
     }
 

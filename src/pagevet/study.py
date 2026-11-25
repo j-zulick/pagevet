@@ -64,7 +64,15 @@ def summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
     refused_any = refused_all = 0
     differs: list[str] = []
     cloaked: list[str] = []
+    share_pages: list[str] = []
+    share_flagged: list[str] = []
+    assistants: Counter = Counter()
     for r in read:
+        if r.get("ai_share_links"):
+            share_pages.append(r["source"])
+            assistants.update({link["assistant"] for link in r["ai_share_links"]})
+        if any(f["channel"] == "AI share links" for f in r["findings"]):
+            share_flagged.append(r["source"])
         own = [f for f in r["findings"] if not f["channel"].startswith("served to ")]
         if own:
             top = max(own, key=lambda f: ("low", "medium", "high").index(f["severity"]) if f["severity"] in ("low", "medium", "high") else -1)
@@ -90,6 +98,9 @@ def summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
         "refused_any": refused_any, "refused_all": refused_all,
         "refusals": {a: dict(c.most_common()) for a, c in refusals.items()},
         "content_differs": sorted(set(differs)), "cloaked_instruction": sorted(set(cloaked)),
+        # 1.1.0: AI share links, counted only when the results carry them (studies run with 1.1.0 or later)
+        "share_tested": any("ai_share_links" in r for r in results), "share_pages": share_pages,
+        "share_flagged": share_flagged, "share_assistants": dict(assistants.most_common()),
     }
 
 
@@ -98,7 +109,7 @@ def _share(part: int, whole: int) -> str:
 
 
 def render(topic: str, queries: list[str], summary: dict[str, Any], *, date: str, version: str, search_count: int,
-           max_per_host: int, notes: str = "") -> str:
+           max_per_host: int, notes: str = "", via: str = "http") -> str:
     """Return the study's README."""
     s = summary
     lines = [f"# Field study: {topic} ({date})", "",
@@ -111,8 +122,10 @@ def render(topic: str, queries: list[str], summary: dict[str, Any], *, date: str
              f"- **Search results:** {search_count} URLs, saved in [`search-results.json`](search-results.json).",
              f"- **URL list:** `pagevet-discover --from-json search-results.json --max-per-host {max_per_host}` → {s['scanned']} URLs "
              "([`urls.txt`](urls.txt)).",
-             f"- **Scan:** PageVet {version}, `pagevet --urls urls.txt --fetch-css --compare-agents --format json`, robots.txt respected. "
-             "Results: [`results.json`](results.json).", "",
+             f"- **Scan:** PageVet {version}, `pagevet --urls urls.txt --fetch-css --compare-agents"
+             + (" --via firecrawl" if via == "firecrawl" else "") + " --format json`, robots.txt respected"
+             + (" (pages rendered by a self-hosted Firecrawl after their scripts ran; the crawler comparison fetches plain HTML "
+                "with each crawler's user agent)" if via == "firecrawl" else "") + ". Results: [`results.json`](results.json).", "",
              "## Results", "", "| | Pages |", "|---|---:|", f"| URLs scanned | {s['scanned']} |", f"| Read | {s['read']} |"]
     lines += [f"| Not read: {reason} | {count} |" for reason, count in s["unread"].items()]
     found = s["pages_with_findings"]
@@ -122,6 +135,11 @@ def render(topic: str, queries: list[str], summary: dict[str, Any], *, date: str
         lines += [""] + [f"  - `{p['source']}`: {p['severity']}, {p['channel']} ({', '.join(p['kinds'])})" for p in s["finding_pages"][:20]]
     else:
         lines.append(f"- None found on the {s['read']} pages read.")
+    if s.get("share_tested"):
+        lines += ["", f"**AI share links** (links or buttons that open an AI assistant with a pre-filled prompt): "
+                  f"{_share(len(s['share_pages']), s['read'])} readable pages have one"
+                  + (" (" + ", ".join(f"{a} {n}" for a, n in s["share_assistants"].items()) + " pages)" if s["share_assistants"] else "")
+                  + f"; {len(s['share_flagged'])} with a prompt that gives the assistant instructions (findings in the \"AI share links\" channel)."]
     lines += ["", f"**AI crawlers refused:** {_share(s['refused_any'], s['read'])} readable pages refuse at least one of "
               f"{', '.join(AGENTS)}; {s['refused_all']} refuse all three.", ""]
     reasons = sorted({r for a in AGENTS for r in s["refusals"][a]})
@@ -137,7 +155,8 @@ def render(topic: str, queries: list[str], summary: dict[str, Any], *, date: str
               f"- **Sample:** one day, one search engine, {s['scanned']} URLs. A field sample, not a census.",
               f"- **Unread pages:** {s['scanned'] - s['read']} pages were not read. Pages that refused PageVet were not retried through "
               "another crawler or a browser, and robots.txt was respected; hidden content on them is unmeasured.",
-              "- **Fetching:** HTML only, no JavaScript rendering; text a script inserts is not seen.",
+              ("- **Fetching:** rendered by Firecrawl, so text and buttons a script inserts are seen; the crawler comparison is plain HTML."
+               if via == "firecrawl" else "- **Fetching:** HTML only, no JavaScript rendering; text a script inserts is not seen."),
               "- **Crawler comparison:** by user agent only, from one address. Cloaking by IP address looks identical, and a crawler's "
               "real IP ranges may be treated differently from PageVet's. Rotating ads or product modules can make content differ without "
               "intent.",
@@ -166,13 +185,13 @@ def report(folder: str, version: str = "") -> str:
     search = json.loads((base / "search-results.json").read_text(encoding="utf-8"))
     text = render(meta["topic"], list(search), summarize(results), date=meta["date"], version=version or meta.get("version", __version__),
                   search_count=sum(len(v) for v in search.values()), max_per_host=meta.get("max_per_host", 0),
-                  notes=_notes(base / "README.md"))
+                  notes=_notes(base / "README.md"), via=meta.get("via", "http"))
     (base / "README.md").write_text(text, encoding="utf-8")
     return text
 
 
 def run(topic: str, search: dict[str, list[str]], out: str, *, max_per_host: int = 4, delay: float = 0.3,
-        scan_main: Callable[..., int] | None = None, **hooks: Any) -> dict[str, Any]:
+        scan_main: Callable[..., int] | None = None, via: str = "http", **hooks: Any) -> dict[str, Any]:
     """Build the list, scan it, and write the study folder; return the summary."""
     from pagevet import __version__
     from pagevet import scan as scan_mod
@@ -185,10 +204,16 @@ def run(topic: str, search: dict[str, list[str]], out: str, *, max_per_host: int
     urls = write_list(search, str(base / "urls.txt"), max_per_host)
     if not urls:
         raise ValueError("no URLs to scan")
-    (base / "study.json").write_text(json.dumps({"topic": topic, "date": time.strftime("%Y-%m-%d"), "version": __version__,
-                                                 "max_per_host": max_per_host, "delay": delay}, indent=1) + "\n", encoding="utf-8")
+    meta: dict[str, Any] = {"topic": topic, "date": time.strftime("%Y-%m-%d"), "version": __version__,
+                            "max_per_host": max_per_host, "delay": delay}
+    if via == "firecrawl":  # 1.1.0: pages rendered through the maintainer's or your Firecrawl (PAGEVET_FIRECRAWL_URL)
+        meta |= {"via": "firecrawl", "how": "Firecrawl (rendered)",
+                 "how_detail": "rendered by a self-hosted Firecrawl, robots.txt respected, linked stylesheets read; compared with "
+                               "GPTBot, ClaudeBot and PerplexityBot user agents over plain HTTP"}
+    (base / "study.json").write_text(json.dumps(meta, indent=1) + "\n", encoding="utf-8")
     code = (scan_main or scan_mod.main)(["--urls", str(base / "urls.txt"), "--fetch-css", "--compare-agents", "--delay", str(delay),
-                                         "--max-pages", str(len(urls)), "--format", "json", "--out", str(base / "results.json")], **hooks)
+                                         "--max-pages", str(len(urls)), "--format", "json", "--out", str(base / "results.json"),
+                                         *(["--via", "firecrawl"] if via == "firecrawl" else [])], **hooks)
     if code not in (0, 1, 2):
         raise RuntimeError(f"the scan ended with exit code {code}")
     report(out)
@@ -228,6 +253,8 @@ def main(argv: list[str] | None = None, **hooks: Any) -> int:
     p.add_argument("--max-per-host", type=int, default=4)
     p.add_argument("--delay", type=float, default=0.3)
     p.add_argument("--out", required=True, metavar="FOLDER")
+    p.add_argument("--via", choices=("http", "firecrawl"), default="http",
+                   help="how to read pages: plain http (default) or your Firecrawl (rendered; PAGEVET_FIRECRAWL_URL)")
     p = sub.add_parser("report", help="rewrite a study's README.md from its saved data")
     p.add_argument("folder")
     p = sub.add_parser("explore", help="write the field-study explorer: one self-contained HTML page")
@@ -269,6 +296,6 @@ def main(argv: list[str] | None = None, **hooks: Any) -> int:
         search = {q: (searxng_search(q, args.per_query, get) if get else searxng_search(q, args.per_query)) for q in queries}
     else:
         parser.error("give --from-json or --queries")
-    summary = run(args.topic, search, args.out, max_per_host=args.max_per_host, delay=args.delay, **hooks)
+    summary = run(args.topic, search, args.out, max_per_host=args.max_per_host, delay=args.delay, via=args.via, **hooks)
     sys.stderr.write(f"pagevet-study: {summary['read']} of {summary['scanned']} pages read; README in {args.out}\n")
     return 0

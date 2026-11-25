@@ -236,6 +236,10 @@
     } else if (r.f.read && r.f.read[0] !== 'read') {
       box.append(el('p', 'note', 'Not read, so not checked. This page is not counted as clean.'));
     }
+    if (r.d.share && r.d.share.length) {
+      box.append(el('h3', null, 'AI share links'));
+      r.d.share.forEach(function (x) { box.append(dl([['Opens', x.assistant], ['Button text', x.label || '(built by a script)'], ['Prompt', x.prompt]])); });
+    }
     if (r.d.crawlers.length) {
       box.append(el('h3', null, 'AI crawlers'));
       r.d.crawlers.forEach(function (c) { box.append(dl([['', c.what], ['Evidence', c.quote]])); });

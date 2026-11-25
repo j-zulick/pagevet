@@ -21,6 +21,20 @@
         },
         "additionalProperties": false
       },
+      "ai_share_links": {
+        "type": "array",
+        "description": "1.1.0+: links and buttons that open an AI assistant with a pre-filled prompt, decoded. Findings in the \"AI share links\" channel come from these prompts",
+        "items": {
+          "type": "object",
+          "required": ["assistant", "prompt", "label"],
+          "additionalProperties": false,
+          "properties": {
+            "assistant": { "type": "string" },
+            "prompt": { "type": "string" },
+            "label": { "type": "string", "description": "the link's text, aria-label or title; empty for links built by scripts" }
+          }
+        }
+      },
       "findings": {
         "type": "array",
         "items": {
@@ -45,12 +59,14 @@
             "intent": { "enum": ["", "commercial"], "description": "0.3.0+: \"commercial\" when the instruction steers what AI answers recommend, rank or cite" },
             "taxonomy": {
               "type": "object",
-              "description": "Framework IDs (0.2.0+): OWASP Top 10 for LLM Applications 2025 and MITRE ATLAS techniques; empty lists for findings that are not an injection (content_differs, fetch_differs, repetition)",
+              "description": "Framework IDs: OWASP Top 10 for LLM Applications 2025 and MITRE ATLAS techniques (0.2.0+), OWASP Top 10 for Agentic Applications 2026 and NIST AI 100-2e2025 (1.1.0+); empty lists for findings that are not an injection (content_differs, fetch_differs, repetition)",
               "required": ["owasp", "atlas"],
               "additionalProperties": false,
               "properties": {
                 "owasp": { "type": "array", "items": { "type": "string", "pattern": "^LLM\\d{2}:\\d{4}$" } },
-                "atlas": { "type": "array", "items": { "type": "string", "pattern": "^AML\\.T\\d{4}(\\.\\d{3})?$" } }
+                "atlas": { "type": "array", "items": { "type": "string", "pattern": "^AML\\.T\\d{4}(\\.\\d{3})?$" } },
+                "owasp_agentic": { "type": "array", "description": "1.1.0+: OWASP Top 10 for Agentic Applications 2026", "items": { "type": "string", "pattern": "^ASI\\d{2}$" } },
+                "nist": { "type": "array", "description": "1.1.0+: NIST AI 100-2e2025 attack IDs", "items": { "type": "string", "pattern": "^NISTAML\\.\\d{2,3}$" } }
               }
             }
           }

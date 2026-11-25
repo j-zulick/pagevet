@@ -29,7 +29,8 @@ def test_finding_and_result_fields():
     from pagevet.scan import Finding, PageResult
 
     assert [f.name for f in dataclasses.fields(Finding)] == ["channel", "kinds", "excerpt", "severity", "advice", "opinions", "taxonomy", "intent"]
-    assert [f.name for f in dataclasses.fields(PageResult)] == ["source", "findings", "error", "evidence"]
+    # 1.1.0 appended the optional ai_share_links field; the first four stay in place (docs/API.md: new optional fields)
+    assert [f.name for f in dataclasses.fields(PageResult)] == ["source", "findings", "error", "evidence", "ai_share_links"]
 
 
 def test_documented_python_names_exist():
