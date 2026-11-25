@@ -17,10 +17,10 @@ PageVet audits pages for it, and reports which of fourteen AI crawlers a page le
 
 ## Quick start
 ```bash
-uv tool install "git+https://github.com/j-zulick/pagevet@v0.3.0"    # puts pagevet on your PATH (Python 3.11–3.13)
+uv tool install "git+https://github.com/j-zulick/pagevet@v0.4.0"    # puts pagevet on your PATH (Python 3.11–3.13)
 pagevet https://example.com/pricing
 ```
-No uv? `pip install "git+https://github.com/j-zulick/pagevet@v0.3.0"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.3.0"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
+No uv? `pip install "git+https://github.com/j-zulick/pagevet@v0.4.0"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.4.0"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
 
 ```bash
 pagevet https://example.com/pricing                         # one page
@@ -38,6 +38,7 @@ pagevet whitepaper.pdf https://example.com/brochure.pdf     # PDFs (the pdf extr
 pagevet-access https://example.com/pricing                  # which AI crawlers may read it, and which actually can
 pagevet-view https://example.com/pricing --out view.html    # what a person sees next to what an AI model also reads
 pagevet-rules > rules.json                                  # every detection rule as open data
+uv run pagevet-reproduce                                    # (in a checkout) regenerate every offline published number
 ```
 
 Or with no Python at all: `docker run --rm ghcr.io/j-zulick/pagevet https://example.com/pricing` (amd64 and arm64; `--entrypoint pagevet-access` for the access check).
@@ -81,6 +82,7 @@ For fourteen AI crawlers in three groups (training: GPTBot, ClaudeBot, Google-Ex
 ```bash
 # the classifier extra: Llama Prompt Guard 2, runs locally; gated model, Llama 4 Community License
 pagevet --second-opinion promptguard https://example.com/
+pagevet --second-opinion protectai https://example.com/    # ProtectAI's open DeBERTa classifier, local (classifier extra; not gated)
 pagevet --second-opinion jev https://example.com/     # Jev; with OPENROUTER_API_KEY set, through OpenRouter (no extra install)
 PAGEVET_LLM_MODEL=anthropic/claude-... pagevet --second-opinion llm https://example.com/   # any OpenRouter model
 ```
@@ -100,7 +102,7 @@ Each page's trace holds its findings and the scores `max_severity` (0–3), `fin
 ## In CI (GitHub Action)
 ```yaml
 - uses: actions/checkout@v5
-- uses: j-zulick/pagevet@v0.3.0
+- uses: j-zulick/pagevet@v0.4.0
   id: pagevet
   with:
     urls-file: urls.txt            # or targets: "https://example.com/ page.html", or sitemap: ...
@@ -116,7 +118,7 @@ Outputs: `sarif-file`, `exit-code` (0, 1 or 2, as for the command) and `findings
 ```yaml
 repos:
   - repo: https://github.com/j-zulick/pagevet
-    rev: v0.3.0
+    rev: v0.4.0
     hooks:
       - id: pagevet      # fails a commit that adds HTML, Markdown or text with a medium or high finding
 ```
@@ -139,6 +141,8 @@ Plain scanning needs no settings. The optional sources and second opinions read 
 | `PAGEVET_FIRECRAWL_URL`, `PAGEVET_FIRECRAWL_KEY` | `--via firecrawl` |
 | `PAGEVET_CRAWL_URL`, `PAGEVET_CRAWL_TOKEN` | `--crawl` (crawlee-server) |
 | `HF_TOKEN`, `PAGEVET_PROMPTGUARD_MODEL` | `--second-opinion promptguard` (gated model: accept its license on Hugging Face first) |
+| `PAGEVET_PROTECTAI_MODEL` | `--second-opinion protectai` (default `protectai/deberta-v3-base-prompt-injection-v2`, Apache-2.0, not gated) |
+| `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_SERVICE_NAME` and other standard `OTEL_*` settings | `--otel` (the `otel` extra) |
 | `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY`, `LANGFUSE_BASE_URL` | `--langfuse` on `pagevet` and `pagevet-bench` (the `langfuse` extra) |
 | `OPENROUTER_API_KEY` | `--second-opinion jev` and `llm` through OpenRouter (billed) |
 | `PAGEVET_JEV_MODEL` | Jev model on OpenRouter (default `~typesafe/jev-latest`) |
@@ -160,6 +164,8 @@ pagevet-study compare docs/bench/*-field-* --out docs/bench/FIELD-STUDIES.md
 
 ## Output
 Text, JSON ([schema](docs/schema/report.schema.json)), CSV, a self-contained HTML report, and [SARIF 2.1.0](https://sarifweb.azurewebsites.net/) for code-scanning tools. Exit code 1 when a finding is at or above `--fail-on` (default `low`), 2 on errors with no findings.
+
+**OpenTelemetry.** `--otel [RUN]` sends one span per page (`pagevet.scan`, with `url.full` and the same numbers as the Langfuse scores) under one `pagevet.run` span, to whatever the standard `OTEL_*` settings point at (the `otel` extra). Best effort: it never changes a result.
 
 **Commercial manipulation.** A finding whose instruction steers what AI answers recommend, rank, cite or leave out, toward a product or source, is labelled `intent: "commercial"` (SARIF: `commercial-manipulation` tag).
 

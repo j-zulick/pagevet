@@ -120,3 +120,46 @@ def record_bench(report: dict, cases: str, client: Any | None = None) -> str:
             client.create_score(trace_id=trace_id, name=name, value=float(rate), data_type="NUMERIC")
     client.flush()
     return trace_id
+
+
+# --- OpenTelemetry (0.4.0) ------------------------------------------------------------------------
+# ``pip install "pagevet[otel]"`` and the standard OTEL_* variables (OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_SERVICE_NAME…).
+# One span per scanned page, named "pagevet.scan", in one trace per run, with the same numbers as the Langfuse scores
+# (``pagevet.max_severity``, ``pagevet.findings``, …) plus ``url.full`` and ``pagevet.version``. Best effort, like
+# Langfuse: a tracing failure never changes a scan's result or exit code.
+
+
+def _otel_tracer() -> Any:  # pragma: no cover - needs the optional extra
+    try:
+        from opentelemetry import trace
+        from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
+        from opentelemetry.sdk.resources import Resource
+        from opentelemetry.sdk.trace import TracerProvider
+        from opentelemetry.sdk.trace.export import BatchSpanProcessor
+    except ImportError as exc:
+        from pagevet import install_hint
+
+        raise RuntimeError(f"OpenTelemetry needs the optional extra: {install_hint('otel')}") from exc
+    provider = TracerProvider(resource=Resource.create({"service.name": os.environ.get("OTEL_SERVICE_NAME", "pagevet")}))
+    provider.add_span_processor(BatchSpanProcessor(OTLPSpanExporter()))
+    trace.set_tracer_provider(provider)
+    return trace.get_tracer("pagevet"), provider
+
+
+def record_otel(results: list[Any], run: str, version: str, tracer: Any | None = None) -> int:
+    """Emit one span per page under a ``pagevet.run`` span; return the number of page spans."""
+    provider = None
+    if tracer is None:  # pragma: no cover - needs the optional extra
+        tracer, provider = _otel_tracer()
+    sent = 0
+    with tracer.start_as_current_span("pagevet.run", attributes={"pagevet.run": run, "pagevet.version": version}):
+        for r in results:
+            attrs = {"url.full": r.source, "pagevet.version": version, "pagevet.run": run,
+                     **{f"pagevet.{k}": v for k, v in page_scores(r).items()}}
+            if r.error:
+                attrs["error.type"] = r.error[:200]
+            with tracer.start_as_current_span("pagevet.scan", attributes=attrs):
+                sent += 1
+    if provider is not None:  # pragma: no cover
+        provider.force_flush()
+    return sent

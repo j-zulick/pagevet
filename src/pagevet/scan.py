@@ -1264,6 +1264,7 @@ def main(
     robots_fetcher: Fetcher | None = None,
     pdf_fetcher: Callable[[str], bytes] | None = None,
     header_fetcher: Callable[[str], dict] | None = None,
+    otel_tracer: object | None = None,
 ) -> int:
     """Run the command line; return the exit code.
 
@@ -1292,7 +1293,7 @@ def main(
                         help="crawlee-server mode for --crawl: crawl (follow links, default), page (start URL only), sitemap, map")
     parser.add_argument("--compare-agents", action="store_true",
                         help="also fetch each URL as GPTBot, ClaudeBot and PerplexityBot and report content served only to them")
-    parser.add_argument("--second-opinion", metavar="NAME", action="append", default=[], choices=("promptguard", "jev", "llm"),
+    parser.add_argument("--second-opinion", metavar="NAME", action="append", default=[], choices=("promptguard", "protectai", "jev", "llm"),
                         help="attach an optional detector's score to low and medium findings: promptguard (local model), jev or llm (billed); repeatable")
     parser.add_argument("--langfuse", metavar="RUN", nargs="?", const="", default=None,
                         help='record each page in Langfuse as a trace, with RUN as the session (default: a dated name); '
@@ -1307,6 +1308,8 @@ def main(
                         help="with --fetch-css, also read stylesheets on other hosts (CDNs)")
     parser.add_argument("--ignore-robots", action="store_true",
                         help="fetch pages even where robots.txt disallows them (for your own site)")
+    parser.add_argument("--otel", metavar="RUN", nargs="?", const="", default=None,
+                        help='also send one OpenTelemetry span per page (OTEL_* settings, pip install "pagevet[otel]")')
     parser.add_argument("--headers", action="store_true",
                         help="also scan each URL's HTTP response headers (one extra request per page)")
     parser.add_argument("--llms-txt", action="store_true",
@@ -1461,6 +1464,18 @@ def main(
             sys.stderr.write(f"pagevet: {sent} page(s) recorded in Langfuse, session {run}\n")
         except Exception as exc:  # recording must never lose the scan
             sys.stderr.write(f"pagevet: Langfuse recording skipped: {_err(exc)}\n")
+    if args.otel is not None:
+        try:
+            import time as _time
+
+            from pagevet import __version__ as version
+            from pagevet.tracing import record_otel
+
+            run = args.otel or f"pagevet-{_time.strftime('%Y%m%d-%H%M%S')}"
+            sent = record_otel(results, run, version, otel_tracer)
+            sys.stderr.write(f"pagevet: {sent} page span(s) sent over OpenTelemetry, run {run}\n")
+        except Exception as exc:  # tracing must never lose the scan
+            sys.stderr.write(f"pagevet: OpenTelemetry skipped: {_err(exc)}\n")
     if args.format == "sarif":
         report = render_sarif(results, baseline=known is not None)
     else:
