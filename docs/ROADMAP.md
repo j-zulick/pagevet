@@ -14,9 +14,10 @@ Public versions start at 0.1.0 and count up to 1.0.
 
 **0.6.0 (released):** sandbox replay against a local model, Ollama second opinion, case studies, the classifier's false alarms on real pages, the monthly index schedule.
 
-Next, toward 1.0:
-- **Live runs** whenever keys are available: Prompt Guard 2 and Jev on BIPIA and the clean pages; a live check of the Firecrawl and crawlee-server sources, which are PageVet's rendering path (Playwright on those services; no browser is bundled); Windmill re-scans; new field studies.
-- **1.0.0** when the command line, JSON schema and Python API in [docs/API.md](API.md) are stable, every published number regenerates with one command, and the patterns-versus-model comparison is published.
+**1.0.0 (released):** stable command line, formats and Python API with semantic versioning and a contract test; offline numbers from one command; the patterns-versus-model comparison published.
+
+After 1.0:
+- **Live runs** (approved; run from the maintainer's machine): Jev and the quote-checked `llm` second opinion on BIPIA and clean pages with costs recorded, Langfuse records, and a live check of the Firecrawl and crawlee-server sources and `pagevet-view --via firecrawl`. Results go in a 1.0.x release.
 - **Packaging:** releases are on GitHub with the wheel, `explore.html` and a container image. PyPI (set `PYPI_PUBLISH=true` once a PyPI project exists) and a Marketplace listing for the Action are optional.
 
 Not planned: generating injections, or any feature aimed at defeating other detectors.

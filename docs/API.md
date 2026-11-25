@@ -5,7 +5,7 @@ PageVet's command-line tools are thin wrappers over a few functions you can call
 Install from GitHub (PageVet is not on PyPI):
 
 ```bash
-uv add "pagevet @ git+https://github.com/j-zulick/pagevet@v0.6.0"
+uv add "pagevet @ git+https://github.com/j-zulick/pagevet@v1.0.0"
 ```
 
 ## Scan a page you already have
@@ -95,8 +95,18 @@ save(out["report"])                                     # keep it as next time's
 
 ## Reports
 
-`pagevet.scan` has `render`, `render_json`, `render_csv`, `render_html` and `render_sarif`, each taking a list of `PageResult`. The JSON report validates against [`docs/schema/report.schema.json`](schema/report.schema.json).
+`pagevet.scan` has `render`, `render_json`, `render_csv`, `render_html`, `render_sarif` and `render_receipt`, each taking a list of `PageResult`. The JSON report validates against [`docs/schema/report.schema.json`](schema/report.schema.json), the receipt against [`docs/schema/receipt.schema.json`](schema/receipt.schema.json).
 
-## Stability
+## Guard, replay and the local API
 
-These functions are what the command line uses and what the tests cover. Names prefixed with `_` are internal. A change to any function above is listed in the CHANGELOG.
+`pagevet.guard.guard(source, html, policy="high")` returns `GuardResult(allowed, text, findings, removed)`. `pagevet.replay.replay(source, html, ask)` replays a page's findings against a model callable (prompt → answer) and returns a `Replay` or `None`. `pagevet.serve.handle(path, payload, fetcher)` is the request handler behind `pagevet-serve`. `pagevet.view.render_view(source, html)` returns the human-vs-model page; `pagevet.rules.rules_data()` the rules.
+
+## Stability (1.0)
+
+From 1.0.0 PageVet follows [semantic versioning](https://semver.org/). These are the public interface; a breaking change to any of them waits for 2.0.0, and anything to be removed is first deprecated for at least one minor release, with a warning on stderr and a CHANGELOG line:
+
+- **Commands and their options:** `pagevet`, `pagevet-access`, `pagevet-bench`, `pagevet-discover`, `pagevet-study`, `pagevet-mcp`, `pagevet-rules`, `pagevet-view`, `pagevet-reproduce`, `pagevet-guard`, `pagevet-serve`, `pagevet-replay`; exit codes (0 clean, 1 a finding at or above `--fail-on`, 2 errors with no findings).
+- **Formats:** the JSON report (`pagevet-report-1`), the receipt (`pagevet-receipt-1`), the rules export (`pagevet-rules-1`), SARIF 2.1.0 properties `severity`, `channel`, `kinds`, `owasp`, `atlas`, `intent`; the HTTP API's paths and JSON fields. New optional fields may be added in a minor release.
+- **Python:** the functions and dataclasses named on this page (`scan_text`, `scan_channels`, `Finding`, `PageResult`, the renderers, `guard`, `replay`, `taxonomy`, `rules_data`, `render_view`, the detectors in `pagevet.detectors`). Names prefixed with `_` are internal.
+
+Not part of the stable interface: which texts the patterns match (they improve in minor releases and every change is measured and listed in the CHANGELOG), severity wording and advice text, channel display names in text and HTML reports, and published benchmark numbers, which are tied to a version and a date.
