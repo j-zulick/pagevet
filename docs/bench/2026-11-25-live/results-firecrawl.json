@@ -1,0 +1,52 @@
+[
+  {
+    "source": "https://www.usa.gov/",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "0b113cd08121d099c6baaa761a309a38c6aae713d3f1e12d3d601638928dd48b",
+      "fetched_at": "2026-11-25T12:37:19Z",
+      "fetched_via": "firecrawl"
+    }
+  },
+  {
+    "source": "https://www.weather.gov/",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "319fb02d24a55fc11f0f4fcb726d97feb8f719c5162b3396050ed5f4537dd465",
+      "fetched_at": "2026-11-25T12:37:25Z",
+      "fetched_via": "firecrawl"
+    }
+  },
+  {
+    "source": "https://www.nps.gov/",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "d9d4c0d83b2197ac3644d54c9455e7f514153d0ebe4350755a78fa12496d6411",
+      "fetched_at": "2026-11-25T12:37:28Z",
+      "fetched_via": "firecrawl"
+    }
+  },
+  {
+    "source": "https://www.gov.uk/",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "fff852878fd370c66264bcb4f71b41c980f777345feb2707b2e974687da289e0",
+      "fetched_at": "2026-11-25T12:37:29Z",
+      "fetched_via": "firecrawl"
+    }
+  },
+  {
+    "source": "https://www.un.org/en/",
+    "findings": [],
+    "error": "",
+    "evidence": {
+      "sha256": "fd206d32edc655978dcf29caa6cc1e21742ceaaf47147840127d87f80d670e3d",
+      "fetched_at": "2026-11-25T12:37:31Z",
+      "fetched_via": "firecrawl"
+    }
+  }
+]

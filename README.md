@@ -17,10 +17,10 @@ PageVet audits pages for it, and reports which of fourteen AI crawlers a page le
 
 ## Quick start
 ```bash
-uv tool install "git+https://github.com/j-zulick/pagevet@v1.0.0"    # puts pagevet on your PATH (Python 3.11–3.13)
+uv tool install "git+https://github.com/j-zulick/pagevet@v1.0.1"    # puts pagevet on your PATH (Python 3.11–3.13)
 pagevet https://example.com/pricing
 ```
-No uv? `pip install "git+https://github.com/j-zulick/pagevet@v1.0.0"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v1.0.0"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
+No uv? `pip install "git+https://github.com/j-zulick/pagevet@v1.0.1"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v1.0.1"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
 
 ```bash
 pagevet https://example.com/pricing                         # one page
@@ -109,7 +109,7 @@ Each page's trace holds its findings and the scores `max_severity` (0–3), `fin
 ## In CI (GitHub Action)
 ```yaml
 - uses: actions/checkout@v5
-- uses: j-zulick/pagevet@v1.0.0
+- uses: j-zulick/pagevet@v1.0.1
   id: pagevet
   with:
     urls-file: urls.txt            # or targets: "https://example.com/ page.html", or sitemap: ...
@@ -125,7 +125,7 @@ Outputs: `sarif-file`, `exit-code` (0, 1 or 2, as for the command) and `findings
 ```yaml
 repos:
   - repo: https://github.com/j-zulick/pagevet
-    rev: v1.0.0
+    rev: v1.0.1
     hooks:
       - id: pagevet      # fails a commit that adds HTML, Markdown or text with a medium or high finding
 ```
