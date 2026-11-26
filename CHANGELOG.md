@@ -2,12 +2,22 @@
 
 All notable changes, newest first. Versions follow [semantic versioning](https://semver.org/); the public interface and how it may change are in [docs/API.md](docs/API.md#stability).
 
-## [Unreleased]
+## [0.2.0] - 2026-11-26
+- **Fetch chain (`--via auto`):** plain HTTP first, then your Firecrawl, then your crawlee-server, when a page fails, is blocked (401, 403, 429, 503) or is built by scripts. Each JSON result records the fetcher used, every attempt with its time and fallback reason, and the total time (`evidence.fetch`, an optional field in the report schema); `--langfuse` adds `fetch_fallbacks` and `fetch_ms` scores. Python: `chain_fetcher`, `FetchResult`, `needs_render` in `pagevet.sources`.
+- **AI crawler list as data:** the fourteen crawlers moved to `src/pagevet/data/ai_crawlers.csv` (same list, same results). `pagevet-access --crawlers FILE` checks extra crawlers in the same format; `examples/crawlers/example-ai-crawlers.csv` shows one fictional row. Python: `load_crawlers`, `register_crawlers`.
+- **Email (.eml):** `pagevet message.eml` scans the subject, text and visible HTML as visible, and hidden HTML, custom headers and PDF or Word attachments' hidden text as hidden; share links in the HTML are decoded. Python: `scan_eml`, `eml_channels`.
+- **Explorer on phones:** at 375 px the field-study explorer fits the screen; the results table scrolls inside its own box instead of pushing facet counts and columns off the page (a browser test checks 375×812).
+- No change to existing commands, options, formats or detection results.
+
 **Documentation**
 - README opens with the question it answers, two links, a screenshot and one finding.
 - README: the guard returns filtered text and a review status (no safety promise); a clean result describes the checks run; quick start leads with the offline sample and explains exit codes; container example pinned; the automotive field study is linked on the first screen.
 - Field studies: a refused crawler request is reported as "could not retrieve the page at the time"; inclusion in AI answers was not measured.
+- Releases are titled with their tag (for example `v0.2.0`).
 
+**Releases**
+- Short release notes: one sentence, three bullets naming what to try, one sentence on the assets and a link to this file; written in `docs/releases/vX.Y.Z.md` (checked for that shape) or built from the CHANGELOG section.
+- Draft first: each release is created as a hidden draft, published and marked Latest only after the wheel, source archive and `explore.html` are all attached; the image's `latest` tag moves after that (`.github/release-steps.sh`, tested offline).
 
 ## [0.1.0] - 2026-11-26
 First release. PageVet was developed from November 19 to 25, 2026; results from those development builds are labelled by date ("pre-release (2026-11-24)") in `docs/bench/`.

@@ -33,7 +33,7 @@ pagevet --mcp-tools tools.json                              # an MCP server's to
 pagevet-view https://example.com/pricing --out view.html    # what a person sees next to what an AI model also reads
 ```
 
-Optional extras (`pdf`, `ocr`, `mcp`, `langfuse`, `otel`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.1.0"`.
+Optional extras (`pdf`, `ocr`, `mcp`, `langfuse`, `otel`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.2.0"`.
 
 **Channels in detail.**
 - *Hidden elements:* `display:none`, off-screen, zero-size, transparent, scaled or clipped to nothing, near-zero font size or opacity, `aria-hidden`, `hidden`, inline, from the page's own `<style>` rules, or with `--fetch-css` from its linked stylesheets; `<template>` content; SVG `<title>` and `<desc>`. Text that only stylesheet rules hide (often dialogs and menus) is its own channel, where a reply command alone is medium.
@@ -53,6 +53,12 @@ Optional extras (`pdf`, `ocr`, `mcp`, `langfuse`, `otel`, `classifier`, `jev`) g
 
 **Re-scans.** `--baseline FILE` takes an earlier `--format json` report and keeps only findings that are not in it, so the report and the exit code cover what changed. A summary line on stderr counts new, unchanged and no-longer-found findings. Findings are matched on page, channel, kinds and excerpt. SARIF results carry a `partialFingerprints` id, and with `--baseline` a `baselineState` of `new`.
 
+## Email (.eml)
+```bash
+pagevet message.eml                                         # or a URL ending in .eml
+```
+Rated as visible: the subject, plain-text parts and the visible text of HTML parts. Rated as hidden: the HTML parts' hidden elements, comments, attributes, structured data and noscript; custom headers (`X-` headers, `Comments`, `Keywords`; routine headers such as From, Received and DKIM are skipped); and the hidden text of PDF and Word attachments. "Summarize with AI" links in the HTML are decoded like on a page. AI assistants that summarize or answer mail read all of it; the person sees only the rendered message.
+
 ## AI crawler access
 ```bash
 pagevet-access https://example.com/pricing
@@ -60,6 +66,12 @@ pagevet-access --urls urls.txt --format csv --out access.csv
 pagevet-access https://example.com/ --require search=allowed --require GPTBot=refused   # CI gate: exit 1 if not met
 ```
 For fourteen AI crawlers in three groups (training: GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, CCBot, meta-externalagent, Bytespider, Amazonbot; search: OAI-SearchBot, Claude-SearchBot, PerplexityBot; fetch on request: ChatGPT-User, Claude-User, Perplexity-User) it reports what robots.txt says, parsed per [RFC 9309](https://www.rfc-editor.org/rfc/rfc9309) (longest match, `allow` wins a tie, `*` and `$`; a 4xx robots.txt allows everything, a 5xx or unreachable one disallows everything); page signals (`robots` and per-crawler meta tags, `X-Robots-Tag`, `noai`, TDMRep reservations); whether `/llms.txt` exists; and, unless `--no-probe`, what the server answers each crawler's user agent. **A crawler robots.txt allows but the server refuses (401, 402, 403, 429, 451, 503 or a challenge page) is reported as a firewall refusal**: usually a bot-management rule nobody meant to apply to AI search. Text, JSON, CSV or Markdown. Probes send the user-agent string only, not the crawler's IP addresses.
+
+**The crawler list is data.** The fourteen crawlers live in [`src/pagevet/data/ai_crawlers.csv`](../src/pagevet/data/ai_crawlers.csv) (`token,operator,group,user_agent`). To check one more for a run, put it in a file with the same columns and pass `--crawlers FILE`; it is then checked, accepted by `--crawler` and `--require`, and listed like the others:
+```bash
+pagevet-access https://example.com/ --crawlers examples/crawlers/example-ai-crawlers.csv --require ExampleAIBot=refused
+```
+`ExampleAIBot` in that example file is fictional; it shows the format. A row with a bad token, an unknown group or a token already listed is refused with its row number.
 
 ## In the agent's path: guard, HTTP API, MCP
 **Guard.** `pagevet.guard.guard(source, html)`, `pagevet-guard` (stdin, file or URL) or `POST /guard` returns the text a person sees, with hidden channels dropped, any paragraph that still matches an instruction replaced by a marker, chat markup removed, and `allowed: false` when a finding reaches the policy (`high` by default; `medium` or `never`). It only removes text. Measured on AgentDojo's tool outputs it raised no false alarms but recognized only one of six published attack styles ([results](bench/2026-11-25-agentdojo-guard/)): it is a check for text aimed at AI in web content, not a general agent-injection defense.
@@ -79,7 +91,7 @@ Text, JSON ([schema](schema/report.schema.json)), CSV, a self-contained HTML rep
 ## CI: GitHub Action and pre-commit
 ```yaml
 - uses: actions/checkout@v5
-- uses: j-zulick/pagevet@v0.1.0
+- uses: j-zulick/pagevet@v0.2.0
   id: pagevet
   with:
     urls-file: urls.txt            # or targets: "https://example.com/ page.html", or sitemap: ...
@@ -95,7 +107,7 @@ Outputs: `sarif-file`, `exit-code` (0, 1 or 2, as for the command) and `findings
 # .pre-commit-config.yaml
 repos:
   - repo: https://github.com/j-zulick/pagevet
-    rev: v0.1.0
+    rev: v0.2.0
     hooks:
       - id: pagevet      # fails a commit that adds HTML, Markdown or text with a medium or high finding
 ```
@@ -103,9 +115,11 @@ repos:
 ## Rendering through your own scrapers
 Plain HTTP is the default and needs nothing. PageVet bundles no browser: for text added by JavaScript, it reads pages through a Firecrawl or [crawlee-server](https://github.com/j-zulick/crawlee-server) you run (both use Playwright).
 ```bash
+pagevet --via auto https://example.com/                     # plain HTTP, then Firecrawl, then crawlee-server, as needed
 pagevet --via firecrawl https://example.com/                # rendered HTML through your Firecrawl
 pagevet --crawl https://example.com/ --max-pages 25         # a crawl through your crawlee-server
 ```
+**The fetch chain (`--via auto`).** Plain HTTP goes first: it is cheapest and shows what a simple crawler sees. The page is read again through Firecrawl, then through crawlee-server (page mode, with a stored capture), when plain HTTP fails, is blocked (401, 403, 429 or 503), or returns a page built by scripts (under 200 visible characters plus an app shell or a "please enable JavaScript" notice). A service whose variables aren't set is skipped. Each JSON result says how the page was read in `evidence.fetch`: the fetcher that produced it (`how`), every attempt in order with its time and the reason it fell back, and the total time. With `--langfuse`, each page also gets `fetch_fallbacks` and `fetch_ms` scores. If no renderer succeeds, the plain-HTTP page is scanned and the attempt says so. robots.txt is checked over plain HTTP before any fetch.
 `--crawl` runs a crawl with page capture on (`--crawl-mode page` fetches only the given URL) and scans the stored raw pages; each result carries the capture id, SHA-256 and fetch time. Both are set by environment variables (see [Configuration](#configuration)). `--crawl` leaves robots.txt to crawlee-server's own setting.
 
 ## Re-scans and change alerts

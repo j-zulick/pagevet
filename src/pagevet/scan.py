@@ -1092,6 +1092,105 @@ def scan_docx(source: str, data: bytes, include_repetition: bool = False) -> Pag
     return scan_channels(source, docx_channels(data), include_repetition)
 
 
+# --- Email (.eml) -----------------------------------------------------------------------------------
+#
+# AI assistants now read mail: summarizing an inbox, drafting replies, triaging tickets. A message can carry text for
+# them that the person never sees: hidden HTML, comments, alt text, custom headers, or an attachment's hidden text.
+
+MAX_EML_BYTES = 25_000_000
+MAX_EML_PARTS = 100
+EMAIL_HEADER_CHANNEL = "email headers"
+# Headers every message has, set by mail software: not scanned. The rest (custom X- headers, Comments, Keywords) are.
+EMAIL_HEADER_SKIP = frozenset({
+    "from", "to", "cc", "bcc", "reply-to", "date", "message-id", "in-reply-to", "references", "return-path", "received",
+    "mime-version", "content-type", "content-transfer-encoding", "content-disposition", "content-id", "dkim-signature",
+    "arc-seal", "arc-message-signature", "arc-authentication-results", "authentication-results", "received-spf",
+    "x-received", "x-google-smtp-source", "x-gm-message-state", "x-mailer", "x-originating-ip", "list-unsubscribe",
+    "list-unsubscribe-post", "list-id", "feedback-id", "precedence", "delivered-to", "sender", "thread-index",
+    "thread-topic", "x-ms-exchange-organization-authas", "subject",
+})
+
+
+def _part_bytes(part: object) -> bytes:
+    try:
+        return part.get_payload(decode=True) or b""  # type: ignore[attr-defined]
+    except Exception:  # a broken part reads as empty; the rest of the message is still scanned
+        return b""
+
+
+def _attachment_channels(read: Callable[[bytes], dict[str, str]], data: bytes) -> dict[str, str]:
+    try:
+        return read(data)
+    except Exception:  # an unreadable attachment (or a missing optional extra) is skipped
+        return {}
+
+
+def is_eml_source(source: str) -> bool:
+    return bool(re.search(r"\.eml(?:$|[?#])", source, re.I))
+
+
+def eml_channels(data: bytes) -> tuple[dict[str, str], list[dict]]:
+    """Split an email (RFC 5322, .eml) into reader-visible and hidden channels; return (channels, AI share links).
+
+    Visible: the subject, plain-text parts and the visible text of HTML parts. Hidden: the HTML parts' hidden
+    elements, comments, attributes, structured data and noscript, custom headers ("email headers"), and the hidden
+    text of PDF and Word attachments. Standard library only.
+    """
+    from email import policy
+    from email.parser import BytesParser
+
+    if len(data) > MAX_EML_BYTES:
+        raise ValueError("the email is too large to read")
+    msg = BytesParser(policy=policy.default).parsebytes(data)
+    if not msg.keys():
+        raise ValueError("not an email (no headers)")
+    out: dict[str, list[str]] = {}
+    links: list[dict] = []
+
+    def add(name: str, text: str) -> None:
+        if text and text.strip():
+            out.setdefault(name, []).append(text.strip())
+
+    add("visible text", f"Subject: {msg.get('subject', '')}" if msg.get("subject") else "")
+    for key, value in msg.items():
+        if key.lower() not in EMAIL_HEADER_SKIP:
+            add(EMAIL_HEADER_CHANNEL, f"{key}: {value}")
+    for n, part in enumerate(msg.walk()):
+        if n >= MAX_EML_PARTS:
+            break
+        if part.is_multipart():
+            continue
+        ctype, filename = part.get_content_type(), (part.get_filename() or "").lower()
+        attached = part.get_content_disposition() == "attachment" or bool(filename)
+        payload = _part_bytes(part)
+        if ctype == "application/pdf" or filename.endswith(".pdf"):
+            for name, text in _attachment_channels(pdf_channels, payload).items():
+                add(name, text)
+        elif filename.endswith(".docx") or ctype == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+            for name, text in _attachment_channels(docx_channels, payload).items():
+                add(name, text)
+        elif ctype == "text/html":
+            ch = split_html(payload.decode(part.get_content_charset() or "utf-8", errors="replace"))
+            for name, texts in (("visible text", ch.visible), ("user-submitted content", ch.user_content), ("hidden elements", ch.hidden),
+                                ("hidden by stylesheet rules", ch.hidden_by_css), ("HTML comments", ch.comments),
+                                ("attributes and meta tags", ch.attributes), ("structured data (JSON-LD)", ch.structured),
+                                ("noscript", ch.noscript)):
+                add(name, "\n".join(texts))
+            links.extend(ch.share_links)
+            add(SHARE_CHANNEL, "\n".join(link["prompt"] for link in ch.share_links))
+        elif ctype == "text/plain" and not attached:
+            add("visible text", payload.decode(part.get_content_charset() or "utf-8", errors="replace"))
+    return {name: "\n".join(texts) for name, texts in out.items()}, links
+
+
+def scan_eml(source: str, data: bytes, include_repetition: bool = False) -> PageResult:
+    """Scan an email: what the reader sees (rated as visible) and what only software reads (rated as hidden)."""
+    channels, links = eml_channels(data)
+    result = scan_channels(source, channels, include_repetition)
+    result.ai_share_links = links
+    return result
+
+
 MCP_CHANNELS = ("MCP tool description", "MCP tool parameters")
 _SCHEMA_TEXT_KEYS = ("description", "title", "default", "examples", "enum", "const")
 
@@ -1351,7 +1450,7 @@ def read_evidence(source: str, body: str, via: str = "http") -> dict:
     import hashlib
     from datetime import datetime
 
-    how = ("firecrawl" if via == "firecrawl" else "http") if _is_url(source) else ("stdin" if source == "-" else "file")
+    how = (via if via in ("firecrawl", "crawlee") else "http") if _is_url(source) else ("stdin" if source == "-" else "file")
     return {"sha256": hashlib.sha256(body.encode("utf-8", "replace")).hexdigest(),
             "fetched_at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"), "fetched_via": how}
 
@@ -1647,8 +1746,9 @@ def main(
                         help="scan the URLs in FILE, one per line (# comments and blank lines skipped); repeatable")
     parser.add_argument("--max-pages", type=int, default=50, metavar="N", help="fetch at most N pages over http(s) (default: 50)")
     parser.add_argument("--delay", type=float, default=0.5, metavar="SECONDS", help="pause between page fetches (default: 0.5)")
-    parser.add_argument("--via", choices=("http", "firecrawl"), default="http",
-                        help="how to fetch URLs: plain http (default) or your Firecrawl service (rendered HTML; see pagevet.sources)")
+    parser.add_argument("--via", choices=("http", "firecrawl", "auto"), default="http",
+                        help="how to fetch URLs: plain http (default), your Firecrawl service (rendered HTML), or auto: plain http, then "
+                             "Firecrawl, then crawlee-server when a page fails, is blocked or is built by scripts (see pagevet.sources)")
     parser.add_argument("--crawl", metavar="URL", action="append", default=[],
                         help="crawl a site through your crawlee-server and scan every captured page; repeatable")
     parser.add_argument("--mcp-tools", metavar="FILE", action="append", default=[],
@@ -1727,6 +1827,14 @@ def main(
         return css
 
     results: list[PageResult] = []
+    fetch_log: dict[str, page_sources.FetchResult] = {}  # --via auto: how each page was read
+    if args.via == "auto" and fetcher is None:
+        chain = page_sources.chain_fetcher(http=lambda u: fetch(u))
+
+        def fetcher(url: str) -> str:
+            got = chain(url)
+            fetch_log[url] = got
+            return got.body
     if args.via == "firecrawl" and fetcher is None:
         try:
             fetcher = page_sources.firecrawl_fetcher()
@@ -1788,9 +1896,17 @@ def main(
                 data = (pdf_fetcher or fetch_bytes)(src) if _is_url(src) else Path(src).read_bytes()
                 results.append(_profiled(scan_docx(src, data, args.include_repetition), args.profile))
                 continue
+            if is_eml_source(src):
+                data = (pdf_fetcher or fetch_bytes)(src) if _is_url(src) else Path(src).read_bytes()
+                results.append(_profiled(scan_eml(src, data, args.include_repetition), args.profile))
+                continue
             body = read_source(src, fetcher)
             page = _profiled(scan_text(src, body, args.include_repetition, page_css(src, body) if _is_url(src) else ""), args.profile)
             page.evidence = read_evidence(src, body, args.via)
+            if src in fetch_log:  # --via auto: say which fetcher read it and why it fell back
+                got = fetch_log[src]
+                page.evidence = dict(got.evidence) if got.evidence else read_evidence(src, body, got.how)
+                page.evidence["fetch"] = got.summary()
             if args.compare_agents and _is_url(src):
                 page.findings.extend(compare_agents(src, agent_fetch or (lambda u, ua: fetch(u, user_agent=ua))))
             if args.ocr and _is_url(src) and looks_like_html(body):

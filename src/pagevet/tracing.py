@@ -13,6 +13,8 @@ Each scanned page becomes a trace with its findings as output and these scores:
     ai_crawlers_refused   AI crawler user agents that could not fetch a page a browser could (--compare-agents)
     content_differs       1 when an AI crawler was served different content
     read                  1 when the page was read, 0 when it was not (error, robots.txt)
+    fetch_fallbacks       with --via auto: fetchers tried before the one that read the page (0 = plain HTTP worked)
+    fetch_ms              with --via auto: total fetch time in milliseconds
 
 A benchmark run becomes one trace with ``catch_rate`` and ``false_alarm_rate`` as scores and the
 per-group rates as metadata. Recording is best effort: a Langfuse failure never changes a scan's
@@ -64,7 +66,16 @@ def page_scores(result: Any) -> dict[str, float]:
         "ai_crawlers_refused": float(len(refused)),
         "content_differs": 1.0 if any("content_differs" in f.kinds or "cloaked_instruction" in f.kinds for f in findings) else 0.0,
         "read": 0.0 if result.error else 1.0,
-    }
+    } | _fetch_scores(result)
+
+
+def _fetch_scores(result: Any) -> dict[str, float]:
+    """With --via auto: how many fallbacks the fetch chain needed and how long it took."""
+    fetched = (getattr(result, "evidence", None) or {}).get("fetch")
+    if not fetched:
+        return {}
+    tried = [a for a in fetched.get("attempts", []) if a.get("reason") != "not configured"]
+    return {"fetch_fallbacks": float(max(len(tried) - 1, 0)), "fetch_ms": float(fetched.get("ms", 0))}
 
 
 def _propagate(propagate: Callable[..., Any] | None, client_given: bool) -> Callable[..., Any] | None:

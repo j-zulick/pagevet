@@ -55,27 +55,58 @@ class Crawler:
     user_agent: str = ""  # empty: robots.txt control token only, never visits on its own
 
 
-CRAWLERS: tuple[Crawler, ...] = (
-    Crawler("GPTBot", "OpenAI", "training", "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.1; +https://openai.com/gptbot"),
-    Crawler("ClaudeBot", "Anthropic", "training", "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)"),
-    Crawler("Google-Extended", "Google", "training"),
-    Crawler("Applebot-Extended", "Apple", "training"),
-    Crawler("CCBot", "Common Crawl", "training", "CCBot/2.0 (https://commoncrawl.org/faq/)"),
-    Crawler("meta-externalagent", "Meta", "training", "meta-externalagent/1.1 (+https://developers.facebook.com/docs/sharing/webmasters/crawler)"),
-    Crawler("Bytespider", "ByteDance", "training",
-            "Mozilla/5.0 (Linux; Android 5.0) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; Bytespider; spider-feedback@bytedance.com)"),
-    Crawler("Amazonbot", "Amazon", "training",
-            "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Amazonbot/0.1; +https://developer.amazon.com/support/amazonbot) Chrome/119.0 Safari/537.36"),
-    Crawler("OAI-SearchBot", "OpenAI", "search", "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.0; +https://openai.com/searchbot"),
-    Crawler("Claude-SearchBot", "Anthropic", "search", "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-SearchBot/1.0; +https://www.anthropic.com)"),
-    Crawler("PerplexityBot", "Perplexity", "search",
-            "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)"),
-    Crawler("ChatGPT-User", "OpenAI", "fetch", "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot"),
-    Crawler("Claude-User", "Anthropic", "fetch", "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-User/1.0; +Claude-User@anthropic.com)"),
-    Crawler("Perplexity-User", "Perplexity", "fetch",
-            "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Perplexity-User/1.0; +https://perplexity.ai/perplexity-user)"),
-)
+CRAWLER_FILE = "data/ai_crawlers.csv"  # the crawler list is data, editable without touching code
+
+
+def load_crawlers(text: str) -> tuple[Crawler, ...]:
+    """Parse crawler rows: CSV with the header ``token,operator,group,user_agent``; lines starting with ``#`` are comments.
+
+    ``group`` is one of ``training``, ``search`` or ``fetch``; ``user_agent`` may be empty for a robots.txt control token
+    that never visits on its own (Google-Extended, Applebot-Extended). Raises ``ValueError`` naming the bad row.
+    """
+    lines = [ln for ln in text.splitlines() if ln.strip() and not ln.lstrip().startswith("#")]
+    reader = csv.DictReader(io.StringIO("\n".join(lines)))
+    if not reader.fieldnames or [f.strip() for f in reader.fieldnames][:3] != ["token", "operator", "group"]:
+        raise ValueError("crawler file needs the header: token,operator,group,user_agent")
+    out: list[Crawler] = []
+    seen: set[str] = set()
+    for n, row in enumerate(reader, 1):
+        token, operator, group = ((row.get(k) or "").strip() for k in ("token", "operator", "group"))
+        user_agent = (row.get("user_agent") or "").strip()
+        if not re.fullmatch(r"[A-Za-z0-9._-]{1,64}", token):
+            raise ValueError(f"crawler row {n}: token {token!r} must be 1-64 letters, digits, '.', '_' or '-'")
+        if group not in GROUPS:
+            raise ValueError(f"crawler row {n} ({token}): group must be one of {', '.join(GROUPS)}")
+        if not operator:
+            raise ValueError(f"crawler row {n} ({token}): operator is empty")
+        if token.lower() in seen:
+            raise ValueError(f"crawler row {n}: {token} is listed twice")
+        seen.add(token.lower())
+        out.append(Crawler(token, operator, group, user_agent))
+    if not out:
+        raise ValueError("crawler file has no rows")
+    return tuple(out)
+
+
+def _default_crawlers() -> tuple[Crawler, ...]:
+    from importlib import resources
+
+    return load_crawlers(resources.files("pagevet").joinpath(CRAWLER_FILE).read_text(encoding="utf-8"))
+
+
+CRAWLERS: tuple[Crawler, ...] = _default_crawlers()
 BY_TOKEN = {c.token.lower(): c for c in CRAWLERS}
+
+
+def register_crawlers(extra: tuple[Crawler, ...]) -> tuple[Crawler, ...]:
+    """Add crawlers to the list this process checks (``--crawlers FILE``); a token already listed is an error."""
+    global CRAWLERS, BY_TOKEN
+    clash = [c.token for c in extra if c.token.lower() in BY_TOKEN]
+    if clash:
+        raise ValueError(f"{clash[0]} is already in PageVet's crawler list")
+    CRAWLERS = CRAWLERS + tuple(extra)
+    BY_TOKEN = {c.token.lower(): c for c in CRAWLERS}
+    return CRAWLERS
 BROWSER_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 
 
@@ -450,6 +481,8 @@ def main(argv: list[str] | None = None, get: Getter | None = None) -> int:
     parser.add_argument("--out", metavar="FILE", help="write the report to FILE")
     parser.add_argument("--no-probe", action="store_true", help="read robots.txt and page signals only; don't request the page as each crawler")
     parser.add_argument("--crawler", action="append", default=[], metavar="TOKEN", help=f"only these crawlers (default: all {len(CRAWLERS)})")
+    parser.add_argument("--crawlers", dest="crawler_files", action="append", default=[], metavar="FILE",
+                        help="also check the crawlers in FILE (CSV: token,operator,group,user_agent); repeatable")
     parser.add_argument("--require", action="append", default=[], metavar="TARGET=STATE",
                         help="fail (exit 1) unless TARGET (crawler token, training, search, fetch or all) is allowed or refused")
     parser.add_argument("--timeout", type=float, default=15.0, metavar="SECONDS")
@@ -462,6 +495,9 @@ def main(argv: list[str] | None = None, get: Getter | None = None) -> int:
         parser.print_help()
         return 2
     try:
+        for path in args.crawler_files:
+            with open(path, encoding="utf-8") as fh:
+                register_crawlers(load_crawlers(fh.read()))
         requirements = [parse_requirement(r) for r in args.require]
         unknown = [t for t in args.crawler if t.lower() not in BY_TOKEN]
         if unknown:

@@ -216,3 +216,15 @@ def test_show_more_pages_the_table_but_counts_cover_everything(browser, built):
     assert page.locator("#results tbody tr").count() == 200
     assert page.get_attribute("#h-pages", "data-value") == str(explore.headline(built[1]["records"], "pages")["pages"])
     page.close()
+
+
+def test_phone_width_has_no_sideways_scroll(browser, built):
+    # At 375 px the one-column layout must fit: the 1fr track used to take the results table's min-content width
+    # (the page measured 485 px), cutting off facet counts and table columns. The table now scrolls in its own box.
+    page = browser.new_page(viewport={"width": 375, "height": 812})
+    page.route("**/*", lambda route: route.continue_() if route.request.url.startswith("file:") else route.abort())
+    page.goto(Path(built[0]).as_uri() + fragment("field", {"study": ["front brake rotor shopping pages"]}, ""))
+    page.wait_for_selector("body[data-state=ready]", timeout=20000)
+    width, inner = page.evaluate("[document.documentElement.scrollWidth, innerWidth]")
+    assert width <= inner, f"page is {width}px wide in a {inner}px viewport"
+    page.close()

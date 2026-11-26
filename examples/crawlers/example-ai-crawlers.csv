@@ -1,0 +1,4 @@
+# An example of adding your own AI crawler rows. "ExampleAIBot" is fictional: it shows the format.
+# Run: pagevet-access https://example.com/ --crawlers examples/crawlers/example-ai-crawlers.csv
+token,operator,group,user_agent
+ExampleAIBot,Example AI Inc.,search,"Mozilla/5.0 (compatible; ExampleAIBot/1.0; +https://example.com/bot)"

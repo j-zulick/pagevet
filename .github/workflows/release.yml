@@ -51,15 +51,9 @@ jobs:
           if [ "$EVENT" = "release" ]; then
             test "${TAG#v}" = "$version" || { echo "tag $TAG does not match version $version"; exit 1; }
             echo "publish=true" >> "$GITHUB_OUTPUT"
-          elif gh release view "v$version" >/dev/null 2>&1; then
-            echo "v$version is already released; nothing to do"
-            echo "publish=false" >> "$GITHUB_OUTPUT"
           else
-            notes="$RUNNER_TEMP/notes.md"
-            awk -v v="$version" 'index($0, "## [" v "]") == 1 {on = 1; next} /^## / {on = 0} on' CHANGELOG.md > "$notes"
-            test -s "$notes" || { echo "CHANGELOG.md has no section for $version"; exit 1; }
-            gh release create "v$version" --target "$GITHUB_SHA" --title "PageVet $version" --notes-file "$notes" --latest
-            echo "publish=true" >> "$GITHUB_OUTPUT"
+            # Draft first: the release stays hidden until every asset is attached (job "finalize").
+            bash .github/release-steps.sh create "$version" "$GITHUB_SHA" "v$version" >> "$GITHUB_OUTPUT"
           fi
 
   build:
@@ -119,7 +113,7 @@ jobs:
           sbom: true
           tags: |
             ${{ steps.image.outputs.name }}:${{ needs.prepare.outputs.version }}
-            ${{ steps.image.outputs.name }}:latest
+          # ":latest" moves in job "finalize", after the release is published.
 
   explorer:
     # The field-study explorer: attached to every release as explore.html. When the repository variable PAGES_PUBLISH
@@ -170,6 +164,37 @@ jobs:
           git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
             commit -qm "Explorer for PageVet $VERSION"
           git push -q "$remote" HEAD:gh-pages
+
+  finalize:
+    # Publish the draft and mark it Latest only when the wheel, source archive and explore.html are all attached, then
+    # point the image's "latest" tag at this version. Any gap leaves the release a hidden draft and this job red.
+    needs: [prepare, build, container, explorer]
+    if: needs.prepare.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
+        with:
+          persist-credentials: false
+      - name: Publish the release when every asset is there
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.prepare.outputs.version }}
+        run: bash .github/release-steps.sh finalize "$VERSION"
+      - uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550  # v4.8.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+      - name: Point the image's latest tag at this version
+        env:
+          VERSION: ${{ needs.prepare.outputs.version }}
+        run: |
+          name="ghcr.io/${GITHUB_REPOSITORY,,}"
+          docker buildx imagetools create -t "$name:latest" "$name:$VERSION"
+          test "$(docker buildx imagetools inspect "$name:latest" --format '{{json .Manifest.Digest}}')" = "$(docker buildx imagetools inspect "$name:$VERSION" --format '{{json .Manifest.Digest}}')"
 
   publish:
     needs: build

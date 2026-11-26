@@ -17,7 +17,31 @@
           "capture_id": { "type": "string", "pattern": "^[0-9a-f]{48}$" },
           "sha256": { "type": "string" },
           "fetched_at": { "type": "string" },
-          "fetched_via": { "type": "string" }
+          "fetched_via": { "type": "string" },
+          "fetch": {
+            "type": "object",
+            "description": "1.x, with --via auto: which fetcher read the page, every attempt in order, and the total time",
+            "required": ["how", "attempts", "ms"],
+            "additionalProperties": false,
+            "properties": {
+              "how": { "enum": ["http", "firecrawl", "crawlee"] },
+              "ms": { "type": "integer", "minimum": 0 },
+              "attempts": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["via", "ok", "ms", "reason"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "via": { "enum": ["http", "firecrawl", "crawlee"] },
+                    "ok": { "type": "boolean" },
+                    "ms": { "type": "integer", "minimum": 0 },
+                    "reason": { "type": "string", "description": "why this step didn't produce the page; empty for the one that did" }
+                  }
+                }
+              }
+            }
+          }
         },
         "additionalProperties": false
       },

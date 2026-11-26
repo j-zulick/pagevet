@@ -31,6 +31,10 @@ metadata"`. `scan_mcp_tools(path, text)` takes the JSON of an MCP server's `tool
 accepts `{"tools": [...]}`, a JSON-RPC response or a plain list) and returns one `PageResult` per tool, with the
 `"MCP tool description"` and `"MCP tool parameters"` channels rated as hidden. All four are in `pagevet.scan`.
 
+`scan_eml(source, data)` scans an email's bytes (0.2.0): `eml_channels(data)` returns `(channels, share_links)`, with the
+subject, plain text and visible HTML text as `"visible text"`, the HTML parts' hidden channels under the same names as a
+page's, custom headers as `"email headers"`, and PDF and Word attachments' channels.
+
 ## Scan text from your own pipeline
 
 Text that has already been extracted (a search snippet, a tool result, a document chunk) has no hidden channels left to check, so scan it as text and record that scope:
@@ -65,6 +69,19 @@ html = firecrawl_fetcher()(url)                        # PAGEVET_FIRECRAWL_URL, 
 pages, errors = crawl(url, max_pages=25, mode="page")  # crawlee-server: PAGEVET_CRAWL_URL, PAGEVET_CRAWL_TOKEN
 ```
 
+Or let the chain decide (0.2.0):
+
+```python
+from pagevet.scan import fetch
+from pagevet.sources import chain_fetcher
+
+read = chain_fetcher(http=lambda u: fetch(u, allow_private=False))   # Firecrawl and crawlee-server from the environment
+got = read(url)                                        # FetchResult(url, body, how, attempts, evidence, ms)
+print(got.how, [(a["via"], a["reason"]) for a in got.attempts])
+```
+
+`needs_render(body)` says why a plain-HTTP body should be rendered (empty when it looks complete).
+
 ## Low-level patterns
 
 ```python
@@ -87,6 +104,9 @@ for c in report.crawlers:
 
 problems = failed_requirements(report, [parse_requirement("search=allowed")])
 ```
+
+The crawler list is data (`src/pagevet/data/ai_crawlers.csv`): `load_crawlers(text)` parses rows in the same CSV format and
+`register_crawlers(rows)` adds them to the list this process checks (a token already listed is refused).
 
 `check(url, get=None, probe=True, tokens=None)`. Pass `get` (a function `(url, user_agent) -> Response`) to supply your own fetcher, for tests or to route requests through your infrastructure; `probe=False` reads robots.txt and page signals only.
 
