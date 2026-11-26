@@ -45,7 +45,7 @@ Filter these pages by outcome, crawler and finding in the [field-study explorer]
 
 <!-- notes: written by hand, kept by `pagevet-study report` -->
 - **No hidden instructions** on any of the 72 pages read, in any channel, as in the brake-rotor study.
-- **Access is the gap.** About a third of the readable pages refuse at least one AI crawler, and nearly all of those refuse all three. Most refusals are 403s; one review site answered 402 Payment Required, which looks like pay-per-crawl. An assistant using one of these crawlers answers from other pages.
+- **Access is the gap.** About a third of the readable pages refuse at least one AI crawler, and nearly all of those refuse all three. Most refusals are 403s; one review site answered 402 Payment Required, which looks like pay-per-crawl. The tested requests could not retrieve those pages at the time; inclusion in AI answers was not measured.
 - **Three pages served a crawler different text:** two retailer pages and one buying guide. Rotating product modules could explain this; the study did not check which.
 - **A search-result oddity:** some result URLs carried a `utm=airanks.net` tracking parameter, which names another site rather than the publisher. PageVet scanned the pages as listed; the tag itself is outside what PageVet checks.
 - **How it was run:** the 96 URLs were scanned in 16 parallel batches with the flags above, because the scanning machine stops any command after three minutes. At most four pages came from one site.

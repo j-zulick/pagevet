@@ -68,3 +68,5 @@ def test_readme_install_lines_point_at_this_version():
     assert pins == {f"v{pagevet.__version__}"}
     assert 'pip install "pagevet[' not in readme
     assert "pip install pagevet" not in readme
+    containers = set(re.findall(r"ghcr\.io/j-zulick/pagevet:(\d+\.\d+\.\d+)", readme))
+    assert containers <= {pagevet.__version__}

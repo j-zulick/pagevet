@@ -46,8 +46,8 @@ user agents PageVet compares (GPTBot, ClaudeBot, PerplexityBot). 22 of them refu
 | 429 Too Many Requests | 1 | 1 | 1 |
 
 The three 402 answers are all from one trade publication and look like pay-per-crawl. Each refusal is
-reported at low severity. An assistant using one of these crawlers can't quote the page, so it answers from
-other pages.
+reported at low severity. The tested request could not retrieve this page at the time. We did not measure
+inclusion in an AI answer.
 
 **Different content:** two pages from one automotive review site served ClaudeBot text that was 58% and 76%
 similar to the browser's copy. These were reported at medium severity. The difference may come from rotating

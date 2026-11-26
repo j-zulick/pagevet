@@ -13,19 +13,28 @@ PageVet audits pages for it and reports which of fourteen AI crawlers a page let
 
 **[Explore the data →](https://j-zulick.github.io/pagevet/)** every field-study page, false-alarm page and benchmark case, with filters ([how it works](docs/EXPLORER.md)).
 
+**[See the automotive field study →](https://j-zulick.github.io/pagevet/#ds=field&f.study=front+brake+rotor+shopping+pages)** In a brake-rotor shopping study, PageVet attempted 102 pages and read 67. Of those 67, 27 returned a refusal to at least one of three tested crawler user agents. Open the study to see which requests failed and what the scanner could verify ([write-up](docs/bench/2026-11-19-field-brake-rotors/README.md)).
+
 ## Install
 ```bash
 uv tool install "git+https://github.com/j-zulick/pagevet@v0.1.0"    # Python 3.11–3.13
 ```
-Or `pip install "git+https://github.com/j-zulick/pagevet@v0.1.0"` in a virtual environment, or with no Python: `docker run --rm ghcr.io/j-zulick/pagevet https://example.com/pricing`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. Optional extras (PDF, OCR, MCP and others) are listed in [docs/USAGE.md](docs/USAGE.md).
+Or `pip install "git+https://github.com/j-zulick/pagevet@v0.1.0"` in a virtual environment, or with no Python: `docker run --rm ghcr.io/j-zulick/pagevet:0.1.0 https://example.com/pricing`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. Optional extras (PDF, OCR, MCP and others) are listed in [docs/USAGE.md](docs/USAGE.md).
 
 ## Quick start
+A first result with no network, from a clone of this repository (needs [uv](https://docs.astral.sh/uv/); a wheel install doesn't include the sample):
+```bash
+git clone https://github.com/j-zulick/pagevet && cd pagevet
+uv sync --frozen
+uv run pagevet tests/fixtures/sample.html    # the sample is built to produce findings: exit 1 is expected
+```
+Then on your own pages (replace the example URL):
 ```bash
 pagevet https://example.com/pricing          # scan a page for text aimed at AI models
 pagevet-access https://example.com/pricing   # which AI crawlers may read it, and which the server actually lets in
-pagevet-guard https://example.com/pricing    # the text a person sees, safe to pass to a model; exit 1 if blocked
+pagevet-guard https://example.com/pricing    # return filtered text and a review status; exit 1 if blocked
 ```
-`pagevet` also takes URL lists, sitemaps, local HTML, PDF and Word files, and writes text, JSON, CSV, HTML or SARIF. It exits 1 when a finding reaches `--fail-on` (default `low`) and 2 on errors. Every option: [docs/USAGE.md](docs/USAGE.md).
+Exit codes: 0 when nothing reaches `--fail-on` (default `low`), 1 when a finding does, 2 on errors. A clean result describes the checks PageVet ran, not that a page is safe. `pagevet` also takes URL lists, sitemaps, local HTML, PDF and Word files, and writes text, JSON, CSV, HTML or SARIF. Every option: [docs/USAGE.md](docs/USAGE.md). No install at all: open `explore.html` from the [release](https://github.com/j-zulick/pagevet/releases).
 
 ## What it checks
 PageVet reads each channel a page offers and rates what it finds by whether a reader can see it:

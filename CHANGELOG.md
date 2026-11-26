@@ -3,6 +3,10 @@
 All notable changes, newest first. Versions follow [semantic versioning](https://semver.org/); the public interface and how it may change are in [docs/API.md](docs/API.md#stability).
 
 ## [Unreleased]
+**Documentation**
+- README: the guard returns filtered text and a review status (no safety promise); a clean result describes the checks run; quick start leads with the offline sample and explains exit codes; container example pinned; the automotive field study is linked on the first screen.
+- Field studies: a refused crawler request is reported as "could not retrieve the page at the time"; inclusion in AI answers was not measured.
+
 
 ## [0.1.0] - 2026-11-26
 First release. PageVet was developed from November 19 to 25, 2026; results from those development builds are labelled by date ("pre-release (2026-11-24)") in `docs/bench/`.
