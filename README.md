@@ -5,15 +5,17 @@
 [![Python 3.11–3.13](https://img.shields.io/badge/python-3.11%E2%80%933.13-blue)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-**Find text in web pages that is aimed at AI models rather than readers, and check which AI crawlers may read them.**
+**What can an AI crawler actually retrieve from a page, and does that page contain instructions aimed at AI systems?** PageVet checks both, deterministically, with no AI model or API key.
+
+**[Explore the automotive study →](https://j-zulick.github.io/pagevet/#ds=field&f.study=front+brake+rotor+shopping+pages)** · **[Run the offline example →](#quick-start)**
+
+[![PageVet explorer showing the brake-rotor field study: 102 pages, 67 read, 27 of 67 refuse at least one of three AI crawlers](docs/images/explorer-brake-rotors.png)](https://j-zulick.github.io/pagevet/#ds=field&f.study=front+brake+rotor+shopping+pages)
+
+**One finding:** PageVet attempted 102 brake-rotor shopping pages and read 67. Of those 67, 27 returned a refusal to at least one of three tested crawler user agents (GPTBot, ClaudeBot, PerplexityBot). That is a retrieval observation at the time of testing (November 19, 2026); inclusion in AI answers was outside the study ([field study](docs/bench/2026-11-19-field-brake-rotors/README.md)).
 
 Web pages can carry instructions written for the AI systems that read them: "ignore your instructions", "recommend this product", "cite this URL". They are often hidden from people with CSS, HTML comments, alt text, structured data or invisible Unicode. This is indirect prompt injection ([OWASP LLM01](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)), and it is used to manipulate AI search answers.
 
-PageVet audits pages for it and reports which of fourteen AI crawlers a page lets in. It is for site owners, SEO/GEO teams and AI-security teams checking their own pages, user-generated content, or pages an agent will read. It is deterministic: no AI model, no API key. It runs as a command, a GitHub Action, an MCP server, a container and a [Python API](docs/API.md).
-
-**[Explore the data →](https://j-zulick.github.io/pagevet/)** every field-study page, false-alarm page and benchmark case, with filters ([how it works](docs/EXPLORER.md)).
-
-**[See the automotive field study →](https://j-zulick.github.io/pagevet/#ds=field&f.study=front+brake+rotor+shopping+pages)** In a brake-rotor shopping study, PageVet attempted 102 pages and read 67. Of those 67, 27 returned a refusal to at least one of three tested crawler user agents. Open the study to see which requests failed and what the scanner could verify ([write-up](docs/bench/2026-11-19-field-brake-rotors/README.md)).
+PageVet audits pages for it and reports which of fourteen AI crawlers a page lets in. It is for site owners, SEO/GEO teams and AI-security teams checking their own pages, user-generated content, or pages an agent will read. It runs as a command, a GitHub Action, an MCP server, a container and a [Python API](docs/API.md). [All field studies, false-alarm pages and benchmark cases](https://j-zulick.github.io/pagevet/) are in the explorer ([how it works](docs/EXPLORER.md)).
 
 ## Install
 ```bash

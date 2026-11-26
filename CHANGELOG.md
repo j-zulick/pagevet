@@ -4,6 +4,7 @@ All notable changes, newest first. Versions follow [semantic versioning](https:/
 
 ## [Unreleased]
 **Documentation**
+- README opens with the question it answers, two links, a screenshot and one finding.
 - README: the guard returns filtered text and a review status (no safety promise); a clean result describes the checks run; quick start leads with the offline sample and explains exit codes; container example pinned; the automotive field study is linked on the first screen.
 - Field studies: a refused crawler request is reported as "could not retrieve the page at the time"; inclusion in AI answers was not measured.
 
