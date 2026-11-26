@@ -17,27 +17,20 @@ Web pages can carry instructions written for the AI systems that read them: "ign
 
 PageVet audits pages for it and reports which of twenty AI crawlers a page lets in. It is for site owners, SEO/GEO teams and AI-security teams checking their own pages, user-generated content, or pages an agent will read. It runs as a command, a GitHub Action, an MCP server, a container and a [Python API](docs/API.md). [All field studies, false-alarm pages and benchmark cases](https://j-zulick.github.io/pagevet/) are in the explorer ([how it works](docs/EXPLORER.md)).
 
-## Install
-```bash
-uv tool install "git+https://github.com/j-zulick/pagevet@v0.4.0"    # Python 3.11–3.13
-```
-Or `pip install "git+https://github.com/j-zulick/pagevet@v0.4.0"` in a virtual environment, or with no Python: `docker run --rm ghcr.io/j-zulick/pagevet:0.4.0 https://example.com/pricing`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. Optional extras (PDF, OCR, MCP and others) are listed in [docs/USAGE.md](docs/USAGE.md).
-
 ## Quick start
-A first result with no network, from a clone of this repository (needs [uv](https://docs.astral.sh/uv/); a wheel install doesn't include the sample):
+
+With [uv](https://docs.astral.sh/uv/) installed, run the example shipped with PageVet 0.4.0:
+
 ```bash
-git clone https://github.com/j-zulick/pagevet && cd pagevet
+git clone --branch v0.4.0 --depth 1 https://github.com/j-zulick/pagevet.git
+cd pagevet
 uv sync --frozen
-uv run pagevet tests/fixtures/sample.html    # the sample is built to produce findings: exit 1 is expected
+uv run --frozen pagevet tests/fixtures/sample.html
 ```
-Then on your own pages (replace the example URL):
-```bash
-pagevet https://example.com/pricing          # scan a page for text aimed at AI models
-pagevet-access https://example.com/pricing   # which AI crawlers may read it, and which the server actually lets in
-pagevet-access https://example.com/ --report visibility.html --traffic access.log   # one-page AI visibility report
-pagevet-guard https://example.com/pricing    # return filtered text and a review status; exit 1 if blocked
-```
-Exit codes: 0 when nothing reaches `--fail-on` (default `low`), 1 when a finding does, 2 on errors. A clean result describes the checks PageVet ran, not that a page is safe. `pagevet` also takes URL lists, sitemaps, local HTML, PDF, Word and email (.eml) files, and writes text, JSON, CSV, HTML or SARIF. Every option: [docs/USAGE.md](docs/USAGE.md). No install at all: open `explore.html` from the [release](https://github.com/j-zulick/pagevet/releases).
+
+The scan runs offline after setup. The sample deliberately contains findings, so exit code **1** means it worked. Each finding shows its severity and where to look in the page. For a page you control, run `uv run pagevet-access https://example.com/pricing` with your URL to compare crawler access.
+
+To browse the study offline, download and open [explore.html from the release](https://github.com/j-zulick/pagevet/releases/download/v0.4.0/explore.html). The [usage guide](docs/USAGE.md) covers standalone installation, scanning options, reports and exit codes.
 
 ## What it checks
 PageVet reads each channel a page offers and rates what it finds by whether a reader can see it:

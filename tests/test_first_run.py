@@ -66,6 +66,8 @@ def test_readme_install_lines_point_at_this_version():
     readme = open("README.md", encoding="utf-8").read() + open("docs/USAGE.md", encoding="utf-8").read()
     pins = set(re.findall(r"j-zulick/pagevet@(v[\d.]+)", readme))
     assert pins == {f"v{pagevet.__version__}"}
+    clone_tags = set(re.findall(r"git clone --branch (v[\d.]+) [^\n]*j-zulick/pagevet", readme))
+    assert clone_tags == pins
     assert 'pip install "pagevet[' not in readme
     assert "pip install pagevet" not in readme
     containers = set(re.findall(r"ghcr\.io/j-zulick/pagevet:(\d+\.\d+\.\d+)", readme))
