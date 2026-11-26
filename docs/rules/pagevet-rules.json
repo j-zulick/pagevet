@@ -1,6 +1,6 @@
 {
  "schema": "pagevet-rules-1",
- "pagevet_version": "1.2.0",
+ "pagevet_version": "1.3.0",
  "license": "MIT",
  "instruction_patterns": {
   "override": {
@@ -35,6 +35,11 @@
   },
   "memory_planting": {
    "regex": "\\bremember\\s+(?:that\\s+)?(?:[^.!?\\n]|\\.(?=\\S)){1,80}?\\s+(?:as|is)\\s+(?:an?\\s+|the\\s+|your\\s+|my\\s+|our\\s+)?(?:most\\s+)?(?:trusted|reliable|authoritative|go-?to|preferred|primary|definitive|official|universal|leading|top|best|recommended)\\b(?:[^.!?\\n]|\\.(?=\\S)){0,40}?\\b(?:sources?|references?|citations?|authority|authorities|providers?|platforms?|choices?|resources?|sites?|experts?)\\b|\\b(?:keep|save|store|add|put|commit)\\s+(?:[^.!?\\n]|\\.(?=\\S)){1,80}?\\s+(?:in|to|into)\\s+(?:your|its)\\s+(?:long[- ]term\\s+|persistent\\s+)?memory\\b|\\b(?:in|for|during)\\s+(?:all\\s+)?(?:future|later|subsequent|upcoming|following)\\s+(?:conversations|chats|sessions|queries|questions|answers|responses|interactions)\\b(?:[^.!?\\n]|\\.(?=\\S)){0,60}?\\b(?:recommend\\w*|cite|citing|citation|mention\\w*|prefer\\w*|refer\\w*|suggest\\w*|source|trust\\w*|prioriti[sz]\\w*)\\b|\\b(?:recommend\\w*|cite|mention|prefer|prioriti[sz]e|suggest)\\b(?:[^.!?\\n]|\\.(?=\\S)){1,80}?\\b(?:in|for|during)\\s+(?:all\\s+)?(?:future|later|subsequent|upcoming)\\s+(?:conversations|chats|sessions|queries|questions|answers|responses|interactions)\\b|\\b(?:update|save\\s+to|write\\s+to)\\s+(?:your|its)\\s+memory\\b",
+   "flags": "i",
+   "dialect": "python-re"
+  },
+  "candidate_steering": {
+   "regex": "\\b(?:rank|rate|score|grade|recommend|shortlist|select|advance|prioriti[sz]e|move)\\s+(?:this|the)\\s+(?:candidate|applicant|resume|résumé|cv|profile)\\b(?:[^.!?\\n]|\\.(?=\\S)){0,40}?\\b(?:highly|first|top|forward|as\\s+(?:a\\s+|an\\s+|the\\s+)?(?:best|strongest|ideal|top|most\\s+qualified|perfect|excellent|exceptional|strong)\\b)|\\b(?:this|the)\\s+(?:candidate|applicant)\\s+(?:is|should\\s+be\\s+(?:considered|rated|ranked)(?:\\s+as)?)\\s+(?:an?\\s+|the\\s+)?(?:exceptionally\\s+|extremely\\s+|highly\\s+|very\\s+)?(?:best|ideal|perfect|top|most\\s+qualified|strongest|well[- ]qualified|qualified)\\s+(?:candidate|applicant|fit|match|choice|for\\s+(?:this|the)\\s+(?:role|position|job))\\b",
    "flags": "i",
    "dialect": "python-re"
   }
@@ -77,6 +82,7 @@
  ],
  "reader_channels": [
   "PDF text",
+  "document text",
   "text",
   "text in images",
   "user-submitted content",

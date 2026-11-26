@@ -232,6 +232,19 @@ INSTRUCTION_PATTERNS: dict[str, re.Pattern[str]] = {
         r"|\b(?:update|save\s+to|write\s+to)\s+(?:your|its)\s+memory\b",
         re.I,
     ),
+    # Candidate steering (1.3.0): text in a résumé that tells an AI screener how to rate the applicant ("rank this
+    # candidate as the most qualified", "this applicant is the ideal candidate"). Hidden instructions of this kind were
+    # found in about 1% of 200,000 real résumés (Duke / USENIX Security 2026). Written from that description and new
+    # hand-written development cases (tests/test_p130.py); never tuned on a measured set.
+    "candidate_steering": re.compile(
+        r"\b(?:rank|rate|score|grade|recommend|shortlist|select|advance|prioriti[sz]e|move)\s+(?:this|the)\s+"
+        r"(?:candidate|applicant|resume|résumé|cv|profile)\b(?:[^.!?\n]|\.(?=\S)){0,40}?\b(?:highly|first|top|forward"
+        r"|as\s+(?:a\s+|an\s+|the\s+)?(?:best|strongest|ideal|top|most\s+qualified|perfect|excellent|exceptional|strong)\b)"
+        r"|\b(?:this|the)\s+(?:candidate|applicant)\s+(?:is|should\s+be\s+(?:considered|rated|ranked)(?:\s+as)?)\s+"
+        r"(?:an?\s+|the\s+)?(?:exceptionally\s+|extremely\s+|highly\s+|very\s+)?(?:best|ideal|perfect|top|most\s+qualified|strongest"
+        r"|well[- ]qualified|qualified)\s+(?:candidate|applicant|fit|match|choice|for\s+(?:this|the)\s+(?:role|position|job))\b",
+        re.I,
+    ),
 }
 
 # Commercial manipulation (0.3.0): an instruction that steers what an AI recommends, ranks, cites or leaves out,

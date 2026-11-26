@@ -23,3 +23,6 @@ Scanned again with 0.3.0 (`results-0.3.0.jsonl`): the same 1 page at medium and 
 
 ## 1.1.0 on the same saved pages
 Scanned again with 1.1.0 (`results-1.1.0.jsonl`, which also records each page's number of AI share links): the same 1 page at medium and 2 at low, with no new finding. The memory-planting rule matched nothing, and **none of the 1,052 pages has an AI share link** (a link that opens an AI assistant with a pre-filled prompt). Scan time 347 s, against 325 s and 332 s for 1.0.1 in two runs on the same machine the same evening (about 5–7% slower), single process.
+
+## 1.3.0 on the same saved pages
+Scanned again with the 1.3.0 rules (`results-1.3.0.jsonl`): the same 1 page at medium and 2 at low, with no new finding. The new candidate-steering rule matched nothing. Scan time 348 s, the same as 1.1.0 (347 s).

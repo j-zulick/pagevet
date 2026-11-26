@@ -535,6 +535,7 @@ ATLAS_INDIRECT, ATLAS_JAILBREAK, ATLAS_OBFUSCATION = "AML.T0051.001", "AML.T0054
 ATLAS_MEMORY = "AML.T0080.000"  # AI Agent Context Poisoning: Memory (1.1.0)
 # OWASP Top 10 for Agentic Applications 2026 (1.1.0): ASI01 Agent Goal Hijack, ASI06 Memory and Context Poisoning.
 ASI_GOAL_HIJACK, ASI_MEMORY = "ASI01", "ASI06"
+ASI_SUPPLY_CHAIN = "ASI04"  # agentic supply chain: a poisoned third-party tool (1.3.0, MCP tool descriptions)
 # NIST AI 100-2e2025 (1.1.0): NISTAML.015 indirect prompt injection; NISTAML.018 prompt injection (a prompt the
 # user sends, here one pre-filled by a link).
 NIST_INDIRECT, NIST_PROMPT = "NISTAML.015", "NISTAML.018"
@@ -563,6 +564,8 @@ def taxonomy(channel: str, kinds: list[str]) -> dict:
     if "memory_planting" in plain:
         atlas.append(ATLAS_MEMORY)
         agentic.append(ASI_MEMORY)
+    if channel.startswith("MCP tool"):
+        agentic.append(ASI_SUPPLY_CHAIN)
     nist = [NIST_PROMPT if channel == SHARE_CHANNEL else NIST_INDIRECT]
     return {"owasp": [OWASP_LLM01], "atlas": atlas, "owasp_agentic": agentic, "nist": nist}
 
@@ -657,7 +660,7 @@ def scan_channels(source: str, channels: dict[str, str], include_repetition: boo
 # --- Severity ------------------------------------------------------------------------------------
 
 SEVERITIES = ("low", "medium", "high")
-READER_CHANNELS = {"visible text", "user-submitted content", "text", "PDF text", "text in images"}
+READER_CHANNELS = {"visible text", "user-submitted content", "text", "PDF text", "text in images", "document text"}
 ENCODED = ("unicode_tags", "base64", "obfuscated", "rot13", "reversed")
 # Words that suggest a page is writing about injection rather than attempting it.
 DISCUSSION = re.compile(
@@ -693,6 +696,9 @@ def rate(channel: str, kinds: list[str], body: str) -> tuple[str, str]:
             return "low", "Review the repeated text in llms.txt."
         return "low", ("llms.txt addresses AI systems, as it is meant to. Check that it describes the site and its "
                        "content rather than telling assistants what to recommend, cite or leave out.")
+    if channel in MCP_CHANNELS and not only_repetition:
+        return "high", (f"An instruction in an {channel.removeprefix('MCP ')}: the model reads it when choosing and calling "
+                        "tools, and the user rarely sees it (tool poisoning). Remove it, or don't connect this server.")
     if channel == SHARE_CHANNEL:
         if set(kinds) <= {"response_directive", "repetition"}:
             return "low", ("A link or button opens an AI assistant with a pre-filled prompt that says how to word the answer. "
@@ -1003,6 +1009,138 @@ def pdf_channels(data: bytes) -> dict[str, str]:
             if value:
                 hidden.append(f"xmp {name}: {value}")
     return {"PDF text": "\n".join(pages), "PDF metadata and annotations": "\n".join(hidden)}
+
+
+MAX_DOCX_BYTES = 20_000_000
+MAX_DOCX_UNZIPPED = 60_000_000  # all XML parts together: a guard against zip bombs
+_W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
+_DOCX_PARTS = re.compile(r"^word/(?:document|header\d*|footer\d*|footnotes|endnotes)\.xml$")
+_WHITE = {"FFFFFF", "FFFFFE", "FEFEFE", "WHITE"}
+
+
+def is_docx_source(source: str) -> bool:
+    return bool(re.search(r"\.docx(?:$|[?#])", source, re.I))
+
+
+def _docx_run_hidden(rpr) -> bool:
+    """Whether a run's properties hide it from a reader: hidden (w:vanish), white text, or 2 pt or smaller."""
+    if rpr is None:
+        return False
+    vanish = rpr.find(f"{_W}vanish")
+    if vanish is not None and vanish.get(f"{_W}val", "true").lower() not in ("0", "false", "off"):
+        return True
+    color = rpr.find(f"{_W}color")
+    shading = rpr.find(f"{_W}shd")
+    if color is not None and color.get(f"{_W}val", "").upper() in _WHITE and (shading is None or shading.get(f"{_W}fill", "auto").upper() in _WHITE | {"AUTO"}):
+        return True
+    size = rpr.find(f"{_W}sz")
+    try:
+        return size is not None and int(size.get(f"{_W}val", "24")) <= 4  # half-points: 4 = 2 pt
+    except ValueError:
+        return False
+
+
+def docx_channels(data: bytes) -> dict[str, str]:
+    """Split a Word document into the text a reader sees and the text a reader doesn't (1.3.0).
+
+    "document text": body, headers, footers, footnotes and endnotes as Word shows them. "hidden document text":
+    runs marked hidden, white text on no or white shading, and text 2 pt or smaller: the usual ways to hide words
+    from a reader that text extractors and AI screeners still read (résumés with white keywords or instructions).
+    "document comments and metadata": comments and the title, subject, description and keywords. Standard library
+    and defusedxml only; no Word or LibreOffice needed.
+    """
+    import io
+    import zipfile
+
+    if not data.startswith(b"PK"):
+        raise ValueError("not a .docx file (not a zip archive)")
+    with zipfile.ZipFile(io.BytesIO(data)) as z:
+        names = z.namelist()
+        if "word/document.xml" not in names:
+            raise ValueError("not a .docx file (no word/document.xml)")
+        if sum(i.file_size for i in z.infolist() if i.filename.endswith(".xml")) > MAX_DOCX_UNZIPPED:
+            raise ValueError("the .docx file's XML is too large to read")
+        visible, hidden, other = [], [], []
+        for name in sorted(n for n in names if _DOCX_PARTS.match(n)):
+            root = safe_fromstring(z.read(name))
+            for para in root.iter(f"{_W}p"):
+                shown, concealed = [], []
+                for run in para.iter(f"{_W}r"):
+                    text = "".join(t.text or "" for t in run.iter(f"{_W}t"))
+                    if text:
+                        (concealed if _docx_run_hidden(run.find(f"{_W}rPr")) else shown).append(text)
+                if "".join(shown).strip():
+                    visible.append("".join(shown).strip())
+                if "".join(concealed).strip():
+                    hidden.append("".join(concealed).strip())
+        if "word/comments.xml" in names:
+            for comment in safe_fromstring(z.read("word/comments.xml")).iter(f"{_W}comment"):
+                text = " ".join(t.text or "" for t in comment.iter(f"{_W}t")).strip()
+                if text:
+                    other.append(f"comment: {text}")
+        if "docProps/core.xml" in names:
+            for el in safe_fromstring(z.read("docProps/core.xml")):
+                tag = el.tag.rsplit("}", 1)[-1]
+                if tag in ("title", "subject", "description", "keywords") and (el.text or "").strip():
+                    other.append(f"metadata {tag}: {el.text.strip()}")
+    return {"document text": "\n".join(visible), "hidden document text": "\n".join(hidden),
+            "document comments and metadata": "\n".join(other)}
+
+
+def scan_docx(source: str, data: bytes, include_repetition: bool = False) -> PageResult:
+    """Scan a .docx file: its visible text (rated as visible) and its hidden text, comments and metadata (as hidden)."""
+    return scan_channels(source, docx_channels(data), include_repetition)
+
+
+MCP_CHANNELS = ("MCP tool description", "MCP tool parameters")
+_SCHEMA_TEXT_KEYS = ("description", "title", "default", "examples", "enum", "const")
+
+
+def _schema_strings(node: object, out: list[str], limit: int = 2000) -> None:
+    if len(out) >= limit:
+        return
+    if isinstance(node, dict):
+        for key, value in node.items():
+            if key in _SCHEMA_TEXT_KEYS:
+                for v in value if isinstance(value, list) else [value]:
+                    if isinstance(v, str) and v.strip():
+                        out.append(v.strip())
+            _schema_strings(value, out, limit)
+    elif isinstance(node, list):
+        for item in node:
+            _schema_strings(item, out, limit)
+
+
+def mcp_tools(doc: object) -> list[dict]:
+    """The tools in an MCP ``tools/list`` result: ``{"tools": [...]}``, a JSON-RPC response, or a plain list."""
+    if isinstance(doc, dict) and isinstance(doc.get("result"), dict):
+        doc = doc["result"]
+    if isinstance(doc, dict):
+        doc = doc.get("tools", [])
+    if not isinstance(doc, list):
+        raise ValueError("expected an MCP tools/list result: {\"tools\": [...]}")
+    return [t for t in doc if isinstance(t, dict)]
+
+
+def scan_mcp_tools(path: str, text: str, include_repetition: bool = False) -> list[PageResult]:
+    """Scan every tool of an MCP server's ``tools/list`` result (1.3.0).
+
+    Tool names, descriptions and parameter descriptions are read by the model that decides which tool to call and
+    how, and are rarely shown to the user, so an instruction there (tool poisoning) is rated high.
+    """
+    results = []
+    for i, tool in enumerate(mcp_tools(json.loads(text))):
+        name = str(tool.get("name") or f"tool {i + 1}")
+        described = [str(tool.get(k)) for k in ("title", "description") if tool.get(k)]
+        annotations = tool.get("annotations")
+        if isinstance(annotations, dict) and annotations.get("title"):
+            described.append(str(annotations["title"]))
+        params: list[str] = []
+        _schema_strings(tool.get("inputSchema"), params)
+        _schema_strings(tool.get("outputSchema"), params)
+        results.append(scan_channels(f"{path}#{name}", {"MCP tool description": "\n".join(described),
+                                                        "MCP tool parameters": "\n".join(params)}, include_repetition))
+    return results
 
 
 def scan_pdf(source: str, data: bytes, include_repetition: bool = False) -> PageResult:
@@ -1463,6 +1601,17 @@ RENDERERS: dict[str, Callable[[list[PageResult]], str]] = {
 # --- Command line ------------------------------------------------------------------------------
 
 
+RESUME_ADVICE = (" In a résumé or CV: text aimed at an AI screener (hidden keywords, instructions to rank the candidate) is "
+                 "a known way to game automated screening; review the document by hand.")
+
+
+def _profiled(result: PageResult, profile: str) -> PageResult:
+    if profile == "resume":
+        for f in result.findings:
+            f.advice += RESUME_ADVICE
+    return result
+
+
 def main(
     argv: list[str] | None = None,
     fetcher: Fetcher | None = None,
@@ -1502,6 +1651,10 @@ def main(
                         help="how to fetch URLs: plain http (default) or your Firecrawl service (rendered HTML; see pagevet.sources)")
     parser.add_argument("--crawl", metavar="URL", action="append", default=[],
                         help="crawl a site through your crawlee-server and scan every captured page; repeatable")
+    parser.add_argument("--mcp-tools", metavar="FILE", action="append", default=[],
+                        help="scan the tools in an MCP server's tools/list result (JSON): names, descriptions, parameter text; repeatable")
+    parser.add_argument("--profile", choices=("web", "resume"), default="web",
+                        help="resume: for résumés and CVs (.docx, .pdf, text): fail on medium by default and give hiring advice")
     parser.add_argument("--crawl-mode", choices=("crawl", "page", "sitemap", "map"), default="crawl",
                         help="crawlee-server mode for --crawl: crawl (follow links, default), page (start URL only), sitemap, map")
     parser.add_argument("--compare-agents", action="store_true",
@@ -1540,8 +1693,10 @@ def main(
     from pagevet.config import load_env_file
 
     load_env_file()
-    if not (args.sources or args.sitemap or args.urls or args.crawl):
-        parser.error("give at least one source, --sitemap, --urls or --crawl")
+    if not (args.sources or args.sitemap or args.urls or args.crawl or args.mcp_tools):
+        parser.error("give at least one source, --sitemap, --urls, --crawl or --mcp-tools")
+    if args.profile == "resume" and "--fail-on" not in (argv if argv is not None else sys.argv[1:]):
+        args.fail_on = "medium"  # a résumé has no reason to address an AI screener at all
     if args.css_any_host and not args.fetch_css:
         parser.error("--css-any-host needs --fetch-css")
     if args.max_pages < 0 or args.delay < 0:
@@ -1597,6 +1752,11 @@ def main(
             results.extend(errs)
         except Exception as exc:  # report and keep going
             results.append(PageResult(sm, [], _err(exc)))
+    for path in args.mcp_tools:
+        try:
+            results.extend(scan_mcp_tools(path, Path(path).read_text(encoding="utf-8"), args.include_repetition))
+        except Exception as exc:  # report and keep going
+            results.append(PageResult(path, [], _err(exc)))
     for path in args.urls:
         try:
             sources.extend(read_url_list(path))
@@ -1622,10 +1782,14 @@ def main(
         try:
             if is_pdf_source(src):
                 data = (pdf_fetcher or fetch_bytes)(src) if _is_url(src) else Path(src).read_bytes()
-                results.append(scan_pdf(src, data, args.include_repetition))
+                results.append(_profiled(scan_pdf(src, data, args.include_repetition), args.profile))
+                continue
+            if is_docx_source(src):
+                data = (pdf_fetcher or fetch_bytes)(src) if _is_url(src) else Path(src).read_bytes()
+                results.append(_profiled(scan_docx(src, data, args.include_repetition), args.profile))
                 continue
             body = read_source(src, fetcher)
-            page = scan_text(src, body, args.include_repetition, page_css(src, body) if _is_url(src) else "")
+            page = _profiled(scan_text(src, body, args.include_repetition, page_css(src, body) if _is_url(src) else ""), args.profile)
             page.evidence = read_evidence(src, body, args.via)
             if args.compare_agents and _is_url(src):
                 page.findings.extend(compare_agents(src, agent_fetch or (lambda u, ua: fetch(u, user_agent=ua))))

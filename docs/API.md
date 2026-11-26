@@ -5,7 +5,7 @@ PageVet's command-line tools are thin wrappers over a few functions you can call
 Install from GitHub (PageVet is not on PyPI):
 
 ```bash
-uv add "pagevet @ git+https://github.com/j-zulick/pagevet@v1.2.0"
+uv add "pagevet @ git+https://github.com/j-zulick/pagevet@v1.3.0"
 ```
 
 ## Scan a page you already have
@@ -22,6 +22,14 @@ for f in at_least(result.findings, "medium"):
 `scan_text(source, text, include_repetition=False, css="")` splits HTML into channels (visible text, hidden elements, hidden by stylesheet rules, HTML comments, attributes and meta tags, JSON-LD, noscript), runs the patterns on each and rates every finding. Plain text is scanned as one channel. `css` is extra stylesheet text whose hiding rules apply to the whole page (see `fetch_stylesheets`).
 
 Each `Finding` has `channel`, `kinds` (pattern names such as `override`, `addressed_to_ai`, `obfuscated:override`, `split:response_directive`), `excerpt`, `severity` (`low`, `medium`, `high`), `advice`, and (0.2.0+) `taxonomy`: `{"owasp": [...], "atlas": [...]}` with OWASP Top 10 for LLM Applications 2025 and MITRE ATLAS technique IDs, and since 1.1.0 also `"owasp_agentic"` (OWASP Top 10 for Agentic Applications 2026) and `"nist"` (NIST AI 100-2e2025) (`pagevet.scan.taxonomy(channel, kinds)` computes them). Since 0.3.0 also `intent`: `"commercial"` when the instruction steers recommendations, rankings or citations, else `""`. A `PageResult` (`source`, `findings`, `error`, `evidence`) has since 1.1.0 `ai_share_links` too: one `{"assistant", "prompt", "label"}` per link or button that opens an AI assistant with a pre-filled prompt (`pagevet.scan.ai_share_prompt(url)` decodes one URL). `pagevet.view.render_view(source, html)` returns the human-vs-model view and `pagevet.rules.rules_data()` the rules as a dict.
+
+## Documents and MCP tools (1.3.0)
+
+`scan_docx(source, data)` scans a Word file's bytes: `docx_channels(data)` splits it into `"document text"` (rated as
+visible), `"hidden document text"` (runs marked hidden, white text, 2 pt or smaller) and `"document comments and
+metadata"`. `scan_mcp_tools(path, text)` takes the JSON of an MCP server's `tools/list` result (`mcp_tools(doc)`
+accepts `{"tools": [...]}`, a JSON-RPC response or a plain list) and returns one `PageResult` per tool, with the
+`"MCP tool description"` and `"MCP tool parameters"` channels rated as hidden. All four are in `pagevet.scan`.
 
 ## Scan text from your own pipeline
 
