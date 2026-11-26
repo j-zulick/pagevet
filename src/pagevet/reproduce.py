@@ -2,12 +2,15 @@
 
     uv run pagevet-reproduce                     # from a checkout of the repository
     uv run pagevet-reproduce --bipia BIPIA/benchmark
+    uv run --with agentdojo pagevet-reproduce --agentdojo     # also the guard on AgentDojo (about 25 minutes)
 
 Checks, each against the committed result it reproduces:
 - the evasion report (every technique's caught count): docs/bench/2026-11-19-evasion/, newest result;
 - the hiding-method report (every method's counts): docs/bench/2026-11-19-hiding/, newest result;
 - the rules file: docs/rules/pagevet-rules.json;
-- with ``--bipia DIR`` (a checkout of microsoft/BIPIA's ``benchmark`` folder): the BIPIA catch and false-alarm counts.
+- with ``--bipia DIR`` (a checkout of microsoft/BIPIA's ``benchmark`` folder): the BIPIA catch and false-alarm counts;
+- with ``--agentdojo`` (needs ``agentdojo`` installed): the guard's counts on AgentDojo's tool outputs (1.2.0), without
+  a model: docs/bench/2026-11-25-agentdojo-guard/results-offline.json. Timing is not compared.
 Numbers that need the network (real-page false alarms, field studies) are reproduced with the scripts named in
 each result folder's README; their saved pages are not committed. Exit code 0 when everything matches.
 """
@@ -76,11 +79,32 @@ def check_bipia(root: Path, tmp: Path, bipia: Path) -> tuple[bool, str]:
                  f"{got['false_alarm_rate'].get('hits')}/{got['false_alarm_rate'].get('n')} false alarms: " + ("match" if same else "differs")
 
 
+AGENTDOJO = "docs/bench/2026-11-25-agentdojo-guard/results-offline.json"
+
+
+def _agentdojo_counts(data: dict) -> dict:
+    return {suite: {"clean": {k: v for k, v in s["clean"].items() if k != "examples"}, "attacks": s["attacks"]}
+            for suite, s in data["suites"].items()}
+
+
+def check_agentdojo(root: Path, tmp: Path) -> tuple[bool, str]:
+    import importlib.util
+
+    if importlib.util.find_spec("agentdojo") is None:
+        return False, "AgentDojo: not installed (uv run --with agentdojo pagevet-reproduce --agentdojo)"
+    want = json.loads((root / AGENTDOJO).read_text())
+    _run(root, "docs/bench/agentdojo_guard.py", "offline", str(tmp / "agentdojo.json"), "--version", want["benchmark"].split()[-1])
+    got = json.loads((tmp / "agentdojo.json").read_text())
+    same = _agentdojo_counts(got) == _agentdojo_counts(want)
+    return same, f"AgentDojo guard ({want['benchmark']}): " + ("match" if same else "counts differ")
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="pagevet-reproduce", description="Regenerate PageVet's published offline numbers.")
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     parser.add_argument("--root", default=".", help="the repository checkout (default: current folder)")
     parser.add_argument("--bipia", metavar="DIR", help="microsoft/BIPIA benchmark folder, to reproduce the BIPIA counts too")
+    parser.add_argument("--agentdojo", action="store_true", help="also the guard's counts on AgentDojo (needs agentdojo installed)")
     args = parser.parse_args(argv)
     root = Path(args.root).resolve()
     if not (root / "docs/bench/evasion_run.py").exists():
@@ -92,6 +116,8 @@ def main(argv: list[str] | None = None) -> int:
             results.append(check())
         if args.bipia:
             results.append(check_bipia(root, tmp, Path(args.bipia).resolve()))
+        if args.agentdojo:
+            results.append(check_agentdojo(root, tmp))
     for ok, line in results:
         sys.stdout.write(("✓ " if ok else "✗ ") + line + "\n")
     return 0 if all(ok for ok, _ in results) else 1

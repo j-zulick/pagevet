@@ -5,7 +5,7 @@ PageVet's command-line tools are thin wrappers over a few functions you can call
 Install from GitHub (PageVet is not on PyPI):
 
 ```bash
-uv add "pagevet @ git+https://github.com/j-zulick/pagevet@v1.1.0"
+uv add "pagevet @ git+https://github.com/j-zulick/pagevet@v1.2.0"
 ```
 
 ## Scan a page you already have

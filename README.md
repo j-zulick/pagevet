@@ -17,10 +17,10 @@ PageVet audits pages for it, and reports which of fourteen AI crawlers a page le
 
 ## Quick start
 ```bash
-uv tool install "git+https://github.com/j-zulick/pagevet@v1.1.0"    # puts pagevet on your PATH (Python 3.11–3.13)
+uv tool install "git+https://github.com/j-zulick/pagevet@v1.2.0"    # puts pagevet on your PATH (Python 3.11–3.13)
 pagevet https://example.com/pricing
 ```
-No uv? `pip install "git+https://github.com/j-zulick/pagevet@v1.1.0"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v1.1.0"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
+No uv? `pip install "git+https://github.com/j-zulick/pagevet@v1.2.0"` in a virtual environment works too. Optional extras (`pdf`, `mcp`, `langfuse`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v1.2.0"`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. PageVet is installed from GitHub, not PyPI.
 
 ```bash
 pagevet https://example.com/pricing                         # one page
@@ -110,7 +110,7 @@ Each page's trace holds its findings and the scores `max_severity` (0–3), `fin
 ## In CI (GitHub Action)
 ```yaml
 - uses: actions/checkout@v5
-- uses: j-zulick/pagevet@v1.1.0
+- uses: j-zulick/pagevet@v1.2.0
   id: pagevet
   with:
     urls-file: urls.txt            # or targets: "https://example.com/ page.html", or sitemap: ...
@@ -126,7 +126,7 @@ Outputs: `sarif-file`, `exit-code` (0, 1 or 2, as for the command) and `findings
 ```yaml
 repos:
   - repo: https://github.com/j-zulick/pagevet
-    rev: v1.1.0
+    rev: v1.2.0
     hooks:
       - id: pagevet      # fails a commit that adds HTML, Markdown or text with a medium or high finding
 ```
@@ -176,7 +176,7 @@ Text, JSON ([schema](docs/schema/report.schema.json)), CSV, a self-contained HTM
 
 **Sandbox replay.** `pagevet-replay` asks a local model (Ollama) the same neutral question about a page twice, once with everything a model reads and once with the guarded text, and reports whether words from a finding show up only in the first answer. It replays only text PageVet found on that page and never writes or varies an injection. [Case studies](docs/CASE-STUDIES.md) write up real findings, anonymized, with data and scripts.
 
-**In the agent's path.** `pagevet.guard.guard(source, html)` (or `pagevet-guard`, or `POST /guard` on `pagevet-serve`) returns the text a person sees, with hidden channels dropped, any paragraph that still matches an instruction replaced by a marker, chat markup removed, and `allowed: false` when a finding reaches the policy (`high` by default). An n8n workflow is in [integrations/n8n/](integrations/n8n/). The guard only removes text.
+**In the agent's path.** `pagevet.guard.guard(source, html)` (or `pagevet-guard`, or `POST /guard` on `pagevet-serve`) returns the text a person sees, with hidden channels dropped, any paragraph that still matches an instruction replaced by a marker, chat markup removed, and `allowed: false` when a finding reaches the policy (`high` by default). An n8n workflow is in [integrations/n8n/](integrations/n8n/). The guard only removes text. Measured as a filter on AgentDojo's tool outputs it raised no false alarms but recognized only one of six published attack styles ([results](docs/bench/2026-11-25-agentdojo-guard/)): it is a check for text aimed at AI in web content, not a general agent-injection defense.
 
 **Receipts.** Every JSON result now records what was scanned in `evidence` (SHA-256 of the text read, time, how it was read); `--format receipt` writes a compact receipt ([schema](docs/schema/receipt.schema.json)) with the rules' SHA-256 and each finding's fingerprint, for evidence pipelines such as SourceWatch.
 
