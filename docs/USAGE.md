@@ -15,6 +15,7 @@ The [README](../README.md) covers install, quick start and what PageVet checks. 
 - [Tracing: Langfuse and OpenTelemetry](#tracing-langfuse-and-opentelemetry)
 - [Benchmark tracking: frozen sets, Langfuse experiments, Pydantic Evals](#benchmark-tracking-frozen-sets-langfuse-experiments-pydantic-evals)
 - [Red-team tools (promptfoo, garak, PyRIT)](#red-team-tools-promptfoo-garak-pyrit)
+- [Scores, OpenSearch and storage](#scores-opensearch-and-storage)
 - [Configuration](#configuration)
 - [Safety](#safety)
 
@@ -35,7 +36,7 @@ pagevet --mcp-tools tools.json                              # an MCP server's to
 pagevet-view https://example.com/pricing --out view.html    # what a person sees next to what an AI model also reads
 ```
 
-Optional extras (`pdf`, `ocr`, `mcp`, `langfuse`, `otel`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.3.0"`.
+Optional extras (`pdf`, `ocr`, `mcp`, `langfuse`, `otel`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.4.0"`.
 
 **Channels in detail.**
 - *Hidden elements:* `display:none`, off-screen, zero-size, transparent, scaled or clipped to nothing, near-zero font size or opacity, `aria-hidden`, `hidden`, inline, from the page's own `<style>` rules, or with `--fetch-css` from its linked stylesheets; `<template>` content; SVG `<title>` and `<desc>`. Text that only stylesheet rules hide (often dialogs and menus) is its own channel, where a reply command alone is medium.
@@ -85,7 +86,27 @@ python -m pagevet.traffic access.log --bots search-bots.csv                     
 ```
 **Visibility report** (`--report FILE`): one self-contained HTML page per site (no scripts, all page text escaped) with crawler access per AI crawler (robots.txt, page signals, firewall refusals), PageVet's findings and AI share links (from `--scan-report` when it covers the page, else from the page's raw HTML read once more), the site's `llms.txt` and `llms-full.txt`, the traffic tables when `--traffic` is given, and how each page was read when the scan report's pages carry fetch details (`evidence.fetch`: `how`, `attempts`, `ms`). The usual text report still goes to stdout. Pages on several sites give one file per site (`visibility-<host>.html`).
 
-**Bot traffic** (`pagevet.traffic`, or `--traffic` on the report) reads your own data: a CSV (`date,url,user_agent,hits` or `date,url,bot,hits`), a combined-format access log, or an OpenSearch export (search-API JSON or NDJSON; `--ts-field`, `--url-field`, `--ua-field`, defaults `@timestamp`, `url.path`, `user_agent.original`). For an export with other field names, run `python -m pagevet.traffic` with those options and pass its JSON report to `--traffic`. Hits are matched against PageVet's AI crawler list and, with `--bots FILE` (`--traffic-bots` on the report), an extra list in the same CSV format (`token,operator,group,user_agent`), for example search-engine crawlers: a row in an AI group (`training`, `search`, `fetch`) counts as an AI crawler, any other group as a listed bot, and every row shows its group. Client addresses are never read and query strings are dropped. The output (JSON or CSV only) has hits, first seen and last seen per page and crawler, totals per crawler, and the unknown-agent share: hits with an empty or automated-looking user agent that is on neither list, out of all hits. `--updates FILE` (`url,date`) adds AI-crawler hits in the 14 days before each content update and the 14 days from it on, with a flag when the data does not cover both windows. That is a signal, not proof: user agents can be faked and crawlers keep their own schedules. Synthetic samples: [`examples/traffic/`](../examples/traffic/).
+**Bot traffic** (`pagevet.traffic`, or `--traffic` on the report) reads your own data: a CSV (`date,url,user_agent,hits` or `date,url,bot,hits`), a combined-format access log, or an OpenSearch export (search-API JSON or NDJSON; `--ts-field`, `--url-field`, `--ua-field`, defaults `@timestamp`, `url.path`, `user_agent.original`). For an export with other field names, run `python -m pagevet.traffic` with those options and pass its JSON report to `--traffic`. Hits are matched against PageVet's AI crawler list and, with `--bots FILE` (`--traffic-bots` on the report), an extra list in the same CSV format (`token,operator,group,user_agent`), for example search-engine crawlers: a row in an AI group (`training`, `search`, `fetch`) counts as an AI crawler, any other group as a listed bot, and every row shows its group. Client addresses are never read and query strings are dropped. The output (JSON or CSV only) has hits, first seen and last seen per page and crawler, totals per crawler (with HTTP status classes, `2xx` to `5xx`, when the data has them: the access log's status, a CSV `status` column, or OpenSearch's `--status-field`, default `http.response.status_code`), and the unknown-agent share: hits with an empty or automated-looking user agent that is on neither list, out of all hits. `--updates FILE` (`url,date`) adds AI-crawler hits in the 14 days before each content update and the 14 days from it on, with a flag when the data does not cover both windows. That is a signal, not proof: user agents can be faked and crawlers keep their own schedules. Synthetic samples: [`examples/traffic/`](../examples/traffic/).
+
+Each crawler is reported on its own line, search engines included: the longest matching name wins, so `Googlebot-Image` is counted apart from `Googlebot`. Three names never appear in logs, because they are robots.txt controls rather than visitors: `Google-Extended` and `Applebot-Extended` (the pages are fetched by Googlebot and Applebot) and `Googlebot-News`. [`examples/traffic/search-bots.csv`](../examples/traffic/search-bots.csv) lists Googlebot, Googlebot-Image, Storebot-Google, bingbot, Applebot, DuckDuckBot, YandexBot, YandexImages, Baiduspider and Sogou web spider; add your own rows in the same format. To confirm a visit is real, check the client address against the operator's published ranges or reverse DNS (Google: `googlebot.com`; Apple: `applebot.apple.com`) in your own log store; PageVet never reads addresses.
+
+## Scores, OpenSearch and storage
+```bash
+python -m pagevet.scores --scan scan.json --access access.json --traffic traffic.json --out scores.json   # or --format csv
+python -m pagevet.traffic --opensearch-pipeline --bots search-bots.csv --drop-field source.ip > pipeline.json
+python integrations/supabase/load.py --traffic traffic.json --scan scan.json --access access.json --scores scores.json
+python integrations/hindsight/remember.py --scores scores.json --traffic traffic.json --bank my-site
+```
+**Scores** (`pagevet.scores`) read the JSON reports PageVet already writes (`pagevet --format json`, `pagevet-access --format json`, `python -m pagevet.traffic`); any may be left out, and a part that needs a missing report is shown as not measured.
+- *Page risk* (0–100, higher is worse): each finding's severity, plus points for a hidden channel, commercial intent, memory planting and text served differently to AI crawlers.
+- *Site AI visibility* (0–100, higher is more visible): the share of AI search and fetch crawlers allowed, no firewall refusals, `llms.txt`, and with a traffic report whether AI crawlers and search engines were seen. Training crawlers are listed but not scored.
+- *Opportunity* (0–100): the visibility gap and the worst page risk combined, to rank sites for a closer look. Each site also lists its gaps (refused AI crawlers, no `llms.txt`, allowed crawlers absent from the traffic, a high unknown-agent share, pages that needed rendering, findings).
+
+Every score carries its reasons. The weights are in [`src/pagevet/data/scoring.json`](../src/pagevet/data/scoring.json) with a `score_version` (pass your own with `--weights`); scores from different versions are not comparable. They are ranking aids from fixed rules, not detection rates.
+
+**OpenSearch ingest pipeline** (`--opensearch-pipeline`): prints an ingest pipeline that tags each log document with `bot.token`, `bot.operator`, `bot.group`, `bot.kind` and `bot.verified: false`, from the same crawler lists and the same longest-name-first matching as the traffic import, so OpenSearch and PageVet agree. `--ua-field` sets the user-agent field (a dotted name is nested; `[user_agent.original]` is one flat key), and `--drop-field` removes fields such as the client address after tagging. Install it with `PUT _ingest/pipeline/pagevet-bots`. Confirming a visit against the operator's published ranges or reverse DNS is a separate step.
+
+**Storage.** [`integrations/supabase/`](../integrations/supabase/) has the Postgres schema (bots, hits per page and bot, findings, crawler access, scores; row level security on, no client addresses) and a standard-library loader that upserts the reports through Supabase's REST API (`--dry-run` sends nothing). [`integrations/hindsight/`](../integrations/hindsight/) turns the same reports into short dated observations for a Hindsight memory bank, so an agent can recall and reflect on them later; the numbers stay in Supabase. Both are optional and outside the `pagevet` package.
 
 Each crawler is reported on its own line, search engines included: the longest matching name wins, so `Googlebot-Image` is counted apart from `Googlebot`. Three names never appear in logs, because they are robots.txt controls rather than visitors: `Google-Extended` and `Applebot-Extended` (the pages are fetched by Googlebot and Applebot) and `Googlebot-News`. [`examples/traffic/search-bots.csv`](../examples/traffic/search-bots.csv) lists Googlebot, Googlebot-Image, Storebot-Google, bingbot, Applebot, DuckDuckBot, YandexBot, YandexImages, Baiduspider and Sogou web spider; add your own rows in the same format. To confirm a visit is real, check the client address against the operator's published ranges or reverse DNS (Google: `googlebot.com`; Apple: `applebot.apple.com`) in your own log store; PageVet never reads addresses.
 
@@ -107,7 +128,7 @@ Text, JSON ([schema](schema/report.schema.json)), CSV, a self-contained HTML rep
 ## CI: GitHub Action and pre-commit
 ```yaml
 - uses: actions/checkout@v5
-- uses: j-zulick/pagevet@v0.3.0
+- uses: j-zulick/pagevet@v0.4.0
   id: pagevet
   with:
     urls-file: urls.txt            # or targets: "https://example.com/ page.html", or sitemap: ...
@@ -123,7 +144,7 @@ Outputs: `sarif-file`, `exit-code` (0, 1 or 2, as for the command) and `findings
 # .pre-commit-config.yaml
 repos:
   - repo: https://github.com/j-zulick/pagevet
-    rev: v0.3.0
+    rev: v0.4.0
     hooks:
       - id: pagevet      # fails a commit that adds HTML, Markdown or text with a medium or high finding
 ```
@@ -206,6 +227,8 @@ Plain scanning needs no settings. The optional sources and second opinions read 
 | `HF_TOKEN`, `PAGEVET_PROMPTGUARD_MODEL` | `--second-opinion promptguard` (gated model: accept its license on Hugging Face first) |
 | `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY`, `LANGFUSE_BASE_URL` | `--langfuse` on `pagevet` and `pagevet-bench` |
 | `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_SERVICE_NAME` and other standard `OTEL_*` settings | `--otel` |
+| `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` | `integrations/supabase/load.py` (server-side only: the service-role key bypasses row level security) |
+| `HINDSIGHT_URL`, `HINDSIGHT_API_KEY`, `HINDSIGHT_BANK` | `integrations/hindsight/remember.py` (the key only for Hindsight Cloud; bank default `pagevet`) |
 
 ## Safety
 Detection only: PageVet does not generate injections. Fetching follows redirects; `fetch(..., allow_private=False)` refuses hosts that resolve to non-public addresses (use it when an agent or untrusted input chooses the URL). Sitemaps are parsed with `defusedxml`, capped at 5 MB, and cannot point the scan at local files.

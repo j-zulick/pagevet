@@ -1,6 +1,6 @@
 [project]
 name = "pagevet"
-version = "0.3.0"
+version = "0.4.0"
 description = "Find text in web pages aimed at AI models (indirect prompt injection), and check which AI crawlers may read them. Severity, advice and SARIF output."
 readme = "README.md"
 license = "MIT"

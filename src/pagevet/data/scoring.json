@@ -1,0 +1,27 @@
+{
+ "score_version": "1",
+ "note": "Weights for pagevet.scores. Change score_version when a weight changes; scores from different versions are not comparable. These are ranking aids, not detection rates.",
+ "risk": {
+  "severity": {"high": 40, "medium": 15, "low": 5},
+  "hidden_channel": 10,
+  "commercial_intent": 10,
+  "memory_planting": 10,
+  "served_differently": 10,
+  "cap": 100
+ },
+ "visibility": {
+  "ai_search_allowed": 35,
+  "ai_fetch_allowed": 25,
+  "no_firewall_refusal": 10,
+  "llms_txt": 5,
+  "ai_hits_seen": 15,
+  "search_engine_hits_seen": 10
+ },
+ "opportunity": {
+  "visibility_gap": 0.6,
+  "page_risk": 0.4
+ },
+ "gaps": {
+  "unknown_agent_share": 0.2
+ }
+}
