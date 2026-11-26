@@ -1,0 +1,62 @@
+{"url": "https://www.cdc.gov/", "final_url": "https://www.cdc.gov/index.html", "outcome": "scanned", "capture_id": "c3696be574201ec450f2a3c90ecc32375b8c6c9590a15272", "sha256": "40cf086348a32b9a4b214c4ff308590205ba15a081473dbebdee84e709ef40d4", "fetched_at": "2026-11-19T07:40:28.211Z", "fetched_via": "http", "findings": []}
+{"url": "https://www.noaa.gov/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.bls.gov/", "final_url": "https://www.bls.gov/", "outcome": "scanned", "capture_id": "dea868e7e1286b31287d4f06bf5644f135ea254ee6bb7af1", "sha256": "fdb74a362548614c38910a997eb7f3c59d154ecca81c3db43748881e08211d18", "fetched_at": "2026-11-19T07:40:28.175Z", "fetched_via": "http", "findings": []}
+{"url": "https://www.ssa.gov/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.oecd.org/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.imf.org/", "outcome": "not_read", "reason": "$ is not a function"}
+{"url": "https://www.pittsburghpa.gov/", "final_url": "https://www.pittsburghpa.gov/Home", "outcome": "scanned", "capture_id": "171f8a6f00f38303285498aecb1e04265fb09e3dfbdccfc4", "sha256": "ecf295bc859501fb8d8a531c9ba7036c5aaef41788799f7e1e778504be75c52c", "fetched_at": "2026-11-19T07:40:29.046Z", "fetched_via": "http", "findings": []}
+{"url": "https://www.ox.ac.uk/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.umich.edu/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.science.org/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.plos.org/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.britannica.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.merriam-webster.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://apnews.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.axios.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.theatlantic.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.politico.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.economist.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.ft.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.bloomberg.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.inc.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.fastcompany.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.forbes.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.adobe.com/", "final_url": "https://www.adobe.com/", "outcome": "scanned", "capture_id": "6fdfdb6b65e456f67f98150d4640660bf5e44ff0a10abcf5", "sha256": "9f5cec8099e605cfc72e1cf1e6ac6888293904fda7c3fd2b71010fb63e323fb4", "fetched_at": "2026-11-19T07:40:30.708Z", "fetched_via": "http", "findings": []}
+{"url": "https://www.oracle.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.intel.com/", "final_url": "https://www.intel.com/content/www/us/en/homepage.html", "outcome": "scanned", "capture_id": "77c60189fc1ddaebb7c83e5c44132069f06b950093b46c03", "sha256": "20e8973b328366bd3a9047df3bce66fbf97007f39b6b50f60ab674731ccd82da", "fetched_at": "2026-11-19T07:40:30.825Z", "fetched_via": "http", "findings": []}
+{"url": "https://www.dell.com/", "final_url": "https://www.dell.com/en-us", "outcome": "scanned", "capture_id": "71844d289e87b9a1f8d4d8d4329e8edd0dfe1db0fdff25c5", "sha256": "d37ee23a90b29c064fadd84a0346f4b2c67b345ef15e059d808ee9c056513dd4", "fetched_at": "2026-11-19T07:40:31.299Z", "fetched_via": "http", "findings": []}
+{"url": "https://www.sony.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://searchengineland.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.bestbuy.com/", "final_url": "https://www.bestbuy.com/", "outcome": "scanned", "capture_id": "51fb29d579353fed436d00175cd76d4e562a174a4f15742c", "sha256": "0f8f08b88dab8b7968db8c76a70445bc788717ae495f80a6e1b3272fdd139eea", "fetched_at": "2026-11-19T07:40:40.424Z", "fetched_via": "http", "findings": []}
+{"url": "https://www.homedepot.com/", "final_url": "https://www.homedepot.com/", "outcome": "scanned", "capture_id": "a016e7489e0eab946092301a9890ec2f0c25c65340a2e3b6", "sha256": "0057abe3c90aff9e70ebedd2a75d1a7b29d284c31d27e6a9e9a96dd13589cc1f", "fetched_at": "2026-11-19T07:40:41.000Z", "fetched_via": "http", "findings": []}
+{"url": "https://www.rei.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.etsy.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.chewy.com/", "outcome": "not_read", "reason": "Request blocked - received 429 status code."}
+{"url": "https://www.adidas.com/us", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.uniqlo.com/us/en/", "outcome": "not_read", "reason": "Stream closed with error code NGHTTP2_INTERNAL_ERROR"}
+{"url": "https://www.newegg.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.bhphotovideo.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.lego.com/en-us", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.marriott.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.hilton.com/en/", "final_url": "https://www.hilton.com/en/", "outcome": "scanned", "capture_id": "37e6f5464bea0d24a34b63448cc963278d91a2b22d16216e", "sha256": "f81f7a6d64af459745272fbd92d4f4ba08feae17b78fb81c1a8f17a1d4b4b8be", "fetched_at": "2026-11-19T07:40:44.028Z", "fetched_via": "http", "findings": []}
+{"url": "https://www.expedia.com/", "outcome": "not_read", "reason": "Request blocked - received 429 status code."}
+{"url": "https://www.united.com/en/us", "outcome": "not_read", "reason": "Stream closed with error code NGHTTP2_INTERNAL_ERROR"}
+{"url": "https://www.amtrak.com/", "final_url": "https://www.amtrak.com/home", "outcome": "scanned", "capture_id": "a4575d9893daadf391052a3482ea31c8b4bb5ded059b02c3", "sha256": "86f315b6011034351aa7049b9bd4cee86939ec57d6ccd9d52d67a95443831f54", "fetched_at": "2026-11-19T07:40:43.158Z", "fetched_via": "http", "findings": []}
+{"url": "https://www.yelp.com/", "outcome": "not_read", "reason": "skipped_robotsTxt"}
+{"url": "https://www.mayoclinic.org/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.realtor.com/", "outcome": "not_read", "reason": "Request blocked - received 429 status code."}
+{"url": "https://www.kbb.com/", "final_url": "https://www.kbb.com/", "outcome": "scanned", "capture_id": "7e9cffb72fe077156f8713e07f67970baafa8b8b3641dc61", "sha256": "7bbfb6d5dd54b2683ba18b4a92ccc2d342a6e687db04461899e8853253772e63", "fetched_at": "2026-11-19T07:40:52.976Z", "fetched_via": "http", "findings": []}
+{"url": "https://www.edmunds.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.cars.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.carmax.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.ford.com/", "final_url": "https://www.ford.com/", "outcome": "scanned", "capture_id": "12d960093f3e8bb6dab45044fbce9deb37eed5c25fda0e6b", "sha256": "0ab0c733ef966ecdbb0b24db4ff762a5550d03a65a05421b50ecdd670928a4f8", "fetched_at": "2026-11-19T07:41:02.660Z", "fetched_via": "http", "findings": []}
+{"url": "https://www.honda.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.tesla.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.doctorswithoutborders.org/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.metmuseum.org/", "outcome": "not_read", "reason": "Request blocked - received 429 status code."}
+{"url": "https://www.moma.org/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.si.edu/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.imdb.com/", "outcome": "not_read", "reason": "skipped_robotsTxt"}
+{"url": "https://www.gutenberg.org/", "outcome": "not_read", "reason": "503 - Internal Server Error: <!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\"> <meta name=\"viewport\" content=\"width="}
+{"url": "https://www.nba.com/", "outcome": "not_read", "reason": "Request blocked - received 403 status code."}
+{"url": "https://www.olympics.com/en/", "outcome": "not_read", "reason": "Stream closed with error code NGHTTP2_INTERNAL_ERROR"}

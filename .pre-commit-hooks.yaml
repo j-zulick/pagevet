@@ -1,0 +1,12 @@
+# Use PageVet as a pre-commit hook: fail a commit that adds HTML with hidden text aimed at AI models.
+#   repos:
+#     - repo: https://github.com/j-zulick/pagevet
+#       rev: v0.1.0
+#       hooks:
+#         - id: pagevet
+- id: pagevet
+  name: pagevet (text aimed at AI models)
+  description: Scan HTML, Markdown and text files for prompt injection; fails at medium or above.
+  entry: pagevet --fail-on medium
+  language: python
+  types_or: [html, markdown, text]

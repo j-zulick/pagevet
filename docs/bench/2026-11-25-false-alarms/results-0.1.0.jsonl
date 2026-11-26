@@ -1,0 +1,1107 @@
+{"set": "clean", "url": "https://www.usa.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.irs.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.cdc.gov/", "read": false}
+{"set": "clean", "url": "https://www.nih.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.noaa.gov/", "read": false}
+{"set": "clean", "url": "https://www.weather.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.census.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.bls.gov/", "read": false}
+{"set": "clean", "url": "https://www.fda.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.epa.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.nps.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.loc.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.archives.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.usps.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.ssa.gov/", "read": false}
+{"set": "clean", "url": "https://www.gov.uk/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.canada.ca/en.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.australia.gov.au/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://europa.eu/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.who.int/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.un.org/en/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.oecd.org/", "read": false}
+{"set": "clean", "url": "https://www.worldbank.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.imf.org/", "read": false}
+{"set": "clean", "url": "https://www.pittsburghpa.gov/", "read": false}
+{"set": "clean", "url": "https://www.pa.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.nyc.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.sf.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.mit.edu/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.stanford.edu/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.harvard.edu/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.berkeley.edu/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.cmu.edu/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.pitt.edu/", "read": false}
+{"set": "clean", "url": "https://www.ox.ac.uk/", "read": false}
+{"set": "clean", "url": "https://www.cam.ac.uk/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.ucla.edu/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.umich.edu/", "read": false}
+{"set": "clean", "url": "https://www.khanacademy.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.coursera.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.edx.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://arxiv.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.nature.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.science.org/", "read": false}
+{"set": "clean", "url": "https://www.plos.org/", "read": false}
+{"set": "clean", "url": "https://www.ncbi.nlm.nih.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://scholar.archive.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.jstor.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.britannica.com/", "read": false}
+{"set": "clean", "url": "https://www.merriam-webster.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://dictionary.cambridge.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.smithsonianmag.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.nationalgeographic.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.npr.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://apnews.com/", "read": false}
+{"set": "clean", "url": "https://www.bbc.co.uk/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.theguardian.com/us", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.aljazeera.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.cbc.ca/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.abc.net.au/news", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.pbs.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.axios.com/", "read": false}
+{"set": "clean", "url": "https://www.theverge.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://arstechnica.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.wired.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://techcrunch.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.engadget.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.cnet.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.zdnet.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.pcmag.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.theatlantic.com/", "read": false}
+{"set": "clean", "url": "https://www.newyorker.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.vox.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.politico.com/", "read": false}
+{"set": "clean", "url": "https://thehill.com/", "read": false}
+{"set": "clean", "url": "https://www.post-gazette.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.wesa.fm/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.economist.com/", "read": false}
+{"set": "clean", "url": "https://www.ft.com/", "read": false}
+{"set": "clean", "url": "https://www.bloomberg.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://fortune.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.inc.com/", "read": false}
+{"set": "clean", "url": "https://www.fastcompany.com/", "read": false}
+{"set": "clean", "url": "https://hbr.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.forbes.com/", "read": false}
+{"set": "clean", "url": "https://www.python.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://docs.python.org/3/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://developer.mozilla.org/en-US/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.rust-lang.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://go.dev/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://nodejs.org/en", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.typescriptlang.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://react.dev/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://vuejs.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://svelte.dev/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.djangoproject.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://flask.palletsprojects.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://fastapi.tiangolo.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.postgresql.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.sqlite.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://redis.io/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.docker.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://kubernetes.io/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.gnu.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.kernel.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.debian.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://ubuntu.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.mozilla.org/en-US/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.apache.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.w3.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.ietf.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://letsencrypt.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.eff.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.wikipedia.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.wikimedia.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://simonwillison.net/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://jvns.ca/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://danluu.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://martinfowler.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.joelonsoftware.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://stripe.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.cloudflare.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.digitalocean.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.heroku.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.netlify.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://vercel.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://supabase.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.sentry.io/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.atlassian.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://slack.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.notion.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.dropbox.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.figma.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.canva.com/", "read": false}
+{"set": "clean", "url": "https://www.mailchimp.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.hubspot.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.salesforce.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.zoom.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.adobe.com/", "read": false}
+{"set": "clean", "url": "https://www.ibm.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.oracle.com/", "read": false}
+{"set": "clean", "url": "https://www.intel.com/", "read": false}
+{"set": "clean", "url": "https://www.nvidia.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.amd.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.dell.com/", "read": false}
+{"set": "clean", "url": "https://www.hp.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.lenovo.com/us/en/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.samsung.com/us/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.sony.com/", "read": false}
+{"set": "clean", "url": "https://www.logitech.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://moz.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://ahrefs.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.semrush.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://searchengineland.com/", "read": false}
+{"set": "clean", "url": "https://www.searchenginejournal.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://yoast.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://backlinko.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://neilpatel.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://contentmarketinginstitute.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.wordstream.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://sproutsocial.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://buffer.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.hootsuite.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.similarweb.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://developers.google.com/search", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.target.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.bestbuy.com/", "read": false}
+{"set": "clean", "url": "https://www.costco.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.homedepot.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.lowes.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.ikea.com/us/en/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.rei.com/", "read": false}
+{"set": "clean", "url": "https://www.patagonia.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.llbean.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.etsy.com/", "read": false}
+{"set": "clean", "url": "https://www.wayfair.com/", "read": false}
+{"set": "clean", "url": "https://www.chewy.com/", "read": false}
+{"set": "clean", "url": "https://www.sephora.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.nike.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.adidas.com/us", "read": false}
+{"set": "clean", "url": "https://www.gap.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.uniqlo.com/us/en/", "read": false}
+{"set": "clean", "url": "https://www.zappos.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.newegg.com/", "read": false}
+{"set": "clean", "url": "https://www.bhphotovideo.com/", "read": false}
+{"set": "clean", "url": "https://www.apple.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.microsoft.com/en-us/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.lego.com/en-us", "read": false}
+{"set": "clean", "url": "https://www.marriott.com/", "read": false}
+{"set": "clean", "url": "https://www.hilton.com/en/", "read": false}
+{"set": "clean", "url": "https://www.airbnb.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.expedia.com/", "read": false}
+{"set": "clean", "url": "https://www.tripadvisor.com/", "read": false}
+{"set": "clean", "url": "https://www.delta.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.united.com/en/us", "read": false}
+{"set": "clean", "url": "https://www.southwest.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.amtrak.com/", "read": false}
+{"set": "clean", "url": "https://www.lonelyplanet.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.allrecipes.com/", "read": false}
+{"set": "clean", "url": "https://www.seriouseats.com/", "read": false}
+{"set": "clean", "url": "https://www.bonappetit.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.kingarthurbaking.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.starbucks.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.chipotle.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.dominos.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.yelp.com/", "read": false}
+{"set": "clean", "url": "https://www.angi.com/", "read": false}
+{"set": "clean", "url": "https://www.thumbtack.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.chase.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.bankofamerica.com/", "read": false}
+{"set": "clean", "url": "https://www.wellsfargo.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.vanguard.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.fidelity.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.schwab.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.nerdwallet.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.investopedia.com/", "read": false}
+{"set": "clean", "url": "https://www.bankrate.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.mayoclinic.org/", "read": false}
+{"set": "clean", "url": "https://my.clevelandclinic.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.webmd.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://medlineplus.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.healthline.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.upmc.com/", "read": false}
+{"set": "clean", "url": "https://www.zillow.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.redfin.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.realtor.com/", "read": false}
+{"set": "clean", "url": "https://www.trulia.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.kbb.com/", "read": false}
+{"set": "clean", "url": "https://www.edmunds.com/", "read": false}
+{"set": "clean", "url": "https://www.cars.com/", "read": false}
+{"set": "clean", "url": "https://www.carmax.com/", "read": false}
+{"set": "clean", "url": "https://www.toyota.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.ford.com/", "read": false}
+{"set": "clean", "url": "https://www.honda.com/", "read": false}
+{"set": "clean", "url": "https://www.tesla.com/", "read": false}
+{"set": "clean", "url": "https://www.caranddriver.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.motortrend.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.redcross.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.habitat.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.doctorswithoutborders.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.metmuseum.org/", "read": false}
+{"set": "clean", "url": "https://www.moma.org/", "read": false}
+{"set": "clean", "url": "https://www.carnegiemuseums.org/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.si.edu/", "read": false}
+{"set": "clean", "url": "https://www.imdb.com/", "read": false}
+{"set": "clean", "url": "https://www.rottentomatoes.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.goodreads.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.gutenberg.org/", "read": false}
+{"set": "clean", "url": "https://www.ted.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.nasa.gov/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.espn.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.nfl.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.mlb.com/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "clean", "url": "https://www.nba.com/", "read": false}
+{"set": "clean", "url": "https://www.olympics.com/en/", "read": false}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Merchants'_Academy", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Agios_Dimitrios,_Kozani", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Endless_knot", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Jack_Elliott_(racing_journalist)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/1946_NCAA_golf_championship", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Las_Navas", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/List_of_Australian_women_composers", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Napal_Licin", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Barg-i_Matal_District", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Funeral_March_of_a_Marionette", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Rolando_Acosta", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Illa_de_Tagomago", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Gaia_III:_Atlantia", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Lionel_Maddison", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Nevitta", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Black_River_(Abitibi_River_tributary)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/2010_Clare_Senior_Hurling_Championship", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Peter_Imlay", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/1989–90_New_York_Rangers_season", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Georgian_nationality_law", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Jean-Luc_Rougé", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Joe_Hisaishi_discography", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Pierre_Gendron_(producer)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Empire_Arts_Center", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Harry_Elliott_(New_Zealand_cricketer)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/The_Novel:_An_Introduction", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Kassim_Parekh", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Sovetsky,_Mari_El_Republic", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Hausdorf", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://en.wikipedia.org/wiki/Insulochamus_nicoletii", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50552424", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50547374", "read": true, "findings_0.1.0": [{"channel": "user-submitted content", "kinds": ["addressed_to_ai"], "severity": "low"}], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50556533", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50554038", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50553843", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50548021", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50547620", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50518303", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50556287", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50553225", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50550415", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50551046", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50530088", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50525260", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50542441", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50519778", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50546914", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50532515", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50523168", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50554935", "read": false}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50547980", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50554009", "read": false}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50547583", "read": false}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50548161", "read": true, "findings_0.1.0": [{"channel": "user-submitted content", "kinds": ["addressed_to_ai"], "severity": "medium"}], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50549493", "read": false}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50554045", "read": false}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50523377", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50554374", "read": false}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50510385", "read": false}
+{"set": "fresh", "url": "https://news.ycombinator.com/item?id=50547777", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/80017580/google-adsense-application-rejected-with-only-generic-meet-program-policies-me", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/53336086/where-can-i-find-the-ports-of-all-running-pm2-apps", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/77286160/how-to-get-page-title-in-nuxt-3", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/66327836/curl-command-failing-ssl-certificate-exit-code-60-inside-docker-container-ru", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/32712729/android-get-imageview-xy-coordinates", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/3814884/combobox-like-ie8-address-bar-how-to", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/93879/hresult-0x80131040-the-located-assemblys-manifest-definition-does-not-match-t", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/80017579/how-to-convert-avif-images-to-jpg-in-the-browser-using-javascript-canvas-api-wit", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/63980098/how-to-make-a-mongodb-upsert-truly-idempotent", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/23335524/liquibase-error-relation-databasechangelog-already-exists", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/80017539/generate-matrix-indexed-by-combinations", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/80016897/how-to-display-a-street-map-when-using-the-leaflet-api", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/79925688/how-can-i-add-methods-to-a-frozen-pre-compiled-module", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/80017570/why-does-upsert-generate-a-new-primary-key-when-allow-insert-auto-id-is-enabled", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/80017573/google-maps-advancedmarkerelement-not-displaying-markers-with-the-new-maps-javas", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/67729376/how-long-does-it-usually-take-for-google-to-review-an-app-in-closed-testing", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/58884550/is-it-possible-to-have-ub-by-default", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/80017422/how-to-get-the-right-font-size-drawing-the-text", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/66859800/bin-bash-warning-setlocale-lc-all-cannot-change-locale-en-us-utf-8", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/80017542/how-to-determine-number-of-epochs-and-batch-size-for-yolov11-training", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/34540017/what-does-clf-mean-in-machine-learning", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/28506556/phpmyadmin-export-does-not-include-primary-key-as-mysqldump", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/1216114/how-can-i-make-a-div-stick-to-the-top-of-the-screen-once-its-been-scrolled-to", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/80006883/how-to-call-an-apex-rest-resource-from-a-salesforce-hosted-internal-react-mult", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/80017545/is-there-an-official-api-to-programmatically-export-a-users-own-whatsapp-chat-h", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/48063256/grpc-deadline-exceeded-even-that-the-server-is-up-and", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/42120501/boostrap-select-error-uncaught-typeerror-cannot-read-property-3", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/22105120/iphone-lock-portrait-orientation", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/14484657/how-do-i-design-a-generic-response-builder-restful-web-service-using-spring-mv", "read": false}
+{"set": "fresh", "url": "https://stackoverflow.com/questions/33437909/how-to-read-value-from-daterangepicker", "read": false}
+{"set": "fresh", "url": "https://discuss.python.org/t/checking-if-stdin-is-readable-on-windows/109790", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://discuss.python.org/t/pythonic-getting-and-setting-for-externaly-configurable-attributes/110187", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://discuss.python.org/t/a-dict-json-export-for-traceback-tracebackexception/110179", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://discuss.python.org/t/read-pdf-file-from-specific-line-number/110181", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://discuss.python.org/t/os-pidfd-open-missing/110186", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://discuss.python.org/t/allow-defining-a-function-globally-within-a-local-scope/109916", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://discuss.python.org/t/path-towards-manylinux-pypi-support-for-loongarch64/105548", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://discuss.python.org/t/my-browser-automation-agent-is-stuck-in-an-endless-loop-and-throwing-pydantic-errors-how-do-i-actually-fix-this/109730", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://discuss.python.org/t/new-python-package/109765", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://discuss.python.org/t/bug-in-tokenizer-comments/110169", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://discuss.python.org/t/getting-argparse-to-manage-arguments-with-multiple-names/109557", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://discuss.python.org/t/syntax-to-declare-implementation-of-structural-types-without-inheritance/110143", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://discuss.python.org/t/correct-type-annotations-for-sourcefileloader-source-to-code/110176", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://discuss.python.org/t/pep-847-problem-details-for-the-simple-repository-api/108996", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://discuss.python.org/t/collections-mapping-s-get-x-v-s-getitem-x/110126", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://meta.discourse.org/t/new-to-discourse-start-here/1", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://meta.discourse.org/t/determine-ruby-version-in-images-regular-expression-cve/416212", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://meta.discourse.org/t/how-to-show-a-download-count-on-files-uploaded-to-a-post-pro-hosting-theme-component-only/417810", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://meta.discourse.org/t/rebuild-app-yml/417808", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://meta.discourse.org/t/ios-image-upload-problems/414446", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://meta.discourse.org/t/nginx2root-http2-is-on-by-default-in-the-standard-container-whats-the-plan/417762", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://meta.discourse.org/t/introducing-nested-replies/402812", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://meta.discourse.org/t/ai-translations-for-everyone/409364", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://meta.discourse.org/t/allow-post-type-to-be-changed-from-event-to-topic-on-admin-end/417800", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://meta.discourse.org/t/create-new-post-is-defaulting-to-create-event/417785", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://meta.discourse.org/t/discourse-prometheus/72666", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://meta.discourse.org/t/kanban-v2/407811", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://meta.discourse.org/t/built-in-mcp-server/411504", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://meta.discourse.org/t/ios-users-still-having-problems-with-image-uploads/417790", "read": false}
+{"set": "fresh", "url": "https://meta.discourse.org/t/discourse-community-hangout-fortnightly/414879", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.bbc.co.uk/news", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.bbc.co.uk/news/videos/cm4gn31yn0x9o?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.bbc.co.uk/news/articles/c6x2eve321jno?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.bbc.co.uk/news/articles/cw987ynpd0n1o?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.bbc.co.uk/news/articles/cmgrenln8p29o?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.bbc.co.uk/news/articles/c6742m39xgzxo?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.bbc.co.uk/news/articles/cj4gnpzll020o?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.bbc.co.uk/news/articles/c6e9kn15z9d7o?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.bbc.co.uk/news/articles/c5dj1dkwzvzwo?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.bbc.co.uk/news/videos/c8p3vw4q6nzzo?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.bbc.co.uk/news/articles/cr9d75we51j1o?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.bbc.co.uk/news/articles/cwvg2mp0de2jo?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.bbc.co.uk/news/videos/c6y0x84xx22wo?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.bbc.co.uk/news/articles/c5m2l90ez144o?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.bbc.co.uk/news/articles/cqly45eymjeko?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.npr.org/sections/news/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.npr.org/2026/11/19/g-s1-153851/npr-newsroom-giveaway", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.npr.org/2026/11/18/nx-s1-6046212/anthropic-record-ipo-price", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.npr.org/2026/11/18/nx-s1-6041708/the-law-releasing-the-epstein-files-passed-one-year-ago-what-do-his-victims-say", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.npr.org/2026/11/18/nx-s1-6044275/why-the-nvidia-scandal-is-a-national-security-issue", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.npr.org/2026/11/18/nx-s1-6043185/democrats-nominate-jeffries-for-speaker-prep-investigations-into-trumps-orbit", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.npr.org/2026/11/18/nx-s1-6022034/flood-nepal-survival-climate-change", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.npr.org/2026/11/18/nx-s1-6043103/democratic-black-women-take-over-almost-all-state-agencies-in-georgia-soon", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.npr.org/2026/11/18/g-s1-154227/karl-kani-a-life-by-design", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.npr.org/2026/11/18/nx-s1-6045636/got-a-canceled-flight-7-clever-ways-to-get-rebooked-fast", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.theguardian.com", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.theguardian.com/global-development/2026/nov/19/women-girls-rights-rape-sexual-violence-africa-marriage-unfpa", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.theguardian.com/world/2026/nov/18/us-sanctions-icj-judges-myanmar-genocide-ruling-israel-gaza-court", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.theguardian.com/world/2026/nov/18/european-commission-accused-sugarcoating-figures-egypt-loans", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.theguardian.com/world/2026/nov/16/eu-states-immigration-return-hubs-rwanda", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.theguardian.com/sport/2026/nov/16/us-basketball-player-arrested-with-75lb-of-marijuana-at-nigerian-airport-say-authorities", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.theguardian.com/us-news/2026/nov/18/florida-pastor-guilty-haiti-president-assassination", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.theguardian.com/world/2026/nov/18/pete-hegseth-venezuela-nicolas-maduro-military", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.theguardian.com/world/2026/nov/17/st-kitts-nevis-citizenship-investment", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.theguardian.com/world/2026/nov/17/brazil-amazon-isolated-indigenous-people", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.theguardian.com/us-news/2026/nov/17/haitian-child-ice-custody-release", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.theguardian.com/world/2026/nov/19/datacentres-to-create-70-more-carbon-emissions-by-2030-iea-report-warns", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.theguardian.com/world/live/2026/nov/18/apec-summit-live-updates-xi-putin-trump-world-leaders-gather-in-china", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.theguardian.com/world/2026/nov/18/south-korea-university-entrace-exams-ai-cheating-measures", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://www.theguardian.com/technology/2026/nov/17/jensen-huang-testify-congress-nvidia-affair-spy", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/codenewbie/the-codenewbie-podcast-is-back-for-season-28-2484", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/gde/the-colab-mcp-endpoint-from-claude-code-set-it-up-test-it-run-a-notebook-on-a-tpu-4ck9", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/gde/gemma-4-on-a-hosted-colab-tpu-the-qat-repack-served-in-two-minutes-360j", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/sloan/welcome-thread-v402-5d1a", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/googleai/from-prototype-to-production-building-ai-agents-with-the-claude-platform-on-google-cloud-ap7", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/gde/retrieval-ran-first-was-its-result-actually-ready-4oc2", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/gde/rackdoc-now-includes-a-100-local-ai-agent-to-audit-your-infrastructure-1gg8", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/googlecloud/what-is-native-multimodality-3091", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/googleai/why-your-ai-agent-keeps-forgetting-and-getting-slower-4-memory-options-and-3-context-fixes-2e02", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/gde/thinking-on-or-off-gemma-4-e2b-on-an-8-gb-rtx-3050-30e0", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/tedcarstensen/why-we-built-an-mcp-server-for-ai-founders-go-to-market-4hge", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/philschmid/fast-multimodal-control-flow-with-the-gemini-decisions-api-533b", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/maame-codes/how-did-you-end-up-in-tech-and-are-you-staying-4l9b", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://blog.mlh.com/prompt-pad-what-are-tokens-gec", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/gde/count-attempts-not-jsonl-rows-2pn2", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/devteam/congrats-to-the-hacktoberfest-open-source-ai-challenge-week-4-ghost-in-the-machine-winners-nok", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/googlecloud/detecting-wasmplugin-version-drift-in-cloud-load-balancing-service-extensions-52p5", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/gde/one-model-gateway-across-clouds-litellm-on-cloud-run-and-azure-with-zero-api-keys-3ma7", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/ben/long-live-rails-3p21", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/gde/an-mcp-tool-call-can-resolve-and-still-fail-52kc", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/hiper2d/how-much-does-it-cost-to-run-a-text-game-with-llms-57o7", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://blog.mlh.com/prompt-pad-what-are-open-weight-models-1ghh", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/annavi11arrea1/ultimate-ai-roast-168b", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/gdg/gemini-prompt-maxxing-show-us-your-best-prompt-in-ai-studio-or-antigravity-bbb", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/devteam/top-7-featured-dev-posts-of-the-week-5hda", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/gde/prepare-a-webmcp-review-without-submitting-the-request-j4n", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/dailycontext/kent-c-dodds-hasnt-looked-at-his-code-all-year-gd5", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/gde/why-you-are-a-10x-coder-fails-the-metr-19-paradox-mit-csails-weight-space-programming-and-3enf", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/gde/gemini-enterprise-a-platform-for-connecting-enterprise-agents-data-and-applications-4g6d", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://dev.to/heinrichneb/my-ai-agent-kept-quoting-a-number-i-had-already-corrected-what-has-yours-remembered-wrong-34d0", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "fresh", "url": "https://github.com/python/cpython/pull/162257", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/issues/162256", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/pull/162255", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/pull/162254", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/pull/162253", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/pull/162252", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/issues/162251", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/pull/162250", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/pull/162249", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/issues/162248", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/issues/162247", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/issues/162246", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/issues/162245", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/pull/162244", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/issues/162243", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/pull/162242", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/pull/162241", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/pull/162240", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/pull/162239", "read": false}
+{"set": "fresh", "url": "https://github.com/python/cpython/pull/162238", "read": false}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Perotis_xerxes", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Festival_del_Mar", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Prilužje", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Arte_drag_en_África", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Fernando_Charry_Lara", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Kalibangan", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Síncope", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Hestia", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Río_de_Contas", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Choi_Min-Kyung", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Iordan_Letchkov", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Macrolinus_sikkimensis_tavoyanus", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Juan_Cobo", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Torre_IBM", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Psicosis_(álbum)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Título_alodial", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Saint-Sixte_(Loira)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Seán_Sammon", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Send_My_Love_(To_Your_New_Lover)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Fuente_de_los_Incrédulos", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Thor:_Love_and_Thunder", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Viktóriya_Savenko", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Josh_Levi", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Dave_Dee,_Dozy,_Beaky,_Mick_&_Tich", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://es.wikipedia.org/wiki/Yátor", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/In_Zghmir", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Françoise_Rey", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Le_Journal_des_finances", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/François_de_Fitz-James", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Knutstad", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Reasonable_Doubt", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Tamiga", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/(27263)_Elainezhou", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/(92578)_Benecchi", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Garde_bourgeoise", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Phobie_des_seringues", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Giovanni_Borromeo", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Stephen_Rumbold_Lushington", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Vallée_de_la_Jeunesse", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Quaglia", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Kostia_Konstantinoff", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Five_Star", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Sääri", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Championnat_de_Belgique_de_football_1971-1972", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Pont_terrestre", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/La_Beauté_de_l'idée", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/303_(film)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Muzaffar_Ali", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Eintracht_Brunswick", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://fr.wikipedia.org/wiki/Bonnevie", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Glenkinchie", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Hydrothermale_Karbonisierung", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Sascha_Zacharias", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/William_Burns_(Curler)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Daniel_Pattis", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/(398045)_Vitudurum", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Landschaftsschutzgebiet_Hanggrünland_am_Holzkamp", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Nihon_Genshiryoku_Kenkyū_Kaihatsu_Kikō", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Hartmann_I._von_Dillingen", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Erika_Gregor", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Typhoon_(Fahrgeschäft)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Ertuğrul_Apakan", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Vorholzbach", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Turks_Head", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Unseldapfel", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Sprengkandidatur", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Andrea_Haaser", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Löwengrab_(Mykene)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Ars-sur-Formans", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Villaguay", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Bangladesh_International_2016", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Liste_der_Venuskrater/S", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Indrawati_(Sunkoshi)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/MU330", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://de.wikipedia.org/wiki/Otto_I._(Rastede)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Jürgen_Kohler", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Sé_que_te_vas", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Giulio_Canani", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Anterior", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Ares_(família_de_foguetes)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Continental_Basketball_Association_(1969–1974)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Estados_do_Litoral_(Estados_Unidos)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Duende_Macabro_(Arnold_Donovan)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/La_Chapelle-Yvon", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Josephine_(Texas)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Running_Out_of_Time", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Julie_Lassa", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Knife_Fight", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Lynne_Curran", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Honduras_nos_Jogos_Olímpicos_de_Verão_de_2008", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Charles_Eaton", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Léchelle_(Pas-de-Calais)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/If_You_Knew_Suzi...", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Substituto_do_leite", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Caçadores_de_Mentes", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Poesia_épica", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Maratona_de_Dubai", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Peter_Roskam", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Rede_em_árvore", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://pt.wikipedia.org/wiki/Willem_Barentsz", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://elpais.com/espana/elecciones-generales/2026-11-19/ada-colau-la-ultraderecha-ha-sabido-diagnosticar-mejor-que-el-psoe-el-malestar-de-la-ciudadania.html", "read": false}
+{"set": "intl", "url": "https://elpais.com/espana/elecciones-generales/2026-11-19/90-minutos-cara-a-cara-sanchez-busca-remontar-los-dos-puntos-que-le-separan-del-pp-y-feijoo-repetir-el-exito-de-2023.html", "read": false}
+{"set": "intl", "url": "https://elpais.com/espana/elecciones-generales/2026-11-19/sanchez-ultima-los-detalles-del-cara-a-cara-con-su-nucleo-duro-en-la-moncloa-y-la-leccion-aprendida-de-2023.html", "read": false}
+{"set": "intl", "url": "https://elpais.com/espana/elecciones-generales/2026-11-19/feijoo-ira-a-la-yugular-sin-arriesgar-el-perfil-presidencial-en-un-debate-preparado-con-su-equipo-gallego-y-sin-miguel-angel-rodriguez.html", "read": false}
+{"set": "intl", "url": "https://elpais.com/espana/elecciones-generales/2026-11-18/video-analisis-en-directo-y-verificacion-a-tiempo-real-asi-podras-ver-el-cara-a-cara-entre-sanchez-y-feijoo-en-el-pais.html", "read": false}
+{"set": "intl", "url": "https://elpais.com/espana/elecciones-generales/2026-11-19/miguel-angel-rodriguez-el-bonobus-de-rajoy-y-el-adoquin-los-siete-instantes-que-hicieron-saltar-por-los-aires-los-debates-electorales-en-espana.html", "read": false}
+{"set": "intl", "url": "https://elpais.com/espana/elecciones-generales/2026-11-19/oido-en-peluquerias-sobre-la-portada-de-sanchez-en-lecturas-sera-lo-que-sea-pero-esta-estupendo.html", "read": false}
+{"set": "intl", "url": "https://elpais.com/espana/elecciones-generales/2026-11-19/el-mapa-de-la-abstencion-y-la-renta-donde-se-vota-menos-calle-a-calle.html", "read": false}
+{"set": "intl", "url": "https://elpais.com/internacional/2026-11-19/trump-y-putin-interactuan-en-shenzhen-antes-de-las-reuniones-con-xi.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://elpais.com/smoda/2026-11-19/camila-gutierrez-despues-de-onlyfans-la-mayoria-de-la-gente-ve-porno-solo-que-a-algunos-les-parece-indigno-pagar.html", "read": false}
+{"set": "intl", "url": "https://elpais.com/cultura/2026-11-19/como-de-grande-es-gta-los-mapas-y-cifras-que-explican-el-exito-de-la-saga.html", "read": false}
+{"set": "intl", "url": "https://elpais.com/sociedad/2026-11-19/el-gta-vi-desata-la-locura-vuelos-a-nueva-zelanda-para-probarlo-antes-ausencias-laborales-y-hasta-dias-libres-en-el-ejercito.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://elpais.com/gente/2026-11-19/luis-figo-nadie-me-ha-regalado-nada-en-la-vida-se-perfectamente-lo-que-significa-pasar-por-momentos-complicados.html", "read": false}
+{"set": "intl", "url": "https://elpais.com/icon/2026-11-19/nicholas-hoult-ya-no-me-importa-lo-que-la-gente-piense-de-mi-eso-no-solo-me-lo-enseno-la-paternidad-sino-la-vida.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://elpais.com/opinion/2026-11-19/pedro-chico-lecturas.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://elpais.com/opinion/2026-11-19/extra-extra-hombre-de-mediana-edad-se-cree-irresistible.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://elpais.com/espana/madrid/2026-11-19/asi-acabo-blackstone-con-la-molesta-campana-de-una-inquilina-hablo-con-un-cargo-de-la-comunidad-de-madrid-y-ella-obtuvo-un-piso.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://elpais.com/espana/madrid/2026-11-19/la-campana-electoral-monopoliza-la-asamblea-de-madrid-con-una-ayuso-omnipresente-en-la-estrategia-del-pp.html", "read": false}
+{"set": "intl", "url": "https://elpais.com/internacional/2026-11-19/resistencia-y-barbarie-las-dos-caras-de-la-guerra-en-una-granja-de-ucrania.html", "read": false}
+{"set": "intl", "url": "https://elpais.com/clima-y-medio-ambiente/2026-11-19/cop31-nueve-claves-de-la-cumbre-de-clima-de-antalya.html", "read": false}
+{"set": "intl", "url": "https://www.lemonde.fr/international/live/2026/11/19/en-direct-guerre-en-ukraine-peu-avant-leur-rencontre-tripartite-en-chine-donald-trump-s-entretient-separement-avec-vladimir-poutine-et-xi-jinping_6810982_3210.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.lemonde.fr/politique/article/2026/11/19/presidentielle-2027-marine-tondelier-tente-de-forcer-la-main-des-ecologistes-en-se-disant-prete-a-rallier-jean-luc-melenchon_6813213_823448.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.lemonde.fr/economie/article/2026/11/19/aux-etats-unis-wall-street-met-fin-a-l-euphorie-generalisee-sur-l-ia-et-cherche-a-trier-les-gagnants-et-les-perdants-de-cette-revolution_6813232_3234.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.lemonde.fr/international/article/2026/11/19/guerre-en-ukraine-la-presence-de-soldats-francais-en-ukraine-fait-elle-de-paris-un-cobelligerant-contre-qui-la-russie-pourrait-riposter_6813225_3210.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.lemonde.fr/societe/article/2026/11/19/j-ai-juge-que-je-ne-pouvais-plus-rester-anonyme-la-jeune-femme-qui-a-porte-plainte-contre-l-architecte-matthieu-poitevin-pour-violences-sexistes-et-sexuelles-temoigne_6813259_3224.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.lemonde.fr/pixels/live/2026/11/19/en-direct-sortie-de-gta-vi-les-premieres-impressions-et-reactions_6813247_4408996.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.lemonde.fr/disparitions/article/2026/11/19/bertrand-meheut-ancien-patron-de-canal-est-mort-a-l-age-de-75-ans_6813249_3382.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.lemonde.fr/international/article/2026/11/19/un-demi-milliard-de-dollars-depense-pour-les-midterms-2026-elon-musk-avoue-se-sentir-un-peu-idiot-apres-la-victoire-ecrasante-des-democrates_6813228_3210.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.lemonde.fr/planete/article/2026/11/19/perturbateurs-endocriniens-une-menace-globale-et-croissante-selon-les-nations-unies-et-l-organisation-mondiale-de-la-sante_6813243_3244.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.lemonde.fr/les-decodeurs/article/2026/11/19/inside-deutsche-bank-derriere-la-facade-verte-les-coulisses-du-greenwashing-de-la-banque-allemande_6813239_4355770.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.lemonde.fr/international/article/2026/11/19/interdire-le-commerce-avec-les-colonies-israeliennes-des-deputes-veulent-placer-la-france-face-a-ses-engagements_6813220_3210.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.lemonde.fr/international/article/2026/11/19/arabie-saoudite-le-quartier-financier-de-riyad-de-nouveau-attaque-la-tour-du-fonds-souverain-endommagee_6813250_3210.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.lemonde.fr/international/article/2026/11/19/en-espagne-les-candidats-font-campagne-chez-les-youtubeurs_6813223_3210.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.lemonde.fr/societe/article/2026/11/18/un-professeur-menace-de-mort-a-la-samuel-paty-l-auteur-s-est-rendu-au-commissariat_6813195_3224.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.lemonde.fr/economie/article/2026/11/19/l-extension-des-aeroports-de-roissy-charles-de-gaulle-et-d-orly-validee-sous-reserve-par-le-regulateur-des-transports_6813252_3234.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.lemonde.fr/economie/article/2026/11/19/trains-de-nuit-l-etat-renonce-a-commander-des-rames-neuves-et-opte-pour-la-renovation-des-voitures-corail_6813244_3234.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/newsticker/liveblog-apec-gipfel-xi-trump-putin-100.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/ausland/asien/apec-treffen-xi-putin-trump-themen-100.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/multimedia/livestreams/livestream-ts24-104.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/video/video-1686292.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/video/video-1686240.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/video/video-1686334.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/tagesthemen/video-1686192.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/video/video-1686238.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/tagesthemen/video-1686200.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/tagesthemen/video-1686202.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/ausland/europa/krim-bruecke-angriff-ukraine-zugverkehr-gestoppt-100.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/ausland/europa/ukraine-unterstuetzung-treffen-berlin-100.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/ausland/europa/ukraine-koalition-stimmung-100.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/ausland/amerika/musk-spenden-republikaner-100.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/ausland/amerika/midterms-ergebnisse-102.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/wirtschaft/unternehmen/anthropic-boersengang-aktie-100.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/wirtschaft/finanzen/marktberichte/marktbericht-dax-dow-anthropic-100.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/multimedia/podcast/11km/podcast-11km-ki-vision-100.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/wirtschaft/digitales/gta-rockstar-games-100.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://www.tagesschau.de/wirtschaft/unternehmen/spiele-gta-sechs-neuerscheinung-100.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/emcimadahora/", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/ciencia/2026/11/homo-erectus-pode-ter-vivido-ate-200-mil-anos-atras-na-china.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/colunas/monicabergamo/2026/11/filme-de-andre-klotzel-estrelado-por-alexandre-nero-estreia-em-seis-salas-e-diretor-acusa-ancine-de-omissao.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/cotidiano/2026/11/dia-da-consciencia-negra-altera-horario-de-servicos-em-sao-paulo-saiba-o-que-abre-e-o-que-fecha.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/cotidiano/2026/11/mulher-morre-em-tumulto-durante-inauguracao-de-loja-popular-no-maranhao.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/mundo/2026/11/trump-xi-e-putin-comecam-reuniao-inedita-de-cupula.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/podcasts/2026/11/podcast-discute-entraves-para-que-o-brasil-tenha-uma-pessoa-negra-como-presidente.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/cotidiano/2026/11/previsao-indica-mais-calor-e-pancadas-de-chuva-nesta-quinta-19-em-sao-paulo.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/cotidiano/2026/11/telecentro-para-idosos-esta-fechado-ha-mais-de-quatro-meses-no-centro-de-sp.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/mercado/2026/11/veja-quais-sao-os-direitos-de-quem-trabalha-no-feriado-da-consciencia-negra.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/ciencia/2026/11/o-disco-de-ouro-com-mensagens-para-extraterrestres-levado-pela-sonda-voyager-1-e-como-eles-poderao-decifra-lo.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/mercado/2026/11/abertura-do-mercado-de-energia-traz-liberdade-para-escolher-e-seguranca-para-decidir.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://c-level.folha.uol.com.br/negocios/2026/11/folha-tem-maior-venda-de-assinaturas-em-cinco-anos.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://f5.folha.uol.com.br/colunistas/outro-canal/2026/11/bbb-27-influenciadora-karoline-lima-tenta-vaga-em-nova-edicao-de-reality-da-globo.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/mundo/2026/11/com-maiorias-nos-estados-democratas-podem-legislar-sobre-aborto-e-data-centers.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/poder/2026/11/integrantes-do-stf-esperam-que-relatorios-da-pf-esvaziem-parte-da-discussao-na-corte-sobre-caso-master.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/equilibrio/2026/11/como-e-por-que-comer-menos-acucar.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/poder/2026/11/stedile-do-mst-chama-ajuste-fiscal-de-enganacao-e-defende-ministros-mais-jovens-e-representativos.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/ambiente/2026/11/com-el-nino-amazonas-tem-chuva-abaixo-do-normal-e-ve-rios-sofrerem-com-estiagem.shtml", "read": false}
+{"set": "intl", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/ilustrada/2026/11/documentario-usa-a-historia-do-vasco-para-dissecar-o-racismo-no-futebol.shtml", "read": false}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Torneo_di_Wimbledon_1960_-_Singolare_ragazze", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Celle_Challenger_1994", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/15851_Chrisfleming", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Mos_gallicus", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Columbite-(Mg)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Phineas_e_Ferb_(videogioco)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Raphael_Meade", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/San_Giacomo_Roncole", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Stazione_di_Via_dei_Monaci", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Down_Under_Classic_2009", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/John_Wallace_(canottiere)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Jefferson_City_(disambigua)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Jay_Threatt", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Keisen", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Diocesi_di_Chulucanas", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Arturo_Torres_Carrasco", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Târșolț", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Friburgo_(Svizzera)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Municipio_Vecchio", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/XII_legislatura", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Antonio_Woodville", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Torrecilla_en_Cameros", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Post-Telekom-Sportverein_1925_Aachen_2014-2015_(pallavolo_femminile)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Risoluzione_2720_del_Consiglio_di_sicurezza_delle_Nazioni_Unite", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Alpi_dello_Stubai", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Internazionali_d'Italia_2019_-_Qualificazioni_singolare_femminile", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Tom_Harkin", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Alberto_Aquilani", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/Morgan_Motor_Company", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://it.wikipedia.org/wiki/NHL_Supplemental_Draft_1991", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Gods_of_Egypt", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Erites_medura", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Boschpoort_(buurt_in_Maastricht)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Hrsina", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Emile_Derasse", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Jan_Willem_Conrad", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Zelotes_nainitalensis", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Polyardis_bispinosa", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Inka_Grings", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Colomastix_semiplumosa", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Exomalopsis_bartschi", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Thyrocopa_indecora", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Karlova_Ves", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Hayat_devam_ediyor", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Jeffrey_Steinberg", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Bruchidius_dorsivalvia", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Etha_tuberculata", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Sinikka_Langeland", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Lake_City_(Pennsylvania)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Systasis_basilewskyi", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Banji", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Raevyn_Rogers", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/František_Boček", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Bellardia_trixago", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Hypochrosis_arnecornelii", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Valisia_modesta", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Conoderus_probus", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Semiothisa_adonis", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Girard_(Georgia)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nl.wikipedia.org/wiki/Agnes_Haegens", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://www.corriere.it", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://www.corriere.it/dataroom-milena-gabanelli/codice-strada-ecco-cosa-cambia-perche-non-ridurra-numero-vittime/a9ec82f6-0fb3-11ef-a8f0-a1f7c0d711f2-va.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://www.corriere.it/politica/24_maggio_13/toti-spinelli-elezioni-9eac3140-71d7-4523-b980-142b573d5xlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://www.corriere.it/politica/24_maggio_12/inchiesta-liguria-marco-bucci-gioco-al-massacro-non-ci-sto-chiedo-chiarezza-su-di-me-sono-pronto-a-parlare-con-i-pm-57e1da92-5b6c-4d81-94f6-321a522abxlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://www.corriere.it/cronache/24_maggio_12/toti-arrestato-gli-incontri-sullo-yacht-di-spinelli-e-i-telefonini-lasciati-all-esterno-per-blindare-i-colloqui-riservati-e99c3dad-0cea-46a5-9b3a-8e728c4c3xlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://www.corriere.it/politica/24_maggio_13/liguria-dati-covid-manipolati-indagine-413ff205-c02e-4bf1-8313-406d7c5c2xlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://milano.corriere.it/notizie/cronaca/24_maggio_13/fedez-denunciato-iovino-3eeb49c3-fa4c-448d-bac5-d7bb9f09fxlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://roma.corriere.it/notizie/cronaca/24_maggio_13/camila-giorgi-sei-milioni-euro-762e96c0-95f4-449c-9dd7-a07ce9629xlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://www.corriere.it/lettere-al-direttore/12-05-2024/index.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://www.corriere.it/economia/finanza/24_maggio_12/scontro-in-maggioranza-sul-superbonus-e-scoppia-il-caso-sugar-tax-89cd4861-5420-4a31-b0ab-9cee81bcfxlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://www.corriere.it/esteri/24_maggio_12/l-armata-russa-avanza-su-kharkiv-zelensky-ammette-la-situazione-e-estremamente-difficile-bc3733e3-7546-4e70-82e1-50c89b09bxlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://www.corriere.it/economia/risparmio/cards/casa-piu-grande-studi-dei-figli-pensione-come-investire-i-risparmi-e-far-crescere-il-tesoretto-3-piani-da-imitare/pianificazione-finanziaria-prepararsi-a-un-lungo-viaggio_principale.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://www.corriere.it/alessandro-d-avenia-ultimo-banco/24_maggio_13/via-tramonto-c2e6bfcd-1b0e-4e91-95b5-0e470f5cexlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://www.corriere.it/cronache/24_maggio_13/elio-figlio-dante-autismo-feiez-af4065e5-5d56-47d1-a3bd-ab5e9ba75xlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://www.corriere.it/cronache/24_maggio_13/marco-balich-olimpiadi-intervista-07496e0b-bd04-47f5-ba6f-7c6ec8820xlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://roma.corriere.it/notizie/cronaca/24_maggio_13/vittorio-sgarbi-inchiesta-quadro-montecarlo-eb089437-41f3-42f9-89c5-406864ba0xlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://corrieredibologna.corriere.it/notizie/cronaca/24_maggio_12/modena-violentata-dagli-amici-a-12-anni-il-video-sul-telefono-della-coetanea-01a86e9e-d5c5-4823-9d93-17dc41ec8xlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://corrieredibologna.corriere.it/notizie/cronaca/24_maggio_12/la-lettera-di-tonino-lamborghini-flavia-borzone-non-e-mia-figlia-non-lo-sara-mai-da-lei-solo-riprovevole-opportunismo-945d9306-6978-49fc-97d1-3981bc821xlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://corrieredeltrentino.corriere.it/notizie/cronaca/24_maggio_12/montagna-tragedia-sull-ortles-in-alto-adige-muore-scialpinista-di-26-anni-21254b11-2643-43c2-b2a6-fadf82d52xlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://bari.corriere.it/notizie/cultura-e-tempo-libero/24_maggio_11/monopoli-nozze-vip-in-cattedrale-lo-sposo-e-gavin-coulson-magnate-americano-del-food-al-top-tra-gli-under-30-di-forbes-fa8687f2-c272-4d04-84e7-404620711xlk.shtml", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640137", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640136", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640135", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640133", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640129", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640125", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640119", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640114", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640112", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640108", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640102", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640101", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640098", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640096", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640095", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640093", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640092", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640091", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640086", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "itnl", "url": "https://nos.nl/l/2640084", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/Atlas_Township,_Pike_County,_Illinois", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/July_unrest", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/Chris_Scruggs", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/List_of_British_politicians_who_have_changed_party_affiliation", "read": false}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/Rikako_Aida", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/Tim_Ries", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/Feel_the_Sunshine_(album)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/Episode_0", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/List_of_cockroach_species_from_Australia", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/Joe_Rupert", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/Naarda_ineffectalis", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/The_Simpsons_opening_sequence", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/Yevgeny_Petrov", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/Morpheus_(role-playing_game)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/Sturisomatichthys_reinae", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/English_Heart", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/Posipal", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/Outline_of_Telangana", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/Jon_Hall_(actor)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://en.wikipedia.org/wiki/The_Snake_Pit", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.co.uk/news/articles/c6808k8dxvgko?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.co.uk/news/videos/c6jrel8e50w9o?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.co.uk/news/articles/ckj05m2zdyryo?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.co.uk/news/articles/cw0737zzn50mo?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.co.uk/news/articles/crwy4egxn592o?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.co.uk/news/articles/cm20qnq33e90o?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.co.uk/news/articles/c893r9ke5p97o?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.co.uk/news/articles/cv702rw7dzx5o?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.co.uk/news/articles/cmx27g533zwyo?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.co.uk/news/articles/cwgkl31kmnddo?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.co.uk/news/articles/cq5y1212y4pwo?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Saint-Lupien", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Salterio_de_Athelstan", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Pokey_Reese", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Francesco_Momo", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Pseudanthias_dispar", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Wendy_Vera", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Tramontana_(S-74)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Iglesia_de_San_Enrique", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Hasimir_Fenring", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Federación_angoleña_de_baloncesto", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Natalia_Bólotova", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Choondal", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Coca-Cola_Life", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Komo", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Basilea_(desambiguación)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Bae_Seul-ki", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Declaración_de_Soberanía_Estatal_de_la_República_Socialista_Soviética_de_Ucrania", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Hringvegur", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Terry_Dunfield", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://es.wikipedia.org/wiki/Jaroslava_Blažková", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://elpais.com/espana/elecciones-generales/2026-11-24/llega-el-apagon-de-encuestas-que-dice-el-promedio-con-todas-las-ultimas.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://elpais.com/espana/elecciones-generales/2026-11-21/se-ha-movido-el-voto-util-las-opciones-de-izquierda-y-derecha-en-cada-provincia-con-las-ultimas-encuestas.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://elpais.com/espana/elecciones-generales/2026-11-20/lea-todas-las-entrevistas-a-los-candidatos-a-las-elecciones-del-29-n.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://elpais.com/espana/elecciones-generales/2026-11-20/lea-todos-los-analisis-del-voto-en-las-diferentes-regiones-ante-el-29-n.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://elpais.com/espana/elecciones-generales/2026-11-24/el-gobierno-reivindica-su-traca-final-con-impuesto-a-la-banca-rebaja-de-autonomos-aborto-y-permiso-por-fallecimiento-cumplimos-con-nuestro-deber-gobernamos.html", "read": false}
+{"set": "l12", "url": "https://elpais.com/sociedad/2026-11-24/el-gobierno-amplia-el-permiso-por-nacimiento-que-podra-llegar-hasta-las-20-semanas.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://elpais.com/economia/2026-11-24/hacienda-rebaja-el-irpf-de-los-autonomos-y-elimina-los-pagos-trimestrales-del-iva-para-los-pequenos-negocios.html", "read": false}
+{"set": "l12", "url": "https://elpais.com/espana/elecciones-generales/2026-11-24/feijoo-en-espana-no-habra-sitio-para-quien-no-respete-a-las-mujeres-ni-a-las-personas-lgtbi.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://elpais.com/espana/elecciones-generales/2026-11-24/pedro-sanchez-cataluna-no-va-a-fallar-y-va-a-liderar-la-gran-victoria-progresista.html", "read": false}
+{"set": "l12", "url": "https://elpais.com/espana/elecciones-generales/2026-11-24/vox-pide-poner-fin-al-fracasado-sistema-de-proteccion-de-las-mujeres-en-el-dia-contra-la-violencia-de-genero.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://elpais.com/espana/2026-11-24/la-junta-electoral-se-divide-siete-a-cinco-para-sancionar-a-intxaurrondo-por-sus-reflexiones-sobre-vox.html", "read": false}
+{"set": "l12", "url": "https://elpais.com/espana/elecciones-generales/2026-11-24/isabel-allende-pide-el-apoyo-de-los-inmigrantes-a-sanchez-para-que-espana-sea-una-sociedad-solidaria-abierta-diversa-e-inclusiva.html", "read": false}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/Pierre-André_Lablaude", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/École_supérieure_des_industries_du_textile_et_de_l'habillement", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/Gare_de_Higashi-Muroran", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/La_Bête_de_guerre", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/René_Darde", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/Hrvatska_pučka_stranka", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/Ilkka_Remes", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/Dubas", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/Võduvere", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/Antony_Santos", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/Saison_6_de_NCIS_:_Nouvelle-Orléans", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/Championnats_de_France_d'athlétisme_1995", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/Francisco_Nazaré", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/Go_Won_(single)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/Sparkle_Moore", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/San_Giovanni_Crisostomo_a_Monte_Sacro_Alto_(titre_cardinalice)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/Grammont", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/Ganga_de_Burchell", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/Radošin", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://fr.wikipedia.org/wiki/WinDirStat", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.lemonde.fr/international/article/2026/11/24/hackers-et-medias-revelent-ce-que-le-kremlin-voulait-cacher-le-bilan-de-500-000-morts-au-moins-sur-le-front-ukrainien_6814823_3210.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.lemonde.fr/politique/article/2026/11/24/budget-un-premier-texte-adopte-par-le-parlement-sebastien-lecornu-reve-desormais-d-un-compromis-pour-2027_6814842_823448.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.lemonde.fr/election-presidentielle-2027/article/2026/11/24/edouard-philippe-a-vote-pour-david-lisnard-a-la-presidence-de-l-amf-mais-fustige-sa-posture-dans-la-course-a-l-elysee_6814832_6205049.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.lemonde.fr/international/article/2026/11/24/relancer-ou-non-la-guerre-l-alliance-israelo-americaine-au-defi-du-rearmement-iranien_6814843_3210.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.lemonde.fr/politique/article/2026/11/24/presidentielle-2027-les-maires-s-inquietent-du-ras-le-bol-general-des-electeurs_6814869_823448.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.lemonde.fr/international/article/2026/11/24/au-bresil-le-gouvernement-lula-fait-voter-un-plan-de-rigueur-budgetaire-controverse_6814846_3210.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.lemonde.fr/sport/article/2026/11/24/leipzig-lens-les-sang-et-or-une-nouvelle-fois-defaits-en-ligue-des-champions_6814868_3242.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.lemonde.fr/societe/article/2026/11/24/aux-assises-a-lyon-la-serie-criminelle-qui-fait-basculer-le-banditisme-dans-la-cartellisation_6814867_3224.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.lemonde.fr/international/article/2026/11/24/en-colombie-prise-d-otages-lors-du-braquage-d-un-supermarche-a-carthagene-au-lendemain-d-un-attentat-a-la-voiture-piegee-a-villavicencio_6814815_3211.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.lemonde.fr/societe/article/2026/11/24/l-assemblee-nationale-adopte-le-projet-de-loi-sur-le-logement-avec-les-voix-du-rassemblement-national_6814849_3224.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.lemonde.fr/pixels/article/2026/11/24/gta-vi-pirate-comment-des-hackeurs-assistes-par-ia-font-la-course-pour-adapter-le-jeu-video-sur-pc_6814851_4408996.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.lemonde.fr/culture/article/2026/11/24/dans-billie-a-la-croisee-des-mondes-une-nouvelle-heroine-disney-qui-peine-a-enchanter_6814826_3246.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Waldemar_Steubing", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Nikolai_Wladimirowitsch_Lewitschew", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Walker_Creek", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Lauch_(Heraldik)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/67-es_főút", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Beautiful", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Günther_Ottendorfer", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Olaf_Stieglitz", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Asray", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Glehn_(Mechernich)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Old-_und_Youngtimer-Museum", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Victor_von_Meyenburg", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Ergebnisse_der_Kommunalwahlen_in_Zwickau", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Liste_der_Monuments_historiques_in_Le_Tronchet_(Ille-et-Vilaine)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Ōta_Kaoru", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Manish_School", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Hans-Peter_Hasenfratz", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Liste_der_Monuments_historiques_in_Marliens", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Kloster_Malmedy", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://de.wikipedia.org/wiki/Tony_Pulis", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.tagesschau.de/inland/gesellschaft/orange-day-gewalt-gegen-frauen-100.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.tagesschau.de/tagesschau_20_uhr/video-1689306.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.tagesschau.de/video/video-1688984.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.tagesschau.de/video/video-1689074.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.tagesschau.de/video/video-1689078.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.tagesschau.de/tagesthemen/video-1689336.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.tagesschau.de/tagesthemen/video-1689338.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.tagesschau.de/tagesthemen/video-1689340.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.tagesschau.de/tagesthemen/video-1689342.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.tagesschau.de/ausland/amerika/usa-zoelle-122.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.tagesschau.de/ausland/europa/ukraine-russland-bruecken-krieg-100.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.tagesschau.de/wirtschaft/unternehmen/huang-folgen-nvidia-rueckkehr-100.html", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Pitkin", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Lagopsis", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/New_Inside", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Building_a_Building", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Escola_Municipal_de_Música_de_São_Paulo", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Lush", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Jason_Wilson", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Klaus_Friedrich_Roth", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Luke_Edwards", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Clã_Mito", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Abigail_Masham", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Clodovil_Frente_e_Verso", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Kate_Beaton", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Conus_carlottae", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/El_Refugio_(desambiguação)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Gary_Graham", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Viktor_Prodell", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/1880", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Rourea_doniana", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pt.wikipedia.org/wiki/Rio_Ceahod", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/colunas/sergio-vale/2026/11/de-onde-vira-o-crescimento-em-lula-4.shtml", "read": false}
+{"set": "l12", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://f5.folha.uol.com.br/televisao/a-fazenda-18/2026/11/a-fazenda-18-sergio-hondjakoff-faz-declaracoes-homofobicas-e-peoes-pedem-sua-expulsao.shtml", "read": false}
+{"set": "l12", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://c-level.folha.uol.com.br/financas/2026/11/fux-encerra-contrato-do-brb-com-tj-ba-e-fala-em-descumprimento-de-exigencias.shtml", "read": false}
+{"set": "l12", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/mercado/2026/11/governo-lula-libera-r-34-bi-do-orcamento-apos-excluir-mais-despesas-da-meta-de-2026.shtml", "read": false}
+{"set": "l12", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/colunas/jerson-kelman/2026/11/tarifa-horaria-traz-justica-para-conta-de-luz.shtml", "read": false}
+{"set": "l12", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/esporte/2026/11/maior-rali-de-kitesurf-do-planeta-tem-inicio-no-rio-grande-do-norte.shtml", "read": false}
+{"set": "l12", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/colunas/marceloviana/2026/11/missionarios-matematicos.shtml", "read": false}
+{"set": "l12", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/poder/2026/11/alcolumbre-ameaca-anular-voto-do-senador-que-quebrar-sigilo-de-cedula-na-eleicao-do-senado.shtml", "read": false}
+{"set": "l12", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/colunas/monicabergamo/2026/11/lula-desconfia-de-que-tenha-sido-gravado-por-carcereiro-que-e-investigado-pela-pf.shtml", "read": false}
+{"set": "l12", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/cotidiano/2026/11/mortes-em-operacoes-provocaram-depressao-e-panico-nas-comunidades-da-baixada-santista-diz-pesquisa.shtml", "read": false}
+{"set": "l12", "url": "https://redir.folha.com.br/redir/online/emcimadahora/rss091/*https://www1.folha.uol.com.br/colunas/eliogaspari/2026/11/o-ministerio-de-lula.shtml", "read": false}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Michele_(arcangelo)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Ambrines", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/I_Get_Along_(Pet_Shop_Boys)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Belief_(Dare)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Alessandro_Pajola", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Questa_sì_che_è_vita", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Open_di_Francia_2023_-_Quad_doppio", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Martiri_di_San_Saba", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Urko_Vera", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/George_Jackson_(ciclista)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Verein_für_Leibesübungen_Wolfsburg_2020-2021_(femminile)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Vladimir_Ul'janov_(pallavolista)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Vakht'ang_Koridze", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Kasey_Chambers", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Friselina", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Youtopia", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Ferenc_Hatlaczky", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Episodi_di_The_Good_Doctor_(quarta_stagione)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Reddick", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://it.wikipedia.org/wiki/Giacomo_Castriotto", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Silesis_grisescens", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Sudanonautes_chaperi", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Tory_Belleci", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Temnolamia_flavosignata", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Ampedus_catei", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Kinetoskias_smitti", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/François_van_der_Straeten", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Livezi", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Euselasia_procula", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Eulechria_sciaphila", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Eotrechodes_larisae", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Bryocamptus_(Bryocamptus)_intercalaris", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Damaran", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Station_Montbartier", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Aart_van_Ewijk", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Bibertal", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Polietes_domitor", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Phaiogramma_discessa", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Allmendhubelbahn", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nl.wikipedia.org/wiki/Houtkade", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nos.nl/l/2640909", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nos.nl/l/2640908", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nos.nl/l/2640907", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nos.nl/l/2640898", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nos.nl/l/2640891", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nos.nl/l/2640889", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nos.nl/l/2640888", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nos.nl/l/2640887", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nos.nl/l/2640886", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nos.nl/l/2640884", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nos.nl/l/2640883", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://nos.nl/l/2640880", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Co_Tydzień_Powieść", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Th!nk_City", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Jimmy_Wallington", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Separacja_częstotliwościowa", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Gerald_Lloyd-Verney", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Panajotis_Spiropulos", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Apistogramma", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Chiersonskij_(rejon_budionnowski)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Lima_(ujednoznacznienie)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Léon_Deladerrière", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Kopalnia_Odkrywkowa_Dolomitu_Dubie", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Fitnete_Tiço", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Garbate", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Home_Nations_Championship_1934", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Adam_Krzyżak", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Coroiu", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Diecezja_Savannah", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Morgantown_(Kentucky)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Boris_Stiechnowski", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://pl.wikipedia.org/wiki/Avid_(hamulce)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://tvn24.pl/polska/piec-rzeczy-ktore-warto-dzis-wiedziec-najwazniejsze-informacje-25-listopada-2026-roku-st9356075?source=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://tvn24.pl/polska/karol-nawrocki-powolal-nowego-prezesa-izby-karnej-sadu-najwyzszego-to-neo-sedzia-igor-zgolinski-st9356006?source=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://tvn24.pl/tvnwarszawa/okolice/smiertelne-potracenie-po-zmroku-nie-pomogla-reanimacja-st9356007?source=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://tvn24.pl/polska/spor-o-trybunal-konstytucyjny-piotr-zgorzelski-o-tym-co-uslyszal-na-konsultacjach-u-karola-nawrockiego-st9355966?source=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://tvn24.pl/tvnmeteo/prognoza/niebezpieczne-oblodzenia-na-drogach-ostrzezenia-imgw-st9352390?source=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://tvn24.pl/polska/pozar-pod-ostrowia-mazowiecka-nie-zyja-dwie-osoby-st9355993?source=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://tvn24.pl/polska/alerty-rcb-szef-mswia-marcin-kierwinski-apeluje-o-ich-niewylaczanie-st9355965?source=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://tvn24.pl/biznes/pieniadze/eurojackpot-wyniki-losowania-z-24-listopada-2026-padla-glowna-wygrana-jakie-liczby-wylosowano-st9355968?source=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://tvn24.pl/biznes/tech/media-microsoft-ma-strategie-na-wypadek-awarii-wprowadza-kod-czerwony-st9355934?source=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://tvn24.pl/biznes/pieniadze/swieto-dziekczynienia-2026-amerykanie-zaplaca-wiecej-za-swiateczny-posilek-st9355740?source=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://tvn24.pl/polska/przemyslaw-czarnek-o-powrocie-do-rzadu-zbigniewa-ziobry-jest-reakcja-marcina-kierwinskiego-st9355935?source=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://tvn24.pl/tvnmeteo/swiat/wybuch-wulkanu-powiekszyl-iwo-jime-na-jak-dlugo-st9355861?source=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Madison_(skivmärke)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Neoseiulella_longiseta", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Physaria_pycnantha", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Stelis_diversicolor", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Clavigeroniscus_alticolus", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Wisutthithewi", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Acquaro", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Buch,_Vorarlberg", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Hexactinella_ventilabrum", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Monoblastiopsis", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Dacrycarpus_cumingii", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Copernicia_glabrescens", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Happonvilliers", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Ochropleura_piemontecola", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Mastacembelus_triolobus", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Limbodessus_shuckardii", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Valkumej", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Jacques-Alain_Miller", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Leptostylis_(djur)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://sv.wikipedia.org/wiki/Erateinó", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.svt.se/nyheter/utrikes/trump-alltid-mojligt-att-benada-huang", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.svt.se/nyheter/utrikes/pakistanier-ombord-pa-kinesisk-raket", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.svt.se/nyheter/utrikes/oversvammade-gator-i-kalifornien-el-nino-forvarrar", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.svt.se/nyheter/utrikes/huawei-doms-i-usa", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.svt.se/nyheter/inrikes/uppgifter-c-ledaren-pekar-ut-tva-mojliga-losningar-pa-internt-mote", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.svt.se/nyheter/inrikes/andersson-v-har-inte-rort-sig-en-millimeter", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.svt.se/kultur/nick-carter-atalas-for-sexuella-overgrepp", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.svt.se/nyheter/lokalt/helsingborg/kraftig-brand-i-radhus-i-helsingborg-flera-personer-till-sjukhus-for-kontroll", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.svt.se/nyheter/inrikes/har-ar-ms-totalpaket-till-c-hade-hogre-forvantningar", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.svt.se/nyheter/inrikes/chatgpt-gav-rad-om-svensk-skolattack-i-test", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.svt.se/sport/friidrott/evy-palm-ar-dod-loparen-blev-84-ar", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.svt.se/nyheter/utrikes/kritik-mot-trump-efter-nvidia-vdn-jensen-huangs-comeback", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Ульстейнвик", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Наблюдение", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Рыдома_(аэродром)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Греваль,_Алекси", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Корякино_(Архангельская_область)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Томпсон,_Джон_Нортон", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Третья_краевая_задача", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Карстен,_Герман", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Аджапуа,_Тото_Тарашевич", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Садр,_Мохсен", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Антиох_XII_Дионис", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Император_Кокаку", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Варганова", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Невилл,_Эдвард", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Бреши", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Площадь_Валерия_Марченко", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Находкинский_гормолокозавод", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Лийвамаа,_Урмас", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Acanthemblemaria_betinensis", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ru.wikipedia.org/wiki/Карасайский_сельский_округ_(Акмолинская_область)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://lenta.ru", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://lenta.ru/news/2026/11/25/prochnost-i-bezopasnost-mashiny-reshili-proverit-ekstremalnym-krash-testom/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://lenta.ru/news/2026/11/25/nazvany-produkty-dlya-snizheniya-riska-bolezni-krona/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://lenta.ru/news/2026/11/25/42-letniy-prohor-shalyapin-otsenil-svoyu-vneshnost-frazoy/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://lenta.ru/news/2026/11/25/raskryta-realnaya-obstanovka-zhizni-na-kube/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://lenta.ru/news/2026/11/25/smertelnoe-dtp-s-avtobusom-proizoshlo-v-rossiyskom-regione/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://lenta.ru/news/2026/11/25/seksolog-nazvala-chetyre-priznaka-horoshego-lyubovnika/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://lenta.ru/news/2026/11/25/papa-rimskiy-tri-raza-vstrechal-dyavola-i-slyshal-ego-hriplyy-golos/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://lenta.ru/news/2026/11/25/baltic4/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://lenta.ru/news/2026/11/25/liviya-posl/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://lenta.ru/news/2026/11/24/fitnes-trener-nazval-pyat-sposobov-ne-brosit-zanyatiya-sportom-osenyu/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://lenta.ru/news/2026/11/25/rossiyanam-raskryli-pravila-hraneniya-kuplennoy-k-novomu-godu-zaranee-ikry/", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/劉衛辰", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/1987年ベルギーグランプリ", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/宇都宮市立豊郷中学校", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/雁来大橋", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/梅本貞雄", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/猶存社", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/マリオ", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/熱烈!ホットサンド!", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/Emma_(雑誌)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/タダノアイスホッケークラブ", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/牛毛神社", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/馬と少年", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/ブータン郵便公社", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/Apple_A7", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/佐留志村", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/北海道道958号大椴線", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/クミンアルデヒド", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/翹岐", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/ヴィクトリア朝文学", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://ja.wikipedia.org/wiki/いつき_(掃海艇)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "http://www3.nhk.or.jp/news/html/20260808/k10015199841000.html", "read": false}
+{"set": "l12", "url": "http://www3.nhk.or.jp/news/html/20260808/k10015200211000.html", "read": false}
+{"set": "l12", "url": "http://www3.nhk.or.jp/news/html/20260808/k10015200261000.html", "read": false}
+{"set": "l12", "url": "http://www3.nhk.or.jp/news/html/20260808/k10015200121000.html", "read": false}
+{"set": "l12", "url": "http://www3.nhk.or.jp/news/html/20260808/k10015200291000.html", "read": false}
+{"set": "l12", "url": "http://www3.nhk.or.jp/news/html/20260808/k10015200271000.html", "read": false}
+{"set": "l12", "url": "http://www3.nhk.or.jp/news/html/20260808/k10015200331000.html", "read": false}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/張允曦", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/達德利維爾_(亞利桑那州)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/魯晉_(光緒進士)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/澜沧乌蔹莓", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/难忘今宵", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/柃蝽", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/奧地利的瑪麗亞·伊莉莎白_(1680-1741)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/貝內特海崖", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/歐裔土耳其人", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/天主教盧伊扎教區", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/亞洲冬季運動會滑雪定向比賽", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/亨德森_(紐約州普查規定居民點)", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/軟調色情", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/陈海公路", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/神经内分泌细胞", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/比利牛斯鼬鼹", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/水神庙", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/昌吉古城遗址", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/赤竹属", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://zh.wikipedia.org/wiki/插旗镇", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.com/zhongwen/trad", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.com/zhongwen/articles/c3j4r274lj82o/trad?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.com/zhongwen/articles/cw8dv46pv125o/trad?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.com/zhongwen/articles/ck7v27vn9659o/trad?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.com/zhongwen/articles/crp3eqg9l8eeo/trad?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.com/zhongwen/articles/cjr4gwxzgyydo/trad?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.com/zhongwen/articles/c6n4ex4y9837o/trad?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.com/zhongwen/articles/cme3d27d7lnpo/trad?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.com/zhongwen/articles/c63egjkzqpz2o/trad?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.com/zhongwen/articles/cm8xzrg40dq1o/trad?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.com/zhongwen/articles/cxzd9y2gre3lo/trad?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}
+{"set": "l12", "url": "https://www.bbc.com/zhongwen/articles/cqdr15vp81jno/trad?at_medium=RSS&at_campaign=rss", "read": true, "findings_0.1.0": [], "ai_share_links": 0}

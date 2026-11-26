@@ -1,0 +1,93 @@
+name: PageVet
+description: Check web pages for text aimed at AI models (prompt injection), with a SARIF report for code scanning.
+author: Joseph Zulick
+branding:
+  icon: shield
+  color: gray-dark
+inputs:
+  targets:
+    description: "Files or http(s) URLs to scan, separated by spaces or new lines."
+    required: false
+    default: ""
+  urls-file:
+    description: "A file with one URL per line (# comments allowed)."
+    required: false
+    default: ""
+  sitemap:
+    description: "A sitemap.xml URL or file; its pages are scanned."
+    required: false
+    default: ""
+  fail-on:
+    description: "Fail the step for findings at or above this level: low, medium, high, or never."
+    required: false
+    default: high
+  sarif-file:
+    description: "Where to write the SARIF report."
+    required: false
+    default: pagevet.sarif
+  max-pages:
+    description: "Fetch at most this many pages over http(s)."
+    required: false
+    default: "50"
+  fetch-css:
+    description: "Also apply each page's own linked stylesheets (true or false)."
+    required: false
+    default: "false"
+  python-version:
+    description: "Python version to install PageVet with."
+    required: false
+    default: "3.12"
+outputs:
+  sarif-file:
+    description: "Path of the SARIF report."
+    value: ${{ steps.scan.outputs.sarif-file }}
+  exit-code:
+    description: "PageVet's exit code (0 nothing at or above fail-on, 1 findings, 2 errors with no findings)."
+    value: ${{ steps.scan.outputs.exit-code }}
+  findings:
+    description: "Number of findings in the report."
+    value: ${{ steps.scan.outputs.findings }}
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0  # v7.1.0
+      with:
+        python-version: ${{ inputs.python-version }}
+    - name: Install PageVet
+      shell: bash
+      env:
+        ACTION_PATH: ${{ github.action_path }}
+      run: python -m pip install --quiet "$ACTION_PATH"
+    - name: Scan
+      id: scan
+      shell: bash
+      env:
+        PV_TARGETS: ${{ inputs.targets }}
+        PV_URLS_FILE: ${{ inputs.urls-file }}
+        PV_SITEMAP: ${{ inputs.sitemap }}
+        PV_FAIL_ON: ${{ inputs.fail-on }}
+        PV_SARIF: ${{ inputs.sarif-file }}
+        PV_MAX_PAGES: ${{ inputs.max-pages }}
+        PV_FETCH_CSS: ${{ inputs.fetch-css }}
+      run: |
+        set -u
+        mkdir -p "$(dirname "$PV_SARIF")"
+        args=(--format sarif --out "$PV_SARIF" --max-pages "$PV_MAX_PAGES")
+        level="$PV_FAIL_ON"
+        [ "$level" = "never" ] && level="high"
+        case "$level" in low|medium|high) ;; *) echo "::error::fail-on must be low, medium, high or never"; exit 2;; esac
+        args+=(--fail-on "$level")
+        [ -n "$PV_URLS_FILE" ] && args+=(--urls "$PV_URLS_FILE")
+        [ -n "$PV_SITEMAP" ] && args+=(--sitemap "$PV_SITEMAP")
+        [ "$PV_FETCH_CSS" = "true" ] && args+=(--fetch-css)
+        read -r -d '' -a targets <<< "$PV_TARGETS" || true
+        code=0
+        pagevet "${args[@]}" "${targets[@]}" || code=$?
+        findings=$(python -c "import json,sys; print(len(json.load(open(sys.argv[1]))['runs'][0]['results']))" "$PV_SARIF" 2>/dev/null || echo 0)
+        {
+          echo "sarif-file=$PV_SARIF"
+          echo "exit-code=$code"
+          echo "findings=$findings"
+        } >> "$GITHUB_OUTPUT"
+        echo "PageVet: $findings finding(s), exit code $code. Report: $PV_SARIF" >> "$GITHUB_STEP_SUMMARY"
+        if [ "$PV_FAIL_ON" != "never" ] && [ "$code" -ne 0 ]; then exit "$code"; fi

@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use PageVet or its published measurements, please cite it as below."
+title: "PageVet: find text in web pages aimed at AI models"
+type: software
+authors:
+  - family-names: Zulick
+    given-names: Joseph
+version: 0.1.0
+date-released: 2026-11-26
+license: MIT
+repository-code: "https://github.com/j-zulick/pagevet"
+url: "https://j-zulick.github.io/pagevet/"
+abstract: >-
+  A deterministic scanner for indirect prompt injection in web pages: text aimed at AI models in visible text,
+  hidden elements, comments, attributes, structured data, images, headers and llms.txt, with severity, advice,
+  OWASP and MITRE ATLAS IDs, and an AI-crawler access check. Every published number comes with its data, script
+  and date.
+keywords:
+  - prompt injection
+  - AI security
+  - LLM
+  - AI crawlers
+  - SARIF

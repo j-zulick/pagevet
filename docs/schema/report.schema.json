@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pagevet-report-1",
+  "title": "PageVet JSON report (pagevet --format json)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["source", "findings", "error", "evidence"],
+    "additionalProperties": false,
+    "properties": {
+      "source": { "type": "string", "description": "URL or file path that was scanned" },
+      "error": { "type": "string", "description": "empty when the page was read" },
+      "evidence": {
+        "type": "object",
+        "description": "Set for crawled pages: what crawlee-server recorded for the stored page",
+        "properties": {
+          "capture_id": { "type": "string", "pattern": "^[0-9a-f]{48}$" },
+          "sha256": { "type": "string" },
+          "fetched_at": { "type": "string" },
+          "fetched_via": { "type": "string" }
+        },
+        "additionalProperties": false
+      },
+      "ai_share_links": {
+        "type": "array",
+        "description": "Links and buttons that open an AI assistant with a pre-filled prompt, decoded. Findings in the \"AI share links\" channel come from these prompts",
+        "items": {
+          "type": "object",
+          "required": ["assistant", "prompt", "label"],
+          "additionalProperties": false,
+          "properties": {
+            "assistant": { "type": "string" },
+            "prompt": { "type": "string" },
+            "label": { "type": "string", "description": "the link's text, aria-label or title; empty for links built by scripts" }
+          }
+        }
+      },
+      "findings": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["channel", "kinds", "excerpt", "severity", "advice", "opinions", "taxonomy", "intent"],
+          "additionalProperties": false,
+          "properties": {
+            "channel": { "type": "string" },
+            "kinds": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+            "excerpt": { "type": "string" },
+            "severity": { "enum": ["low", "medium", "high"] },
+            "advice": { "type": "string" },
+            "opinions": {
+              "type": "object",
+              "description": "Optional detectors' verdicts (--second-opinion), keyed by detector name",
+              "additionalProperties": {
+                "type": "object",
+                "required": ["flagged", "score"],
+                "properties": { "flagged": { "type": "boolean" }, "score": { "type": ["number", "null"] } }
+              }
+            },
+            "intent": { "enum": ["", "commercial"], "description": "\"commercial\" when the instruction steers what AI answers recommend, rank or cite" },
+            "taxonomy": {
+              "type": "object",
+              "description": "Framework IDs: OWASP Top 10 for LLM Applications 2025 and MITRE ATLAS techniques, OWASP Top 10 for Agentic Applications 2026 and NIST AI 100-2e2025; empty lists for findings that are not an injection (content_differs, fetch_differs, repetition)",
+              "required": ["owasp", "atlas"],
+              "additionalProperties": false,
+              "properties": {
+                "owasp": { "type": "array", "items": { "type": "string", "pattern": "^LLM\\d{2}:\\d{4}$" } },
+                "atlas": { "type": "array", "items": { "type": "string", "pattern": "^AML\\.T\\d{4}(\\.\\d{3})?$" } },
+                "owasp_agentic": { "type": "array", "description": "OWASP Top 10 for Agentic Applications 2026", "items": { "type": "string", "pattern": "^ASI\\d{2}$" } },
+                "nist": { "type": "array", "description": "NIST AI 100-2e2025 attack IDs", "items": { "type": "string", "pattern": "^NISTAML\\.\\d{2,3}$" } }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
