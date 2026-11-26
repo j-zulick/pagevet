@@ -19,6 +19,16 @@ The [README](../README.md) covers install, quick start and what PageVet checks. 
 - [Configuration](#configuration)
 - [Safety](#safety)
 
+## Install the CLI
+
+Install the pinned release with [uv](https://docs.astral.sh/uv/):
+
+```bash
+uv tool install "git+https://github.com/j-zulick/pagevet@v0.4.0"
+```
+
+You can also install with `pip install "git+https://github.com/j-zulick/pagevet@v0.4.0"` in a virtual environment, or use `docker run --rm ghcr.io/j-zulick/pagevet:0.4.0 https://example.com/pricing`. Replace the example URL with a page you control. To run the bundled sample, follow the [clone-based quick start](../README.md#quick-start).
+
 ## Scanning pages
 ```bash
 pagevet https://example.com/pricing                         # one page
