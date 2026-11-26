@@ -2,6 +2,7 @@
 
 The [README](../README.md) covers install, quick start and what PageVet checks. This page covers every command and option in more detail.
 
+- [Install](#install)
 - [Scanning pages](#scanning-pages)
 - [AI crawler access](#ai-crawler-access)
 - [AI visibility report and bot traffic](#ai-visibility-report-and-bot-traffic)
@@ -18,6 +19,16 @@ The [README](../README.md) covers install, quick start and what PageVet checks. 
 - [Scores, OpenSearch and storage](#scores-opensearch-and-storage)
 - [Configuration](#configuration)
 - [Safety](#safety)
+
+## Install
+The README's path is `uv tool install "git+https://github.com/j-zulick/pagevet@v0.4.1"` (Python 3.11–3.13). Other ways:
+
+- **pip** in a virtual environment: `pip install "git+https://github.com/j-zulick/pagevet@v0.4.1"`.
+- **Container**, no Python needed: `docker run --rm ghcr.io/j-zulick/pagevet:0.4.1 https://example.com/pricing`.
+- **Wheel** from the [release](https://github.com/j-zulick/pagevet/releases): `pip install ./pagevet-0.4.1-py3-none-any.whl`.
+- **No install:** open `explore.html` from the release to browse the field studies offline.
+
+Optional extras (`pdf`, `ocr`, `mcp`, `langfuse`, `otel`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.4.1"`. The quick-start sample (`tests/fixtures/sample.html`) is in a clone of the repository, not in the wheel.
 
 ## Scanning pages
 ```bash
@@ -36,7 +47,7 @@ pagevet --mcp-tools tools.json                              # an MCP server's to
 pagevet-view https://example.com/pricing --out view.html    # what a person sees next to what an AI model also reads
 ```
 
-Optional extras (`pdf`, `ocr`, `mcp`, `langfuse`, `otel`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.4.0"`.
+Optional extras (`pdf`, `ocr`, `mcp`, `langfuse`, `otel`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.4.1"`.
 
 **Channels in detail.**
 - *Hidden elements:* `display:none`, off-screen, zero-size, transparent, scaled or clipped to nothing, near-zero font size or opacity, `aria-hidden`, `hidden`, inline, from the page's own `<style>` rules, or with `--fetch-css` from its linked stylesheets; `<template>` content; SVG `<title>` and `<desc>`. Text that only stylesheet rules hide (often dialogs and menus) is its own channel, where a reply command alone is medium.
@@ -128,7 +139,7 @@ Text, JSON ([schema](schema/report.schema.json)), CSV, a self-contained HTML rep
 ## CI: GitHub Action and pre-commit
 ```yaml
 - uses: actions/checkout@v5
-- uses: j-zulick/pagevet@v0.4.0
+- uses: j-zulick/pagevet@v0.4.1
   id: pagevet
   with:
     urls-file: urls.txt            # or targets: "https://example.com/ page.html", or sitemap: ...
@@ -144,7 +155,7 @@ Outputs: `sarif-file`, `exit-code` (0, 1 or 2, as for the command) and `findings
 # .pre-commit-config.yaml
 repos:
   - repo: https://github.com/j-zulick/pagevet
-    rev: v0.4.0
+    rev: v0.4.1
     hooks:
       - id: pagevet      # fails a commit that adds HTML, Markdown or text with a medium or high finding
 ```

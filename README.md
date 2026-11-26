@@ -5,7 +5,7 @@
 [![Python 3.11–3.13](https://img.shields.io/badge/python-3.11%E2%80%933.13-blue)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-**What can an AI crawler actually retrieve from a page, and does that page contain instructions aimed at AI systems?** PageVet checks both, deterministically, with no AI model or API key.
+**What can an AI crawler actually retrieve from a page, and does that page contain instructions aimed at AI systems?** PageVet audits both. Run it against your own pages or browse an automotive field study to see the requests and results behind each finding. It is deterministic: no AI model or API key.
 
 **[Explore the automotive study →](https://j-zulick.github.io/pagevet/#ds=field&f.study=front+brake+rotor+shopping+pages)** · **[Run the offline example →](#quick-start)**
 
@@ -19,9 +19,9 @@ PageVet audits pages for it and reports which of twenty AI crawlers a page lets 
 
 ## Install
 ```bash
-uv tool install "git+https://github.com/j-zulick/pagevet@v0.4.0"    # Python 3.11–3.13
+uv tool install "git+https://github.com/j-zulick/pagevet@v0.4.1"    # Python 3.11–3.13
 ```
-Or `pip install "git+https://github.com/j-zulick/pagevet@v0.4.0"` in a virtual environment, or with no Python: `docker run --rm ghcr.io/j-zulick/pagevet:0.4.0 https://example.com/pricing`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. Optional extras (PDF, OCR, MCP and others) are listed in [docs/USAGE.md](docs/USAGE.md).
+Other ways to install (pip, the container image, the release wheel) and the optional extras: [docs/USAGE.md](docs/USAGE.md#install).
 
 ## Quick start
 A first result with no network, from a clone of this repository (needs [uv](https://docs.astral.sh/uv/); a wheel install doesn't include the sample):

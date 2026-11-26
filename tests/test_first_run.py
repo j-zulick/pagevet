@@ -60,10 +60,10 @@ def test_missing_extra_names_the_working_install_line(monkeypatch):
 
 
 def test_readme_install_lines_point_at_this_version():
-    """Every pinned install or Action line in the README and docs/USAGE.md names the current version, and none needs PyPI."""
+    """Every pinned install or Action line in the README, docs/USAGE.md and docs/API.md names the current version, and none needs PyPI."""
     import re
 
-    readme = open("README.md", encoding="utf-8").read() + open("docs/USAGE.md", encoding="utf-8").read()
+    readme = "".join(open(f, encoding="utf-8").read() for f in ("README.md", "docs/USAGE.md", "docs/API.md"))
     pins = set(re.findall(r"j-zulick/pagevet@(v[\d.]+)", readme))
     assert pins == {f"v{pagevet.__version__}"}
     assert 'pip install "pagevet[' not in readme
