@@ -416,57 +416,59 @@ def caught(inner: str) -> bool:
     return bool(scan_text("case", page(inner)).findings)
 
 
-def main() -> int:
-    out_dir = Path(sys.argv[1])
-    name = sys.argv[2] if len(sys.argv) > 2 else "results.json"
-    rows, cases = [], []
-
-    def record(group: str, technique: str, seed: str, brand: str, inner: str) -> None:
-        hit = caught(inner)
-        cases.append({"group": group, "technique": technique, "seed": seed, "brand": brand, "caught": hit})
-
+def iter_cases():
+    """Yield (group, technique, seed, brand, inner) for every case, in the order the report lists them."""
     for technique, transform in TEXT_LEVEL.items():
         for seed, template in SEEDS.items():
             for b in BRANDS:
-                record("disguise", technique, seed, b, transform(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
+                yield ("disguise", technique, seed, b, transform(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
     for technique, transform in TEXT_LEVEL.items():
         for seed, template in HELD_OUT.items():
             for b in BRANDS:
-                record("held-out", f"held-out: {technique}", seed, b, transform(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
+                yield ("held-out", f"held-out: {technique}", seed, b, transform(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
     for seed, template in REWORDED.items():
         for b in BRANDS:
-            record("rewording", "reworded without trigger phrases", seed, b, html.escape(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
+            yield ("rewording", "reworded without trigger phrases", seed, b, html.escape(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
     for lang, table in TRANSLATED.items():
         for seed, template in table.items():
             for b in BRANDS:
-                record("translation", f"translated ({lang})", seed, b, html.escape(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
+                yield ("translation", f"translated ({lang})", seed, b, html.escape(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
     for lang, table in TRANSLATED_NEW.items():
         for seed, template in table.items():
             for b in BRANDS:
-                record("translation", f"translated ({lang})", seed, b, html.escape(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
+                yield ("translation", f"translated ({lang})", seed, b, html.escape(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
     for lang, table in TRANSLATED_V24.items():
         for seed, template in table.items():
             for b in BRANDS:
-                record("translation", f"translated ({lang})", seed, b, html.escape(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
+                yield ("translation", f"translated ({lang})", seed, b, html.escape(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
     for lang, table in TRANSLATED_NEW_HELD_OUT.items():
         for seed, template in table.items():
             for b in BRANDS:
-                record("translation-held-out", f"held-out: translated ({lang})", seed, b,
+                yield ("translation-held-out", f"held-out: translated ({lang})", seed, b,
                        html.escape(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
     for lang, table in TRANSLATED_V24_HELD_OUT.items():
         for seed, template in table.items():
             for b in BRANDS:
-                record("translation-held-out", f"held-out: translated ({lang})", seed, b,
+                yield ("translation-held-out", f"held-out: translated ({lang})", seed, b,
                        html.escape(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
     for lang, table in HELD_OUT_2.items():
         for seed, template in table.items():
             for b in BRANDS:
-                record("held-out-2", f"held-out 2 ({lang})", seed, b, html.escape(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
+                yield ("held-out-2", f"held-out 2 ({lang})", seed, b, html.escape(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
     for lang, table in TRANSLATED_HELD_OUT.items():
         for seed, template in table.items():
             for b in BRANDS:
-                record("translation-held-out", f"held-out: translated ({lang})", seed, b,
+                yield ("translation-held-out", f"held-out: translated ({lang})", seed, b,
                        html.escape(template.format(b=b, u=f"https://{b.lower()}.example/offer")))
+
+
+
+def main() -> int:
+    out_dir = Path(sys.argv[1])
+    name = sys.argv[2] if len(sys.argv) > 2 else "results.json"
+    rows, cases = [], []
+    for group, technique, seed, brand, inner in iter_cases():
+        cases.append({"group": group, "technique": technique, "seed": seed, "brand": brand, "caught": caught(inner)})
 
     by: dict[str, list[int]] = {}
     for c in cases:

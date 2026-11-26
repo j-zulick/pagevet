@@ -19,6 +19,9 @@ Each scanned page becomes a trace with its findings as output and these scores:
 A benchmark run becomes one trace with ``catch_rate`` and ``false_alarm_rate`` as scores and the
 per-group rates as metadata. Recording is best effort: a Langfuse failure never changes a scan's
 result or exit code. Nothing is sent unless ``--langfuse`` is given.
+
+``pagevet-bench cases.jsonl --langfuse-dataset NAME`` (0.3.0) keeps the cases as a dataset and records the run as
+an experiment; see ``record_experiment``.
 """
 
 from __future__ import annotations
@@ -131,6 +134,119 @@ def record_bench(report: dict, cases: str, client: Any | None = None) -> str:
             client.create_score(trace_id=trace_id, name=name, value=float(rate), data_type="NUMERIC")
     client.flush()
     return trace_id
+
+
+# --- Langfuse datasets and experiments (0.3.0) ----------------------------------------------------
+# ``pagevet-bench cases.jsonl --langfuse-dataset NAME`` keeps the cases as the dataset NAME (one per benchmark) and
+# records this version's run as the experiment "pagevet", run name = the PageVet version, through the SDK's
+# experiment runner. Item scores: ``caught`` (attack cases) and ``false_alarm`` (clean cases), 1 or 0. Run scores:
+# ``catch_rate``, ``false_alarm_rate``, ``median_ms`` and ``p95_ms``. Every case is judged and timed first, one at a
+# time, so the timings do not depend on the runner's concurrency or the network. Item text over ITEM_TEXT_MAX
+# characters, or from a case marked ``private``, stays local: the item keeps only its id, length and SHA-256.
+
+EXPERIMENT = "pagevet"
+ITEM_TEXT_MAX = 20_000
+
+
+def _item_id(dataset: str, case_id: str) -> str:
+    return _trace_id("dataset", dataset, case_id)
+
+
+def _item_input(case: dict) -> dict:
+    text = case["text"]
+    out = {"id": str(case["id"]), "format": case.get("format", "text"), "chars": len(text),
+           "sha256": hashlib.sha256(text.encode("utf-8", "replace")).hexdigest()}
+    if not case.get("private") and len(text) <= ITEM_TEXT_MAX:
+        out["text"] = text
+    return out
+
+
+def _field(item: Any, name: str) -> Any:
+    return item.get(name) if isinstance(item, dict) else getattr(item, name, None)
+
+
+def _evaluation(name: str, value: float, comment: str = "") -> Any:
+    try:
+        from langfuse import Evaluation
+    except ImportError:  # tests with a stand-in client and no SDK
+        return {"name": name, "value": value, "comment": comment}
+    return Evaluation(name=name, value=value, comment=comment or None)
+
+
+def caught_evaluator(*, output: Any, expected_output: Any, **_: Any) -> list[Any]:
+    """Item score ``caught``: 1 when an attack case was flagged, 0 when it was missed; nothing for clean cases."""
+    if not output or not (expected_output or {}).get("label"):
+        return []
+    return [_evaluation("caught", 1.0 if output["flagged"] else 0.0, output.get("kinds", ""))]
+
+
+def false_alarm_evaluator(*, output: Any, expected_output: Any, **_: Any) -> list[Any]:
+    """Item score ``false_alarm``: 1 when a clean case was flagged, 0 when it was not; nothing for attack cases."""
+    if not output or (expected_output or {}).get("label", 1):
+        return []
+    return [_evaluation("false_alarm", 1.0 if output["flagged"] else 0.0, output.get("kinds", ""))]
+
+
+def _percentile(values: list[float], q: float) -> float:
+    ordered = sorted(values)
+    return ordered[int(q * (len(ordered) - 1))]
+
+
+def run_evaluator(*, item_results: list[Any], **_: Any) -> list[Any]:
+    """Run scores: catch rate, false-alarm rate (each with its 95% Wilson interval in the comment), median and p95 ms."""
+    from pagevet.bench import wilson
+
+    attacks, clean, ms = [], [], []
+    for r in item_results:
+        out, expected = _field(r, "output"), _field(_field(r, "item"), "expected_output") or {}
+        if not out:
+            continue
+        ms.append(out["ms"])
+        (attacks if expected.get("label") else clean).append(out["flagged"])
+    evals = []
+    for name, flags in (("catch_rate", attacks), ("false_alarm_rate", clean)):
+        if flags:
+            lo, hi = wilson(sum(flags), len(flags))
+            evals.append(_evaluation(name, sum(flags) / len(flags), f"{sum(flags)}/{len(flags)}, 95% CI {lo:.4f}-{hi:.4f}"))
+    if ms:
+        evals += [_evaluation("median_ms", round(_percentile(ms, 0.5), 3), f"{len(ms)} cases"),
+                  _evaluation("p95_ms", round(_percentile(ms, 0.95), 3), f"{len(ms)} cases")]
+    return evals
+
+
+def record_experiment(cases: list[dict], dataset: str, client: Any | None = None, version: str | None = None) -> dict:
+    """Upsert ``cases`` as dataset items, then run the experiment over them; return what was recorded."""
+    from pagevet import __version__
+    from pagevet.bench import judge_case
+
+    client = _client(client)
+    version = version or __version__
+    try:
+        client.create_dataset(name=dataset, description="PageVet benchmark cases (pagevet-bench --langfuse-dataset)",
+                              metadata={"tool": "pagevet"})
+    except Exception:  # noqa: S110 - it already exists: items are upserted below
+        pass
+    ids = {}
+    for case in cases:
+        item_id = _item_id(dataset, str(case["id"]))
+        ids[item_id] = case
+        client.create_dataset_item(dataset_name=dataset, id=item_id, input=_item_input(case),
+                                   expected_output={"label": int(case["label"])},
+                                   metadata={"group": str(case.get("group", "")), "benchmark": dataset})
+    judged = {}
+    for item_id, case in ids.items():  # judged one at a time, before the runner starts: honest timings
+        flagged, ms, kinds = judge_case(case)
+        judged[item_id] = {"flagged": flagged, "ms": round(ms, 3), "kinds": kinds}
+    items = [i for i in client.get_dataset(dataset).items if _field(i, "id") in ids]  # this file's cases only
+
+    def task(*, item: Any, **_: Any) -> dict | None:
+        return judged.get(_field(item, "id"))
+
+    client.run_experiment(name=EXPERIMENT, run_name=version, description=f"PageVet {version} patterns on {dataset}",
+                          data=items, task=task, evaluators=[caught_evaluator, false_alarm_evaluator],
+                          run_evaluators=[run_evaluator], max_concurrency=8, metadata={"pagevet": version, "dataset": dataset})
+    client.flush()
+    return {"dataset": dataset, "items": len(ids), "experiment": EXPERIMENT, "run": version}
 
 
 # --- OpenTelemetry ------------------------------------------------------------------------

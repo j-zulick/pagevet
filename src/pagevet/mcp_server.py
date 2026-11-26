@@ -74,7 +74,7 @@ def scan_page(url: str = "", html: str = "", include_repetition: bool = False,
 
 
 def check_ai_access(url: str, probe: bool = True, get: Callable | None = None) -> dict:
-    """Which of fourteen AI crawlers may read ``url`` (robots.txt per RFC 9309, page signals,
+    """Which of twenty AI crawlers may read ``url`` (robots.txt per RFC 9309, page signals,
     llms.txt) and, with ``probe``, which the server actually serves. Non-public addresses are refused."""
     from dataclasses import asdict as _asdict
 
@@ -127,7 +127,7 @@ def main(argv: list[str] | None = None) -> None:
 
     @server.tool(name="check_ai_access")
     def check_ai_access_tool(url: str, probe: bool = True) -> dict:
-        """Report which AI crawlers (training, search, fetch on request; 14 in all) may read a public page:
+        """Report which AI crawlers (training, search, fetch on request; 20 in all) may read a public page:
         robots.txt per RFC 9309, robots meta tags, X-Robots-Tag, noai and TDM reservations, llms.txt, and with
         probe, what the server answers each crawler's user agent (firewall refusals). Non-public addresses are refused.
         """

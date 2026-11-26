@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_packaged_list_loads_with_every_group():
     groups = {c.group for c in access.CRAWLERS}
-    assert len(access.CRAWLERS) == 14 and groups == set(access.GROUPS)
+    assert len(access.CRAWLERS) == 20 and groups == set(access.GROUPS)
     assert access.BY_TOKEN["gptbot"].operator == "OpenAI"
     assert access.BY_TOKEN["google-extended"].user_agent == ""  # control token: never visits on its own
 

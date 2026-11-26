@@ -1,6 +1,9 @@
 # AI crawlers PageVet checks: one row per robots.txt product token.
 # group: training (collects pages to train models), search (indexes pages for AI answers), fetch (reads a page when a person asks).
 # user_agent: the User-Agent the crawler sends; empty for robots.txt control tokens that never visit on their own.
+# Sources: each operator's own crawler page (OpenAI, Anthropic, Google, Apple, Common Crawl, Meta, ByteDance, Amazon,
+# Perplexity, DuckDuckGo). Google-CloudVertexBot, meta-webindexer, meta-externalfetcher, Amzn-SearchBot, Amzn-User and
+# DuckAssistBot checked against Google's, Meta's, Amazon's and DuckDuckGo's own pages on 2026-11-26.
 # To add a crawler for one run without editing this file: pagevet-access --crawlers my-crawlers.csv (same columns).
 token,operator,group,user_agent
 GPTBot,OpenAI,training,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.1; +https://openai.com/gptbot"
@@ -14,6 +17,12 @@ Amazonbot,Amazon,training,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; co
 OAI-SearchBot,OpenAI,search,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.0; +https://openai.com/searchbot"
 Claude-SearchBot,Anthropic,search,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-SearchBot/1.0; +https://www.anthropic.com)"
 PerplexityBot,Perplexity,search,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)"
+Google-CloudVertexBot,Google,search,Google-CloudVertexBot
+meta-webindexer,Meta,search,meta-webindexer/1.1 (+https://developers.facebook.com/docs/sharing/webmasters/crawler)
+Amzn-SearchBot,Amazon,search,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Amzn-SearchBot/0.1) Chrome/W.X.Y.Z Safari/537.36"
+DuckAssistBot,DuckDuckGo,search,DuckAssistBot/1.2; (+http://duckduckgo.com/duckassistbot.html)
 ChatGPT-User,OpenAI,fetch,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot"
 Claude-User,Anthropic,fetch,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-User/1.0; +Claude-User@anthropic.com)"
 Perplexity-User,Perplexity,fetch,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Perplexity-User/1.0; +https://perplexity.ai/perplexity-user)"
+meta-externalfetcher,Meta,fetch,meta-externalfetcher/1.1 (+https://developers.facebook.com/docs/sharing/webmasters/crawler)
+Amzn-User,Amazon,fetch,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Amzn-User/0.1) Chrome/W.X.Y.Z Safari/537.36"

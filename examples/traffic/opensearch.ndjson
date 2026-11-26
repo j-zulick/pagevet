@@ -1,0 +1,129 @@
+{"timestamp": "2026-10-01T09:00:00Z", "request.path": "/", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.1; +https://openai.com/gptbot", "client.ip": "192.0.2.6"}
+{"timestamp": "2026-10-01T11:00:00Z", "request.path": "/pricing", "agent": "DuckDuckBot/1.1; (+http://duckduckgo.com/duckduckbot.html)", "client.ip": "203.0.113.8"}
+{"timestamp": "2026-10-01T11:00:00Z", "request.path": "/guides/fitting", "agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)", "client.ip": "192.0.2.14"}
+{"timestamp": "2026-10-01T11:00:00Z", "request.path": "/llms.txt", "agent": "-", "client.ip": "198.51.100.5"}
+{"timestamp": "2026-10-01T14:00:00Z", "request.path": "/llms.txt", "agent": "-", "client.ip": "198.51.100.4"}
+{"timestamp": "2026-10-02T10:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "198.51.100.4"}
+{"timestamp": "2026-10-02T13:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "203.0.113.17"}
+{"timestamp": "2026-10-03T10:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-User/1.0; +Claude-User@anthropic.com)", "client.ip": "203.0.113.15"}
+{"timestamp": "2026-10-03T09:00:00Z", "request.path": "/llms.txt", "agent": "ExampleSEOBot/3.1 (+https://seo.example.net/bot)", "client.ip": "198.51.100.3"}
+{"timestamp": "2026-10-04T09:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.1; +https://openai.com/gptbot", "client.ip": "192.0.2.4"}
+{"timestamp": "2026-10-04T09:00:00Z", "request.path": "/guides/fitting", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-User/1.0; +Claude-User@anthropic.com)", "client.ip": "192.0.2.7"}
+{"timestamp": "2026-10-05T09:00:00Z", "request.path": "/", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)", "client.ip": "203.0.113.13"}
+{"timestamp": "2026-10-05T09:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.1; +https://openai.com/gptbot", "client.ip": "203.0.113.9"}
+{"timestamp": "2026-10-06T09:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)", "client.ip": "192.0.2.11"}
+{"timestamp": "2026-10-07T09:00:00Z", "request.path": "/blog/brake-rotors", "agent": "ExampleSEOBot/3.1 (+https://seo.example.net/bot)", "client.ip": "192.0.2.6"}
+{"timestamp": "2026-10-07T12:00:00Z", "request.path": "/blog/brake-rotors", "agent": "ExampleSEOBot/3.1 (+https://seo.example.net/bot)", "client.ip": "198.51.100.17"}
+{"timestamp": "2026-10-07T09:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot", "client.ip": "192.0.2.17"}
+{"timestamp": "2026-10-08T11:00:00Z", "request.path": "/", "agent": "ExampleSEOBot/3.1 (+https://seo.example.net/bot)", "client.ip": "192.0.2.12"}
+{"timestamp": "2026-10-08T09:00:00Z", "request.path": "/guides/fitting", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.1; +https://openai.com/gptbot", "client.ip": "203.0.113.18"}
+{"timestamp": "2026-10-08T10:00:00Z", "request.path": "/llms.txt", "agent": "python-requests/2.32.3", "client.ip": "192.0.2.16"}
+{"timestamp": "2026-10-08T13:00:00Z", "request.path": "/llms.txt", "agent": "python-requests/2.32.3", "client.ip": "192.0.2.16"}
+{"timestamp": "2026-10-09T11:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-User/1.0; +Claude-User@anthropic.com)", "client.ip": "203.0.113.17"}
+{"timestamp": "2026-10-10T10:00:00Z", "request.path": "/", "agent": "DuckDuckBot/1.1; (+http://duckduckgo.com/duckduckbot.html)", "client.ip": "192.0.2.19"}
+{"timestamp": "2026-10-10T11:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "203.0.113.18"}
+{"timestamp": "2026-10-11T09:00:00Z", "request.path": "/", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-User/1.0; +Claude-User@anthropic.com)", "client.ip": "192.0.2.13"}
+{"timestamp": "2026-10-11T10:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)", "client.ip": "192.0.2.4"}
+{"timestamp": "2026-10-12T09:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)", "client.ip": "192.0.2.12"}
+{"timestamp": "2026-10-12T11:00:00Z", "request.path": "/guides/fitting", "agent": "DuckDuckBot/1.1; (+http://duckduckgo.com/duckduckbot.html)", "client.ip": "198.51.100.18"}
+{"timestamp": "2026-10-13T10:00:00Z", "request.path": "/", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.1; +https://openai.com/gptbot", "client.ip": "203.0.113.19"}
+{"timestamp": "2026-10-13T09:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "203.0.113.18"}
+{"timestamp": "2026-10-13T12:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "198.51.100.8"}
+{"timestamp": "2026-10-14T10:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "203.0.113.1"}
+{"timestamp": "2026-10-14T10:00:00Z", "request.path": "/blog/brake-rotors", "agent": "-", "client.ip": "192.0.2.17"}
+{"timestamp": "2026-10-14T13:00:00Z", "request.path": "/blog/brake-rotors", "agent": "-", "client.ip": "192.0.2.15"}
+{"timestamp": "2026-10-15T09:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "203.0.113.8"}
+{"timestamp": "2026-10-15T12:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "203.0.113.2"}
+{"timestamp": "2026-10-15T10:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)", "client.ip": "192.0.2.1"}
+{"timestamp": "2026-10-16T11:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)", "client.ip": "198.51.100.4"}
+{"timestamp": "2026-10-16T10:00:00Z", "request.path": "/guides/fitting", "agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)", "client.ip": "203.0.113.10"}
+{"timestamp": "2026-10-17T09:00:00Z", "request.path": "/", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.1; +https://openai.com/gptbot", "client.ip": "198.51.100.11"}
+{"timestamp": "2026-10-17T10:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)", "client.ip": "192.0.2.5"}
+{"timestamp": "2026-10-17T10:00:00Z", "request.path": "/guides/fitting", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)", "client.ip": "192.0.2.16"}
+{"timestamp": "2026-10-18T09:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)", "client.ip": "198.51.100.2"}
+{"timestamp": "2026-10-18T09:00:00Z", "request.path": "/guides/fitting", "agent": "python-requests/2.32.3", "client.ip": "192.0.2.17"}
+{"timestamp": "2026-10-19T09:00:00Z", "request.path": "/", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-User/1.0; +Claude-User@anthropic.com)", "client.ip": "192.0.2.9"}
+{"timestamp": "2026-10-19T09:00:00Z", "request.path": "/pricing", "agent": "python-requests/2.32.3", "client.ip": "198.51.100.18"}
+{"timestamp": "2026-10-19T11:00:00Z", "request.path": "/guides/fitting", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)", "client.ip": "192.0.2.18"}
+{"timestamp": "2026-10-19T11:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "203.0.113.1"}
+{"timestamp": "2026-10-20T11:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.1; +https://openai.com/gptbot", "client.ip": "192.0.2.19"}
+{"timestamp": "2026-10-20T11:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)", "client.ip": "198.51.100.6"}
+{"timestamp": "2026-10-20T10:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)", "client.ip": "192.0.2.4"}
+{"timestamp": "2026-10-21T10:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.1; +https://openai.com/gptbot", "client.ip": "198.51.100.9"}
+{"timestamp": "2026-10-21T09:00:00Z", "request.path": "/guides/fitting", "agent": "python-requests/2.32.3", "client.ip": "192.0.2.6"}
+{"timestamp": "2026-10-22T11:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.1; +https://openai.com/gptbot", "client.ip": "203.0.113.7"}
+{"timestamp": "2026-10-22T10:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot", "client.ip": "203.0.113.10"}
+{"timestamp": "2026-10-23T10:00:00Z", "request.path": "/pricing", "agent": "ExampleSEOBot/3.1 (+https://seo.example.net/bot)", "client.ip": "203.0.113.3"}
+{"timestamp": "2026-10-23T13:00:00Z", "request.path": "/pricing", "agent": "ExampleSEOBot/3.1 (+https://seo.example.net/bot)", "client.ip": "203.0.113.7"}
+{"timestamp": "2026-10-23T11:00:00Z", "request.path": "/guides/fitting", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "198.51.100.2"}
+{"timestamp": "2026-10-24T10:00:00Z", "request.path": "/", "agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)", "client.ip": "198.51.100.14"}
+{"timestamp": "2026-10-24T10:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.0; +https://openai.com/searchbot", "client.ip": "203.0.113.15"}
+{"timestamp": "2026-10-25T09:00:00Z", "request.path": "/", "agent": "-", "client.ip": "192.0.2.4"}
+{"timestamp": "2026-10-25T09:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot", "client.ip": "198.51.100.14"}
+{"timestamp": "2026-10-25T10:00:00Z", "request.path": "/guides/fitting", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "198.51.100.17"}
+{"timestamp": "2026-10-26T10:00:00Z", "request.path": "/", "agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)", "client.ip": "192.0.2.19"}
+{"timestamp": "2026-10-26T09:00:00Z", "request.path": "/pricing", "agent": "-", "client.ip": "203.0.113.7"}
+{"timestamp": "2026-10-27T09:00:00Z", "request.path": "/", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.0; +https://openai.com/searchbot", "client.ip": "203.0.113.8"}
+{"timestamp": "2026-10-27T10:00:00Z", "request.path": "/pricing", "agent": "DuckDuckBot/1.1; (+http://duckduckgo.com/duckduckbot.html)", "client.ip": "198.51.100.5"}
+{"timestamp": "2026-10-27T09:00:00Z", "request.path": "/blog/brake-rotors", "agent": "-", "client.ip": "198.51.100.14"}
+{"timestamp": "2026-10-27T11:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "192.0.2.18"}
+{"timestamp": "2026-10-28T09:00:00Z", "request.path": "/", "agent": "python-requests/2.32.3", "client.ip": "203.0.113.4"}
+{"timestamp": "2026-10-28T12:00:00Z", "request.path": "/", "agent": "python-requests/2.32.3", "client.ip": "198.51.100.18"}
+{"timestamp": "2026-10-28T09:00:00Z", "request.path": "/guides/fitting", "agent": "-", "client.ip": "198.51.100.19"}
+{"timestamp": "2026-10-29T09:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.0; +https://openai.com/searchbot", "client.ip": "198.51.100.1"}
+{"timestamp": "2026-10-29T09:00:00Z", "request.path": "/guides/fitting", "agent": "python-requests/2.32.3", "client.ip": "203.0.113.18"}
+{"timestamp": "2026-10-29T12:00:00Z", "request.path": "/guides/fitting", "agent": "python-requests/2.32.3", "client.ip": "198.51.100.15"}
+{"timestamp": "2026-10-30T10:00:00Z", "request.path": "/", "agent": "DuckDuckBot/1.1; (+http://duckduckgo.com/duckduckbot.html)", "client.ip": "198.51.100.6"}
+{"timestamp": "2026-10-30T10:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)", "client.ip": "198.51.100.4"}
+{"timestamp": "2026-10-31T10:00:00Z", "request.path": "/", "agent": "ExampleSEOBot/3.1 (+https://seo.example.net/bot)", "client.ip": "192.0.2.11"}
+{"timestamp": "2026-10-31T10:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-User/1.0; +Claude-User@anthropic.com)", "client.ip": "198.51.100.13"}
+{"timestamp": "2026-10-31T11:00:00Z", "request.path": "/guides/fitting", "agent": "-", "client.ip": "198.51.100.19"}
+{"timestamp": "2026-11-01T09:00:00Z", "request.path": "/", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "198.51.100.8"}
+{"timestamp": "2026-11-01T09:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot", "client.ip": "192.0.2.10"}
+{"timestamp": "2026-11-01T10:00:00Z", "request.path": "/guides/fitting", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)", "client.ip": "192.0.2.18"}
+{"timestamp": "2026-11-02T11:00:00Z", "request.path": "/", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "192.0.2.2"}
+{"timestamp": "2026-11-02T11:00:00Z", "request.path": "/pricing", "agent": "python-requests/2.32.3", "client.ip": "192.0.2.7"}
+{"timestamp": "2026-11-02T14:00:00Z", "request.path": "/pricing", "agent": "python-requests/2.32.3", "client.ip": "192.0.2.9"}
+{"timestamp": "2026-11-02T11:00:00Z", "request.path": "/guides/fitting", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)", "client.ip": "198.51.100.17"}
+{"timestamp": "2026-11-03T09:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-User/1.0; +Claude-User@anthropic.com)", "client.ip": "203.0.113.7"}
+{"timestamp": "2026-11-03T10:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "192.0.2.19"}
+{"timestamp": "2026-11-03T13:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "203.0.113.13"}
+{"timestamp": "2026-11-03T11:00:00Z", "request.path": "/llms.txt", "agent": "DuckDuckBot/1.1; (+http://duckduckgo.com/duckduckbot.html)", "client.ip": "198.51.100.18"}
+{"timestamp": "2026-11-04T10:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot", "client.ip": "203.0.113.6"}
+{"timestamp": "2026-11-04T09:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "203.0.113.5"}
+{"timestamp": "2026-11-04T12:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "203.0.113.1"}
+{"timestamp": "2026-11-05T09:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.0; +https://openai.com/searchbot", "client.ip": "192.0.2.17"}
+{"timestamp": "2026-11-05T09:00:00Z", "request.path": "/guides/fitting", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)", "client.ip": "198.51.100.2"}
+{"timestamp": "2026-11-05T09:00:00Z", "request.path": "/llms.txt", "agent": "python-requests/2.32.3", "client.ip": "203.0.113.4"}
+{"timestamp": "2026-11-06T10:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)", "client.ip": "198.51.100.12"}
+{"timestamp": "2026-11-06T10:00:00Z", "request.path": "/blog/brake-rotors", "agent": "ExampleSEOBot/3.1 (+https://seo.example.net/bot)", "client.ip": "192.0.2.6"}
+{"timestamp": "2026-11-06T13:00:00Z", "request.path": "/blog/brake-rotors", "agent": "ExampleSEOBot/3.1 (+https://seo.example.net/bot)", "client.ip": "192.0.2.15"}
+{"timestamp": "2026-11-06T11:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)", "client.ip": "203.0.113.1"}
+{"timestamp": "2026-11-07T10:00:00Z", "request.path": "/blog/brake-rotors", "agent": "ExampleSEOBot/3.1 (+https://seo.example.net/bot)", "client.ip": "198.51.100.8"}
+{"timestamp": "2026-11-08T09:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-User/1.0; +Claude-User@anthropic.com)", "client.ip": "192.0.2.14"}
+{"timestamp": "2026-11-08T10:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.0; +https://openai.com/searchbot", "client.ip": "203.0.113.8"}
+{"timestamp": "2026-11-09T10:00:00Z", "request.path": "/", "agent": "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)", "client.ip": "203.0.113.7"}
+{"timestamp": "2026-11-09T11:00:00Z", "request.path": "/pricing", "agent": "-", "client.ip": "198.51.100.1"}
+{"timestamp": "2026-11-10T10:00:00Z", "request.path": "/", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)", "client.ip": "203.0.113.18"}
+{"timestamp": "2026-11-10T10:00:00Z", "request.path": "/pricing", "agent": "DuckDuckBot/1.1; (+http://duckduckgo.com/duckduckbot.html)", "client.ip": "203.0.113.2"}
+{"timestamp": "2026-11-10T11:00:00Z", "request.path": "/blog/brake-rotors", "agent": "python-requests/2.32.3", "client.ip": "198.51.100.18"}
+{"timestamp": "2026-11-10T09:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)", "client.ip": "192.0.2.14"}
+{"timestamp": "2026-11-11T10:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)", "client.ip": "192.0.2.18"}
+{"timestamp": "2026-11-11T11:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)", "client.ip": "198.51.100.18"}
+{"timestamp": "2026-11-11T10:00:00Z", "request.path": "/llms.txt", "agent": "DuckDuckBot/1.1; (+http://duckduckgo.com/duckduckbot.html)", "client.ip": "203.0.113.9"}
+{"timestamp": "2026-11-12T10:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "198.51.100.7"}
+{"timestamp": "2026-11-12T09:00:00Z", "request.path": "/guides/fitting", "agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)", "client.ip": "203.0.113.1"}
+{"timestamp": "2026-11-12T09:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "203.0.113.17"}
+{"timestamp": "2026-11-12T12:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "203.0.113.4"}
+{"timestamp": "2026-11-13T09:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)", "client.ip": "198.51.100.11"}
+{"timestamp": "2026-11-13T09:00:00Z", "request.path": "/blog/brake-rotors", "agent": "python-requests/2.32.3", "client.ip": "192.0.2.18"}
+{"timestamp": "2026-11-13T12:00:00Z", "request.path": "/blog/brake-rotors", "agent": "python-requests/2.32.3", "client.ip": "192.0.2.12"}
+{"timestamp": "2026-11-13T09:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "203.0.113.16"}
+{"timestamp": "2026-11-13T12:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "192.0.2.15"}
+{"timestamp": "2026-11-14T09:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)", "client.ip": "198.51.100.19"}
+{"timestamp": "2026-11-14T09:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "198.51.100.12"}
+{"timestamp": "2026-11-14T12:00:00Z", "request.path": "/blog/brake-rotors", "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36", "client.ip": "203.0.113.19"}
+{"timestamp": "2026-11-14T10:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)", "client.ip": "198.51.100.3"}
+{"timestamp": "2026-11-15T09:00:00Z", "request.path": "/pricing", "agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)", "client.ip": "198.51.100.16"}
+{"timestamp": "2026-11-15T11:00:00Z", "request.path": "/blog/brake-rotors", "agent": "ExampleSEOBot/3.1 (+https://seo.example.net/bot)", "client.ip": "203.0.113.1"}
+{"timestamp": "2026-11-15T09:00:00Z", "request.path": "/llms.txt", "agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)", "client.ip": "192.0.2.17"}

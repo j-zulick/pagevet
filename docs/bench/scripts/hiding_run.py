@@ -54,21 +54,24 @@ METHODS = {
 }
 
 
-def run() -> dict:
-    out: dict = {"version": __version__, "methods": {}}
+def iter_pages():
+    """Yield (method, set, seed, brand, page) for every case, in the order the report counts them."""
     for name, wrap in METHODS.items():
-        row = {}
         for label, seeds in (("dev", SEEDS), ("held_out", HELD_OUT)):
-            found = high = 0
-            for seed in seeds.values():
+            for seed_name, seed in seeds.items():
                 for b in BRANDS:
                     text = seed.format(b=b, u=f"https://{b.lower()}.example/guide")
-                    page = PAGE.format(x=wrap.format(t=text.replace('"', "&quot;")))
-                    findings = scan_text("page.html", page).findings
-                    found += bool(findings)
-                    high += any(f.severity == "high" for f in findings)
-            row[label] = {"found": found, "high": high, "of": len(seeds) * len(BRANDS)}
-        out["methods"][name] = row
+                    yield name, label, seed_name, b, PAGE.format(x=wrap.format(t=text.replace('"', "&quot;")))
+
+
+def run() -> dict:
+    out: dict = {"version": __version__, "methods": {}}
+    for name, label, _, _, page in iter_pages():
+        slot = out["methods"].setdefault(name, {}).setdefault(label, {"found": 0, "high": 0, "of": 0})
+        findings = scan_text("page.html", page).findings
+        slot["found"] += bool(findings)
+        slot["high"] += any(f.severity == "high" for f in findings)
+        slot["of"] += 1
     return out
 
 

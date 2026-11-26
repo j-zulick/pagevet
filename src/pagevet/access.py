@@ -4,7 +4,7 @@
     pagevet-access --urls urls.txt --format csv --out access.csv
     pagevet-access https://example.com/ --require search=allowed --require GPTBot=refused
 
-For each of fourteen AI crawlers, grouped by what the operator uses the visits for (training,
+For each of twenty AI crawlers, grouped by what the operator uses the visits for (training,
 search, fetching a page a person asked about), this reports:
 
 - what the site's robots.txt says, parsed per RFC 9309 (groups by product token, longest match,
@@ -486,6 +486,9 @@ def main(argv: list[str] | None = None, get: Getter | None = None) -> int:
     parser.add_argument("--require", action="append", default=[], metavar="TARGET=STATE",
                         help="fail (exit 1) unless TARGET (crawler token, training, search, fetch or all) is allowed or refused")
     parser.add_argument("--timeout", type=float, default=15.0, metavar="SECONDS")
+    from pagevet import visibility  # 0.3.0: --report and its options; flag names in pagevet.visibility.FLAGS
+
+    visibility.add_arguments(parser)
     args = parser.parse_args(argv)
     urls = list(args.urls)
     if args.url_file:
@@ -518,6 +521,8 @@ def main(argv: list[str] | None = None, get: Getter | None = None) -> int:
             fh.write(text)
     else:
         sys.stdout.write(text)
+    if visibility.write(args, reports, getter):
+        return 2
     failures = [f for r in reports for f in failed_requirements(r, requirements)]
     for f in failures:
         sys.stderr.write(f"requirement failed: {f}\n")
