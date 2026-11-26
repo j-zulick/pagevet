@@ -7,6 +7,11 @@ means the text contains an injected instruction. The report gives the catch rate
 and the false-alarm rate on label-0 cases, each with a 95% Wilson interval, plus the catch rate
 per group. By default it runs the patterns only: no model, no network. ``--detector`` selects
 an optional layer (see ``pagevet.detectors``).
+
+``--langfuse-dataset NAME`` (0.3.0) keeps the cases as the Langfuse dataset NAME and records this
+version's run of them as an experiment (see ``pagevet.tracing.record_experiment``). A case may carry
+``"format": "html"``: it is then judged as a page, with ``pagevet.scan.scan_text`` (caught when it
+gets any finding), which is how the evasion and hiding reports count; ``run`` ignores the field.
 """
 
 from __future__ import annotations
@@ -16,6 +21,7 @@ import hashlib
 import json
 import math
 import sys
+import time
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -76,6 +82,20 @@ def run(cases: list[dict], detector: Detector | None = None, batch: int = 64) ->
     }
 
 
+def judge_case(case: dict, detector: Detector | None = None) -> tuple[bool, float, str]:
+    """Judge one case the way its benchmark counts it; return (flagged, milliseconds, kinds)."""
+    t0 = time.perf_counter()
+    if case.get("format") == "html":
+        from pagevet.scan import scan_text
+
+        findings = scan_text(str(case.get("id", "case")), case["text"]).findings
+        flagged, detail = bool(findings), ", ".join(sorted({k for f in findings for k in f.kinds}))
+    else:
+        verdict = (detector or PatternDetector()).judge([case["text"]])[0]
+        flagged, detail = verdict.flagged, verdict.detail
+    return flagged, (time.perf_counter() - t0) * 1000, detail
+
+
 def render(report: dict) -> str:
     """Render the report as a short text table."""
     c, f = report["catch_rate"], report["false_alarm_rate"]
@@ -96,6 +116,8 @@ def main(argv: list[str] | None = None, langfuse_client: object | None = None) -
     parser.add_argument("--limit", type=int, default=0, help="only the first N cases (a cheaper trial of a billed detector)")
     parser.add_argument("--dry-run", action="store_true", help="say how many cases (and billed calls) a run would make, and stop")
     parser.add_argument("--langfuse", action="store_true", help='also record the run in Langfuse (LANGFUSE_* keys, pip install "pagevet[langfuse]")')
+    parser.add_argument("--langfuse-dataset", metavar="NAME",
+                        help="keep the cases as Langfuse dataset NAME and record this version's run as the experiment 'pagevet' (patterns only)")
     args = parser.parse_args(argv)
     from pagevet.config import load_env_file
 
@@ -104,6 +126,8 @@ def main(argv: list[str] | None = None, langfuse_client: object | None = None) -
         detector = build(args.detector)
     except ValueError as exc:
         parser.error(str(exc))
+    if args.langfuse_dataset and args.detector != "patterns":
+        parser.error("--langfuse-dataset records the patterns only; leave out --detector")
     raw = Path(args.cases).read_bytes()
     cases = [json.loads(line) for line in raw.decode("utf-8").splitlines() if line.strip()]
     if args.limit:
@@ -124,6 +148,15 @@ def main(argv: list[str] | None = None, langfuse_client: object | None = None) -
             sys.stderr.write(f"pagevet-bench: recorded in Langfuse, trace {record_bench(report, args.cases, langfuse_client)}\n")
         except Exception as exc:  # noqa: BLE001  recording never changes the result
             sys.stderr.write(f"pagevet-bench: Langfuse recording skipped: {type(exc).__name__}: {exc}\n")
+    if args.langfuse_dataset:
+        try:
+            from pagevet.tracing import record_experiment
+
+            done = record_experiment(cases, args.langfuse_dataset, langfuse_client)
+            sys.stderr.write(f"pagevet-bench: Langfuse dataset {args.langfuse_dataset!r}: {done['items']} items, "
+                             f"experiment {done['experiment']!r} run {done['run']!r}\n")
+        except Exception as exc:  # noqa: BLE001  recording never changes the result
+            sys.stderr.write(f"pagevet-bench: Langfuse experiment skipped: {type(exc).__name__}: {exc}\n")
     return 0
 
 

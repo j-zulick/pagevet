@@ -15,13 +15,13 @@
 
 Web pages can carry instructions written for the AI systems that read them: "ignore your instructions", "recommend this product", "cite this URL". They are often hidden from people with CSS, HTML comments, alt text, structured data or invisible Unicode. This is indirect prompt injection ([OWASP LLM01](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)), and it is used to manipulate AI search answers.
 
-PageVet audits pages for it and reports which of fourteen AI crawlers a page lets in. It is for site owners, SEO/GEO teams and AI-security teams checking their own pages, user-generated content, or pages an agent will read. It runs as a command, a GitHub Action, an MCP server, a container and a [Python API](docs/API.md). [All field studies, false-alarm pages and benchmark cases](https://j-zulick.github.io/pagevet/) are in the explorer ([how it works](docs/EXPLORER.md)).
+PageVet audits pages for it and reports which of twenty AI crawlers a page lets in. It is for site owners, SEO/GEO teams and AI-security teams checking their own pages, user-generated content, or pages an agent will read. It runs as a command, a GitHub Action, an MCP server, a container and a [Python API](docs/API.md). [All field studies, false-alarm pages and benchmark cases](https://j-zulick.github.io/pagevet/) are in the explorer ([how it works](docs/EXPLORER.md)).
 
 ## Install
 ```bash
-uv tool install "git+https://github.com/j-zulick/pagevet@v0.2.0"    # Python 3.11–3.13
+uv tool install "git+https://github.com/j-zulick/pagevet@v0.3.0"    # Python 3.11–3.13
 ```
-Or `pip install "git+https://github.com/j-zulick/pagevet@v0.2.0"` in a virtual environment, or with no Python: `docker run --rm ghcr.io/j-zulick/pagevet:0.2.0 https://example.com/pricing`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. Optional extras (PDF, OCR, MCP and others) are listed in [docs/USAGE.md](docs/USAGE.md).
+Or `pip install "git+https://github.com/j-zulick/pagevet@v0.3.0"` in a virtual environment, or with no Python: `docker run --rm ghcr.io/j-zulick/pagevet:0.3.0 https://example.com/pricing`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. Optional extras (PDF, OCR, MCP and others) are listed in [docs/USAGE.md](docs/USAGE.md).
 
 ## Quick start
 A first result with no network, from a clone of this repository (needs [uv](https://docs.astral.sh/uv/); a wheel install doesn't include the sample):
@@ -34,6 +34,7 @@ Then on your own pages (replace the example URL):
 ```bash
 pagevet https://example.com/pricing          # scan a page for text aimed at AI models
 pagevet-access https://example.com/pricing   # which AI crawlers may read it, and which the server actually lets in
+pagevet-access https://example.com/ --report visibility.html --traffic access.log   # one-page AI visibility report
 pagevet-guard https://example.com/pricing    # return filtered text and a review status; exit 1 if blocked
 ```
 Exit codes: 0 when nothing reaches `--fail-on` (default `low`), 1 when a finding does, 2 on errors. A clean result describes the checks PageVet ran, not that a page is safe. `pagevet` also takes URL lists, sitemaps, local HTML, PDF, Word and email (.eml) files, and writes text, JSON, CSV, HTML or SARIF. Every option: [docs/USAGE.md](docs/USAGE.md). No install at all: open `explore.html` from the [release](https://github.com/j-zulick/pagevet/releases).

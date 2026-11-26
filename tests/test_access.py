@@ -82,13 +82,13 @@ def test_check_reports_robots_signals_and_firewall_refusals():
     get, calls = site(refuse=("PerplexityBot",), challenge=("Claude-User",))
     r = check("https://shop.example/page", get)
     by = {c.token: c for c in r.crawlers}
-    assert len(r.crawlers) == 14
+    assert len(r.crawlers) == 20
     assert by["GPTBot"].verdict == "refused by robots.txt" and by["GPTBot"].probe == "not probed"
     assert by["PerplexityBot"].verdict == "refused by server" and "firewall" in by["PerplexityBot"].note
     assert by["Claude-User"].probe == "challenge page"
     assert by["OAI-SearchBot"].verdict == "allowed" and "noai" in by["OAI-SearchBot"].page_signals
     assert by["Google-Extended"].probe == "not probed" and by["Google-Extended"].verdict == "allowed (unverified)"
-    assert r.summary()["search"] == "2 of 3 allowed"
+    assert r.summary()["search"] == "6 of 7 allowed"
     assert not any("GPTBot" in ua for _, ua in calls)  # a crawler robots.txt refuses is never probed
 
 
@@ -142,4 +142,4 @@ def test_cli_formats_and_exit_codes(tmp_path, capsys):
 
 
 def test_crawler_list_is_complete():
-    assert len(access.CRAWLERS) == 14 and {c.group for c in access.CRAWLERS} == set(access.GROUPS)
+    assert len(access.CRAWLERS) == 20 and {c.group for c in access.CRAWLERS} == set(access.GROUPS)

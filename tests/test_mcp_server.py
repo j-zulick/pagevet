@@ -65,7 +65,7 @@ def test_check_ai_access_tool():
 
     out = mcp_server.check_ai_access("https://a.example/", get=get)
     assert {c["token"]: c["verdict"] for c in out["crawlers"]}["GPTBot"] == "refused by robots.txt"
-    assert out["summary"]["search"] == "3 of 3 allowed"
+    assert out["summary"]["search"] == "7 of 7 allowed"
     assert "error" in mcp_server.check_ai_access("file:///etc/passwd")
     blocked = mcp_server.check_ai_access("http://127.0.0.1/", probe=False)
     assert blocked["error"] or all(c["verdict"].startswith("refused") for c in blocked["crawlers"])

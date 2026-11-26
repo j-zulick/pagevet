@@ -4,6 +4,7 @@ The [README](../README.md) covers install, quick start and what PageVet checks. 
 
 - [Scanning pages](#scanning-pages)
 - [AI crawler access](#ai-crawler-access)
+- [AI visibility report and bot traffic](#ai-visibility-report-and-bot-traffic)
 - [In the agent's path: guard, HTTP API, MCP](#in-the-agents-path-guard-http-api-mcp)
 - [Output](#output)
 - [CI: GitHub Action and pre-commit](#ci-github-action-and-pre-commit)
@@ -12,6 +13,7 @@ The [README](../README.md) covers install, quick start and what PageVet checks. 
 - [Field studies](#field-studies)
 - [Second opinions (experimental)](#second-opinions-experimental)
 - [Tracing: Langfuse and OpenTelemetry](#tracing-langfuse-and-opentelemetry)
+- [Benchmark tracking: frozen sets, Langfuse experiments, Pydantic Evals](#benchmark-tracking-frozen-sets-langfuse-experiments-pydantic-evals)
 - [Red-team tools (promptfoo, garak, PyRIT)](#red-team-tools-promptfoo-garak-pyrit)
 - [Configuration](#configuration)
 - [Safety](#safety)
@@ -33,7 +35,7 @@ pagevet --mcp-tools tools.json                              # an MCP server's to
 pagevet-view https://example.com/pricing --out view.html    # what a person sees next to what an AI model also reads
 ```
 
-Optional extras (`pdf`, `ocr`, `mcp`, `langfuse`, `otel`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.2.0"`.
+Optional extras (`pdf`, `ocr`, `mcp`, `langfuse`, `otel`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.3.0"`.
 
 **Channels in detail.**
 - *Hidden elements:* `display:none`, off-screen, zero-size, transparent, scaled or clipped to nothing, near-zero font size or opacity, `aria-hidden`, `hidden`, inline, from the page's own `<style>` rules, or with `--fetch-css` from its linked stylesheets; `<template>` content; SVG `<title>` and `<desc>`. Text that only stylesheet rules hide (often dialogs and menus) is its own channel, where a reply command alone is medium.
@@ -65,13 +67,27 @@ pagevet-access https://example.com/pricing
 pagevet-access --urls urls.txt --format csv --out access.csv
 pagevet-access https://example.com/ --require search=allowed --require GPTBot=refused   # CI gate: exit 1 if not met
 ```
-For fourteen AI crawlers in three groups (training: GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, CCBot, meta-externalagent, Bytespider, Amazonbot; search: OAI-SearchBot, Claude-SearchBot, PerplexityBot; fetch on request: ChatGPT-User, Claude-User, Perplexity-User) it reports what robots.txt says, parsed per [RFC 9309](https://www.rfc-editor.org/rfc/rfc9309) (longest match, `allow` wins a tie, `*` and `$`; a 4xx robots.txt allows everything, a 5xx or unreachable one disallows everything); page signals (`robots` and per-crawler meta tags, `X-Robots-Tag`, `noai`, TDMRep reservations); whether `/llms.txt` exists; and, unless `--no-probe`, what the server answers each crawler's user agent. **A crawler robots.txt allows but the server refuses (401, 402, 403, 429, 451, 503 or a challenge page) is reported as a firewall refusal**: usually a bot-management rule nobody meant to apply to AI search. Text, JSON, CSV or Markdown. Probes send the user-agent string only, not the crawler's IP addresses.
+For twenty AI crawlers in three groups (training: GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, CCBot, meta-externalagent, Bytespider, Amazonbot; search: OAI-SearchBot, Claude-SearchBot, PerplexityBot, Google-CloudVertexBot, meta-webindexer, Amzn-SearchBot, DuckAssistBot; fetch on request: ChatGPT-User, Claude-User, Perplexity-User, meta-externalfetcher, Amzn-User) it reports what robots.txt says, parsed per [RFC 9309](https://www.rfc-editor.org/rfc/rfc9309) (longest match, `allow` wins a tie, `*` and `$`; a 4xx robots.txt allows everything, a 5xx or unreachable one disallows everything); page signals (`robots` and per-crawler meta tags, `X-Robots-Tag`, `noai`, TDMRep reservations); whether `/llms.txt` exists; and, unless `--no-probe`, what the server answers each crawler's user agent. **A crawler robots.txt allows but the server refuses (401, 402, 403, 429, 451, 503 or a challenge page) is reported as a firewall refusal**: usually a bot-management rule nobody meant to apply to AI search. Text, JSON, CSV or Markdown. Probes send the user-agent string only, not the crawler's IP addresses.
 
-**The crawler list is data.** The fourteen crawlers live in [`src/pagevet/data/ai_crawlers.csv`](../src/pagevet/data/ai_crawlers.csv) (`token,operator,group,user_agent`). To check one more for a run, put it in a file with the same columns and pass `--crawlers FILE`; it is then checked, accepted by `--crawler` and `--require`, and listed like the others:
+**The crawler list is data.** The twenty crawlers live in [`src/pagevet/data/ai_crawlers.csv`](../src/pagevet/data/ai_crawlers.csv) (`token,operator,group,user_agent`). To check one more for a run, put it in a file with the same columns and pass `--crawlers FILE`; it is then checked, accepted by `--crawler` and `--require`, and listed like the others:
 ```bash
 pagevet-access https://example.com/ --crawlers examples/crawlers/example-ai-crawlers.csv --require ExampleAIBot=refused
 ```
 `ExampleAIBot` in that example file is fictional; it shows the format. A row with a bad token, an unknown group or a token already listed is refused with its row number.
+
+## AI visibility report and bot traffic
+```bash
+pagevet-access https://example.com/ https://example.com/pricing --report visibility.html
+pagevet-access https://example.com/ --report visibility.html --traffic access.log --updates updates.csv
+pagevet-access https://example.com/ --report visibility.html --scan-report scan.json   # findings from a pagevet --format json report
+python -m pagevet.traffic access.log --updates updates.csv --format csv --out traffic.csv
+python -m pagevet.traffic access.log --bots search-bots.csv                            # search-engine crawlers next to AI crawlers
+```
+**Visibility report** (`--report FILE`): one self-contained HTML page per site (no scripts, all page text escaped) with crawler access per AI crawler (robots.txt, page signals, firewall refusals), PageVet's findings and AI share links (from `--scan-report` when it covers the page, else from the page's raw HTML read once more), the site's `llms.txt` and `llms-full.txt`, the traffic tables when `--traffic` is given, and how each page was read when the scan report's pages carry fetch details (`evidence.fetch`: `how`, `attempts`, `ms`). The usual text report still goes to stdout. Pages on several sites give one file per site (`visibility-<host>.html`).
+
+**Bot traffic** (`pagevet.traffic`, or `--traffic` on the report) reads your own data: a CSV (`date,url,user_agent,hits` or `date,url,bot,hits`), a combined-format access log, or an OpenSearch export (search-API JSON or NDJSON; `--ts-field`, `--url-field`, `--ua-field`, defaults `@timestamp`, `url.path`, `user_agent.original`). For an export with other field names, run `python -m pagevet.traffic` with those options and pass its JSON report to `--traffic`. Hits are matched against PageVet's AI crawler list and, with `--bots FILE` (`--traffic-bots` on the report), an extra list in the same CSV format (`token,operator,group,user_agent`), for example search-engine crawlers: a row in an AI group (`training`, `search`, `fetch`) counts as an AI crawler, any other group as a listed bot, and every row shows its group. Client addresses are never read and query strings are dropped. The output (JSON or CSV only) has hits, first seen and last seen per page and crawler, totals per crawler, and the unknown-agent share: hits with an empty or automated-looking user agent that is on neither list, out of all hits. `--updates FILE` (`url,date`) adds AI-crawler hits in the 14 days before each content update and the 14 days from it on, with a flag when the data does not cover both windows. That is a signal, not proof: user agents can be faked and crawlers keep their own schedules. Synthetic samples: [`examples/traffic/`](../examples/traffic/).
+
+Each crawler is reported on its own line, search engines included: the longest matching name wins, so `Googlebot-Image` is counted apart from `Googlebot`. Three names never appear in logs, because they are robots.txt controls rather than visitors: `Google-Extended` and `Applebot-Extended` (the pages are fetched by Googlebot and Applebot) and `Googlebot-News`. [`examples/traffic/search-bots.csv`](../examples/traffic/search-bots.csv) lists Googlebot, Googlebot-Image, Storebot-Google, bingbot, Applebot, DuckDuckBot, YandexBot, YandexImages, Baiduspider and Sogou web spider; add your own rows in the same format. To confirm a visit is real, check the client address against the operator's published ranges or reverse DNS (Google: `googlebot.com`; Apple: `applebot.apple.com`) in your own log store; PageVet never reads addresses.
 
 ## In the agent's path: guard, HTTP API, MCP
 **Guard.** `pagevet.guard.guard(source, html)`, `pagevet-guard` (stdin, file or URL) or `POST /guard` returns the text a person sees, with hidden channels dropped, any paragraph that still matches an instruction replaced by a marker, chat markup removed, and `allowed: false` when a finding reaches the policy (`high` by default; `medium` or `never`). It only removes text. Measured on AgentDojo's tool outputs it raised no false alarms but recognized only one of six published attack styles ([results](bench/2026-11-25-agentdojo-guard/)): it is a check for text aimed at AI in web content, not a general agent-injection defense.
@@ -91,7 +107,7 @@ Text, JSON ([schema](schema/report.schema.json)), CSV, a self-contained HTML rep
 ## CI: GitHub Action and pre-commit
 ```yaml
 - uses: actions/checkout@v5
-- uses: j-zulick/pagevet@v0.2.0
+- uses: j-zulick/pagevet@v0.3.0
   id: pagevet
   with:
     urls-file: urls.txt            # or targets: "https://example.com/ page.html", or sitemap: ...
@@ -107,7 +123,7 @@ Outputs: `sarif-file`, `exit-code` (0, 1 or 2, as for the command) and `findings
 # .pre-commit-config.yaml
 repos:
   - repo: https://github.com/j-zulick/pagevet
-    rev: v0.2.0
+    rev: v0.3.0
     hooks:
       - id: pagevet      # fails a commit that adds HTML, Markdown or text with a medium or high finding
 ```
@@ -156,6 +172,19 @@ pagevet-bench cases.jsonl --detector patterns --langfuse                    # on
 pagevet --otel run-1 --urls urls.txt                                        # one span per page under a run span
 ```
 Langfuse (the `langfuse` extra): each page's trace holds its findings and the scores `max_severity` (0–3), `findings`, `ai_crawlers_refused`, `content_differs` and `read`; a benchmark run records `catch_rate` and `false_alarm_rate`. OpenTelemetry (the `otel` extra): `pagevet.scan` spans with `url.full` and the same numbers, sent wherever the standard `OTEL_*` settings point. Both are best effort and never change a result or exit code; nothing is sent without the flag.
+
+## Benchmark tracking: frozen sets, Langfuse experiments, Pydantic Evals
+```bash
+uv run python docs/bench/scripts/bench_sets.py build sets/                 # evasion and hiding; add --bipia DIR --deepset FILE --saved-pages FILE --agentdojo
+pagevet-bench sets/evasion.jsonl --langfuse-dataset evasion                # this version's run, as the Langfuse experiment "pagevet"
+uv run python docs/bench/scripts/bench_sets.py langfuse sets/              # the same for every built set
+uv run python docs/bench/evals/run_evals.py sets/ --out evals.json         # the same sets through Pydantic Evals (dev dependency)
+```
+`bench_sets.py build` freezes each benchmark as `pagevet-bench` cases, one JSONL per set; evasion and hiding come from the scripts in this repository, the others only when their data is supplied (BIPIA checkout, the deepset file, the saved false-alarm pages, AgentDojo installed), and nothing is fetched to fill a gap. Rows from the privately supplied page sample are marked private.
+
+**Langfuse** (`--langfuse-dataset NAME`, the `langfuse` extra and the `LANGFUSE_*` keys): the cases are kept as dataset NAME (items upserted by id) and the run is recorded with the SDK's experiment runner as experiment `pagevet`, run name the PageVet version. Item scores `caught` (attack cases) and `false_alarm` (clean cases), 1 or 0; run scores `catch_rate`, `false_alarm_rate`, `median_ms`, `p95_ms`. Cases are judged and timed one at a time before the runner starts. Item text longer than 20,000 characters, or from a private row, stays local (the item keeps its id, length and SHA-256). Without keys nothing is sent and the command says so; the report and exit code never change.
+
+**Pydantic Evals** ([`docs/bench/evals/`](bench/evals/)): the same sets as `pydantic_evals` cases with three evaluators, expected finding, no false alarm, and latency under a budget (`--budget-ms`, default 50). The patterns run offline. Model second opinions run only with `--models` (names, or `auto`) and when their keys or local service are set; billed ones are capped at `--limit` cases per set.
 
 ## Red-team tools (promptfoo, garak, PyRIT)
 [`integrations/`](../integrations/) has a promptfoo assertion, a garak detector and a PyRIT scorer that apply PageVet's rules to what a model writes, so a red-team run can check whether generated pages, emails or documents carry instructions for the next AI that reads them. Each was checked against the tool's current release (promptfoo 0.126.0, garak 0.17.1, PyRIT 1.2.1).

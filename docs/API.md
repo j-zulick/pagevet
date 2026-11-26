@@ -110,6 +110,21 @@ The crawler list is data (`src/pagevet/data/ai_crawlers.csv`): `load_crawlers(te
 
 `check(url, get=None, probe=True, tokens=None)`. Pass `get` (a function `(url, user_agent) -> Response`) to supply your own fetcher, for tests or to route requests through your infrastructure; `probe=False` reads robots.txt and page signals only.
 
+## AI visibility report and bot traffic (0.3.0)
+
+```python
+from pagevet.access import check, http_get
+from pagevet.traffic import load
+from pagevet.visibility import build, render_html, scan_page
+
+traffic = load("access.log", updates="updates.csv")       # CSV, access log or OpenSearch export -> report dict
+report = check("https://shop.example/page")
+pages = {report.url: scan_page(report.url, http_get())}   # or pages of a pagevet --format json report
+html = render_html(build([report], pages, traffic)["shop.example"])
+```
+
+`pagevet.traffic.load(path, updates=None, input_format="auto", ts_field=..., url_field=..., ua_field=...)` returns the traffic report (`total_hits`, `ai_hits`, `unknown_agent_share`, `by_bot`, `pages`, and `updates` when given); `classify(user_agent)` returns `("ai", token)`, `("unknown", "")` or `("other", "")`.
+
 ## Re-scans with change alerts
 
 ```python
