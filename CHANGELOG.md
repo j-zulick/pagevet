@@ -4,6 +4,7 @@ All notable changes, newest first. Versions follow [semantic versioning](https:/
 
 ## [0.4.1] - 2026-11-26
 - **Explorer:** the "About this data" note says the access check covers twenty AI crawlers (it said fourteen, the count before 0.3.0).
+- **Quick start:** clones the released version and runs its bundled offline sample (exit 1 expected); the explorer link points at the release asset; a test keeps the clone tag and download links on the current version.
 - **Docs:** the README opens with what PageVet audits and offers one install path; pip, the container image, the wheel and the extras are in a new Install section of docs/USAGE.md. docs/API.md's install line names the current version, and a test now checks it with the README and USAGE pins.
 - No change to commands, options, formats or detection results.
 

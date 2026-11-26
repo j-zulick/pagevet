@@ -21,14 +21,20 @@ The [README](../README.md) covers install, quick start and what PageVet checks. 
 - [Safety](#safety)
 
 ## Install
-The README's path is `uv tool install "git+https://github.com/j-zulick/pagevet@v0.4.1"` (Python 3.11–3.13). Other ways:
+Install the pinned release with [uv](https://docs.astral.sh/uv/) (Python 3.11–3.13):
+
+```bash
+uv tool install "git+https://github.com/j-zulick/pagevet@v0.4.1"
+```
+
+Other ways:
 
 - **pip** in a virtual environment: `pip install "git+https://github.com/j-zulick/pagevet@v0.4.1"`.
-- **Container**, no Python needed: `docker run --rm ghcr.io/j-zulick/pagevet:0.4.1 https://example.com/pricing`.
+- **Container**, no Python needed: `docker run --rm ghcr.io/j-zulick/pagevet:0.4.1 https://example.com/pricing` (replace the example URL with a page you control).
 - **Wheel** from the [release](https://github.com/j-zulick/pagevet/releases): `pip install ./pagevet-0.4.1-py3-none-any.whl`.
 - **No install:** open `explore.html` from the release to browse the field studies offline.
 
-Optional extras (`pdf`, `ocr`, `mcp`, `langfuse`, `otel`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.4.1"`. The quick-start sample (`tests/fixtures/sample.html`) is in a clone of the repository, not in the wheel.
+Optional extras (`pdf`, `ocr`, `mcp`, `langfuse`, `otel`, `classifier`, `jev`) go in brackets: `uv tool install "pagevet[pdf,mcp] @ git+https://github.com/j-zulick/pagevet@v0.4.1"`. The bundled sample (`tests/fixtures/sample.html`) is in a clone of the repository, not in the wheel: follow the [clone-based quick start](../README.md#quick-start).
 
 ## Scanning pages
 ```bash
