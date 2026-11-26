@@ -135,3 +135,136 @@ def crawl(start_url: str | list[str], max_pages: int = 25, post: Post = _post, g
         if unread:
             notes.append(f"no page returned for: {', '.join(unread)}")
     return pages, notes
+
+
+# --- Fetch chain: plain HTTP, then Firecrawl, then crawlee-server -----------------------------------
+#
+# ``pagevet --via auto``. Plain HTTP is tried first: it is cheap and shows what a simple crawler sees. When it fails,
+# is blocked (401, 403, 429, 503) or returns a page built by scripts (little visible text plus an app shell or a
+# "please enable JavaScript" notice), the page is read again through your Firecrawl (rendered HTML), then through your
+# crawlee-server (page mode, with a stored capture). Each step that isn't configured is skipped and recorded. Every
+# result says which fetcher produced it, each attempt, why it fell back, and how long it took.
+
+MIN_VISIBLE_CHARS = 200
+BLOCK_STATUS = frozenset({401, 403, 429, 503})
+_APP_SHELL = re.compile(r"<div[^>]+\bid=[\"'](?:root|app|__next|__nuxt|svelte|main-app)[\"']", re.I)
+_JS_NOTICE = re.compile(r"(?:enable|requires?|turn on)\s+javascript|javascript\s+is\s+(?:disabled|required|off)", re.I)
+_DROP = re.compile(r"<(script|style|noscript|template|svg)\b.*?</\1\s*>", re.I | re.S)
+
+
+def visible_chars(body: str) -> int:
+    """Roughly how many characters of text a reader would see in ``body`` (tags, scripts and styles removed)."""
+    text = re.sub(r"<[^>]+>", " ", _DROP.sub(" ", body))
+    return len(" ".join(text.split()))
+
+
+def needs_render(body: str) -> str:
+    """Return why a plain-HTTP body should be read again rendered, or ``""`` when it looks complete."""
+    if "<" not in body:
+        return ""  # plain text or JSON: nothing to render
+    n = visible_chars(body)
+    if n >= MIN_VISIBLE_CHARS:
+        return ""
+    if _JS_NOTICE.search(body):
+        return f"the page asks for JavaScript ({n} visible characters)"
+    if _APP_SHELL.search(body) or body.lower().count("<script") >= 3:
+        return f"the page is built by scripts ({n} visible characters)"
+    if n == 0:
+        return "no visible text"
+    return ""  # a short page, but complete
+
+
+def _failure(exc: Exception) -> str:
+    status = getattr(getattr(exc, "response", None), "status_code", None)
+    if status is None:
+        m = re.search(r"\bHTTP (\d{3})\b", str(exc))
+        status = int(m.group(1)) if m else None
+    if status in BLOCK_STATUS:
+        return f"blocked (HTTP {status})"
+    if status:
+        return f"HTTP {status}"
+    return f"failed: {type(exc).__name__}: {str(exc)[:120]}"
+
+
+@dataclass
+class FetchResult:
+    """One page read through the chain."""
+
+    url: str
+    body: str
+    how: str                                   # http | firecrawl | crawlee
+    attempts: list[dict] = field(default_factory=list)   # {"via", "ok", "ms", "reason"} per step tried or skipped
+    evidence: dict = field(default_factory=dict)          # crawlee-server's capture id, SHA-256 and time, when it was used
+    ms: int = 0
+
+    def summary(self) -> dict:
+        """The ``fetch`` block a report carries: which fetcher won, every attempt, total time."""
+        return {"how": self.how, "attempts": self.attempts, "ms": self.ms}
+
+
+def chain_fetcher(http: Callable[[str], str], firecrawl: Callable[[str], str] | None = None,
+                  crawlee: Callable[[str], CrawledPage] | None = None, use_env: bool = True,
+                  clock: Callable[[], float] | None = None) -> Callable[[str], FetchResult]:
+    """Return ``fetch(url) -> FetchResult`` that tries plain HTTP, then Firecrawl, then crawlee-server.
+
+    ``firecrawl`` and ``crawlee`` default to your services when their environment variables are set (``use_env``);
+    otherwise those steps are recorded as not configured. ``crawlee`` returns one :class:`CrawledPage`.
+    """
+    import time
+
+    tick = clock or time.monotonic
+    if use_env and firecrawl is None and os.environ.get("PAGEVET_FIRECRAWL_URL", "").strip():
+        firecrawl = firecrawl_fetcher()
+    if use_env and crawlee is None and os.environ.get("PAGEVET_CRAWL_URL", "").strip() and os.environ.get("PAGEVET_CRAWL_TOKEN", "").strip():
+        def crawlee(url: str) -> CrawledPage:
+            pages, notes = crawl(url, 1, mode="page")
+            if not pages:
+                raise SourceError("; ".join(notes) or "crawlee-server returned no page")
+            return pages[0]
+
+    def fetch(url: str) -> FetchResult:
+        started = tick()
+        attempts: list[dict] = []
+        fallback: str | None = None  # a plain-HTTP body kept in case no renderer does better
+
+        def step(via: str, run: Callable[[], tuple[str, dict]]) -> FetchResult | None:
+            nonlocal fallback
+            t0 = tick()
+            try:
+                body, evidence = run()
+            except Exception as exc:  # recorded, and the chain moves on
+                attempts.append({"via": via, "ok": False, "ms": round((tick() - t0) * 1000), "reason": _failure(exc)})
+                return None
+            reason = needs_render(body)
+            if reason and via == "http":
+                attempts.append({"via": via, "ok": False, "ms": round((tick() - t0) * 1000), "reason": reason})
+                fallback = body
+                return None
+            attempts.append({"via": via, "ok": True, "ms": round((tick() - t0) * 1000), "reason": ""})
+            return FetchResult(url, body, via, attempts, evidence, round((tick() - started) * 1000))
+
+        got = step("http", lambda: (http(url), {}))
+        if got:
+            return got
+        def from_firecrawl(service: Callable[[str], str] = firecrawl) -> tuple[str, dict]:  # type: ignore[assignment]
+            return service(url), {}
+
+        def from_crawlee(service: Callable[[str], CrawledPage] = crawlee) -> tuple[str, dict]:  # type: ignore[assignment]
+            page = service(url)
+            return page.body, dict(page.evidence)
+
+        for via, configured, run in (("firecrawl", firecrawl is not None, from_firecrawl), ("crawlee", crawlee is not None, from_crawlee)):
+            if not configured:
+                attempts.append({"via": via, "ok": False, "ms": 0, "reason": "not configured"})
+                continue
+            got = step(via, run)
+            if got:
+                return got
+        if fallback is not None:  # nothing rendered it; scan what plain HTTP returned, and say so
+            attempts[0]["ok"] = True
+            attempts[0]["reason"] += "; no renderer succeeded, so the plain-HTTP page was scanned"
+            return FetchResult(url, fallback, "http", attempts, {}, round((tick() - started) * 1000))
+        tried = "; ".join(f"{a['via']}: {a['reason']}" for a in attempts)
+        raise SourceError(f"no fetcher could read this page ({tried})")
+
+    return fetch

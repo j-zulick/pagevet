@@ -19,9 +19,9 @@ PageVet audits pages for it and reports which of fourteen AI crawlers a page let
 
 ## Install
 ```bash
-uv tool install "git+https://github.com/j-zulick/pagevet@v0.1.0"    # Python 3.11–3.13
+uv tool install "git+https://github.com/j-zulick/pagevet@v0.2.0"    # Python 3.11–3.13
 ```
-Or `pip install "git+https://github.com/j-zulick/pagevet@v0.1.0"` in a virtual environment, or with no Python: `docker run --rm ghcr.io/j-zulick/pagevet:0.1.0 https://example.com/pricing`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. Optional extras (PDF, OCR, MCP and others) are listed in [docs/USAGE.md](docs/USAGE.md).
+Or `pip install "git+https://github.com/j-zulick/pagevet@v0.2.0"` in a virtual environment, or with no Python: `docker run --rm ghcr.io/j-zulick/pagevet:0.2.0 https://example.com/pricing`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. Optional extras (PDF, OCR, MCP and others) are listed in [docs/USAGE.md](docs/USAGE.md).
 
 ## Quick start
 A first result with no network, from a clone of this repository (needs [uv](https://docs.astral.sh/uv/); a wheel install doesn't include the sample):
@@ -36,13 +36,13 @@ pagevet https://example.com/pricing          # scan a page for text aimed at AI 
 pagevet-access https://example.com/pricing   # which AI crawlers may read it, and which the server actually lets in
 pagevet-guard https://example.com/pricing    # return filtered text and a review status; exit 1 if blocked
 ```
-Exit codes: 0 when nothing reaches `--fail-on` (default `low`), 1 when a finding does, 2 on errors. A clean result describes the checks PageVet ran, not that a page is safe. `pagevet` also takes URL lists, sitemaps, local HTML, PDF and Word files, and writes text, JSON, CSV, HTML or SARIF. Every option: [docs/USAGE.md](docs/USAGE.md). No install at all: open `explore.html` from the [release](https://github.com/j-zulick/pagevet/releases).
+Exit codes: 0 when nothing reaches `--fail-on` (default `low`), 1 when a finding does, 2 on errors. A clean result describes the checks PageVet ran, not that a page is safe. `pagevet` also takes URL lists, sitemaps, local HTML, PDF, Word and email (.eml) files, and writes text, JSON, CSV, HTML or SARIF. Every option: [docs/USAGE.md](docs/USAGE.md). No install at all: open `explore.html` from the [release](https://github.com/j-zulick/pagevet/releases).
 
 ## What it checks
 PageVet reads each channel a page offers and rates what it finds by whether a reader can see it:
 
-- **Seen by readers:** visible text, user-submitted content (comments, reviews, forum posts), text in images (`--ocr`), PDF and Word page text.
-- **Not seen by readers:** hidden elements (30+ CSS and markup hiding methods, including the page's own and linked stylesheets), HTML comments, attributes and meta tags, JSON-LD, noscript, HTTP headers (`--headers`), llms.txt (`--llms-txt`), hidden Word text, PDF metadata, and MCP tool descriptions (`--mcp-tools`).
+- **Seen by readers:** visible text, user-submitted content (comments, reviews, forum posts), text in images (`--ocr`), PDF and Word page text, email text.
+- **Not seen by readers:** hidden elements (30+ CSS and markup hiding methods, including the page's own and linked stylesheets), HTML comments, attributes and meta tags, JSON-LD, noscript, HTTP headers (`--headers`), llms.txt (`--llms-txt`), hidden Word text, PDF metadata, custom email headers and hidden email HTML, and MCP tool descriptions (`--mcp-tools`).
 - **Served differently:** content served to GPTBot, ClaudeBot or PerplexityBot but not to a browser (`--compare-agents`).
 - **AI share links:** "Summarize with AI" buttons that open an assistant with a pre-filled prompt; the prompt is decoded and scanned.
 
@@ -62,7 +62,7 @@ Each result has its data, script and date in [`docs/bench/`](docs/bench/); `uv r
 
 ## Limits
 - **Pattern matching finds known forms.** Reworded instructions and most instructions split across full sentences are missed. A clean result is not proof a page is safe; treat findings as leads to review. See the [threat model](docs/THREAT-MODEL.md).
-- **JavaScript-added text** is seen only through your own Firecrawl or crawlee-server (`--via firecrawl`, `--crawl`). Visibility is judged from markup and stylesheets, not computed styles.
+- **JavaScript-added text** is seen only through your own Firecrawl or crawlee-server (`--via auto` tries plain HTTP, then Firecrawl, then crawlee-server; or `--via firecrawl`, `--crawl`). Visibility is judged from markup and stylesheets, not computed styles.
 - **Cloaking by IP address** looks identical to PageVet; `--compare-agents` detects cloaking by user agent only.
 - It complements runtime AI guardrails; it does not replace them. robots.txt is respected by default.
 

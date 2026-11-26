@@ -1,0 +1,19 @@
+# AI crawlers PageVet checks: one row per robots.txt product token.
+# group: training (collects pages to train models), search (indexes pages for AI answers), fetch (reads a page when a person asks).
+# user_agent: the User-Agent the crawler sends; empty for robots.txt control tokens that never visit on their own.
+# To add a crawler for one run without editing this file: pagevet-access --crawlers my-crawlers.csv (same columns).
+token,operator,group,user_agent
+GPTBot,OpenAI,training,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.1; +https://openai.com/gptbot"
+ClaudeBot,Anthropic,training,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)"
+Google-Extended,Google,training,
+Applebot-Extended,Apple,training,
+CCBot,Common Crawl,training,CCBot/2.0 (https://commoncrawl.org/faq/)
+meta-externalagent,Meta,training,meta-externalagent/1.1 (+https://developers.facebook.com/docs/sharing/webmasters/crawler)
+Bytespider,ByteDance,training,"Mozilla/5.0 (Linux; Android 5.0) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; Bytespider; spider-feedback@bytedance.com)"
+Amazonbot,Amazon,training,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Amazonbot/0.1; +https://developer.amazon.com/support/amazonbot) Chrome/119.0 Safari/537.36"
+OAI-SearchBot,OpenAI,search,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.0; +https://openai.com/searchbot"
+Claude-SearchBot,Anthropic,search,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-SearchBot/1.0; +https://www.anthropic.com)"
+PerplexityBot,Perplexity,search,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)"
+ChatGPT-User,OpenAI,fetch,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot"
+Claude-User,Anthropic,fetch,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-User/1.0; +Claude-User@anthropic.com)"
+Perplexity-User,Perplexity,fetch,"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Perplexity-User/1.0; +https://perplexity.ai/perplexity-user)"
