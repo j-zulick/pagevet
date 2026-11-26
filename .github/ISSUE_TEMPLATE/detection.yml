@@ -1,0 +1,40 @@
+name: Missed injection or false alarm
+description: PageVet missed text aimed at AI models, or flagged ordinary text.
+labels: [detection]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What happened
+      options:
+        - Missed an instruction aimed at AI (false negative)
+        - Flagged ordinary text (false alarm)
+    validations:
+      required: true
+  - type: textarea
+    id: html
+    attributes:
+      label: Smallest HTML that reproduces it
+      description: Replace real brands with invented ones. Please don't paste a live malicious page.
+      render: html
+    validations:
+      required: true
+  - type: input
+    id: channel
+    attributes:
+      label: Where the text sits
+      placeholder: visible text, hidden element, HTML comment, attribute, JSON-LD, noscript, PDF...
+  - type: textarea
+    id: output
+    attributes:
+      label: PageVet's output
+      description: The output of `pagevet --format json FILE` (or the text report).
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `pagevet --version`.
+      placeholder: pagevet 0.1.0
+    validations:
+      required: true

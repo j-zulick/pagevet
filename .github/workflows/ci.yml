@@ -1,0 +1,82 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d  # v10.4.0
+      - run: uv sync --python ${{ matrix.python }}
+      - run: uv run ruff check .
+      - run: uv run pytest -q
+  action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
+        with:
+          persist-credentials: false
+      - name: Run the action on the sample page without failing
+        id: pv
+        uses: ./
+        with:
+          targets: tests/fixtures/sample.html
+          fail-on: never
+          sarif-file: out/pagevet.sarif
+      - name: Check its outputs
+        env:
+          CODE: ${{ steps.pv.outputs.exit-code }}
+          FINDINGS: ${{ steps.pv.outputs.findings }}
+          SARIF: ${{ steps.pv.outputs.sarif-file }}
+        run: |
+          test "$CODE" = "1"
+          test "$FINDINGS" -gt 0
+          python -c "import json,sys; d=json.load(open(sys.argv[1])); assert d['version']=='2.1.0'" "$SARIF"
+      - name: Run the action again with fail-on high (expected to fail)
+        id: strict
+        continue-on-error: true
+        uses: ./
+        with:
+          targets: tests/fixtures/sample.html
+          fail-on: high
+      - name: Check that it failed
+        env:
+          OUTCOME: ${{ steps.strict.outcome }}
+        run: test "$OUTCOME" = "failure"
+
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
+        with:
+          persist-credentials: false
+      - name: Build the image and run it as a visitor would
+        run: |
+          docker build -t pagevet:ci .
+          docker run --rm pagevet:ci --version
+          docker run --rm --entrypoint pagevet-access pagevet:ci --version
+          docker run --rm -v "$PWD/tests/fixtures:/work:ro" pagevet:ci sample.html || test $? -eq 1   # 1 = findings, as expected
+          test "$(docker run --rm --entrypoint id pagevet:ci -u)" != "0"
+
+  explorer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d  # v10.4.0
+        with:
+          enable-cache: false
+      - name: Explorer tests in the runner's Chrome
+        run: |
+          uv sync --frozen --group browser
+          PAGEVET_CHROME="$(command -v google-chrome)" uv run pytest -q tests/test_explore.py tests/test_explore_browser.py

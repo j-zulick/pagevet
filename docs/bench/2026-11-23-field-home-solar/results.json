@@ -1,0 +1,596 @@
+[
+  {
+    "source": "https://www.energysage.com/solar/best-solar-panels-complete-ranking/?rc=teco",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.energysage.com/solar/how-to-choose-the-best-solar-panel-for-you/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.solar.com/learn/best-solar-panels/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.consumeraffairs.com/solar-energy/best-solar-panels.html",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.consumeraffairs.com/solar-energy/best-solar-panels.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTT",
+    "evidence": {}
+  },
+  {
+    "source": "https://nrgcleanpower.com/learning-center/best-solar-panels/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.consumerreports.org/home-garden/solar-panels/best-solar-panels-a1766184661",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.consumerreports.org/home-garden/solar-panels/best-solar-panels-a1766184661'\nFor more information check: https://developer.mozilla.org",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.consumerreports.org/home-garden/solar-panels/best-solar-panels-a1766184661'\nFor more information check: https://developer.mozilla.org",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.consumerreports.org/home-garden/solar-panels/best-solar-panels-a1766184661'\nFor more information check: https://developer.mozilla.org",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.thisoldhouse.com/solar-alternative-energy/most-efficient-solar-panels",
+    "findings": [
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.thisoldhouse.com/solar-alternative-energy/most-efficient-solar-panels'\nFor more information check: https://developer.mozilla.org/en-U",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://thisoldhouse.com/solar-alternative-energy/reviews/best-solar-panels-for-homes",
+    "findings": [
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://thisoldhouse.com/solar-alternative-energy/reviews/best-solar-panels-for-homes'\nFor more information check: https://developer.mozilla.org/",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://a1solarstore.com/blog/best-solar-panels-in-2026-whats-actually-worth-buying-and-why.html",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.tesla.com/learn/solar-panel-cost-breakdown",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.tesla.com/learn/solar-panel-cost-breakdown'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "evidence": {}
+  },
+  {
+    "source": "https://homeadvisor.com/cost/energy-efficiency/install-solar-panels",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.homeadvisor.com/cost/energy-efficiency/install-solar-panels'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.homeadvisor.com/cost/energy-efficiency/install-solar-panels'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.homeadvisor.com/cost/energy-efficiency/install-solar-panels'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://bobvila.com/articles/cost-of-solar-panels",
+    "findings": [
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 77% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://amp.cnn.com/cnn/cnn-underscored/home/cost-of-solar-panels",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.cnn.com/cnn-underscored/home/cost-of-solar-panels'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Stat",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.fixr.com/costs/solar-panel-installation-texas",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.thisoldhouse.com/solar-alternative-energy/solar-panel-cost",
+    "findings": [
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.thisoldhouse.com/solar-alternative-energy/solar-panel-cost'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://match.angi.com/cost/energy-efficiency/install-solar-panels",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.homeadvisor.com/cost/energy-efficiency/install-solar-panels'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.homeadvisor.com/cost/energy-efficiency/install-solar-panels'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.homeadvisor.com/cost/energy-efficiency/install-solar-panels'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://angi.com/articles/how-pay-solar-panels.htm",
+    "findings": [],
+    "error": "robots.txt disallows this page for pagevet; --ignore-robots to scan it anyway",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.aol.com/much-solar-panels-cost-2025-210000045.html",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '404 Not Found' for url 'https://www.aol.com/much-solar-panels-cost-2025-210000045.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Sta",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.energysage.com/solar-panels/solar-panel-cost/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.solarreviews.com/blog/why-are-solar-panels-so-expensive",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.thisoldhouse.com/solar-alternative-energy/best-solar-companies",
+    "findings": [
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.thisoldhouse.com/solar-alternative-energy/best-solar-companies'\nFor more information check: https://developer.mozilla.org/en-US/docs/",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.cbsnews.com/essentials/best-solar-companies-2024/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.solar-estimate.org/residential-solar/news/what-traits-define-the-best-solar-companies-and-how-to-use-these-to-find-local-solar-providers",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '404 Not Found' for url 'https://www.solar-estimate.org/residential-solar/news/what-traits-define-the-best-solar-companies-and-how-to-use-these-to-find-local-solar-provid",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.bobvila.com/articles/best-solar-companies/",
+    "findings": [
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 76% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://bestcompany.com/solar",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://bestcompany.com/solar'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://bestcompany.com/solar'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://bestcompany.com/solar'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.consumeraffairs.com/solar-energy/",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.consumeraffairs.com/solar-energy/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "evidence": {}
+  },
+  {
+    "source": "https://fidelity.com/learning-center/personal-finance/is-solar-worth-it",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.bobvila.com/articles/are-solar-panels-worth-it/",
+    "findings": [
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "content_differs"
+        ],
+        "excerpt": "visible text is 77% similar to the browser's copy",
+        "severity": "medium",
+        "advice": "ClaudeBot is served different content from a browser. Confirm this is intended (cloaking can be penalized).",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.thisoldhouse.com/solar-alternative-energy/are-solar-panels-worth-it",
+    "findings": [
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.thisoldhouse.com/solar-alternative-energy/are-solar-panels-worth-it'\nFor more information check: https://developer.mozilla.org/en-US/",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.energysage.com/solar/are-solar-panels-worth-it/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://amp.cnn.com/cnn/cnn-underscored/home/solar-pros-and-cons",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.cnn.com/cnn-underscored/home/solar-pros-and-cons'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Statu",
+    "evidence": {}
+  },
+  {
+    "source": "https://creators.yahoo.com/lifestyle/story/are-solar-panels-worth-it-003253059.html",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://creators.yahoo.com/lifestyle/story/are-solar-panels-worth-it-003253059.html'\nFor more information check: https://developer.mozill",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://creators.yahoo.com/lifestyle/story/are-solar-panels-worth-it-003253059.html'\nFor more information check: https://developer.mozill",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://creators.yahoo.com/lifestyle/story/are-solar-panels-worth-it-003253059.html'\nFor more information check: https://developer.mozill",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.sunrun.com/go-solar-center/solar-articles/is-solar-worth-it",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://angi.com/articles/are-solar-panels-worth-it.htm",
+    "findings": [],
+    "error": "robots.txt disallows this page for pagevet; --ignore-robots to scan it anyway",
+    "evidence": {}
+  },
+  {
+    "source": "https://quickenloans.com/learn/are-solar-panels-worth-it",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '404 Not Found' for url 'https://www.quickenloans.com/learn/are-solar-panels-worth-it'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Statu",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.consumerreports.org/energy-saving/real-cost-of-leasing-vs-buying-solar-panels",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.consumerreports.org/energy-saving/real-cost-of-leasing-vs-buying-solar-panels'\nFor more information check: https://developer.mozilla.",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.consumerreports.org/energy-saving/real-cost-of-leasing-vs-buying-solar-panels'\nFor more information check: https://developer.mozilla.",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.consumerreports.org/energy-saving/real-cost-of-leasing-vs-buying-solar-panels'\nFor more information check: https://developer.mozilla.",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.npr.org/2015/02/10/384958332/the-great-solar-panel-debate-to-lease-or-to-buy",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "ReadTimeout: The read operation timed out",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "ReadTimeout: The read operation timed out",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "RemoteProtocolError: Server disconnected without sending a response.",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://energysage.com/solar/buy-lease-solar-panels",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://aurorasolar.com/home-solar/blog/solar-101/solar-leasing",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.ecowatch.com/solar/solar-leasing-vs-buying",
+    "findings": [
+      {
+        "channel": "served to GPTBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.ecowatch.com/solar/solar-leasing-vs-buying'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "GPTBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to ClaudeBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.ecowatch.com/solar/solar-leasing-vs-buying'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "ClaudeBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      },
+      {
+        "channel": "served to PerplexityBot",
+        "kinds": [
+          "fetch_differs"
+        ],
+        "excerpt": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.ecowatch.com/solar/solar-leasing-vs-buying'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+        "severity": "low",
+        "advice": "PerplexityBot could not fetch the page a browser could; check robots and firewall rules if that is not intended.",
+        "opinions": {}
+      }
+    ],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://solarreviews.com/blog/benefits-of-owning-vs-leasing-solar-panels",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.consumeraffairs.com/solar-energy/leasing-vs-buying-solar-panels.html",
+    "findings": [],
+    "error": "HTTPStatusError: Client error '403 Forbidden' for url 'https://www.consumeraffairs.com/solar-energy/leasing-vs-buying-solar-panels.html'\nFor more information check: https://developer.mozilla.org/en-US",
+    "evidence": {}
+  },
+  {
+    "source": "https://www.solar.com/learn/solar-borrowing-101-lease-vs-purchase/",
+    "findings": [],
+    "error": "",
+    "evidence": {}
+  }
+]

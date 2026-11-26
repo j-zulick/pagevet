@@ -1,0 +1,12 @@
+{
+ "pages": 368,
+ "total_seconds": {
+  "0.23.0": 27.38,
+  "0.24.0": 56.83
+ },
+ "median_ms_per_page": {
+  "0.23.0": 53.4,
+  "0.24.0": 115.3
+ },
+ "note": "same saved bytes, one machine, one run each; scan_text only (no fetching)"
+}

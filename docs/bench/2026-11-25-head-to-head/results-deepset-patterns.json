@@ -1,0 +1,61 @@
+{
+  "tool": "pagevet",
+  "version": "0.4.0",
+  "detector": "patterns",
+  "catch_rate": {
+    "hits": 2,
+    "n": 60,
+    "rate": 0.0333,
+    "ci95": [
+      0.0092,
+      0.1136
+    ]
+  },
+  "false_alarm_rate": {
+    "hits": 0,
+    "n": 56,
+    "rate": 0.0,
+    "ci95": [
+      0.0,
+      0.0642
+    ]
+  },
+  "by_group": {
+    "injection": {
+      "hits": 2,
+      "n": 60,
+      "rate": 0.0333,
+      "ci95": [
+        0.0092,
+        0.1136
+      ]
+    }
+  },
+  "kinds_on_caught": {
+    "override": 2
+  },
+  "sample_missed_ids": [
+    "deepset-test-0",
+    "deepset-test-1",
+    "deepset-test-3",
+    "deepset-test-6",
+    "deepset-test-8",
+    "deepset-test-12",
+    "deepset-test-16",
+    "deepset-test-20",
+    "deepset-test-29",
+    "deepset-test-33",
+    "deepset-test-37",
+    "deepset-test-38",
+    "deepset-test-40",
+    "deepset-test-43",
+    "deepset-test-45",
+    "deepset-test-49",
+    "deepset-test-52",
+    "deepset-test-53",
+    "deepset-test-57",
+    "deepset-test-66"
+  ],
+  "sample_false_alarm_ids": [],
+  "cases_sha256": "5d20eee5a21c825352ed881fbf1b43df0d9c9d5a13eaf4f32d59133132cd08c2"
+}
