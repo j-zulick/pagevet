@@ -1,6 +1,6 @@
 """PageVet: find text in web pages that is aimed at AI models rather than readers."""
 
-__version__ = "0.4.0"
+__version__ = "0.4.1"
 
 REPOSITORY = "https://github.com/j-zulick/pagevet"
 

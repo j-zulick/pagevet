@@ -2,6 +2,12 @@
 
 All notable changes, newest first. Versions follow [semantic versioning](https://semver.org/); the public interface and how it may change are in [docs/API.md](docs/API.md#stability).
 
+## [0.4.1] - 2026-11-26
+- **Explorer:** the "About this data" note says the access check covers twenty AI crawlers (it said fourteen, the count before 0.3.0).
+- **Quick start:** clones the released version and runs its bundled offline sample (exit 1 expected); the explorer link points at the release asset; a test keeps the clone tag and download links on the current version.
+- **Docs:** the README opens with what PageVet audits and offers one install path; pip, the container image, the wheel and the extras are in a new Install section of docs/USAGE.md. docs/API.md's install line names the current version, and a test now checks it with the README and USAGE pins.
+- No change to commands, options, formats or detection results.
+
 ## [0.4.0] - 2026-11-26
 - **Scores** (`python -m pagevet.scores`): page risk, site AI visibility and an opportunity score from PageVet's own JSON reports, each with its reasons and the gaps behind it; parts without input are reported as not measured. Weights in `src/pagevet/data/scoring.json` (`score_version` 1). Ranking aids, not detection rates.
 - **HTTP status per crawler** in the traffic import: status classes (`2xx` to `5xx`) per crawler from the access log, a CSV `status` column or OpenSearch (`--status-field`); the scores list 4xx and 5xx answers to crawlers as a gap.

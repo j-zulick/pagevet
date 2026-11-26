@@ -5,7 +5,7 @@
 [![Python 3.11–3.13](https://img.shields.io/badge/python-3.11%E2%80%933.13-blue)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-**What can an AI crawler actually retrieve from a page, and does that page contain instructions aimed at AI systems?** PageVet checks both, deterministically, with no AI model or API key.
+**What can an AI crawler actually retrieve from a page, and does that page contain instructions aimed at AI systems?** PageVet audits both. Run it against your own pages or browse an automotive field study to see the requests and results behind each finding. It is deterministic: no AI model or API key.
 
 **[Explore the automotive study →](https://j-zulick.github.io/pagevet/#ds=field&f.study=front+brake+rotor+shopping+pages)** · **[Run the offline example →](#quick-start)**
 
@@ -19,10 +19,10 @@ PageVet audits pages for it and reports which of twenty AI crawlers a page lets 
 
 ## Quick start
 
-With [uv](https://docs.astral.sh/uv/) installed, run the example shipped with PageVet 0.4.0:
+With [uv](https://docs.astral.sh/uv/) installed, run the example shipped with PageVet 0.4.1:
 
 ```bash
-git clone --branch v0.4.0 --depth 1 https://github.com/j-zulick/pagevet.git
+git clone --branch v0.4.1 --depth 1 https://github.com/j-zulick/pagevet.git
 cd pagevet
 uv sync --frozen
 uv run --frozen pagevet tests/fixtures/sample.html
@@ -30,7 +30,7 @@ uv run --frozen pagevet tests/fixtures/sample.html
 
 The scan runs offline after setup. The sample deliberately contains findings, so exit code **1** means it worked. Each finding shows its severity and where to look in the page. For a page you control, run `uv run pagevet-access https://example.com/pricing` with your URL to compare crawler access.
 
-To browse the study offline, download and open [explore.html from the release](https://github.com/j-zulick/pagevet/releases/download/v0.4.0/explore.html). The [usage guide](docs/USAGE.md) covers standalone installation, scanning options, reports and exit codes.
+To browse the study offline, download and open [explore.html from the release](https://github.com/j-zulick/pagevet/releases/download/v0.4.1/explore.html). The [usage guide](docs/USAGE.md) covers standalone installation, scanning options, reports and exit codes.
 
 ## What it checks
 PageVet reads each channel a page offers and rates what it finds by whether a reader can see it:
