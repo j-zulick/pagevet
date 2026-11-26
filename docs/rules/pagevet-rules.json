@@ -1,6 +1,6 @@
 {
  "schema": "pagevet-rules-1",
- "pagevet_version": "0.3.0",
+ "pagevet_version": "0.4.0",
  "license": "MIT",
  "instruction_patterns": {
   "override": {

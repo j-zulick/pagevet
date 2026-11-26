@@ -125,6 +125,15 @@ html = render_html(build([report], pages, traffic)["shop.example"])
 
 `pagevet.traffic.load(path, updates=None, input_format="auto", ts_field=..., url_field=..., ua_field=...)` returns the traffic report (`total_hits`, `ai_hits`, `unknown_agent_share`, `by_bot`, `pages`, and `updates` when given); `classify(user_agent)` returns `("ai", token)`, `("unknown", "")` or `("other", "")`.
 
+## Scores and the OpenSearch pipeline (0.4.0)
+
+```python
+from pagevet.scores import score
+report = score(scan=scan_results, access=access_json, traffic=traffic_report)   # any may be None
+```
+
+`score(...)` returns `{"score_version", "sites": [{"site", "visibility": {"score", "measured_max", "parts"}, "risk": {"max", "pages"}, "opportunity", "gaps"}]}`; `page_risk(result, weights)` and `site_visibility(access_report, traffic, weights)` score one page or site; `load_weights(path=None)` reads the weights. `pagevet.traffic.opensearch_pipeline(bots=None, ua_field="user_agent.original", drop_fields=())` returns the ingest pipeline as a dict. The score values and weights are not part of the stable interface; the field names are.
+
 ## Re-scans with change alerts
 
 ```python

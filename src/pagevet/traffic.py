@@ -56,7 +56,8 @@ SIGNAL_NOTE = ("A signal, not proof: crawlers keep their own schedules, and a us
 AUTOMATED = re.compile(r"bot\b|bot/|crawl|spider|scrap|slurp|fetch|python-requests|python-urllib|aiohttp|httpx|curl/|wget/"
                        r"|go-http-client|okhttp|java/|libwww|headless|phantomjs|axios|node-fetch", re.I)
 NOT_A_BOT = {"browser", "human", "none", "other", "user"}
-OPENSEARCH_DEFAULTS = {"ts_field": "@timestamp", "url_field": "url.path", "ua_field": "user_agent.original"}
+OPENSEARCH_DEFAULTS = {"ts_field": "@timestamp", "url_field": "url.path", "ua_field": "user_agent.original",
+                       "status_field": "http.response.status_code"}
 
 
 @dataclass(frozen=True)
@@ -66,6 +67,7 @@ class Hit:
     agent: str  # the user-agent string, or the bot name from a CSV ``bot`` column
     hits: int = 1
     named: bool = False  # True when ``agent`` is a bot name, not a user-agent string
+    status: int | None = None  # HTTP status the server answered, when the data has it (0.4.0)
 
 
 # --- classification -------------------------------------------------------------------------------
@@ -185,11 +187,12 @@ def read_csv(text: str) -> Iterator[Hit]:
             n = int(float(raw))
         except ValueError:
             continue
-        yield Hit(day, _path(row.get(fields["url"]) or ""), (row.get(agent_col) or "").strip(), n, named)
+        yield Hit(day, _path(row.get(fields["url"]) or ""), (row.get(agent_col) or "").strip(), n, named,
+                  _status(row.get(fields["status"])) if "status" in fields else None)
 
 
 # host ident user [time] "request" status bytes "referer" "user agent"; the host is matched and thrown away
-LOG_LINE = re.compile(r'^\S+ \S+ \S+ \[(?P<time>[^\]]+)\] "(?P<request>(?:[^"\\]|\\.)*)" \d{3} \S+(?: "(?:[^"\\]|\\.)*" "(?P<ua>(?:[^"\\]|\\.)*)")?')
+LOG_LINE = re.compile(r'^\S+ \S+ \S+ \[(?P<time>[^\]]+)\] "(?P<request>(?:[^"\\]|\\.)*)" (?P<status>\d{3}) \S+(?: "(?:[^"\\]|\\.)*" "(?P<ua>(?:[^"\\]|\\.)*)")?')
 
 
 def read_access_log(text: str) -> Iterator[Hit]:
@@ -201,7 +204,15 @@ def read_access_log(text: str) -> Iterator[Hit]:
         parts = m.group("request").split()
         if day is None or len(parts) < 2:
             continue
-        yield Hit(day, _path(parts[1]), (m.group("ua") or "").replace('\\"', '"'))
+        yield Hit(day, _path(parts[1]), (m.group("ua") or "").replace('\\"', '"'), status=_status(m.group("status")))
+
+
+def _status(value: object) -> int | None:
+    try:
+        code = int(str(value).strip())
+    except (TypeError, ValueError):
+        return None
+    return code if 100 <= code <= 599 else None
 
 
 def _get(doc: dict, dotted: str) -> object:
@@ -240,13 +251,13 @@ def _documents(text: str) -> Iterator[dict]:
 
 
 def read_opensearch(text: str, ts_field: str = OPENSEARCH_DEFAULTS["ts_field"], url_field: str = OPENSEARCH_DEFAULTS["url_field"],
-                    ua_field: str = OPENSEARCH_DEFAULTS["ua_field"]) -> Iterator[Hit]:
+                    ua_field: str = OPENSEARCH_DEFAULTS["ua_field"], status_field: str = OPENSEARCH_DEFAULTS["status_field"]) -> Iterator[Hit]:
     for doc in _documents(text):
         day = _day(_get(doc, ts_field))
         url = _get(doc, url_field)
         if day is None or not url:
             continue
-        yield Hit(day, _path(str(url)), str(_get(doc, ua_field) or ""))
+        yield Hit(day, _path(str(url)), str(_get(doc, ua_field) or ""), status=_status(_get(doc, status_field)))
 
 
 def detect_format(path: str, text: str) -> str:
@@ -288,6 +299,7 @@ def summarize(hits: Iterable[Hit], updates: list[tuple[str, date]] | None = None
     by_token = _matcher(bots).by_token
     total = ai = listed = unknown = 0
     pages: dict[tuple[str, str], list] = {}
+    statuses: dict[str, dict[str, int]] = {}
     for h in hits:
         kind, token = classify(h.agent, h.named, bots)
         total += h.hits
@@ -299,6 +311,10 @@ def summarize(hits: Iterable[Hit], updates: list[tuple[str, date]] | None = None
             ai += h.hits
         else:
             listed += h.hits
+        if h.status is not None:
+            cls = f"{h.status // 100}xx"
+            counts = statuses.setdefault(token, {})
+            counts[cls] = counts.get(cls, 0) + h.hits
         slot = pages.setdefault((h.url, token), [0, h.day, h.day])
         slot[0] += h.hits
         slot[1], slot[2] = min(slot[1], h.day), max(slot[2], h.day)
@@ -314,6 +330,9 @@ def summarize(hits: Iterable[Hit], updates: list[tuple[str, date]] | None = None
         b["hits"] += r["hits"]
         b["pages"] += 1
         b["first_seen"], b["last_seen"] = min(b["first_seen"], r["first_seen"]), max(b["last_seen"], r["last_seen"])
+    for token, counts in statuses.items():
+        if token in by_bot:
+            by_bot[token]["status"] = dict(sorted(counts.items()))
     days = [h.day for h in hits]
     report: dict = {
         "tool": "pagevet.traffic", "version": __version__,
@@ -388,6 +407,37 @@ def render_csv(report: dict) -> str:
     return buf.getvalue()
 
 
+# --- OpenSearch ingest pipeline (0.4.0) ------------------------------------------------------------
+
+PIPELINE_SCRIPT = (
+    "def v = ctx; for (def k : params.path) { if (v instanceof Map && v.containsKey(k)) { v = v.get(k); } else { v = null; break; } }"
+    " if (v == null) { return; } String ua = v.toString().toLowerCase();"
+    " for (def b : params.bots) { if (ua.contains(b.match)) { ctx.bot = ['token': b.token, 'operator': b.operator,"
+    " 'group': b.group, 'kind': b.kind, 'verified': false]; return; } }"
+)
+
+
+def opensearch_pipeline(bots: list[Bot] | None = None, ua_field: str = OPENSEARCH_DEFAULTS["ua_field"],
+                        drop_fields: Iterable[str] = ()) -> dict:
+    """An OpenSearch ingest pipeline that tags each log document with ``bot.token``, ``bot.group`` and ``bot.kind``.
+
+    Built from the same crawler lists as this module (longest name first, case-insensitive substring), so OpenSearch
+    and PageVet classify a user agent the same way. ``bot.verified`` starts false: confirming a visit against the
+    operator's published ranges or reverse DNS is a separate step. ``drop_fields`` (for example ``source.ip``) are
+    removed after tagging. A dotted ``ua_field`` is read as nested objects; a flat key with dots in its name is
+    passed as one path element by quoting it as ``"[user_agent.original]"``.
+    """
+    rows = sorted((b for b in (bots or DEFAULT_BOTS) if b.user_agent), key=lambda b: -len(b.token))
+    path = [ua_field[1:-1]] if ua_field.startswith("[") and ua_field.endswith("]") else ua_field.split(".")
+    processors: list[dict] = [{"script": {
+        "description": "PageVet: tag known crawlers by user agent",
+        "lang": "painless", "source": PIPELINE_SCRIPT,
+        "params": {"path": path, "bots": [{"match": b.token.lower(), "token": b.token, "operator": b.operator, "group": b.group,
+                                           "kind": "ai" if b.ai else "listed"} for b in rows]}}}]
+    processors += [{"remove": {"field": f, "ignore_missing": True}} for f in drop_fields]
+    return {"description": f"PageVet {__version__}: crawler tags ({len(rows)} crawlers)", "processors": processors}
+
+
 def load(path: str, updates: str | None = None, input_format: str = "auto", bots: str | None = None, **fields: str) -> dict:
     """Read a traffic file (with an updates file and an extra bots file) and return the report; used by the visibility report too."""
     bot_rows = bot_list(read_bots(bots)) if bots else None
@@ -397,18 +447,38 @@ def load(path: str, updates: str | None = None, input_format: str = "auto", bots
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="python -m pagevet.traffic", description="AI-crawler visits from your own traffic data.")
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
-    parser.add_argument("file", help="CSV, combined-format access log, or OpenSearch export (JSON or NDJSON)")
+    parser.add_argument("file", nargs="?", help="CSV, combined-format access log, or OpenSearch export (JSON or NDJSON)")
     parser.add_argument("--input-format", choices=("auto", "csv", "log", "opensearch"), default="auto")
     parser.add_argument("--ts-field", default=OPENSEARCH_DEFAULTS["ts_field"], help="OpenSearch timestamp field (default %(default)s)")
     parser.add_argument("--url-field", default=OPENSEARCH_DEFAULTS["url_field"], help="OpenSearch URL field (default %(default)s)")
     parser.add_argument("--ua-field", default=OPENSEARCH_DEFAULTS["ua_field"], help="OpenSearch user-agent field (default %(default)s)")
+    parser.add_argument("--status-field", default=OPENSEARCH_DEFAULTS["status_field"], help="OpenSearch HTTP status field (default %(default)s)")
     parser.add_argument("--updates", metavar="FILE", help="CSV url,date of content updates: AI-crawler hits 14 days before and after")
     parser.add_argument("--bots", metavar="FILE", help="extra crawlers to classify (CSV token,operator,group,user_agent), e.g. search engines")
     parser.add_argument("--format", choices=("json", "csv"), default="json")
     parser.add_argument("--out", metavar="FILE")
+    parser.add_argument("--opensearch-pipeline", action="store_true",
+                        help="print an OpenSearch ingest pipeline that tags crawlers (uses --bots and --ua-field) instead of reading a file")
+    parser.add_argument("--drop-field", action="append", default=[], metavar="FIELD",
+                        help="with --opensearch-pipeline: remove this field after tagging, e.g. source.ip (repeatable)")
     args = parser.parse_args(argv)
+    if args.opensearch_pipeline:
+        try:
+            bots = bot_list(read_bots(args.bots)) if args.bots else None
+        except (OSError, ValueError) as exc:
+            sys.stderr.write(f"pagevet.traffic: {exc}\n")
+            return 2
+        text = json.dumps(opensearch_pipeline(bots, args.ua_field, args.drop_field), indent=1) + "\n"
+        if args.out:
+            Path(args.out).write_text(text, encoding="utf-8")
+        else:
+            sys.stdout.write(text)
+        return 0
+    if not args.file:
+        parser.error("a traffic file is required (or --opensearch-pipeline)")
     try:
-        report = load(args.file, args.updates, args.input_format, args.bots, ts_field=args.ts_field, url_field=args.url_field, ua_field=args.ua_field)
+        report = load(args.file, args.updates, args.input_format, args.bots, ts_field=args.ts_field, url_field=args.url_field, ua_field=args.ua_field,
+                      status_field=args.status_field)
     except (OSError, ValueError) as exc:
         sys.stderr.write(f"pagevet.traffic: {exc}\n")
         return 2

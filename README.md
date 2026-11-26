@@ -19,9 +19,9 @@ PageVet audits pages for it and reports which of twenty AI crawlers a page lets 
 
 ## Install
 ```bash
-uv tool install "git+https://github.com/j-zulick/pagevet@v0.3.0"    # Python 3.11–3.13
+uv tool install "git+https://github.com/j-zulick/pagevet@v0.4.0"    # Python 3.11–3.13
 ```
-Or `pip install "git+https://github.com/j-zulick/pagevet@v0.3.0"` in a virtual environment, or with no Python: `docker run --rm ghcr.io/j-zulick/pagevet:0.3.0 https://example.com/pricing`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. Optional extras (PDF, OCR, MCP and others) are listed in [docs/USAGE.md](docs/USAGE.md).
+Or `pip install "git+https://github.com/j-zulick/pagevet@v0.4.0"` in a virtual environment, or with no Python: `docker run --rm ghcr.io/j-zulick/pagevet:0.4.0 https://example.com/pricing`. Each [release](https://github.com/j-zulick/pagevet/releases) also carries the wheel. Optional extras (PDF, OCR, MCP and others) are listed in [docs/USAGE.md](docs/USAGE.md).
 
 ## Quick start
 A first result with no network, from a clone of this repository (needs [uv](https://docs.astral.sh/uv/); a wheel install doesn't include the sample):

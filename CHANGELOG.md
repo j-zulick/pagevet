@@ -2,6 +2,13 @@
 
 All notable changes, newest first. Versions follow [semantic versioning](https://semver.org/); the public interface and how it may change are in [docs/API.md](docs/API.md#stability).
 
+## [0.4.0] - 2026-11-26
+- **Scores** (`python -m pagevet.scores`): page risk, site AI visibility and an opportunity score from PageVet's own JSON reports, each with its reasons and the gaps behind it; parts without input are reported as not measured. Weights in `src/pagevet/data/scoring.json` (`score_version` 1). Ranking aids, not detection rates.
+- **HTTP status per crawler** in the traffic import: status classes (`2xx` to `5xx`) per crawler from the access log, a CSV `status` column or OpenSearch (`--status-field`); the scores list 4xx and 5xx answers to crawlers as a gap.
+- **OpenSearch ingest pipeline** (`python -m pagevet.traffic --opensearch-pipeline`): tags log documents with the crawler, its group and kind from the same lists and matching as the traffic import; `--drop-field` removes the client address after tagging.
+- **Storage integrations:** `integrations/supabase/` (Postgres schema with row level security, and a standard-library loader that upserts traffic, findings, crawler access and scores) and `integrations/hindsight/` (dated observations for a Hindsight memory bank, recall and reflect). Optional, outside the package; settings in `.env.example`.
+- No change to existing commands, options, formats or detection results.
+
 ## [0.3.0] - 2026-11-26
 - **Six more AI crawlers:** added from the operators' own crawler pages: search: Google-CloudVertexBot, meta-webindexer, Amzn-SearchBot, DuckAssistBot; fetch on request: meta-externalfetcher, Amzn-User (Meta and Amazon say user-initiated fetches may not follow robots.txt). Twenty in all; the fourteen earlier rows are unchanged.
 - **AI visibility report:** `pagevet-access URL --report FILE` also writes one self-contained HTML page per site: crawler access per AI crawler (robots.txt, page signals, firewall refusals), findings and AI share links (from `--scan-report`, a `pagevet --format json` report, or the page's raw HTML), `llms.txt`, AI-crawler traffic with `--traffic` (and `--updates`, `--traffic-bots`), and how each page was read when the scan report's pages carry fetch details (`evidence.fetch`). New module `pagevet.visibility`; the flag names are kept in `pagevet.visibility.FLAGS`.
